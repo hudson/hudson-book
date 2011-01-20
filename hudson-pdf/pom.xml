@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.sonatype.nexusbook</groupId>
+		<groupId>org.sonatype.hudsonbook</groupId>
 		<artifactId>hudson-parent</artifactId>
 		<version>2.9</version>
 	</parent>
 	<artifactId>hudson-pdf</artifactId>
 	<packaging>jar</packaging>
-	<name>Repository Management with Nexus (PDF)</name>
-	<description>A book about Sonatype Nexus</description>
+	<name>The Hudson Book (PDF)</name>
+	<description>A book about Hudson</description>
 	<build>
 		<resources>
 			<resource>
@@ -92,7 +92,7 @@
 				<configuration>
 					<sourceDirectory>${basedir}/target/docbook</sourceDirectory>
 					<targetDirectory>${basedir}/target</targetDirectory>
-					<includes>book-nexus.xml</includes>
+					<includes>book-hudson.xml</includes>
 					<xincludeSupported>true</xincludeSupported>
 					<imgSrcPath>${basedir}/target/docbook/</imgSrcPath>
 					<foCustomization>${basedir}/target/classes/fopdf.xsl</foCustomization>
@@ -164,7 +164,7 @@
 							<artifactItems>
 								<artifactItem>
 									<groupId>${project.groupId}</groupId>
-									<artifactId>nxbook-content</artifactId>
+									<artifactId>hudson-content</artifactId>
 									<version>${project.version}</version>
 								</artifactItem>
 							</artifactItems>
@@ -184,7 +184,7 @@
 							<goal>install-file</goal>
 						</goals>
 						<configuration>
-							<file>${basedir}/target/nxbook-complete.pdf</file>
+							<file>${basedir}/target/hudson-complete.pdf</file>
 							<groupId>${groupId}</groupId>
 							<artifactId>${artifactId}</artifactId>
 							<version>${version}</version>
@@ -206,14 +206,13 @@
 						</goals>
 						<configuration>
 							<outputDir>${basedir}/target</outputDir>
-							<outputFilename>nxbook-complete.pdf</outputFilename>
+							<outputFilename>hudson-complete.pdf</outputFilename>
 							<pdfs>
-								<pdf>${basedir}/src/main/resources/nexus-book-cover.pdf</pdf>
+								<pdf>${basedir}/src/main/resources/hudson-book-cover.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
-								<pdf>${basedir}/target/book-nexus.pdf</pdf>
-								<!--		<pdf>${basedir}/src/main/resources/heritier-blog.pdf</pdf> -->
+								<pdf>${basedir}/target/book-hudson.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/blank-page.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>							</pdfs>
 						</configuration>
@@ -225,17 +224,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>nxbook-content</artifactId>
+			<artifactId>hudson-content</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-	<profiles>
-		<profile>
-			<id>publish-external</id>
-		</profile>
-		<profile>
-			<id>stage-external</id>
-		</profile>
-	</profiles>
-
 </project>

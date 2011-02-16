@@ -29,34 +29,6 @@
     </resources>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.cjcook</groupId>
-        <artifactId>docbook-plugin</artifactId>
-        <version>1.0</version>
-        <extensions>true</extensions>
-        <executions>
-<!--        	<execution>
-        		<id>validate-chapters</id>
-        		<phase>test</phase>
-        		<goals>
-        			<goal>validate-chapter-ids</goal>
-        		</goals>
-        	</execution> -->
-<!--        	<execution>
-        		<id>inject-examples</id>
-        		<phase>process-classes</phase>
-        		<goals>
-        			<goal>inject-examples</goal>
-        		</goals>
-        	</execution> -->
-<!--        	<execution>
-        		<id>wrappify</id>
-        		<goals>
-        			<goal>wrappify</goal>
-        		</goals>
-        	</execution> -->
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>2.3</version>
@@ -67,59 +39,4 @@
       </plugin>
     </plugins>
   </build>
-  <profiles>
-    <profile>
-        <id>publish</id>
-        <distributionManagement>
-        <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://site@172.16.0.1/home/site/books/nexus-book/</url>
-        </site>
-        </distributionManagement>
-        <properties>
-           <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
-        </properties>
-      </profile>
-    <profile>
-        <id>publish-external</id>
-        <distributionManagement>
-        <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://site@svn.sonatype.com/home/site/books/nexus-book/</url>
-        </site>
-        </distributionManagement>
-        <properties>
-           <maven.book.baseurl>http://books.sonatype.com/maven-book</maven.book.baseurl>
-        </properties>
-      </profile>
-    <profile>
-        <id>stage</id>
-        <distributionManagement>
-        <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://site@172.16.0.1/home/site/books/nexus-book-stage/</url>
-        </site>
-        </distributionManagement>
-      </profile>
-    <profile>
-        <id>stage-external</id>
-        <distributionManagement>
-        <site>
-          <id>sonatype-site</id>
-          <name>Sonatype Book Examples</name>
-          <url>scp://site@svn.sonatype.com/home/site/books/nexus-book-stage/</url>
-        </site>
-        </distributionManagement>
-      </profile>
-  </profiles>
-  <repositories>
-  	<repository>
-  		<id>flexmojos</id>
-  		<name>Flexmojos Repository</name>
-  		<url>http://repository.sonatype.org/content/groups/flexgroup/</url>
-  	</repository>
-  </repositories>
 </project>

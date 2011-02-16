@@ -211,10 +211,7 @@
 								<pdf>${basedir}/src/main/resources/hudson-book-cover.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
-								<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>
 								<pdf>${basedir}/target/book-hudson.pdf</pdf>
-								<pdf>${basedir}/src/main/resources/blank-page.pdf</pdf>
-								<pdf>${basedir}/src/main/resources/promo-page.pdf</pdf>							</pdfs>
 						</configuration>
 					</execution>
 				</executions>

@@ -595,6 +595,74 @@
     <para></para>
 
     <section>
+      <title>Creating New Hudson Projects</title>
+
+      <para>To create a new Hudson project using a Maven 3 build, click on New
+      Job in the left navigation menu. Clicking on New Job will display the
+      New Job form shown in <xref linkend="fig-using-new-project" />.</para>
+
+      <figure id="fig-using-new-project">
+        <title>Creating a New Project in Hudson</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-new-project.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-new-project.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>To create a new build using Hudson features, select "Build a
+      free-style software project". If you are creating a project that is
+      similar to an existing Hudson build, you may also choose "Copy existing
+      job" and then type in the name of the Hudson job in the "copy from" text
+      field. Once you have made your selection and provided a name for the new
+      job, click on OK to continue.</para>
+
+      <warning>
+        <para>If your Hudson installation provides an option for creating a
+        "maven2" project, don't select this project type. While Hudson can be
+        used to support Maven builds with the latest Maven 2.2 version, it has
+        been optimized to work with Maven 3. Use of the built in Maven 2
+        support in Hudson is not supported in Hudson. Instead, we encourage
+        you to use the native Maven support which is also available to you in
+        a free-style software project.</para>
+      </warning>
+
+      <figure id="fig-using-new-project-result">
+        <title>Result of New Project Creation</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-new-project-result.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-new-project-result.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>Once your job has been created, you will see the screen shown in
+      <xref linkend="fig-using-new-project-result"
+      xrefstyle="select:label" />. After creating a new project you should
+      configure the project's build configuration. To do this click on the
+      Configure link in the left-hand navigation section of the Hudson
+      interface.</para>
+    </section>
+
+    <section>
       <title>Configuring Free-style Hudson Projects</title>
 
       <para> Hudson builds are configured using the free-style project option

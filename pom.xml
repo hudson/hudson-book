@@ -33,6 +33,9 @@
     <developer>
       <id>mosabua</id>
       <name>Manfred Moser</name>
+      <email>manfred@simpligility.com</email>
+      <organization>simpligity technologies inc.</organization>
+      <organizationUrl>http://www.simpligility.com</organizationUrl>
       <roles>
         <role>Author</role>
       </roles>

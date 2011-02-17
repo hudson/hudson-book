@@ -212,6 +212,7 @@
 								<pdf>${basedir}/src/main/resources/title-page.pdf</pdf>
 								<pdf>${basedir}/src/main/resources/copyright-page.pdf</pdf>
 								<pdf>${basedir}/target/book-hudson.pdf</pdf>
+                            </pdfs>
 						</configuration>
 					</execution>
 				</executions>

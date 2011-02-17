@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<book id="book-nexus">
+  <?dbhtml filename="index.html"?>
+
+  <title>${book.title}</title>
+
+  <bookinfo>
+    <!--<isbn>9780984243303</isbn>-->
+
+    <edition>${project.version}</edition>
+
+    <author>
+      <surname>Oracle, Inc.</surname>
+    </author>
+    <author>
+      <surname>Sonatype, Inc.</surname>
+    </author>
+
+    <author>
+      <surname>Moser</surname>
+      <firstname>Manfred</firstname>
+    </author>
+
+    <author>
+      <surname>Yeary</surname>
+      <firstname>John</firstname>
+    </author>
+
+    <author>
+      <surname>Prakash</surname>
+      <firstname>Winston</firstname>
+    </author>
+
+    <author>
+      <surname>Van Zyl</surname>
+      <firstname>Jason</firstname>
+    </author>
+
+    <author>
+      <surname>O'Brien</surname>
+      <firstname>Tim</firstname>
+    </author>
+
+    <editor>
+      <othername>Tim O'Brien</othername>
+    </editor>
+
+    <copyright>
+      <year>${copyright.year}</year>
+      <holder>Oracle, Inc.</holder>
+    </copyright>
+
+    <date>${release.date}</date>
+
+    <publisher>
+      <publishername>Sonatype, Inc.</publishername>
+      <address><street>12501 Prosperity Drive, Suite 350</street><city>Silver Spring</city><state>MD</state><postcode>20904</postcode></address>
+    </publisher>
+
+    <abstract>
+      <para>This is the abstract of the Hudson book, it is such
+      an amazingly awesome book, it will redefine the way you think about
+      logic.</para>
+    </abstract>
+
+    <subjectset>
+      <subject>
+        <subjectterm>COM018000</subjectterm>
+      </subject>
+    </subjectset>
+  </bookinfo>
+
+  <xi:include href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="foreword.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-introduction.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-ci.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-installation.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+<!--  <xi:include href="chapter-maven.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-using.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-configuring.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
+
+  <!--  <xi:include href="chapter-plugins.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
+
+<!--  <xi:include href="chapter-ldap.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-procurement.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-staging.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-settings.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-obr.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-p2.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-sites.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-user-account.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-crowd.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="chapter-bundles.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
+
+<!--   <xi:include href="appendix-best.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-plugdev.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-artifactory.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-archiva.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-ssl.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
+
+  <xi:include href="appendix-license.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="appendix-changes.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <index></index>
+</book>

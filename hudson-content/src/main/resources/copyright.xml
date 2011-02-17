@@ -10,6 +10,9 @@
   <para>Online version published by ${project.organization.name},
   ${organization.address}.</para>
 
+  <para>Hudson is a registered trademark of Oracle, Inc., in the United States
+  and other countries.</para>
+
   <para>Nexus™, Nexus Professional™, and all Nexus-related logos are
   trademarks or registered trademarks of Sonatype, Inc., in the United States
   and other countries.</para>

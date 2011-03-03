@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+   <title>Managing Hudson Plugins</title>
+
+   <para>Hudson plugins can be managed by selecting the "Manage Plugins" link
+   shown in <xref linkend="fig-using-matrix-history" />.</para>
+
+   <section>
+     <title>Advanced Plugin Management Options</title>
+
+     <para>Hudson retrieves a list of plugins and downloads plugins over the
+     public internet. If your server is behind a proxy, you will need to
+     configure proxy settings by selecting the Advanced Tab in the plugin
+     management screen and populating the options for Server, Port, Username,
+     and Password.</para>
+
+     <figure id="fig-using-advanced-plugin">
+       <title>Advanced Plugin Management Options</title>
+
+       <mediaobject>
+         <imageobject role="web">
+           <imagedata contentdepth="100%"
+                      fileref="figs/web/ci-using-advanced-plugin.png"
+                      scalefit="1" />
+         </imageobject>
+
+         <imageobject role="print">
+           <imagedata align="center"
+                      fileref="figs/print/ci-using-advanced-plugin.pdf"
+                      scalefit="0" width="100%" />
+         </imageobject>
+       </mediaobject>
+     </figure>
+
+     <para>In addition to Proxy configuration, the Advanced tab also provides
+     you with a way to upload Hudson plugins as .hpi files. Hudson is
+     compatible with most of the freely available Hudson plugins. These
+     plugins are often distributed as .hpi file, and if you need to install
+     one on your Hudson instance, just upload it using this form.</para>
+   </section>
+
+   <section>
+     <title>Available Plugin Updates</title>
+
+     <para>Hudson checks with an available list of Hudson plugins and will
+     notify you if an update becomes available. To check for available
+     updates, click on the Updates tab in the Manage Plugins screen. Plugin
+     eligible for an update will be displayed next to the available update
+     version and the version which is currently installed.</para>
+
+     <figure id="fig-using-updates-plugin">
+       <title>Available Plugin Updates</title>
+
+       <mediaobject>
+         <imageobject role="web">
+           <imagedata contentdepth="100%"
+                      fileref="figs/web/ci-using-updates-plugin.png"
+                      scalefit="1" />
+         </imageobject>
+
+         <imageobject role="print">
+           <imagedata align="center"
+                      fileref="figs/print/ci-using-updates-plugin.pdf"
+                      scalefit="0" width="100%" />
+         </imageobject>
+       </mediaobject>
+     </figure>
+   </section>
+
+   <section>
+     <title>Available Plugins</title>
+
+     <para>Hudson is compatible with most of the freely available Hudson
+     plugins, this list of Available plugins includes hundreds of useful
+     utilities which can extend the core feature set of Hudson.</para>
+
+     <figure id="fig-using-avail-plugin">
+       <title>Available Plugins</title>
+
+       <mediaobject>
+         <imageobject role="web">
+           <imagedata contentdepth="100%"
+                      fileref="figs/web/ci-using-avail-plugin.png"
+                      scalefit="1" />
+         </imageobject>
+
+         <imageobject role="print">
+           <imagedata align="center"
+                      fileref="figs/print/ci-using-avail-plugin.pdf"
+                      scalefit="0" width="100%" />
+         </imageobject>
+       </mediaobject>
+     </figure>
+   </section>
+
+   <section>
+     <title>Listing Installed Plugins</title>
+
+     <para>To get a list of installed plugins, click in the Installed Tab on
+     the Manage Plugins screen. This will list all of the Hudson plugins
+     current installed on your instance of Hudson.</para>
+
+     <figure id="fig-using-installed-plugin">
+       <title>Installed Plugins</title>
+
+       <mediaobject>
+         <imageobject role="web">
+           <imagedata contentdepth="100%"
+                      fileref="figs/web/ci-using-installed-plugin.png"
+                      scalefit="1" />
+         </imageobject>
+
+         <imageobject role="print">
+           <imagedata align="center"
+                      fileref="figs/print/ci-using-installed-plugin.pdf"
+                      scalefit="0" width="100%" />
+         </imageobject>
+       </mediaobject>
+     </figure>
+   </section>
+ </chapter>

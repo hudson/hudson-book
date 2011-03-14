@@ -17,6 +17,11 @@
       <para>Git</para>
     </listitem>
 
+
+    <listitem>
+        <para>Mercurial</para>
+    </listitem>
+
     <listitem>
       <para>CVS</para>
     </listitem>
@@ -273,6 +278,10 @@
         </listitem>
       </varlistentry>
     </variablelist>
+  </section>
+
+  <section>
+    <title>Configuring Mercurial</title>
   </section>
 
   <section>

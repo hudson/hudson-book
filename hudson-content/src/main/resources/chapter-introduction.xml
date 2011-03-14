@@ -5,8 +5,23 @@
   <title>Introducing Hudson</title>
 
   <section id="intro-sect-intro">
-    <title>Introduction</title>
+    <title>What is Hudson?</title>
 
-    <para>Intro Text</para>
+    <para>Introduction Text</para>
   </section>
+
+    <section id="intro-sect-community">
+      <title>The Hudson Community</title>
+
+    </section>
+
+    <section id="intro-sect-project">
+      <title>The Hudson Project</title>
+
+    </section>
+
+    <section id="intro-sect-license">
+      <title>Hudson's license</title>
+
+    </section>
 </chapter>

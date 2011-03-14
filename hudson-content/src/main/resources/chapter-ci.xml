@@ -5,11 +5,18 @@
   <title>Continuous Integration</title>
 
   <section id="ci-sect-ci">
-    <title>Continuous Integration</title>
+    <title>What is Continuous Integration</title>
 
     <para>This is a chapter providing some motivation for continuous
     integration.</para>
-
   </section>
 
+
+    <section id="ci-sect-case">
+      <title>Case Study: Climbing without a Rope</title>
+    </section>
+
+    <section id="ci-sect-heartbeat">
+      <title>Heartbeat for Development</title>
+    </section>
 </chapter>

@@ -309,49 +309,65 @@
       <variablelist>
         <varlistentry>
           <term>Quiet period</term>
-
           <listitem>
-            <para>You should specify a quiet period if you would like your
-            Hudson project to wait a specified number of seconds before a
-            triggered build is started. If your Hudson project is constantly
-            "flapping" (switching between failure and success frequently),
-            you may want to set the Quiet period to encourage more build
-            stability.</para>
+            <para>A quiet period as specified in this configuration causes
+              Hudson to wait the specified number of seconds before a triggered
+              build is started. This depends on your build trigger configuration
+              as documented below. If your Hudson project is constantly
+              "flapping" (switching between failure and success frequently), you
+              may want to set the Quiet period to encourage more build
+              stability. Another scenario this can be helpful is when large
+              commits to your source control system are typically carried out in
+              multiple smaller commits within a short time frame, so that the
+              committer has a chance to get everything in without a build
+              kicking off straight after the first commit. Setting this
+              number to a large amount can generally reduce the number of
+              builds running for this project, which will reduce the overall
+              load for your Hudson server.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Retry Count</term>
-
           <listitem>
-            <para>Hudson builds can be trigger by SCM activity. To check for
-            SCM activity, Hudson is configured to poll an SCM system on a
-            periodic schedule. It Retry Count is selected, you can specify
-            the number of times Hudson will attempt to poll an SCM system if
-            it is unavailable.</para>
+            <para>The retry count determines the number of attempts Hudson makes
+              when polling the SCM system for changes and finds system to be
+              unavailable.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>Block build when upstream project is building</term>
-
+          <term>Block build when upstream/downstream project is building</term>
           <listitem>
             <para>Hudson builds can be configured as having upstream
-            dependencies. Upstream dependencies are project upon which a
-            particular project's build depends. If Block build when upstream
-            project is building is selected this project will not start a
-            build if an upstream project is in the middle of a build.</para>
+              as well downstream dependencies. Upstream dependencies are
+              projects upon
+              which this
+              particular project's build depends. Downstream dependencies
+              are projects that depend on the current builds results. If
+              "Block build when
+              upstream/downstream
+              project is building" is selected this project will not start a
+              build if an upstream/downstream project is in the middle of a
+              build or in the
+              build queue.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Use custom workspace</term>
-
           <listitem>
-            <para>If this selection is checked, you can instruct Hudson to
-            use a custom directory for this project's workspace. If this
-            option is not checked, Hudson will automatically assign a
-            workspace location that is based on the project's name.</para>
+            <para>If this selection is checked, you can instruct Hudson to use a
+              custom directory for this project's workspace. If this option is
+              not checked, Hudson will automatically assign a workspace location
+              that is based on the project's name. As such it can be used to
+              have projects names with spaces or other characters potentially
+              causing file system level issues while using a save name for the
+              workspace folder name.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>

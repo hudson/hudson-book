@@ -46,10 +46,11 @@
 
     <warning>
       <para>Your Hudson installation may provide an option to "Build a maven2/3
-        project". This feature has numerous issues with the use for different
-        Maven versions and is not supported in Hudson. Do not use this job type.
-        Instead, we encourage you to use the native Maven support which is
-        available in a free-style software project.
+        project". This feature has numerous issues with the use of different
+        Maven versions especially new Maven 3 versions and is not supported in
+        Hudson. Do not use this job type. Instead, we encourage you to use the
+        native Maven support which is available in a free-style software
+        project.
       </para>
     </warning>
 
@@ -91,31 +92,32 @@
       <varlistentry>
         <term>General Project Settings</term>
         <listitem>
-          <para></para>
+          <para>configure name, description and other general parameters</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Advanced Project Options</term>
         <listitem>
-          <para></para>
+          <para>configure miscellaneous settings for advanced usage </para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Source Code Management</term>
         <listitem>
-          <para></para>
+          <para>configure source code management related parameters for
+            various systems</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Build Triggers</term>
         <listitem>
-          <para></para>
+          <para>configure how builds are started</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Post-build Actions</term>
         <listitem>
-          <para></para>
+          <para>configure steps taken after a build completion</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -156,46 +158,60 @@
       <variablelist>
         <varlistentry>
           <term>Project Name</term>
-
           <listitem>
-            <para>The project name is easy to explain, this is the name of
-            your project. Consider this to be the "machine name" this is the
-            identifier that Hudson uses to keep track of a Hudson build. We
-            recommend that your project names consist of simple alphanumeric
-            characters and dashes. While Hudson will save a Project name
-            contains spaces, the file path of the workspace will also
-            contain spaces. The presences of spaces in a project name can
-            cause unforeseen issues with builds and may results in build
-            failure.</para>
+            <para>The project name should be a short descriptive name, that
+              easily allows your Hudson users to see what this project is.
+              Consider this to be the identifier that Hudson uses to keep track
+              of everything associated to this project. We recommend that your
+              project names consist of simple alphanumeric characters and
+              dashes. While Hudson will save a Project name contains spaces, the
+              file path of the workspace will also contain spaces. The presences
+              of spaces in a project name can cause unforeseen issues with
+              builds and may results in build failure. The project name will
+              be visible in the main Hudson page on the list of jobs.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Description</term>
-
           <listitem>
-            <para>The description should contain a paragraph that will
-            inform Hudson uses about the nature of a give Hudson
-            project.</para>
+            <para>The description should contain a paragraph that will inform
+              Hudson users about the nature and purpose of a give Hudson
+              project. Useful information for the users could for example be
+              various source code management related parameters like branch or
+              version or other parameters like target platform for the build
+              artifacts. This will widely vary and depend on your job type.
+              The description is visible on the main project specific page.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Discard Old Builds</term>
-
           <listitem>
-            <para>If Discard Old Builds is not checked, Hudson will archive
-            the results of all the builds it performs. If Discard Old Builds
-            is checked, the project configuration screen will display some
-            addition input fields that allow you to specify the number of
-            builds to retain or the length of time to keep completed
-            builds.</para>
+            <para>If "Discard Old Builds" is not checked, Hudson will archive
+            the results of all the builds it performs. Depending on build
+              log and artifact size this can produce considerable amounts of storage
+              space being used, which should in turn be monitored carefully.</para>
+            <para>If "Discard Old Builds"
+            is checked, the project configuration screen will display
+              additional input fields that allow you to specify the number of
+            builds and the number of days to retain builds.</para>
+            <para>After pressing the "Advanced"
+              button you can provide for separate configuration for the
+              number of days the build artifacts are kept. Setting this value
+              will cause older build artifacts to get deleted,
+              without the logs, reports etc. to get deleted.
+            </para>
+            <para>An additional advanced configuration allows to set
+              maximum number of builds to keep including its artifacts.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>This Build is Parameterized</term>
-
+          <!-- TODO MM-->
           <listitem>
             <para>TBD</para>
           </listitem>
@@ -203,42 +219,49 @@
 
         <varlistentry>
           <term>Disable Build</term>
-
           <listitem>
-            <para>If Disable Build is selected, no new builds will be
-            executed until the project is re-enabled. This means that any
-            builds that might have been triggered by SCM activity or by a
-            periodic schedule will not be executed. This feature can often
-            be very useful if you need to fix an issue with a build and you
-            want to temporarily take a particular Hudson job offline without
-            affecting other jobs.</para>
+            <para>If Disable Build is selected, no new builds will be executed
+              until the project is re-enabled. This means that any builds that
+              might have been triggered by SCM activity or by a periodic
+              schedule will not be executed. This feature is very useful if you
+              need to fix an issue with a build or build specific related
+              infrastructure like source code management system and you want to
+              temporarily take a particular Hudson job offline without affecting
+              the rest of your Hudson setup and jobs.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Execute concurrent builds if necessary (beta)</term>
-
           <listitem>
-            <para>If this checkbox is selected, Hudson will be able to
-            execute more than once build for this project at the same time.
-            This can be useful if your project is parameterizes, or if you
-            have a longer build which may need to run multiple concurrent
-            builds in response to independent changes to SCM.</para>
+            <para>If this checkbox is selected, Hudson will be able to execute
+              more than one build for this project at the same time. This can be
+              useful if your project is parameterized, or if you have a longer
+              build which may need to run multiple concurrent builds in response
+              to independent changes to SCM. In many cases this setting is
+              particularly useful, when Hudson is set up as a build cluster.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>JDK</term>
-
+        <term>JDK</term>
           <listitem>
-            <para>This dropdown provides a space to select the appropriate
-            Java Development Kit (JDK) for a particular project.</para>
+            <para>This dropdown allows the selection of a specific
+            Java Development Kit (JDK) for a the project. It will
+              only be available if multiple JDK's are configure in
+              the global Hudson configuration.</para>
+            <!-- TODO add link to global config chapter -->
           </listitem>
         </varlistentry>
 
+        <!-- TODO investigate if this still comes up in some use cases or if
+        it is replaced by parameters or something, maybe only available if
+        there are nodes in a cluster
+        -->
         <varlistentry>
           <term>Restrict where this project can be run</term>
-
           <listitem>
             <para>If restrict where this project can be run is checked,
             Hudson will display options that will allow you to specify the
@@ -250,12 +273,17 @@
       <warning>
         <para>If you are creating a continuous integration build that will
         run frequently, don't forget to check "Discard Old Builds" and
-        configure Hudson to free up drive space. If your project is active
-        enough you can easily fill up even the largest hard drive with a
-        build that is run tens or hundreds of times a day.</para>
+        configure Hudson to free up drive space. If your project is built
+          regularly due to frequent changes in source control or small times
+          between fixed scheduled builds  you can easily fill up even the
+          largest hard drive potentially resulting in your build server
+          going offline.</para>
       </warning>
+    </section>
 
-      <para>The next section of the General Project configuration is the
+    <section>
+      <title>Configuring Advanced Project Options</title>
+      <para>The next section aftrer the General Project configuration is the
       Advanced Project Options section shown in <xref
       linkend="fig-using-adv-opt" xrefstyle="select:label" />.</para>
 
@@ -276,8 +304,7 @@
         </mediaobject>
       </figure>
 
-      <para>The section shown in <xref linkend="fig-using-adv-opt"
-      xrefstyle="select:label" /> contains the following fields:</para>
+      <para>It contains the following fields:</para>
 
       <variablelist>
         <varlistentry>
@@ -328,10 +355,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    </section>
 
-    <section>
-      <title>Configuring Advanced Project Options</title>
     </section>
 
     <section>

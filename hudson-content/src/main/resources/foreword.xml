@@ -4,7 +4,7 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This book covers Hudson, a </para>
+  <para>This book covers Hudson, the most widely used open source Continuous Integration Server.</para>
 
   <para>If you have any feedback or questions, you are encouraged to post an
   item in our Get Satisfaction page for this book: <ulink

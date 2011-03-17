@@ -11,7 +11,7 @@
     Plugins.</para>
 
     <figure id="fig-using-manage-matrix">
-      <title>Managing Hudson Users</title>
+      <title>Managing Hudson</title>
 
       <mediaobject>
         <imageobject role="web">
@@ -30,6 +30,9 @@
 
     <section>
       <title>Global Hudson Configuration</title>
+
+        <!-- TODO explain that any installed plugin will show its config here as well and reference the plugins specific
+        chapter in the notable plugins section, make a common structure for all of them that includes a global options section -->
 
       <para>When you are configuring the Hudson system, click on Configure
       System in the screen shown in <xref
@@ -206,7 +209,7 @@
 
       <figure id="fig-using-maven-config">
         <title>Configuring Maven Installations</title>
-
+        <!-- TODO update screenshot to have Maven 3.0.3 and not a beta version -->
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
@@ -229,7 +232,10 @@
       using the latest Maven 3.0 release. At this point, Maven will not be
       automatically downloaded and installed. Instead, Hudson will initiate a
       Maven installation the first time a build is run which requires
-      Maven.</para>
+      Maven.
+
+      <!-- TODO MM document configuring already installed maven version via path -->
+      </para>
     </section>
 
     <section>

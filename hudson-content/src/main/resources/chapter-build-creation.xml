@@ -332,7 +332,7 @@
           <term>Retry Count</term>
           <listitem>
             <para>The retry count determines the number of attempts Hudson makes
-              when polling the SCM system for changes and finds system to be
+              when polling the SCM system for changes and finds the system to be
               unavailable.
             </para>
           </listitem>
@@ -341,17 +341,13 @@
         <varlistentry>
           <term>Block build when upstream/downstream project is building</term>
           <listitem>
-            <para>Hudson builds can be configured as having upstream
-              as well downstream dependencies. Upstream dependencies are
-              projects upon
-              which this
-              particular project's build depends. Downstream dependencies
-              are projects that depend on the current builds results. If
-              "Block build when
-              upstream/downstream
-              project is building" is selected this project will not start a
-              build if an upstream/downstream project is in the middle of a
-              build or in the
+            <para>Hudson builds can be configured as having upstream as well
+              downstream dependencies. Upstream dependencies are projects upon
+              which this particular project's build depends. Downstream
+              dependencies are projects that depend on the current builds
+              results. If "Block build when upstream/downstream project is
+              building" is selected this project will not start a build if an
+              upstream/downstream project is in the middle of a build or in the
               build queue.
             </para>
           </listitem>
@@ -376,11 +372,19 @@
 
     <section>
       <title>Configuring Source Code Management</title>
+      <para>Hudson is typically used in conjunction with the source of for the
+        project available in a source code management system. This section
+        allows for the configuration of the respective setting for the chosen
+        system. The available list will contain all SCM systems
+        provided by Hudson and the installed plugins. See the chapter
+        "Managing Hudson Plugins and the chapter "Working with Source
+        Control" for further details.
+        <!-- TODO make them links (xrefs) -->
+      </para>
     </section>
 
     <section>
       <title>Configuring Build Triggers</title>
-
       <para>The next section to configure is Build Triggers. A Hudson job can
       be configured to build in response to build activity on a Hudson
       instance, in accordance with a regular schedule, or as a reaction to
@@ -390,14 +394,12 @@
 
       <figure id="fig-using-build-triggers">
         <title>Configuring Build Triggers</title>
-
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/ci-using-build-triggers.png"
                        scalefit="1" />
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/ci-using-build-triggers.pdf"
@@ -414,31 +416,43 @@
 
           <listitem>
             <para>If this option is selected, Hudson will present you with a
-            text field that accepts the names of one or more projects. If this
-            field is populated, Hudson will trigger this project's build after
-            a successful completion of one of the projects listed in this text
-            field.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>Build periodically</term>
-
-          <listitem>
-            <para>If you want to build your project on a regular schedule,
-            selecting this option exposes a text area which accepts a standard
-            cron expression.</para>
+              text field that accepts the names of one or more projects. If this
+              field is populated, Hudson will trigger this project's build after
+              a successful completion of one of the projects listed in this text
+              field. The reverse behaviour of triggering a different project
+              based on this projects build completing can be configured in the
+              Post-build Actions.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Poll SCM</term>
-
           <listitem>
-            <para>Selecting Poll SCM will cause Hudson to periodically poll
-            your source code management system for changes to the codebase.
-            Selection this option displays a text area which accepts a
-            standard cron expression.</para>
+            <para>Selecting Poll SCM will cause Hudson to periodically poll your
+              source code management system for changes to the codebase and
+              trigger a build if changes have been found and successfully
+              retrieved.</para>
+            <para>Selecting this option displays a text area which accepts a
+              standard cron expression. This allows for arbitrary polling
+              interval from minutes to weekly and way beyond. It is important to
+              consider the impact of this polling frequency setting on your SCM
+              infrastructure, since it can cause significant load specifically
+              when multiple projects with small polling frequencies all access
+              the same SCM server.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build periodically</term>
+          <listitem>
+            <para>The Build periodically setting will cause Hudson to start a
+              build of the project in regular intervals. Changes will be
+              retrieved from the configured SCM, but a build will be
+              triggered even if no changes were found. The interval
+              configuration in the exposed text are accepts the same cron
+              syntax as the Poll SCM configuration.</para>
           </listitem>
         </varlistentry>
       </variablelist>

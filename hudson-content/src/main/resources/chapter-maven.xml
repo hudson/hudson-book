@@ -7,10 +7,11 @@
   <section>
     <title>Configuring Maven Build Options</title>
 
-    <para>After configuring the general project options, you can configure
-    one more build steps. To add a build step, click on the Add build step
-    button as shown in <xref linkend="fig-using-new-build-config" />. To
-    configure a Maven build, select "Invoke top-level Maven targets".</para>
+    <para>After configuring the general project options, you can configure one
+      or more build steps. To add a build step, click on the Add build step
+      button as shown in<xref linkend="fig-using-new-build-config"/>. To
+      configure a Maven build, select "Invoke top-level Maven targets".
+    </para>
 
     <figure id="fig-using-new-build-config">
       <title>Configuring Project Build Options</title>
@@ -54,54 +55,76 @@
     <variablelist>
       <varlistentry>
         <term>Maven Version</term>
-
         <listitem>
-          <para>Since your Hudson installation may have one or more Maven
-          installations, this dropdown gives you the opportunity to select a
-          specific version of Maven.</para>
+          <para>Your Hudson installation may have one or more Maven
+            installations configured as part of the global Hudson configuration.
+            This dropdown allows you to specific version of Maven for usage with
+            the current project.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Goals</term>
-
         <listitem>
-          <para>This field takes one or more Maven goals. In addition to
-          Maven goals, you can also specific Maven command-line options in
-          this text field.</para>
+          <para>This field allows you to specify the command line
+            parameters used for the Maven invocation. These are phases,
+            plugin goals as well as specific Maven command-line options like
+            -P profile selection, selection of a specific settings.xml file and
+            so on.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>POM</term>
-
         <listitem>
-          <para>If your project uses the standard pom.xml, there is no need
-          to specify a POM. If your projects uses a POM with an alternative
-          name, you should specify that file name here.</para>
+          <para>If your project uses the standard pom.xml filename, there is no
+            need to specify a POM. If your projects uses a POM with an
+            alternative name or path other than directly in the project root,
+            you should specify that file name here.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Properties</term>
-
         <listitem>
-          <para>You can pass one or more properties to the Maven process.
-          This field accepts a list of properties which will affect the
-          execution of the Maven build.</para>
+          <para>You can pass one or more properties to the Maven process. This
+            field accepts a list of properties in a "key=value" format per line,
+            which will affect the execution of the Maven build.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>JVM Options</term>
-
         <listitem>
-          <para>If your build requires specific JVM options, they can be set
-          in this field. Note that if your build requires MAVEN_OPTS this is
-          a separate variable which is described in the section dealing with
-          Maven installation configuration.</para>
+          <para>If your build requires specific JVM options, they can be set in
+            this field. Note that if your build requires MAVEN_OPTS this is a
+            separate variable which is described in the section dealing with
+            Maven installation configuration. The format for the JVM options is
+            the standard -Xoption=value format with multiple parameters
+            separated by spaces.
+          </para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>Use private Maven repository</term>
+        <listitem>
+          <para>By default a Maven invocation will use a local repository in
+            the current users home directory taking any further
+            repository configuration done in settings.xml into account. Depending
+            on the necessary separation of the different jobs running on
+            Hudson it can be useful to have a separate Maven repository for
+            each project. Activating this feature will cause the creation of
+            a separate Maven repository in a .repository folder in the
+            projects workspace. This can cause considerable usage of storage
+            space, which consequently should be monitored carefully.
+          </para>
+        </listitem>
+      </varlistentry>
+
     </variablelist>
   </section>
 </chapter>

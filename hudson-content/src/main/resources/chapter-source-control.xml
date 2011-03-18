@@ -12,16 +12,12 @@
     <listitem>
       <para>Subversion</para>
     </listitem>
-
     <listitem>
       <para>Git</para>
     </listitem>
-
-
     <listitem>
         <para>Mercurial</para>
     </listitem>
-
     <listitem>
       <para>CVS</para>
     </listitem>
@@ -282,6 +278,88 @@
 
   <section>
     <title>Configuring Mercurial</title>
+    <para>Selecting Mercurial under the Source Code Management section will
+    display the configuration options shown in <xref
+    linkend="fig-using-scm-hg" xrefstyle="select:label" />.</para>
+
+    <figure id="fig-using-scm-hg">
+      <title>Configuring Mercurial Source Control Information</title>
+
+      <!-- TODO take screenshot -->
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-scm-hg.png" scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-scm-hg.pdf" scalefit="0"
+                     width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>The section show in <xref linkend="fig-using-scm-hg"
+    xrefstyle="select:label" /> contains the following options:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>Mercurial Version</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Repository URL</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Branch</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Advanced - Modules</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Advanced - Clean Build</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Advanced - Subdirectory</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Advanced - Forest Extension</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Repository Browser</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
   </section>
 
   <section>

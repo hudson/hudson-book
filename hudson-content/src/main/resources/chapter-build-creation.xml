@@ -461,16 +461,17 @@
     <section>
       <title>Configuring Post-build Actions</title>
 
-      <para>Post build actions are an important part of Hudson. One of the
-      most valuable post-build action for a continuous integration build is
-      the sending of build notification emails. Hudson can be configured to
-      send out build failure notices to a developer mailing list. This email,
-      in addition to the integration with Eclipse, is one of the primary ways
-      in which programmers are notified of build failure. To configure this
-      feature, check the checkbox next to E-mail Notification and then specify
-      a recipient email address in Recipients. Leave "Send e-mail for every
-      unstable build" will instruct Hudson to send multiple email to this
-      email address if a build experience consecutive failure events.</para>
+      <para>Post build actions are an important part of Hudson. They allow you
+        to communicate the results of the build in various ways as well as
+        chain other builds to this build. As such these actions are
+        crucial role of a continuous integration server as communication
+        tool.</para>
+
+      <para>Beyond the core post-build actions documented in the following various
+        plugins will make additional actions available,
+        which are documented in the chapter "Notable Hudson Plugins".
+      </para>
+      <!-- TODO make xref for link above-->
 
       <figure id="fig-using-new-post-build">
         <title>Configuring Project Post-build Options</title>
@@ -496,6 +497,125 @@
       "Archive the artifacts" and then specify paths, relative to the
       workspace directory, of artifacts to preserve and associate with
       numbered builds.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Publish Javadoc</term>
+          <listitem>
+            <para>With this feature activated Hudson will generate Javadoc from
+              the build and publish it to the specified folder. This in turn
+              makes the Javadoc available to your users via a web browser.
+              Checking the "Retain Javadoc for each successful build" will keep
+              the generated Javadoc for all successful builds in the specified
+              folder for older builds as well instead of overwriting the
+              documentation with each build.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Aggregate downstream test results</term>
+          <listitem>
+            <para>This feature allows you to pull the test results of this
+              project and any downstream projects together. This is especially
+              useful when long running test are actually set up as separate
+              downstream projects. You can either let Hudson figure out all
+              downstream projects automatically or supply a specific list of
+              projects in the "Jobs to aggregate" input box.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Publish JUnit test result report</term>
+          <listitem>
+            <para>Activating this feature allows Hudson to interpret the
+              JUnit test report format, produced by your test runs in the project
+              and produce historic test result trends,
+              a web interface for viewing the reports and more features. The
+              location of the produced xml files has to be specified in the
+              text input box. In addition it is possible to retain the build
+              log output in addition to the xml reports by checking the
+              "Retain long standard output/error"
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Archive the artifacts</term>
+          <listitem>
+            <para>
+              With this feature enabled Hudson will keep the specified
+              artifacts available on the web interface. Using a wildcard
+              syntax in the "Files to archive"  as well as the
+              "Excludes" input boxes you can specify the artifacts that should
+              be archived after each successful build. You can therefore for
+              example keep release artifacts like war,
+              ear or zip files available for retrieval by other users as well
+              as for archival purposes.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Recording fingerprints of files to track usage</term>
+          <listitem>
+            <para>The feature to record fingerprints of files to track usage can
+              help you track down where files are used and produced. It will
+              allow you to determine the build number that created an artifact
+              by looking at the fingerprint, which is a unique identifier for
+              the file that Hudson creates and keep track of.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build other projects</term>
+          <listitem>
+            <para>Building other projects after completing of the current
+              projects build is one of the key features that allows you to
+              set up chains of projects that are each small in focus and
+              build time, while in the bigger picture still being able to run
+              a build for very large and complex systems. The input
+              box
+              "Projects to build" accepts a comma separated list of projects
+              to build together with a checkbox that allows you to trigger
+              the dependent builds even if the current project build failed.
+            </para>
+            <para>Some examples for the usage of this feature are a main project
+              triggering separate projects that invoke unit and/integration
+              tests, shared libraries invoking server as well as client side
+              application builds or build system plugin builds triggering all
+              projects that use the plugin.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>E-mail Notification</term>
+          <listitem>
+            <para>One of the most valuable post-build action for a continuous
+              integration build is the sending of build notification emails.
+              Hudson can be configured to send out build failure notices to any
+              email address. In most instances it will be best to send the
+              notices to an email list allowing the potential recipients to
+              opt-in and out as well as access archives. This email is one of
+              the primary ways in which developers are notified of build
+              failures.
+            </para>
+            <para>To configure this feature, check the checkbox next to E-mail
+              Notification and then specify a recipient email addresses in
+              Recipients separate by whitespace. Selecting "Send e-mail for
+              every unstable build" will instruct Hudson to send an email for
+              each build even if a build experience consecutive failures.
+              Selecting "Send separate e-mails to individuals who broke the
+              build" will send email to all committers that affected a build
+              that broke. The email will be retrieved from the SCM system, where
+              possible.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
 
   </section>

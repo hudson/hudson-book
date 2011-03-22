@@ -28,11 +28,16 @@
       </mediaobject>
     </figure>
 
+    <para>Depending on the plugins installed and activated on your Hudson
+      system different sections will be available in the system configuration
+      section. These will either be explained below or with a plugin specific
+      section. E.g. the source code management related plugin configurations
+      can be found in XREF.
+    </para>
+  <!-- TODO xref-->
+
   <section>
     <title>Global Hudson Configuration</title>
-
-      <!-- TODO explain that any installed plugin will show its config here as well and reference the plugins specific
-      chapter in the notable plugins section, make a common structure for all of them that includes a global options section -->
 
     <para>When you are configuring the Hudson system, click on Configure
     System in the screen shown in <xref
@@ -82,20 +87,52 @@
         <term># of Executors</term>
 
         <listitem>
-          <para>This parameter controls the number of executors that can
-          execute concurrent Hudson builds.</para>
+          <para>This parameter controls the number of executors that can execute
+            concurrent Hudson builds.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term>Labels</term>
-
+        <term>Quiet period</term>
         <listitem>
-          <para>Specific instances of Hudson can be labeled, this feature
-          make sense only in the context of a multiple instance grid
-          installation of Hudson.</para>
+          <para></para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>SCM checkout retry count</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Enable Security</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Prevent Cross Site Request Forgery exploits</term>
+        <!-- wtf .. why is this here.. should be on all the time and not
+        configurable unless there is a very good reason
+        -->
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
+        <term>Help make Hudson better...</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+
     </variablelist>
   </section>
 
@@ -109,7 +146,11 @@
     <para>Hudson can support one or more JDK installations. To configure a
     JDK installation, find the JDK section of the server configuration
     screen. To add a new JDK installation click on Add JDK in the screen
-    shown in <xref linkend="fig-using-jdk-config" />. Supply a name for a
+    shown in <xref linkend="fig-using-jdk-config" />.
+
+      <!-- TODO document unselecting install automatically and provide path
+      for using existing install and then document new install -->
+      Supply a name for a
     JDK installation and then do one of two things: either supply the
     directory for JAVA_HOME or select Install Automatically.</para>
 
@@ -140,11 +181,13 @@
 
   <section>
     <title>Configuring Ant Installations</title>
+
+    <!-- TODO replicate documentation from jdk, maven..
   </section>
 
   <section>
      <title>Configuring Maven Installations</title>
-
+                    -->
      <para>Hudson is designed with a special level of support for Maven
      builds. To use Maven, you must figure configure a Hudson Maven
      installation. To do this, go to the Maven section of the server
@@ -153,6 +196,8 @@
      linkend="fig-using-maven-config" />. Then assign your new created Maven
      installation a name which will be displayed in project configuration
      select lists.</para>
+
+    <!-- TODO improve like JDK install-->
 
      <figure id="fig-using-maven-config">
        <title>Configuring Maven Installations</title>
@@ -215,6 +260,8 @@
 
     <section>
       <title>Configuring E-mail Notification</title>
+      <!-- TODO there should be more and better docu here for this critical
+      feature.. -->
 
       <para>Email notification is a core feature of a continuous integration
       server, and you can configure the way in which Hudson will connect to an

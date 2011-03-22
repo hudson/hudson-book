@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
 <chapter>
-    <title>Configuring Hudson</title>
+  <title>Configuring Hudson</title>
 
     <para>To configure Hudson, click on the Manage Hudson link in the
     left-hand navigation menu. Clicking Manage Hudson will display the screen
@@ -28,79 +28,193 @@
       </mediaobject>
     </figure>
 
+  <section>
+    <title>Global Hudson Configuration</title>
+
+      <!-- TODO explain that any installed plugin will show its config here as well and reference the plugins specific
+      chapter in the notable plugins section, make a common structure for all of them that includes a global options section -->
+
+    <para>When you are configuring the Hudson system, click on Configure
+    System in the screen shown in <xref
+    linkend="fig-using-manage-matrix" />. The first configuration section
+    contains options that allow you to configure global Hudson configuration
+    attributes. This section is shown in <xref
+    linkend="fig-using-global-config" />.</para>
+
+    <figure id="fig-using-global-config">
+      <title>Configuring Global Hudson Configuration</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-global-config.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-global-config.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <variablelist>
+      <varlistentry>
+        <term>Home Directory</term>
+
+        <listitem>
+          <para>This is not a configurable parameter it is something that is
+          set by the server on startup.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>System Message</term>
+
+        <listitem>
+          <para>This is just a global system message that is displayed by
+          Hudson.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term># of Executors</term>
+
+        <listitem>
+          <para>This parameter controls the number of executors that can
+          execute concurrent Hudson builds.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Labels</term>
+
+        <listitem>
+          <para>Specific instances of Hudson can be labeled, this feature
+          make sense only in the context of a multiple instance grid
+          installation of Hudson.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Global Properties Configuration</title>
+  </section>
+
+  <section>
+    <title>Configuring JDK Installations</title>
+
+    <para>Hudson can support one or more JDK installations. To configure a
+    JDK installation, find the JDK section of the server configuration
+    screen. To add a new JDK installation click on Add JDK in the screen
+    shown in <xref linkend="fig-using-jdk-config" />. Supply a name for a
+    JDK installation and then do one of two things: either supply the
+    directory for JAVA_HOME or select Install Automatically.</para>
+
+    <figure id="fig-using-jdk-config">
+      <title>Configuring JDK Installations</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-jdk-config.png" scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-jdk-config.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>Clicking on "Install automatically" will expose a drop down which
+    will let you choose a specific version of JDK to download and install
+    from Oracle. Once you configure Hudson to download and install the JDK
+    automatically, Hudson will wait for the first build which is configured
+    to use a named instance of the JDK to initiate the JDK download and
+    installation.</para>
+  </section>
+
+  <section>
+    <title>Configuring Ant Installations</title>
+  </section>
+
+  <section>
+     <title>Configuring Maven Installations</title>
+
+     <para>Hudson is designed with a special level of support for Maven
+     builds. To use Maven, you must figure configure a Hudson Maven
+     installation. To do this, go to the Maven section of the server
+     configuration. You can configure one or more installations of Maven, to
+     do so, click on the Add Maven button as shown in <xref
+     linkend="fig-using-maven-config" />. Then assign your new created Maven
+     installation a name which will be displayed in project configuration
+     select lists.</para>
+
+     <figure id="fig-using-maven-config">
+       <title>Configuring Maven Installations</title>
+       <!-- TODO update screenshot to have Maven 3.0.3 and not a beta version -->
+       <mediaobject>
+         <imageobject role="web">
+           <imagedata contentdepth="100%"
+                      fileref="figs/web/ci-using-maven-config.png"
+                      scalefit="1" />
+         </imageobject>
+
+         <imageobject role="print">
+           <imagedata align="center"
+                      fileref="figs/print/ci-using-maven-config.pdf"
+                      scalefit="0" width="100%" />
+         </imageobject>
+       </mediaobject>
+     </figure>
+
+     <para>To install a version of Maven automatically from the Apache
+     Software Foundation, select "Install Automatically" and then click on
+     "Add Installer". Clicking on Add Installer will bring up a list of Maven
+     versions available to install. We recommend that you run your build
+     using the latest Maven 3.0 release. At this point, Maven will not be
+     automatically downloaded and installed. Instead, Hudson will initiate a
+     Maven installation the first time a build is run which requires
+     Maven.
+
+     <!-- TODO MM document configuring already installed maven version via path -->
+     </para>
+   </section>
+
+  <section>
+    <title>Configuring the Shell Executable</title>
+
+    <para>Hudson allows for the ability to configure Shell builds. If you
+    have a build which requires the execution of bash script or a csh
+    script, you can configure which interpreter is used to execute shell
+    scripts in this configuration variable.</para>
+
+    <figure id="fig-using-shell-execute">
+      <title>Configuring Shell Executable</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-shell-execute.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-shell-execute.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+
     <section>
-      <title>Global Hudson Configuration</title>
-
-        <!-- TODO explain that any installed plugin will show its config here as well and reference the plugins specific
-        chapter in the notable plugins section, make a common structure for all of them that includes a global options section -->
-
-      <para>When you are configuring the Hudson system, click on Configure
-      System in the screen shown in <xref
-      linkend="fig-using-manage-matrix" />. The first configuration section
-      contains options that allow you to configure global Hudson configuration
-      attributes. This section is shown in <xref
-      linkend="fig-using-global-config" />.</para>
-
-      <figure id="fig-using-global-config">
-        <title>Configuring Global Hudson Configuration</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-global-config.png"
-                       scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-global-config.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-
-      <variablelist>
-        <varlistentry>
-          <term>Home Directory</term>
-
-          <listitem>
-            <para>This is not a configurable parameter it is something that is
-            set by the server on startup.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>System Message</term>
-
-          <listitem>
-            <para>This is just a global system message that is displayed by
-            Hudson.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term># of Executors</term>
-
-          <listitem>
-            <para>This parameter controls the number of executors that can
-            execute concurrent Hudson builds.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>Labels</term>
-
-          <listitem>
-            <para>Specific instances of Hudson can be labeled, this feature
-            make sense only in the context of a multiple instance grid
-            installation of Hudson.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Email Notification Configuration</title>
+      <title>Configuring E-mail Notification</title>
 
       <para>Email notification is a core feature of a continuous integration
       server, and you can configure the way in which Hudson will connect to an
@@ -137,166 +251,37 @@
       a test email to the administrator email address.</para>
     </section>
 
-    <section>
+  <!-- TODO this is not there by default, what triggers it (which plugin)
+  and therefore where should it be documented.. maybe here anyway but with a
+  remark..
+  -->
+  <section>
+    <title>Configuring SCM Polling Concurrency</title>
+
+    <para>This is a simple, global parameter to Hudson which controls the number
+      of concurrent threads to be used when polling an SCM system. Most CI
+      systems discover code changes in an SCM by continuously polling source
+      control. If you have enough project configured, this polling can grow to
+      become a significant factor in SCM performance. If you are suffering
+      performance issues because you have configured hundreds of projects to
+      poll SCM, you can use this one property to define concurrency limits on
+      Hudson's ability to concurrently poll an SCM.
+    </para>
+
+    <figure id="fig-using-scm-poll">
       <title>Configuring SCM Polling Concurrency</title>
 
-      <para>This is a simple, global parameter to Hudson which controls the
-      number of concurrent threads to be used when polling an SCM system. Most
-      CI systems discover code changes in an SCM by continuously polling
-      source control. If you have enough project configured, this polling can
-      grow to become a significant factor in SCM performance. If you are
-      suffering performance issues because you have configured hundreds of
-      projects to poll SCM, you can use this one property to define
-      concurrency limits on Hudson's ability to concurrently poll an
-      SCM.</para>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-scm-poll.png" scalefit="1"/>
+        </imageobject>
 
-      <figure id="fig-using-scm-poll">
-        <title>Configuring SCM Polling Concurrency</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-poll.png" scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-scm-poll.pdf" scalefit="0"
-                       width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-    </section>
-
-    <section>
-      <title>Configuring the Shell Executable</title>
-
-      <para>Hudson allows for the ability to configure Shell builds. If you
-      have a build which requires the execution of bash script or a csh
-      script, you can configure which interpreter is used to execute shell
-      scripts in this configuration variable.</para>
-
-      <figure id="fig-using-shell-execute">
-        <title>Configuring Shell Executable</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-shell-execute.png"
-                       scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-shell-execute.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-    </section>
-
-    <section>
-      <title>Configuring Maven Installations</title>
-
-      <para>Hudson is designed with a special level of support for Maven
-      builds. To use Maven, you must figure configure a Hudson Maven
-      installation. To do this, go to the Maven section of the server
-      configuration. You can configure one or more installations of Maven, to
-      do so, click on the Add Maven button as shown in <xref
-      linkend="fig-using-maven-config" />. Then assign your new created Maven
-      installation a name which will be displayed in project configuration
-      select lists.</para>
-
-      <figure id="fig-using-maven-config">
-        <title>Configuring Maven Installations</title>
-        <!-- TODO update screenshot to have Maven 3.0.3 and not a beta version -->
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-maven-config.png"
-                       scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-maven-config.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-
-      <para>To install a version of Maven automatically from the Apache
-      Software Foundation, select "Install Automatically" and then click on
-      "Add Installer". Clicking on Add Installer will bring up a list of Maven
-      versions available to install. We recommend that you run your build
-      using the latest Maven 3.0 release. At this point, Maven will not be
-      automatically downloaded and installed. Instead, Hudson will initiate a
-      Maven installation the first time a build is run which requires
-      Maven.
-
-      <!-- TODO MM document configuring already installed maven version via path -->
-      </para>
-    </section>
-
-    <section>
-      <title>Configuring Git Installations</title>
-
-      <para>To configure Git, find the Git section in the Hudson Server
-      configuration screen. To configure git, supply a Name for your Git
-      installation and then specify an installation directory for git. If Git
-      is configured and already available on in your operating system's PATH,
-      you can just leave the Installation directory as "git".</para>
-
-      <figure id="fig-using-git-config">
-        <title>Configuring Git Installations</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-git-config.png" scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-git-config.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-    </section>
-
-    <section>
-      <title>Configuring JDK Installations</title>
-
-      <para>Hudson can support one or more JDK installations. To configure a
-      JDK installation, find the JDK section of the server configuration
-      screen. To add a new JDK installation click on Add JDK in the screen
-      shown in <xref linkend="fig-using-jdk-config" />. Supply a name for a
-      JDK installation and then do one of two things: either supply the
-      directory for JAVA_HOME or select Install Automatically.</para>
-
-      <figure id="fig-using-jdk-config">
-        <title>Configuring JDK Installations</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-jdk-config.png" scalefit="1" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-jdk-config.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-
-      <para>Clicking on "Install automatically" will expose a drop down which
-      will let you choose a specific version of JDK to download and install
-      from Oracle. Once you configure Hudson to download and install the JDK
-      automatically, Hudson will wait for the first build which is configured
-      to use a named instance of the JDK to initiate the JDK download and
-      installation.</para>
-    </section>
-  </chapter>
+        <imageobject role="print">
+          <imagedata align="center" fileref="figs/print/ci-using-scm-poll.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+</chapter>

@@ -5,7 +5,7 @@
   <title>Notable Hudson Plugins</title>
 
   <section>
-    <title>Hudson CVS Plugin</title>
+    <title>Hudson XYZ Plugin</title>
     <section>
       <title>Overview and Purpose</title>
       <para></para>
@@ -24,68 +24,4 @@
       </variablelist>
     </section>
   </section>
-
-  <section>
-    <title>Hudon GIT Plugin</title>
-    <section>
-      <title>Overview and Purpose</title>
-      <para></para>
-    </section>
-    <section>
-      <title>Features</title>
-      <para></para>
-      <variablelist>
-        <varlistentry>
-          <term>Post-build Action - Git Publisher</term>
-          <listitem>
-            <para>
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-  </section>
-
-  <section>
-    <title>Hudon Mercurial Plugin</title>
-    <section>
-      <title>Overview and Purpose</title>
-      <para></para>
-    </section>
-    <section>
-      <title>Features</title>
-      <para></para>
-      <variablelist>
-        <varlistentry>
-          <term></term>
-          <listitem>
-            <para>
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-  </section>
-
-  <section>
-    <title>Hudon Subversion Plugin</title>
-    <section>
-      <title>Overview and Purpose</title>
-      <para></para>
-    </section>
-    <section>
-      <title>Features</title>
-      <para></para>
-      <variablelist>
-        <varlistentry>
-          <term></term>
-          <listitem>
-            <para>
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-  </section>
-
 </chapter>

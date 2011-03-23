@@ -42,16 +42,24 @@
           <tertiary>downloading</tertiary>
         </indexterm>http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink>,
       and download the latest Java 6 JDK or an older Java 5 JDK, either will
-      work but Java 6 is recommended.</para>
+      work but Java 6 is recommended.
+
+      <!-- TODO we should add that it also works fine with OpenJDK -->
+      <!-- TODO we should document how a user can figure out if they got Java already installed
+ -->
+      </para>
     </section>
 
+    <!-- TODO from here on it seems that all the documentation is the Nexus documentation
+    with Nexus replaced with Hudson. That is however not the case so this has to be rewritten
+    and it has to cover the install with the .war file as well as with the native packages -->
     <section id="ci-quickstart-sect-pro">
       <title>Installing Hudson</title>
 
       <para>The following instructions are for installing Hudson as a
       stand-alone server. Hudson is bundled with a Jetty instance which
       listens to all configured IP addresses on a host (0.0.0.0) and runs on
-      port 8082 by default.</para>
+      port 8082 by default.</para> <!-- TODO its 8080 for me.. probably just a typo here -->
 
       <para><indexterm>
           <primary>Hudson</primary>
@@ -61,12 +69,23 @@
           <primary>Hudson</primary>
 
           <secondary>installation</secondary>
-        </indexterm>Installing Hudson is straightforward, unpack the Hudson
+        </indexterm>
+
+        <!-- TODO I believe the following to be wrong, there is no tar.gz file or so by default,
+        just the war..
+        -->Installing Hudson is
+        straightforward -
+        just
+        unpack
+        the Hudson
       distribution archive in a directory. If you are installing Hudson on a
       local workstation to give it a test run, you can install it in your home
       directory or wherever you like; Hudson doesn't have any hard coded
       directories, it will run from any directory. If you downloaded the
       <acronym>ZIP</acronym> archive, run:</para>
+
+      <!-- TODO should we create a property in maven or a variable in docbook for the hudson version number
+      so that we can just replace it in one place to stay up to date?  -->
 
       <screen>$ <command>unzip hudson-1.396.zip</command></screen>
 
@@ -77,7 +96,7 @@
 
       <para><indexterm>
           <primary>Hudson</primary>
-
+           <!-- TODO isnt /opt a better place? -->
           <secondary>installation directory</secondary>
         </indexterm>If you are installing Hudson on a server, you might want
       to use a directory other than your home directory. On a Unix machine,

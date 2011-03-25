@@ -189,17 +189,14 @@
   <section>
     <title>Configuring JDK Installations</title>
 
-    <para>Hudson can support one or more JDK installations. To configure a
-    JDK installation, find the JDK section of the server configuration
-    screen. To add a new JDK installation click on Add JDK in the screen
-    shown in <xref linkend="fig-using-jdk-config" />.
-
-      <!-- TODO document unselecting install automatically and provide path
-      for using existing install and then document new install -->
-      Supply a name for a
-    JDK installation and then do one of two things: either supply the
-    directory for JAVA_HOME or select Install Automatically.</para>
-
+    <para>Hudson can support one or more JDK installations. Setting up multiple JDK installs allows the
+      configuration of different projects being built by different Java versions in separate jobs. You can use this
+      to ensure e.g. that builds as well as test suites run fine on older Java version to ensure compatibility. Another
+      application would be to run with JDK versions supplied by different vendors.</para>
+    <para>The most common configuration of a JDK is to point to the already installed instance as used for running
+      Hudson itself. This can be achieved simply by supplying a name like Oracle-JDK-6 in the name input field and the
+      absolute path in the JAVA_HOME input field in the screen as shown in <xref linkend="fig-using-jdk-config" />.
+    </para>
     <figure id="fig-using-jdk-config">
       <title>Configuring JDK Installations</title>
 
@@ -216,13 +213,16 @@
         </imageobject>
       </mediaobject>
     </figure>
-
-    <para>Clicking on "Install automatically" will expose a drop down which
-    will let you choose a specific version of JDK to download and install
-    from Oracle. Once you configure Hudson to download and install the JDK
-    automatically, Hudson will wait for the first build which is configured
-    to use a named instance of the JDK to initiate the JDK download and
-    installation.</para>
+    <para>Furthermore it is possible to configure a JDK to be installed automatically by specifying a name as before and
+      then selecting the "Install Automatically" check box. This will expose a drop down which will let you choose a
+      specific version of JDK to download and install from
+      Oracle. <!-- currently still says java.sun.com but changed and pull request on github done --> Once you configure
+      Hudson to download and install the JDK automatically, Hudson will wait for the first build which is configured to
+      use a named instance of the JDK to initiate the JDK download and installation.
+    </para>
+    <para>When more than one JDK is configured in the global settings here, each project configuration will have a drop
+      down added via which a JDK can be selected.
+    </para>
   </section>
 
   <section>

@@ -11,3 +11,6 @@ release.properties
 *.releaseBackup
 .DS_Store
 *.orig
+.idea
+*.iml
+*.ipr

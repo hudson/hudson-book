@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>Creating Hudson Projects</title>
+
+  <section>
+    <title>Creating New Hudson Projects</title>
+
+    <para>To create a new Hudson project, click on New Job in the left navigation menu, which will display the
+    New Job form shown in <xref linkend="fig-using-new-project" />.</para>
+
+    <figure id="fig-using-new-project">
+      <title>Creating a New Project in Hudson</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-new-job.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-new-job.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>The most common way to a new build using Hudson is to select "Build
+      a free-style software project". This will allow you to invoke a number of
+      external and internal executions. If you are creating a project that is
+      similar to an existing Hudson build, you may also choose "Copy existing
+      job" and then type in the name of the Hudson job in the "Copy from" text
+      field. Once you have made your selection and provided a name for the new
+      job, click on OK to continue.
+    </para>
+
+    <para>You can also configure Hudson to "Monitor an external job" like
+      cron jobs, and with the results of the monitoring affect other jobs.
+      Another job type supported by Hudson is to "Build a multi-configuration
+      project", which can act like a container for a variety of different
+      job executions.
+    </para>
+
+    <warning>
+      <para>Your Hudson installation may provide an option to "Build a maven2/3
+        project". This feature has numerous issues with the use of different
+        Maven versions especially new Maven 3 versions and is not supported in
+        Hudson. Do not use this job type. Instead, we encourage you to use the
+        native Maven support which is available in a free-style software
+        project.
+      </para>
+    </warning>
+
+    <figure id="fig-using-new-project-result">
+      <title>Result of New Project Creation</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-new-project-result.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-new-project-result.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>Once your job has been created, you will see a screen similar to the
+      one shown in
+      <xref linkend="fig-using-new-project-result" xrefstyle="select:label"/>,
+      depending on your job type selection. You can now proceed to configure
+      your project. If you need to change any of these settings at a later
+      stage, navigate to a particular Hudson Project's Summary page by clicking
+      on the name of the project on the main Hudson page. Once you are on a
+      Hudson Project's Summary page, click on "Configure" in the left-hand
+      navigation to load the Project Configuration screen.
+    </para>
+  </section>
+
+  <section>
+    <title>Configuring Common Job Configuration Settings</title>
+    <para>Independent of the job type you selected you will be able to configure
+    a few common settings separated in the following sections:</para>
+    <variablelist>
+      <varlistentry>
+        <term>General Project Settings</term>
+        <listitem>
+          <para>configure name, description and other general parameters</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Advanced Project Options</term>
+        <listitem>
+          <para>configure miscellaneous settings for advanced usage </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Source Code Management</term>
+        <listitem>
+          <para>configure source code management related parameters for
+            various systems</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Build Triggers</term>
+        <listitem>
+          <para>configure how builds are started</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Post-build Actions</term>
+        <listitem>
+          <para>configure steps taken after a build completion</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Depending on the job type you chose additional sections will be
+      present that will be explained later. Lets start with the common
+      sections.
+    </para>
+
+    <section>
+      <title>Configuring General Project Settings</title>
+
+      <para>The first section on the Project Screen is the general project
+      information which is shown in <xref linkend="fig-using-project-info"
+      xrefstyle="select:label" />.</para>
+
+      <figure id="fig-using-project-info">
+        <title>Configuring Project Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-proj-info.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-proj-info.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The section shown in the previous figure contains the following
+      fields:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Project Name</term>
+          <listitem>
+            <para>The project name should be a short descriptive name, that
+              easily allows your Hudson users to see what this project is.
+              Consider this to be the identifier that Hudson uses to keep track
+              of everything associated to this project. We recommend that your
+              project names consist of simple alphanumeric characters and
+              dashes. While Hudson will save a Project name contains spaces, the
+              file path of the workspace will also contain spaces. The presences
+              of spaces in a project name can cause unforeseen issues with
+              builds and may results in build failure. The project name will
+              be visible in the main Hudson page on the list of jobs.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Description</term>
+          <listitem>
+            <para>The description should contain a paragraph that will inform
+              Hudson users about the nature and purpose of a give Hudson
+              project. Useful information for the users could for example be
+              various source code management related parameters like branch or
+              version or other parameters like target platform for the build
+              artifacts. This will widely vary and depend on your job type.
+              The description is visible on the main project specific page.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Discard Old Builds</term>
+          <listitem>
+            <para>If "Discard Old Builds" is not checked, Hudson will archive
+            the results of all the builds it performs. Depending on build
+              log and artifact size this can produce considerable amounts of storage
+              space being used, which should in turn be monitored carefully.</para>
+            <para>If "Discard Old Builds"
+            is checked, the project configuration screen will display
+              additional input fields that allow you to specify the number of
+            builds and the number of days to retain builds.</para>
+            <para>After pressing the "Advanced"
+              button you can provide for separate configuration for the
+              number of days the build artifacts are kept. Setting this value
+              will cause older build artifacts to get deleted,
+              without the logs, reports etc. to get deleted.
+            </para>
+            <para>An additional advanced configuration allows to set
+              maximum number of builds to keep including its artifacts.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>This Build is Parameterized</term>
+          <!-- TODO MM-->
+          <listitem>
+            <para>TBD</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Disable Build</term>
+          <listitem>
+            <para>If Disable Build is selected, no new builds will be executed
+              until the project is re-enabled. This means that any builds that
+              might have been triggered by SCM activity or by a periodic
+              schedule will not be executed. This feature is very useful if you
+              need to fix an issue with a build or build specific related
+              infrastructure like source code management system and you want to
+              temporarily take a particular Hudson job offline without affecting
+              the rest of your Hudson setup and jobs.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Execute concurrent builds if necessary (beta)</term>
+          <listitem>
+            <para>If this checkbox is selected, Hudson will be able to execute
+              more than one build for this project at the same time. This can be
+              useful if your project is parameterized, or if you have a longer
+              build which may need to run multiple concurrent builds in response
+              to independent changes to SCM. In many cases this setting is
+              particularly useful, when Hudson is set up as a build cluster.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+        <term>JDK</term>
+          <listitem>
+            <para>This dropdown allows the selection of a specific
+            Java Development Kit (JDK) for a the project. It will
+              only be available if multiple JDK's are configure in
+              the global Hudson configuration.</para>
+            <!-- TODO add link to global config chapter -->
+          </listitem>
+        </varlistentry>
+
+        <!-- TODO investigate if this still comes up in some use cases or if
+        it is replaced by parameters or something, maybe only available if
+        there are nodes in a cluster
+        -->
+        <varlistentry>
+          <term>Restrict where this project can be run</term>
+          <listitem>
+            <para>If restrict where this project can be run is checked,
+            Hudson will display options that will allow you to specify the
+            nodes on which a project build can be executed.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <warning>
+        <para>If you are creating a continuous integration build that will
+        run frequently, don't forget to check "Discard Old Builds" and
+        configure Hudson to free up drive space. If your project is built
+          regularly due to frequent changes in source control or small times
+          between fixed scheduled builds  you can easily fill up even the
+          largest hard drive potentially resulting in your build server
+          going offline.</para>
+      </warning>
+    </section>
+
+    <section>
+      <title>Configuring Advanced Project Options</title>
+      <para>The next section aftrer the General Project configuration is the
+      Advanced Project Options section shown in <xref
+      linkend="fig-using-adv-opt" xrefstyle="select:label" />.</para>
+
+      <figure id="fig-using-adv-opt">
+        <title>Configuring Advanced Project Options</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-adv-opt.png" scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-adv-opt.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>It contains the following fields:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Quiet period</term>
+          <listitem>
+            <para>A quiet period as specified in this configuration causes
+              Hudson to wait the specified number of seconds before a triggered
+              build is started. This depends on your build trigger configuration
+              as documented below. If your Hudson project is constantly
+              "flapping" (switching between failure and success frequently), you
+              may want to set the Quiet period to encourage more build
+              stability. Another scenario this can be helpful is when large
+              commits to your source control system are typically carried out in
+              multiple smaller commits within a short time frame, so that the
+              committer has a chance to get everything in without a build
+              kicking off straight after the first commit. Setting this
+              number to a large amount can generally reduce the number of
+              builds running for this project, which will reduce the overall
+              load for your Hudson server.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Retry Count</term>
+          <listitem>
+            <para>The retry count determines the number of attempts Hudson makes
+              when polling the SCM system for changes and finds the system to be
+              unavailable.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Block build when upstream/downstream project is building</term>
+          <listitem>
+            <para>Hudson builds can be configured as having upstream as well
+              downstream dependencies. Upstream dependencies are projects upon
+              which this particular project's build depends. Downstream
+              dependencies are projects that depend on the current builds
+              results. If "Block build when upstream/downstream project is
+              building" is selected this project will not start a build if an
+              upstream/downstream project is in the middle of a build or in the
+              build queue.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Use custom workspace</term>
+          <listitem>
+            <para>If this selection is checked, you can instruct Hudson to use a
+              custom directory for this project's workspace. If this option is
+              not checked, Hudson will automatically assign a workspace location
+              that is based on the project's name. As such it can be used to
+              have projects names with spaces or other characters potentially
+              causing file system level issues while using a save name for the
+              workspace folder name.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+    </section>
+
+    <section>
+      <title>Configuring Source Code Management</title>
+      <para>Hudson is typically used in conjunction with the source of for the
+        project available in a source code management system. This section
+        allows for the configuration of the respective setting for the chosen
+        system. The available list will contain all SCM systems
+        provided by Hudson and the installed plugins. See the chapter
+        "Managing Hudson Plugins and the chapter "Working with Source
+        Control" for further details.
+        <!-- TODO make them links (xrefs) -->
+      </para>
+    </section>
+
+    <section>
+      <title>Configuring Build Triggers</title>
+      <para>The next section to configure is Build Triggers. A Hudson job can
+      be configured to build in response to build activity on a Hudson
+      instance, in accordance with a regular schedule, or as a reaction to
+      activity in a SCM system. Build triggers are configured on a Project's
+      Configuration screen and the section is shown in <xref
+      linkend="fig-using-build-triggers" xrefstyle="select:label" />.</para>
+
+      <figure id="fig-using-build-triggers">
+        <title>Configuring Build Triggers</title>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-build-triggers.png"
+                       scalefit="1" />
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-build-triggers.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The following types of build triggers can be configured:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Build after other projects are built</term>
+
+          <listitem>
+            <para>If this option is selected, Hudson will present you with a
+              text field that accepts the names of one or more projects. If this
+              field is populated, Hudson will trigger this project's build after
+              a successful completion of one of the projects listed in this text
+              field. The reverse behaviour of triggering a different project
+              based on this projects build completing can be configured in the
+              Post-build Actions.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Poll SCM</term>
+          <listitem>
+            <para>Selecting Poll SCM will cause Hudson to periodically poll your
+              source code management system for changes to the codebase and
+              trigger a build if changes have been found and successfully
+              retrieved.</para>
+            <para>Selecting this option displays a text area which accepts a
+              standard cron expression. This allows for arbitrary polling
+              interval from minutes to weekly and way beyond. It is important to
+              consider the impact of this polling frequency setting on your SCM
+              infrastructure, since it can cause significant load specifically
+              when multiple projects with small polling frequencies all access
+              the same SCM server.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build periodically</term>
+          <listitem>
+            <para>The Build periodically setting will cause Hudson to start a
+              build of the project in regular intervals. Changes will be
+              retrieved from the configured SCM, but a build will be
+              triggered even if no changes were found. The interval
+              configuration in the exposed text are accepts the same cron
+              syntax as the Poll SCM configuration.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Configuring Post-build Actions</title>
+
+      <para>Post build actions are an important part of Hudson. They allow you
+        to communicate the results of the build in various ways as well as
+        chain other builds to this build. As such these actions are
+        crucial role of a continuous integration server as communication
+        tool.</para>
+
+      <para>Beyond the core post-build actions documented in the following various
+        plugins will make additional actions available,
+        which are documented in the chapter "Notable Hudson Plugins".
+      </para>
+      <!-- TODO make xref for link above-->
+
+      <figure id="fig-using-new-post-build">
+        <title>Configuring Project Post-build Options</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-new-post-build.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-new-post-build.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>Other important post-build events include the archiving of
+      artifacts. If you would like Hudson to keep an archive of specific files
+      from each build, preserving version between build. Check the box next to
+      "Archive the artifacts" and then specify paths, relative to the
+      workspace directory, of artifacts to preserve and associate with
+      numbered builds.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Publish Javadoc</term>
+          <listitem>
+            <para>With this feature activated Hudson will generate Javadoc from
+              the build and publish it to the specified folder. This in turn
+              makes the Javadoc available to your users via a web browser.
+              Checking the "Retain Javadoc for each successful build" will keep
+              the generated Javadoc for all successful builds in the specified
+              folder for older builds as well instead of overwriting the
+              documentation with each build.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Aggregate downstream test results</term>
+          <listitem>
+            <para>This feature allows you to pull the test results of this
+              project and any downstream projects together. This is especially
+              useful when long running test are actually set up as separate
+              downstream projects. You can either let Hudson figure out all
+              downstream projects automatically or supply a specific list of
+              projects in the "Jobs to aggregate" input box.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Publish JUnit test result report</term>
+          <listitem>
+            <para>Activating this feature allows Hudson to interpret the
+              JUnit test report format, produced by your test runs in the project
+              and produce historic test result trends,
+              a web interface for viewing the reports and more features. The
+              location of the produced xml files has to be specified in the
+              text input box. In addition it is possible to retain the build
+              log output in addition to the xml reports by checking the
+              "Retain long standard output/error"
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Archive the artifacts</term>
+          <listitem>
+            <para>
+              With this feature enabled Hudson will keep the specified
+              artifacts available on the web interface. Using a wildcard
+              syntax in the "Files to archive"  as well as the
+              "Excludes" input boxes you can specify the artifacts that should
+              be archived after each successful build. You can therefore for
+              example keep release artifacts like war,
+              ear or zip files available for retrieval by other users as well
+              as for archival purposes.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Recording fingerprints of files to track usage</term>
+          <listitem>
+            <para>The feature to record fingerprints of files to track usage can
+              help you track down where files are used and produced. It will
+              allow you to determine the build number that created an artifact
+              by looking at the fingerprint, which is a unique identifier for
+              the file that Hudson creates and keep track of.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build other projects</term>
+          <listitem>
+            <para>Building other projects after completing of the current
+              projects build is one of the key features that allows you to
+              set up chains of projects that are each small in focus and
+              build time, while in the bigger picture still being able to run
+              a build for very large and complex systems. The input
+              box
+              "Projects to build" accepts a comma separated list of projects
+              to build together with a checkbox that allows you to trigger
+              the dependent builds even if the current project build failed.
+            </para>
+            <para>Some examples for the usage of this feature are a main project
+              triggering separate projects that invoke unit and/integration
+              tests, shared libraries invoking server as well as client side
+              application builds or build system plugin builds triggering all
+              projects that use the plugin.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>E-mail Notification</term>
+          <listitem>
+            <para>One of the most valuable post-build action for a continuous
+              integration build is the sending of build notification emails.
+              Hudson can be configured to send out build failure notices to any
+              email address. In most instances it will be best to send the
+              notices to an email list allowing the potential recipients to
+              opt-in and out as well as access archives. This email is one of
+              the primary ways in which developers are notified of build
+              failures.
+            </para>
+            <para>To configure this feature, check the checkbox next to E-mail
+              Notification and then specify a recipient email addresses in
+              Recipients separate by whitespace. Selecting "Send e-mail for
+              every unstable build" will instruct Hudson to send an email for
+              each build even if a build experience consecutive failures.
+              Selecting "Send separate e-mails to individuals who broke the
+              build" will send email to all committers that affected a build
+              that broke. The email will be retrieved from the SCM system, where
+              possible.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+  </section>
+
+
+  <section>
+    <title>Configuring Free-style Projects</title>
+
+    <para>In addition to the common project configurations we discussed prior,
+      a free-style Hudson project has a section for the build definition that
+      allows you to add individual build steps. Pressing the "Add build
+      step" button will provide you with the options:
+    </para>
+  </section>
+
+
+  <section>
+    <title>Configuring Multi-Configuration Projects</title>
+
+    <para>TBD - has build steps and configuration matrix
+    </para>
+  </section>
+
+    <section>
+    <title>Configuring External Monitoring Projects</title>
+
+    <para>TBD or beyond scope of book, only has job name,
+      description and discard old builds in configuration on UI..
+    </para>
+  </section>
+
+
+</chapter>

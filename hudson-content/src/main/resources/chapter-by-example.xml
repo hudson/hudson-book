@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<chapter id="by-example">
-    <title>Learning Hudson by Example</title>
-    
-    <para>This chapter walks the read through a simple Hudson Example.</para>
+<chapter>
+    <title>Learning Hudson by example</title>
+
+    <section id="example-sect-sampleproject">
+      <title>A Sample Project</title>
+    </section>
+
+    <section id="example-sect-creatingjob">
+      <title>Creating a Hudson Job</title>
+    </section>
+
+    <section id="example-sect-usecases">
+      <title>Demonstrating Various Use Cases</title>
+    </section>
 </chapter>

@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>Working with Source Control</title>
+
+  <para>One of the most important parts of the Hudson project configuration
+  is the settings that connect your Hudson project to source control. By
+    installing the respective plugins Hudson supports all the common source
+    control systems:</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>Subversion</para>
+    </listitem>
+    <listitem>
+      <para>Git</para>
+    </listitem>
+    <listitem>
+        <para>Mercurial</para>
+    </listitem>
+    <listitem>
+      <para>CVS</para>
+    </listitem>
+  </itemizedlist>
+
+  <para>Beyond those popular ones, there are numerous plugins available enabling
+    support for other source code management systems. Each of these plugins can
+    be configured in the global Hudson configuration setting in its specific
+    section.
+  </para>
+  <!-- TODO xref to all sections global and the scm specific ones -->
+
+  <para>After the global settings for the desired source management system are
+    configured, you can configure the project specific settings. Simply load the
+    project's configuration page and scroll down to the Source Code Management
+    section. In this section, you must then select one of the radio buttons for
+    the source code management system you are using. The following sections
+    outline the configuration and options for each supported source code
+    management system.
+  </para>
+
+  <section>
+    <title>Configuring Subversion</title>
+
+    <para>Hudson Subversion Plugin ... </para>
+
+    <section>
+      <title>Global Subversion Configuration</title>
+    </section>
+
+    <section>
+      <title>Project Specific Subversion Configuration</title>
+
+      <para>Selecting Subversion under the Source Code Management section will
+        display the configuration options shown in<xref
+          linkend="fig-using-scm-svn" xrefstyle="select:label"/>.
+      </para>
+
+      <figure id="fig-using-scm-svn">
+        <title>Configuring Subversion Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-scm-svn.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/ci-using-scm-svn.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The section shown in
+        <xref linkend="fig-using-scm-svn" xrefstyle="select:label"/>
+        contains the following options:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Modules</term>
+
+          <listitem>
+            <para>Hudson can checkout one or more Subversion modules from a
+              Subversion repository. To configure a repository location, supply
+              a Subversion URL in the Repository URL text field. If you are
+              checking out more than one Subversion module, you can also supply
+              a Local module directory that Hudson will checkout the specified
+              module to. If you leave the Local module directory blank, Hudson
+              will check out the specific module to the root of the project's
+              workspace.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Use update</term>
+
+          <listitem>
+            <para>If Use update is checked, Hudson will execute an "svn update"
+              in the workspace at the start of each build. If Use update is not
+              selected, Hudson will checkout a clean copy of the repository on
+              each build.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Revert</term>
+
+          <listitem>
+            <para>If Revert is checked, Hudson will issue an "svn revert" prior
+              to calling "svn update". This option can be useful if you need to
+              be certain that there are no artifacts left over from the previous
+              build.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Repository Browser</term>
+
+          <listitem>
+            <para>Hudson supplies valuable information about a build and about
+              the SCM activity and changes that contribute to a specific build.
+              When Hudson displays information about a Subversion commit or a
+              file that has been modified, it can be configured to link to a
+              Repository browser which provides a rich web view of a source code
+              management tool. Hudson supports the following repository
+              browsers: ViewSVN, WebSVN, FishEye, CollabNet, Sventon, and Trac.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Excluded Regions, Included Regions</term>
+
+          <listitem>
+            <para>These fields provide the Hudson project administrator with the
+              option to either specifically include or exclude files and
+              directories from the SCM Build trigger. If Included Regions is
+              set, Hudson will only trigger a build if a matching file has been
+              altered. If Excluded Regions is set, Hudson will not trigger a
+              build if a file matching an excluded pattern is matched. This
+              option can be useful if are only interested in a subset of files
+              and directories contained in a Subversion module.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Excluded Users</term>
+
+          <listitem>
+            <para>If this field is populated and Hudson is configured to Poll
+              SCM as a build trigger. Hudson will not trigger builds for commits
+              from the specified users.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Excluded Commit Messages</term>
+
+          <listitem>
+            <para>This field contains a regular expression. If an SCM commit
+              message matches this regular expression, Hudson will not trigger a
+              project build from an SCM commit.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Exclusion revprop name</term>
+
+          <listitem>
+            <para>A Subversion revision can be associated with a property. If
+              Hudson encounters a revision with the specified property, it will
+              not trigger a build from an SCM commit.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+
+  <section>
+    <title>Configuring Git</title>
+
+    <para>Hudson GIT Plugin does the job.. </para>
+
+    <section>
+      <title>Global Git Configuration</title>
+
+      <para>To configure Git, find the Git section in the Hudson Server
+      configuration screen. To configure git, supply a Name for your Git
+      installation and then specify an installation directory for git. If Git
+      is configured and already available on in your operating system's PATH,
+      you can just leave the Installation directory as "git".</para>
+
+      <figure id="fig-using-git-config">
+        <title>Configuring Git Installations</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-git-config.png" scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/ci-using-git-config.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+    </section>
+
+    <section>
+      <title>Project Specific Git Configuration</title>
+
+
+      <para>Selecting Git under the Source Code Management section will display
+        the configuration options shown in
+        <xref linkend="fig-using-scm-git" xrefstyle="select:label"/>
+        and<xref linkend="fig-using-scm-git2"/>.
+      </para>
+
+      <figure id="fig-using-scm-git">
+        <title>Configuring Git Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-scm-git.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/ci-using-scm-git.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The section shown in
+        <xref linkend="fig-using-scm-git" xrefstyle="select:label"/>
+        contains the following options:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <figure id="fig-using-scm-git2">
+        <title>Configuring Additional Git Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-scm-git2.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/ci-using-scm-git2.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The section shown in
+        <xref linkend="fig-using-scm-git2"/>
+        contains the following options:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Local subdirectory for repo (optional)</term>
+
+          <listitem>
+            <para>You can specify the name of the subdirectory to checkout a git
+              project to. If you omit this subdirectory, the git repository will
+              be checked out into the workspace directory.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Merge options</term>
+
+          <listitem>
+            <para>Your project can be configured to merge git</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Clean after checkout</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Use commit author in changelog</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Wipe out workspace</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Choosing strategy</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Git executable</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Configuring the post-build action Git Publisher</title>
+      <para></para>
+
+    </section>
+  </section>
+
+  <section>
+    <title>Configuring Mercurial</title>
+    <para>Hudson Mercurial Plugin .. Mercurial aka Hg .. </para>
+    <section>
+      <title>Global Mercurial Configuration</title>
+    </section>
+    <section>
+      <title>Project Specific Mercurial Configuration</title>
+      <para>Selecting Mercurial under the Source Code Management section will
+        display the configuration options shown in<xref
+          linkend="fig-using-scm-hg" xrefstyle="select:label"/>.
+      </para>
+
+      <figure id="fig-using-scm-hg">
+        <title>Configuring Mercurial Source Control Information</title>
+
+        <!-- TODO take screenshot -->
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-scm-hg.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/ci-using-scm-hg.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <para>The section show in
+        <xref linkend="fig-using-scm-hg" xrefstyle="select:label"/>
+        contains the following options:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Mercurial Version</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Repository URL</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Branch</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Advanced - Modules</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Advanced - Clean Build</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Advanced - Subdirectory</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Advanced - Forest Extension</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Repository Browser</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+
+  <section>
+    <title>Configuring CVS</title>
+    <para>Hudson CVS Plugin...</para>
+    <section>
+      <title>Global CVS Configuration</title>
+    </section>
+    <section>
+      <title>Project Specific CVS Configuration</title>
+
+      <para>Selecting CVS under the Source Code Management section will display
+        the configuration options shown in<xref linkend="fig-using-scm-cvs"
+                                                xrefstyle="select:label"/>.
+      </para>
+
+      <figure id="fig-using-scm-cvs">
+        <title>Configuring CVS Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/ci-using-scm-cvs.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/ci-using-scm-cvs.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The section show in
+        <xref linkend="fig-using-scm-cvs" xrefstyle="select:label"/>
+        contains the following options:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term>CVSROOT</term>
+
+          <listitem>
+            <para>This is the CVSROOT parameter for your source. You would enter
+              in the same information here that you would use if you were
+              checking out source code use the CVS client.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Module(s), Branch</term>
+
+          <listitem>
+            <para>Here you can specify specific modules and specific branches to
+              be checked out by Hudson.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>CVS_RSH</term>
+
+          <listitem>
+            <para>If you are using CVS over SSH, you can specific options and
+              parameters in this variable.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Use update</term>
+
+          <listitem>
+            <para>Hudson can be configured to do a full checkout on each build
+              or to use cvs update. Select this option will tell Hudson to use
+              update instead of performing a clean checkout.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Repository browser</term>
+
+          <listitem>
+            <para>Hudson supports a number of external repository browsers, here
+              you can select to tool you can Hudson to link to.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Excluded Regions</term>
+
+          <listitem>
+            <para>If the module you are checking out contains some code that you
+              need to exclude, you can exclude regions by populating these
+              fields.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+</chapter>

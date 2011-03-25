@@ -38,7 +38,7 @@
     </author>
 
     <author>
-      <surname>Van Zyl</surname>
+      <surname>van Zyl</surname>
 
       <firstname>Jason</firstname>
     </author>
@@ -79,83 +79,27 @@
     </subjectset>
   </bookinfo>
 
-  <xi:include href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="copyright.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="foreword.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-introduction.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-ci.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-installation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-by-example.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-security.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-plugin-management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-build-creation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-maven.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-ant.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-source-control.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-grid.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-nexus.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-sonar.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-polyglot.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-plugin-writing.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-notable-plugins.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="appendix-license.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="appendix-changes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 
-  <xi:include href="foreword.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <xi:include href="chapter-introduction.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <xi:include href="chapter-ci.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <xi:include href="chapter-installation.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <xi:include href="chapter-by-example.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <part>
-    <title>Hudson Reference</title>
-
-    <xi:include href="chapter-config.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-secure.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-plugin.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-builds.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-maven.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-ant.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-scm.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  </part>
-
-  <part>
-    <title>Advanced Hudson Integration</title>
-
-    <xi:include href="chapter-grid.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-nexus.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-sonar.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    <xi:include href="chapter-polyglot.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  </part>
-
-  <part>
-    <title>Notable Hudson Plugins</title>
-
-    <chapter>
-      <title></title>
-
-      <section>
-        <title></title>
-
-        <para></para>
-      </section>
-    </chapter>
-  </part>
-
-  <xi:include href="appendix-license.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <xi:include href="appendix-changes.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-  <index></index>
+    <index></index>
 </book>

@@ -5,10 +5,11 @@
   <title>Configuring Hudson</title>
 
     <para>To configure Hudson, click on the Manage Hudson link in the
-    left-hand navigation menu. Clicking Manage Hudson will display the screen
+    left-hand navigation menu, which will display the screen
     shown in <xref linkend="fig-using-manage-matrix" />. This section will
-    focus on two links on this page, Configure System and Manage
-    Plugins.</para>
+    focus on the <indexterm>
+        <primary>Configure System</primary>
+      </indexterm>Configure System section.</para>
 
     <figure id="fig-using-manage-matrix">
       <title>Managing Hudson</title>
@@ -31,17 +32,16 @@
     <para>Depending on the plugins installed and activated on your Hudson
       system different sections will be available in the system configuration
       section. These will either be explained below or with a plugin specific
-      section. E.g. the source code management related plugin configurations
-      can be found in XREF.
+      section. For example the source code management related global configurations
+      for the different SCM systems is available in the SCM chapter.
     </para>
   <!-- TODO xref-->
 
   <section>
     <title>Global Hudson Configuration</title>
 
-    <para>When you are configuring the Hudson system, click on Configure
-    System in the screen shown in <xref
-    linkend="fig-using-manage-matrix" />. The first configuration section
+    <para>The first configuration section in the Configure System screen as shown in  <xref
+    linkend="fig-using-manage-matrix" />
     contains options that allow you to configure global Hudson configuration
     attributes. This section is shown in <xref
     linkend="fig-using-global-config" />.</para>
@@ -67,26 +67,29 @@
     <variablelist>
       <varlistentry>
         <term>Home Directory</term>
-
         <listitem>
-          <para>This is not a configurable parameter it is something that is
-          set by the server on startup.</para>
+          <para>This is not a runtime configurable parameter. It is set by the server on startup. By default it will be
+            the value of the HUDSON_HOME environment variable or the <varname>.hudson</varname>
+            folder in the home directory of the operating system user running Hudson. The value is displayed here to
+            allow the administrator to verify the correct setting.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>System Message</term>
-
         <listitem>
-          <para>This is just a global system message that is displayed by
-          Hudson.</para>
+          <para>This is a global system message that is displayed by Hudson in the main screen above the list of
+            projects. It can be used as a welcome message or to e.g. broadcast upcoming maintenance to users of the
+            Hudson instance via the user interface. It support plain text as well a HTML snippets for formatting and
+            enriching the message.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term># of Executors</term>
-
-        <listitem>
+      <listitem>
           <para>This parameter controls the number of executors that can execute
             concurrent Hudson builds.
           </para>
@@ -96,39 +99,78 @@
       <varlistentry>
         <term>Quiet period</term>
         <listitem>
-          <para></para>
+          <para>A quiet period as specified in this configuration causes Hudson to wait the specified number of seconds
+            before a triggered build is started. If your Hudson project is constantly "flapping" (switching between
+            failure and success frequently), you may want to set the Quiet period to achieve more build stability.
+            Another scenario this can be helpful is when large commits to your source control system are typically
+            carried out in multiple smaller commits within a short time frame, so that the committer has a chance to get
+            everything in without a build kicking off straight after the first commit causing a build failure. Setting
+            this number to a large amount can generally reduce the number of builds running for this project, which will
+            reduce the overall load for your Hudson server.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>SCM checkout retry count</term>
         <listitem>
-          <para></para>
+          <para>The SCM checkout retry count determines the number of attempts Hudson makes to check out any updates
+            when polling the SCM system for changes and finds the system to be unavailable.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Enable Security</term>
         <listitem>
-          <para></para>
+          <para>The "Enable Security" checkbox switches on the security system that will require username and password
+            for any access to run builds or change configurations of Hudson and build projects. More information about
+            securing Hudson can be found in <!-- TODO add xref -->
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Prevent Cross Site Request Forgery exploits</term>
-        <!-- wtf .. why is this here.. should be on all the time and not
-        configurable unless there is a very good reason
-        -->
         <listitem>
-          <para></para>
+          <para>This feature will enable improved security against Cross Site Request Forgery exploits and is
+            recommended to be turned on when your Hudson instance is available to the public internet. On the other
+            hand it can be necessary to have this feature disabled, when your Hudson web interface is embedded in a
+            dashboard type interface that also contains web content from other domains or even only internal server
+            names or sub networks. In general it will not be necessary to enable this feature on an internal network, where
+            only trusted parties have access to Hudson.
+          </para>
         </listitem>
       </varlistentry>
-
 
       <varlistentry>
         <term>Help make Hudson better...</term>
         <listitem>
-          <para></para>
+          <!-- TODO need to create a JIRA issue updates the in app help pointing to a wiki page with more up to date
+          info and results about the data gathered, remove link to old nabble list
+          -->
+          <para>By selecting this feature to be enabled you agree for anonymous usage statistics about your Hudson
+            installation to be created and sent to the Hudson development team (TODO who actually gets the data and
+            is this working at the moment?, who has access to it) periodically (whats the period?). The data sent
+            consists of
+            <itemizedlist>
+              <listitem>
+                <para>the Hudson version you are using</para>
+              </listitem>
+              <listitem>
+                <para>operating system and number of executors for you master Hudson and any slaves being used</para>
+              </listitem>
+              <listitem>
+                <para>the name and version of all activated plugins</para>
+              </listitem>
+              <listitem>
+                <para>the number of each project type configured to run</para>
+              </listitem>
+              <listitem>
+                <para>HTTP information as provided by your Hudson instance</para>
+              </listitem>
+            </itemizedlist>
+            </para>
         </listitem>
       </varlistentry>
 
@@ -138,6 +180,10 @@
 
   <section>
     <title>Global Properties Configuration</title>
+    <para>The global properties configuration allows the definition of key-value pairs that are exposed to all
+      running builds as environment variables. Depending on the build system used they can be picked up with
+      different syntax e.g. $key or ${key}</para> <!-- TODO this has to be expanded in terms of usage as well as
+      some concrete examples, -->
   </section>
 
   <section>

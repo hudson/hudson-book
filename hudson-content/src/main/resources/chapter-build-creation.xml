@@ -310,31 +310,18 @@
         <varlistentry>
           <term>Quiet period</term>
           <listitem>
-            <para>A quiet period as specified in this configuration causes
-              Hudson to wait the specified number of seconds before a triggered
-              build is started. This depends on your build trigger configuration
-              as documented below. If your Hudson project is constantly
-              "flapping" (switching between failure and success frequently), you
-              may want to set the Quiet period to encourage more build
-              stability. Another scenario this can be helpful is when large
-              commits to your source control system are typically carried out in
-              multiple smaller commits within a short time frame, so that the
-              committer has a chance to get everything in without a build
-              kicking off straight after the first commit. Setting this
-              number to a large amount can generally reduce the number of
-              builds running for this project, which will reduce the overall
-              load for your Hudson server.
-            </para>
+            <para>The project specific Quiet Period set in this section overrides the global configuration and has
+              the same effect. This settings depends on your build trigger configuration as documented below.
+            </para>           <!-- TODO xref to global setting -->
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Retry Count</term>
           <listitem>
-            <para>The retry count determines the number of attempts Hudson makes
-              when polling the SCM system for changes and finds the system to be
-              unavailable.
-            </para>
+            <para>The project specific Retry count overrides the global "SCM checkout retry count"  <!-- TODO xref to global setting -->
+              and has the same effect.
+            </para><!-- TODO why is this inconsistenly named to the global config, maybe create patch to fix this -->
           </listitem>
         </varlistentry>
 

@@ -5,14 +5,6 @@
   <title>Installing and Running Hudson</title>
 
   <section>
-    <title>Downloading Hudson</title>
-
-    <para>Content</para>
-
-    <para></para>
-  </section>
-
-  <section>
     <title>Installing Hudson</title>
 
     <para>The following sections detail the installation process for
@@ -42,90 +34,185 @@
           <tertiary>downloading</tertiary>
         </indexterm>http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink>,
       and download the latest Java 6 JDK or an older Java 5 JDK, either will
-      work but Java 6 is recommended.
-
-      <!-- TODO we should add that it also works fine with OpenJDK -->
+      work but Java 6 is recommended. <!-- TODO we should add that it also works fine with OpenJDK -->
       <!-- TODO we should document how a user can figure out if they got Java already installed
- -->
-      </para>
+ --></para>
     </section>
 
     <!-- TODO from here on it seems that all the documentation is the Nexus documentation
     with Nexus replaced with Hudson. That is however not the case so this has to be rewritten
     and it has to cover the install with the .war file as well as with the native packages -->
+
     <section id="ci-quickstart-sect-pro">
       <title>Installing Hudson</title>
 
-      <para>The following instructions are for installing Hudson as a
-      stand-alone server. Hudson is bundled with a Jetty instance which
-      listens to all configured IP addresses on a host (0.0.0.0) and runs on
-      port 8082 by default.</para> <!-- TODO its 8080 for me.. probably just a typo here -->
+      <section>
+        <title>Installing Hudson as a Stand-alone Server</title>
 
-      <para><indexterm>
-          <primary>Hudson</primary>
+        <para>The following instructions are for installing Hudson as a
+        stand-alone server. Hudson is bundled with a Jetty instance which
+        listens to all configured IP addresses on a host (0.0.0.0) and runs on
+        port 8082 by default.</para>
 
-          <secondary>downloading</secondary>
-        </indexterm><indexterm>
-          <primary>Hudson</primary>
+        <!-- TODO its 8080 for me.. probably just a typo here -->
 
-          <secondary>installation</secondary>
-        </indexterm>
+        <para><indexterm>
+            <primary>Hudson</primary>
 
-        <!-- TODO I believe the following to be wrong, there is no tar.gz file or so by default,
+            <secondary>downloading</secondary>
+          </indexterm><indexterm>
+            <primary>Hudson</primary>
+
+            <secondary>installation</secondary>
+          </indexterm> <!-- TODO I believe the following to be wrong, there is no tar.gz file or so by default,
         just the war..
-        -->Installing Hudson is
-        straightforward -
-        just
-        unpack
-        the Hudson
-      distribution archive in a directory. If you are installing Hudson on a
-      local workstation to give it a test run, you can install it in your home
-      directory or wherever you like; Hudson doesn't have any hard coded
-      directories, it will run from any directory. If you downloaded the
-      <acronym>ZIP</acronym> archive, run:</para>
+        -->Installing Hudson is straightforward - just unpack the Hudson
+        distribution archive in a directory. If you are installing Hudson on a
+        local workstation to give it a test run, you can install it in your
+        home directory or wherever you like; Hudson doesn't have any hard
+        coded directories, it will run from any directory. If you downloaded
+        the <acronym>ZIP</acronym> archive, run:</para>
 
-      <!-- TODO should we create a property in maven or a variable in docbook for the hudson version number
+        <!-- TODO should we create a property in maven or a variable in docbook for the hudson version number
       so that we can just replace it in one place to stay up to date?  -->
 
-      <screen>$ <command>unzip hudson-1.396.zip</command></screen>
+        <screen>$ <command>unzip hudson-1.396.zip</command></screen>
 
-      <para>And, if you download the GZip'd <acronym>TAR</acronym> archive,
-      run:</para>
+        <para>And, if you download the GZip'd <acronym>TAR</acronym> archive,
+        run:</para>
 
-      <screen>$ <command>tar xvzf hudson-1.396.tgz</command></screen>
+        <screen>$ <command>tar xvzf hudson-1.396.tgz</command></screen>
 
-      <para><indexterm>
-          <primary>Hudson</primary>
-           <!-- TODO isnt /opt a better place? -->
-          <secondary>installation directory</secondary>
-        </indexterm>If you are installing Hudson on a server, you might want
-      to use a directory other than your home directory. On a Unix machine,
-      this book assumes that Hudson is installed in
-      <filename>/usr/local/hudson-1.396</filename> with a symbolic link
-      <filename>/usr/local/hudson</filename> to the hudson-1.396 directory.
-      Using a symbolic link hudson to a directory which holds a specific
-      version of Hudson is a common practice that makes it easier to upgrade
-      to a newer version of Hudson.</para>
+        <para><indexterm>
+            <primary>Hudson</primary>
 
-      <screen>$ <command>sudo cp hudson-1.396.tgz /usr/local</command>
+            <!-- TODO isnt /opt a better place? -->
+
+            <secondary>installation directory</secondary>
+          </indexterm>If you are installing Hudson on a server, you might want
+        to use a directory other than your home directory. On a Unix machine,
+        this book assumes that Hudson is installed in
+        <filename>/usr/local/hudson-1.396</filename> with a symbolic link
+        <filename>/usr/local/hudson</filename> to the hudson-1.396 directory.
+        Using a symbolic link hudson to a directory which holds a specific
+        version of Hudson is a common practice that makes it easier to upgrade
+        to a newer version of Hudson.</para>
+
+        <screen>$ <command>sudo cp hudson-1.396.tgz /usr/local</command>
 $ <command>cd /usr/local</command>
 $ <command>sudo tar xvzf hudson-1.396.tgz</command>
 $ <command>ln -s hudson-1.396 hudson</command></screen>
 
-      <para><indexterm>
-          <primary>Environment Variables</primary>
+        <para><indexterm>
+            <primary>Environment Variables</primary>
 
-          <secondary>HUDSON_HOME</secondary>
-        </indexterm>Although it isn't required for Hudson to run, you may want
-      to set an environment variable <varname>HUDSON_HOME</varname> in your
-      environment which points to the installation directory of Hudson. This
-      chapter will refer to this location as
-      <varname>\${HUDSON_HOME}</varname>. The Hudson installation directory
-      <filename>hudson-1.396</filename> has a sibling directory named
-      <filename>sonatype-work</filename>. This directory contains all of the
-      builds and configuration data for Hudson and is stored outside of the
-      Hudson installation directory to make it easier to upgrade to a newer
-      version of Hudson.</para>
+            <secondary>HUDSON_HOME</secondary>
+          </indexterm>Although it isn't required for Hudson to run, you may
+        want to set an environment variable <varname>HUDSON_HOME</varname> in
+        your environment which points to the installation directory of Hudson.
+        This chapter will refer to this location as
+        <varname>\${HUDSON_HOME}</varname>. The Hudson installation directory
+        <filename>hudson-1.396</filename> has a sibling directory named
+        <filename>sonatype-work</filename>. This directory contains all of the
+        builds and configuration data for Hudson and is stored outside of the
+        Hudson installation directory to make it easier to upgrade to a newer
+        version of Hudson.</para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Ubuntu 10.04 LTS and Ubuntu 10.10</title>
+
+        <!--TODO: See HBOOK-4-->
+
+        <para></para>
+
+        <procedure>
+          <step>
+            <para>Install a JDK. Either OpenJDK or the Oracle JDK.</para>
+          </step>
+
+          <step>
+            <para>Update APT Repositories</para>
+          </step>
+
+          <step>
+            <para>Install the daemon package</para>
+          </step>
+
+          <step>
+            <para>Download the deb from Hudson</para>
+          </step>
+
+          <step>
+            <para>Install the package using dpkg</para>
+          </step>
+        </procedure>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Redhat Enterprise Linux 5.5 and CentOS
+        5.5</title>
+
+        <!--TODO: See HBOOK-2-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Fedora 14</title>
+
+        <!--TODO: See HBOOK-3-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Debian 5.0</title>
+
+        <!--TODO: See HBOOK-5-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Oracle Linux 5</title>
+
+        <!--TODO: See HBOOK-1-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Oracle Solaris 11 Express</title>
+
+        <!--TODO: See HBOOK-6-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Microsoft Windows 7</title>
+
+        <!--TODO: See HBOOK-7-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on Microsoft Windows Server 2008</title>
+
+        <!--TODO: See HBOOK-8-->
+
+        <para></para>
+      </section>
+
+      <section>
+        <title>Installing Hudson on openSUSE 11.4</title>
+
+        <!--TODO: See HBOOK-9-->
+
+        <para></para>
+      </section>
     </section>
 
     <section id="ci-quickstart-sect-running">
@@ -210,6 +297,11 @@ INFO  ... [ServletContainer:default] - SelectChannelConnector@0.0.0.0:8082
 
   <section>
     <title>Configuring Hudson as a Service</title>
+
+    <!--TODO: Setting up Hudson as a Service should fall into the various platform-specific sections listed above.   If you are going to install Hudson on CentOS,
+I don't want to have to force users to click through a series of pages, I want everything CentOS-specific to show up in a single procedure.
+
+See HBOOK-11-->
 
     <para>When installing Hudson, you will often want to configure Hudson as a
     service. <indexterm>
@@ -448,6 +540,8 @@ $ <command>tail -f /usr/local/matrix/logs/wrapper.log</command>
     that to point at the new Nexus application directory. When you start the
     new instance of Hudson it will read the existing repository configuration
     from the <filename>sonatype-work/</filename> directory.</para>
+
+    <!--TODO: See HBOOK-12 - this section needs massive expansion-->
   </section>
 
   <section id="ci-quickstart-sect-behind-proxy">
@@ -535,6 +629,8 @@ ProxyPreserveHost On
 
   <section>
     <title>Hudson Directories</title>
+
+    <!--TODO: This entire section needs to be rewritten from the current Hudson release - see HBOOK-10-->
 
     <para><indexterm>
         <primary>Hudson directories</primary>

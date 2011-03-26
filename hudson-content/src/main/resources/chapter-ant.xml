@@ -2,5 +2,47 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
 <chapter>
-    <title>Working with Apache Ant builds</title>
+  <title>Working with Apache Ant builds</title>
+
+  <para></para>
+
+  <section>
+    <title>Installing Apache Ant for Hudson</title>
+
+    <!--TODO: See HBOOK-34-->
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Configuring Apache Ant Builds</title>
+
+    <!--TODO: See HBOOK-38-->
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Hudson Apache Ant Example</title>
+
+    <!--TODO: See HBOOK-35-->
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Apache Ant Build Best Practices</title>
+
+    <!--TODO: See HBOOK-37-->
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Apache Ant Build Troubleshooting</title>
+
+    <!--TODO: See HBOOK-36-->
+
+    <para></para>
+  </section>
 </chapter>

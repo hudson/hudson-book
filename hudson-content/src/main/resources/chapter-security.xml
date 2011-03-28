@@ -137,4 +137,42 @@ SEE HBOOK-49-->
       <para></para>
     </section>
   </section>
+
+  <section>
+    <title>Configuring an Authorization Strategy</title>
+
+    <para></para>
+
+    <section>
+      <title>Using a Project-based Authorization Strategy</title>
+
+      <!--SEE HBOOK-51 - Write a section about Project-based Authorization Strategy-->
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using the Legacy Authorization Strategy</title>
+
+      <!--SEE HBOOK-52 - Legacy to what?   Explain what this mode means to the user.-->
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using a Global Authorization Strategy</title>
+
+      <!--SEE HBOOK-53 - Explain this approach-->
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Hudson Security Best Practices</title>
+
+    <!--SEE HBOOK-54 - Give the user some recommendations for configuring Hudson Security-->
+
+    <para></para>
+  </section>
 </chapter>

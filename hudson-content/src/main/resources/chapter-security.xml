@@ -2,84 +2,139 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
 <chapter>
-   <title>Securing Hudson</title>
+  <title>Securing Hudson</title>
 
-   <para></para>
+  <para></para>
 
-   <section>
-     <title>Managing Hudson Users</title>
+  <section>
+    <title>Managing Hudson Users</title>
 
-     <para>Hudson ships without security enabled, to turn on security, you
-     must check "Enable Security" on the Server Configuration page and then
-     choose from one of the following options for Security Realms:</para>
+    <para>Hudson ships without security enabled, to turn on security, you must
+    check "Enable Security" on the Server Configuration page and then choose
+    from one of the following options for Security Realms:</para>
 
-     <variablelist>
-       <varlistentry>
-         <term>Unix user/group database</term>
+    <variablelist>
+      <varlistentry>
+        <term>Unix user/group database</term>
 
-         <listitem>
-           <para>If you select this option, Hudson will consult the Unix
-           user/group database on the machine it is running on.</para>
-         </listitem>
-       </varlistentry>
+        <listitem>
+          <para>If you select this option, Hudson will consult the Unix
+          user/group database on the machine it is running on.</para>
+        </listitem>
+      </varlistentry>
 
-       <varlistentry>
-         <term>Delegate to Servlet Container</term>
+      <varlistentry>
+        <term>Delegate to Servlet Container</term>
 
-         <listitem>
-           <para>Selecting this option will allow you to use a custom web
-           application to perform authentication.</para>
-         </listitem>
-       </varlistentry>
+        <listitem>
+          <para>Selecting this option will allow you to use a custom web
+          application to perform authentication.</para>
+        </listitem>
+      </varlistentry>
 
-       <varlistentry>
-         <term>LDAP</term>
+      <varlistentry>
+        <term>LDAP</term>
 
-         <listitem>
-           <para>If you have an LDAP server, Hudson can be configured to use
-           this server to authenticate users.</para>
-         </listitem>
-       </varlistentry>
+        <listitem>
+          <para>If you have an LDAP server, Hudson can be configured to use
+          this server to authenticate users.</para>
+        </listitem>
+      </varlistentry>
 
-       <varlistentry>
-         <term>Internal user database</term>
+      <varlistentry>
+        <term>Internal user database</term>
 
-         <listitem>
-           <para>Selecting Internal user database gives you the ability to
-           define users directly in the Hudson user interface.</para>
-         </listitem>
-       </varlistentry>
-     </variablelist>
+        <listitem>
+          <para>Selecting Internal user database gives you the ability to
+          define users directly in the Hudson user interface.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
 
-     <para>In the Access Control settings you can also select from different
-     project authorization strategies:</para>
+    <para>In the Access Control settings you can also select from different
+    project authorization strategies:</para>
 
-     <variablelist>
-       <varlistentry>
-         <term>Project-based Authorization Strategy</term>
+    <variablelist>
+      <varlistentry>
+        <term>Project-based Authorization Strategy</term>
 
-         <listitem>
-           <para>Selecting authorization strategy, you can</para>
-         </listitem>
-       </varlistentry>
-     </variablelist>
+        <listitem>
+          <para>Selecting authorization strategy, you can</para>
+        </listitem>
+      </varlistentry>
 
-     <figure id="fig-using-enable-security">
-       <title>Enabling Hudson Security</title>
+      <!--Fill out this list of Authorization Options
 
-       <mediaobject>
-         <imageobject role="web">
-           <imagedata contentdepth="100%"
-                      fileref="figs/web/ci-using-enable-security.png"
-                      scalefit="1" />
-         </imageobject>
+See HBOOK-50-->
+    </variablelist>
 
-         <imageobject role="print">
-           <imagedata align="center"
-                      fileref="figs/print/ci-using-enable-security.pdf"
-                      scalefit="0" width="100%" />
-         </imageobject>
-       </mediaobject>
-     </figure>
-   </section>
- </chapter>
+    <figure id="fig-using-enable-security">
+      <title>Enabling Hudson Security</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-enable-security.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-enable-security.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
+
+  <section>
+    <title>Configuring Security Realms</title>
+
+    <para></para>
+
+    <section>
+      <title>Relying on Unix Users and Groups</title>
+
+      <!--This section needs to explore the details of relying on the Unix user/group database from the previous section.   Talk about the
+limitations of this approach.   How does it work?   Are there any limitations?   what are the pros and cons?   Try to get specific 
+here by showing people what specific commands can be used to user new users and manage groups.    Feel free to choose a Linux flavor
+for this and provide some handwaving examples for other platforms.
+
+
+SEE HBOOK-46-->
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Delegating to a Servlet Container</title>
+
+      <!--We need a walk-through for how this works.  We also need to motivation and explanation.   What protocol is used?  How does this work?
+
+SEE HBOOK-47-->
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Light-weight Directory Authentication Protocol (LDAP)</title>
+
+      <!--We need a section to motiviate the LDAP realm, talk about when to use it.   This section also needs to talk about compatibility with 
+various LDAP implementations, and it needs to provide a step-by-step walkthrough.
+
+SEE HBOOK-48-->
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Using the Hudson Internal User Database</title>
+
+      <!--What does this mean to the user?
+
+SEE HBOOK-49-->
+
+      <para></para>
+    </section>
+  </section>
+</chapter>

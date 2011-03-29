@@ -244,57 +244,87 @@ SEE HBOOK-41-->
       </mediaobject>
     </figure>
 
-    <para>Furthermore it is possible to configure a JDK to be installed automatically by specifying a name as before and
-      then selecting the
+    <para>Furthermore it is possible to configure a JDK to be installed
+      automatically by specifying a name as before and then selecting the
       <option>Install Automatically</option>
       check box. This exposes a drop down labelled
       <option>Add installer</option>
-      which lets you choose from the options<option>Install from Oracle</option>
+      which lets you choose from the options
+      <option>Install from Oracle</option>
       ,<!-- currently still says java.sun.com but changed and pull request on github done -->
       <option>Extract *.zip/*.tar.gz</option>
       and<option>Run Command</option>.
 
-      All the automatic install configurations cause Hudson to wait for the first build, which is configured to use a
-      named instance of the JDK to initiate the JDK installation.
+      All the automatic install configurations cause Hudson to wait for the
+      first build, which is configured to use a named instance of the JDK to
+      initiate the JDK installation.
     </para>
-    <para>The option <option>Install from Oracle</option> brings up a drop down to choose the version as well as a
-      checkbox that needs to be clicked to the JavaSE license agreement.
+    <para>The option
+      <option>Install from Oracle</option>
+      brings up a drop down to choose the version as well as a checkbox that
+      needs to be clicked to the JavaSE license agreement.
     </para>
-    <para>If you select to use <option>Extract *.zip/*.tar.gz</option> you will be able to configure a
-      <option>Label</option>, the <option>Download URL for binary archive</option> and the
-      <option>Subdirectory of extracted archive</option>. If you specifiy a label,
-      only Hudson nodes with the same label will use this installer. By using different labels it is possible for
-      example to get
-      the same tool installed on different nodes with different operating systems from different automatic install
-      setups. The download url specifies the full url from which the JDK will be downloaded. The actual download is
-      run off the Hudson master, so that any Hudson nodes that need the JDK installed do not need to have access to
-      the url location. After successful download the JDK will be installed in the specified sub directory of the
-      Hudson install directory.
+    <para>If you select to use
+      <option>Extract *.zip/*.tar.gz</option>
+      you will be able to configure a
+      <option>Label</option>, the
+      <option>Download URL for binary archive</option>
+      and the
+      <option>Subdirectory of extracted archive</option>. If you specifiy a
+      label, only Hudson nodes with the same label will use this installer. By
+      using different labels it is possible for example to get the same tool
+      installed on different nodes with different operating systems from
+      different automatic install setups. The download url specifies the full
+      url from which the JDK will be downloaded. The actual download is run off
+      the Hudson master, so that any Hudson nodes that need the JDK installed do
+      not need to have access to the url location. After successful download the
+      JDK will be installed in the specified sub directory of the Hudson install
+      directory.
     </para>
-    <para>The last automatic installation option is to run a command. </para>
+    <para>The last automatic installation option is to<option>Run a
+      command</option>. The
+      <option>Label</option>
+      options works the same as for the archive extraction based install. The
+      <option>Command</option>
+      input allows you to specify the shell command to execute on the node for
+      the install. Typically this is some package management invocation. The
+      resulting tool directory has to be specified in the <option>Tool Home
+      </option> input box.
+    </para>
 
-    <para>Once more than one JDK is configured in the global settings, each project configuration will have a
-      drop down added via which a JDK can be selected.
+    <para>Once more than one JDK is configured in the global settings, each
+      project configuration has an additional drop down which allows the
+      selection of the JDK to be usd to build the project.
     </para>
   </section>
 
   <section>
     <title>Configuring Ant Installations</title>
-    <para>In a similar fashion to the JDK install Apache Ant can be installed in multiple versions to be available
-      for your Hudson configured builds. The default configuration is to supply a name for the Ant installation and a
-      value in the <option>ANT_HOME</option> input that is defined by the  absolute path to the folder containing
-      your pre-existing local Apache Ant install. </para>
-    <para>In addition to using an already existing Ant install e.g. from your operating system package management
-      system,
-   a provisioning system used or as part of a virtual machine image used Hudson can install a required Apache Ant
-      version automatically when needed.</para>
-
-    <para>The simplest way achieve this is to select the <option>Install automatically</option>
-      checkbox and select <option>Install from Apache</option> and choose the desired version from the drop down.
+    <para>In a similar fashion to the JDK install Apache Ant can be installed in
+      multiple versions to be available for your Hudson configured builds. The
+      default configuration is to supply a name for the Ant installation and a
+      value in the
+      <option>ANT_HOME</option>
+      input that is defined by the absolute path to the folder containing your
+      pre-existing local Apache Ant install.
     </para>
-    <para>Similar to the JDK installation from Oracle it is possible to use <option>Install from Apache</option>
-      to have Ant installed. The options to install from an archive or by running a command are available as well and
-      work in the same way.
+    <para>In addition to using an already existing Ant install e.g. from your
+      operating system package management system, a provisioning system used or
+      as part of a virtual machine image used Hudson can install a required
+      Apache Ant version automatically when needed.
+    </para>
+
+    <para>The simplest way achieve this is to select the
+      <option>Install automatically</option>
+      checkbox and select
+      <option>Install from Apache</option>
+      and choose the desired version from the drop down.
+    </para>
+    <para>Similar to the JDK installation from Oracle it is possible to use
+      <option>Install from Apache</option>
+      to get Ant installed. The options to install from an archive or by
+      running a command are available as well and work in the same way as for
+      JDK installs.
     </para>
   </section>
 
@@ -302,7 +332,7 @@ SEE HBOOK-41-->
     <title>Configuring Maven Installations</title>
 
     <para>Hudson is designed with a special level of support for Maven builds.
-    To use Maven, you must figure configure a Hudson Maven installation. To do
+    To use Maven, you must figure configure a Maven installation . To do
     this, go to the Maven section of the server configuration. You can
     configure one or more installations of Maven, to do so, click on the Add
     Maven button as shown in <xref linkend="fig-using-maven-config" />. Then

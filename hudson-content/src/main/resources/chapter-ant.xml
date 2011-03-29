@@ -10,6 +10,9 @@
     <title>Installing Apache Ant for Hudson</title>
 
     <!--TODO: See HBOOK-34-->
+    <!-- add an example of a custom ant install from a custom zip file that
+    contains ant contrib as well as a jar for a custom inhouse task and add
+    link to Hudson configuration chapter. -->
 
     <para></para>
   </section>

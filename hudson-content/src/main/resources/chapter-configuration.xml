@@ -17,12 +17,12 @@
     <mediaobject>
       <imageobject role="web">
         <imagedata contentdepth="100%"
-                   fileref="figs/web/ci-using-manage-matrix.png" scalefit="1" />
+                   fileref="figs/web/manage-hudson.png" scalefit="1" />
       </imageobject>
 
       <imageobject role="print">
         <imagedata align="center"
-                   fileref="figs/print/ci-using-manage-matrix.pdf"
+                   fileref="figs/print/manage-hudson.pdf"
                    scalefit="0" width="100%" />
       </imageobject>
     </mediaobject>
@@ -50,13 +50,13 @@
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-global-config.png"
+                     fileref="figs/web/global-hudson-configuration.png"
                      scalefit="1" />
         </imageobject>
 
         <imageobject role="print">
           <imagedata align="center"
-                     fileref="figs/print/ci-using-global-config.pdf"
+                     fileref="figs/print/global-hudson-configuration.pdf"
                      scalefit="0" width="100%" />
         </imageobject>
       </mediaobject>

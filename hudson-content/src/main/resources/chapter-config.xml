@@ -14,20 +14,20 @@
       <figure id="fig-using-manage-matrix">
         <title>Managing Hudson Users</title>
 
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-manage-matrix.png"
-                       scalefit="1" />
-          </imageobject>
+        <!--<mediaobject>-->
+          <!--<imageobject role="web">-->
+            <!--<imagedata contentdepth="100%"-->
+                       <!--fileref="figs/web/.png"-->
+                       <!--scalefit="1" />-->
+          <!--</imageobject>-->
 
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/ci-using-manage-matrix.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
+          <!--<imageobject role="print">-->
+            <!--<imagedata align="center"-->
+                       <!--fileref="figs/print/.pdf"-->
+                       <!--scalefit="0" width="100%" />-->
+          <!--</imageobject>-->
+        <!--</mediaobject>-->
+      <!--</figure>-->
 
       <section>
         <title>Global Hudson Configuration</title>
@@ -45,13 +45,13 @@
           <mediaobject>
             <imageobject role="web">
               <imagedata contentdepth="100%"
-                         fileref="figs/web/ci-using-global-config.png"
+                         fileref="figs/web/global-hudson-configuration.png"
                          scalefit="1" />
             </imageobject>
 
             <imageobject role="print">
               <imagedata align="center"
-                         fileref="figs/print/ci-using-global-config.pdf"
+                         fileref="figs/print/global-hudson-configuration.pdf"
                          scalefit="0" width="100%" />
             </imageobject>
           </mediaobject>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="chapter-configuration">
   <title>Hudson Configuration</title>
 
   <para>To configure Hudson, click on the Manage Hudson link in the left-hand
@@ -32,14 +32,13 @@
   different sections will be available in the system configuration section.
   These will either be explained below or with a plugin specific section. For
   example the source code management related global configurations for the
-  different SCM systems is available in the SCM chapter.</para>
-
-  <!-- TODO xref-->
-
+  different SCM systems is available in <xref
+      linkend="chapter-source-control"/>.</para>
   <section>
     <title>Global Hudson Configuration</title>
 
-    <para>The first configuration section in the Configure System screen as
+    <para>The first configuration section in the <option>Manage Hudson</option> screen
+      as
     shown in <xref linkend="fig-using-manage-matrix" /> contains options that
     allow you to configure global Hudson configuration attributes. This
     section is shown in <xref linkend="fig-using-global-config" />.</para>
@@ -135,7 +134,8 @@
           <para>The "Enable Security" checkbox switches on the security system
           that will require username and password for any access to run builds
           or change configurations of Hudson and build projects. More
-          information about securing Hudson can be found in <!-- TODO add xref --></para>
+          information about securing Hudson can be found in
+            <xref linkend="chapter-security"/></para>
         </listitem>
       </varlistentry>
 
@@ -211,7 +211,7 @@ SEE HBOOK-40          -->
 SEE HBOOK-41-->
   </section>
 
-  <section>
+  <section id="section-configure-jdk">
     <title>Configuring JDK Installations</title>
 
     <para>Hudson can support one or more JDK installations. Setting up
@@ -326,25 +326,24 @@ SEE HBOOK-41-->
       running a command are available as well and work in the same way as for
       JDK installs. A use case for an install from a file would be a custom
       Ant distribution with libraries for in-house tasks and maybe Ant
-      contrib included as documented in detail in the Ant chapter. <!--
-      TODO xref to add -->
-    </para>
+      contrib included as documented in detail in
+      <xref linkend="chapter-ant"/></para>
   </section>
 
   <section>
     <title>Configuring Maven Installations</title>
 
-    <para>One of the main uses cases for Hudson is the support for Maven
-      based builds. A first step to using Maven is to configure one or more
-      Maven installations. Like the JDK and Apacahe Ant installation options
-      Apache Maven can be configured in multiple ways:
+    <para>One of the main uses cases for Hudson is building projects with
+      Apache Maven. The first step to using Maven is to configure one or more
+      Maven installations. Like the JDK and Ant installation options
+      Maven can be configured in multiple ways: </para>
       <variablelist>
         <varlistentry>
           <term>Use an existing installation</term>
           <listitem>
-            <para>Specify a <option>name</option> and add the path to your
-              Maven install in the <option>M2_HOME</option> input control.
-            </para>
+            <para>Specify a <option>Name</option> and add the path to your
+              Maven install in the <option>MAVEN_HOME</option> input control.
+            </para> <!-- why is this MAVEN_HOME and not M2_HOME ?? -->
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -354,16 +353,16 @@ SEE HBOOK-41-->
               and <option>Install from Apache</option> in the drop down and
               choose the Maven version, you wish to install.
             </para>
-          </listitem>    l
+          </listitem>
         </varlistentry>
         <varlistentry>
           <term>Automatically install from an archive file</term>
           <listitem>
             <para>Select the <option>Install automatically</option> checkbox
               and <option>Extract *zip/*.tar.gz</option> and configure the
-              installation as documented in <!-- xref to jdk installation
-              above --> </para>
-          </listitem>                        i
+              installation as documented in <xref linkend="section-configure-jdk"/>
+            </para>
+          </listitem>
         </varlistentry>
         <varlistentry>
           <term>Automatically install via a command</term>
@@ -376,19 +375,7 @@ SEE HBOOK-41-->
           </listitem>
         </varlistentry>
       </variablelist>
-      To
-      do
-    this, go to the Maven section of the server configuration. You can
-    configure one or more installations of Maven, to do so, click on the Add
-    Maven button as shown in <xref linkend="fig-using-maven-config" />. Then
-    assign your new created Maven installation a name which will be displayed
-    in project configuration select lists.</para>
-
-    <!-- TODO improve like JDK install
-
-SEE HBOOK-43-->
-
-    <figure id="fig-using-maven-config">
+     <figure id="fig-using-maven-config">
       <title>Configuring Maven Installations</title>
 
       <!-- TODO update screenshot to have Maven 3.0.3 and not a beta version,
@@ -413,7 +400,8 @@ SEE HBOOK-43-->
     the latest Maven 3.0 release. With multiple Maven installations
       configured a dropdown in the project task configuration will allow you
       to choose the desired Maven version as visible in <!-- xref and
-      screenshot-->.
+      screenshot-->. <xref linkend="chapter-maven"/>
+        provides an in-depth documentation using Maven with Hudson.
     </para>
   </section>
 

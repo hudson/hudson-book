@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="chapter-maven">
   <title>Working with Apache Maven Builds</title>
 
   <section>
     <title>Configuring Maven Build Options</title>
 
-    <para>After configuring the general project options, you can configure one
+    <para>After configuring the general project options
+      (see <xref linkend="chapter-build-creation"/>),
+      you can configure one
       or more build steps. To add a build step, click on the Add build step
       button as shown in<xref linkend="fig-using-new-build-config"/>. To
       configure a Maven build, select "Invoke top-level Maven targets".

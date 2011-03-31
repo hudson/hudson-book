@@ -512,7 +512,16 @@
         linkend="fig-configure-email-notification"/>allows you to configure the
       SMTP<!--
     do we need to explain what that is .. I think not but who knows... -->
-      related settings to connect to the server and send the emails.</para>
+      related settings to connect to the server and send the emails. </para>
+
+    <!-- TODO make this a special practical tip layout or so -->
+    <para>In general it can be advantageous to configure all email recipients in
+      Hudson as mailing list addresses. Combined with a mailing list management
+      system available to your potential recipients e.g. development and QA team
+      members, this setup allows users to join any mailinglist and therefore
+      notifications for specific jobs without any configuration changes on
+      Hudson.
+    </para>
 
     <figure id="fig-using-email-notify">
       <title>Configuring Email Notification</title>
@@ -539,7 +548,15 @@
          <term>SMTP Server</term>
 
          <listitem>
-           <para></para>
+           <para>The
+             <option>SMTP server</option>
+             configuration is typically the IP number of the mail server or a
+             fully qualified name including the domain e.g.
+             <varname>smtp.example.com</varname>
+             . If the mail server is reachable by host name or some alias e.g.
+             <varname>hermes</varname>from the Hudson server you can use it as
+             the SMTP server configuration
+           </para>
          </listitem>
        </varlistentry>
 
@@ -547,7 +564,14 @@
         <term>Default user e-mail suffix</term>
 
         <listitem>
-          <para>suffix which is appended to build usernames</para>
+          <para>This suffix is appended to the Hudson user names used to
+            login to Hudson
+            and the result can be used for e-mail notifaication. E.g. if
+            the Hudson instance runs for <varname>example.com</varname> you
+            could supply the suffix of <varname>@example.com</varname>. A
+            Hudson user with username jane.doe would then receive email
+            notifications at the email <varname>jane.doe@example.com</varname>.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -555,7 +579,9 @@
         <term>System Admin E-Mail Address</term>
 
         <listitem>
-          <para></para>
+          <para>This is the email address of the system administrator of the
+            Hudson install or a mailinglist for the administrator team.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -563,8 +589,12 @@
         <term>Hudson URL</term>
 
         <listitem>
-          <para>URL to be used in emails which link
-       back to the Hudson UI</para>
+          <para>The <option>Hudson URL</option> value will be used in the
+            email notifications sent out to provide links to build results
+            and so on. Provide a URL that will be valid for the audience of
+            your notifications. If all recipients will be on an intranet or
+            VPN you can use a non-public URL or IP number.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -619,6 +649,14 @@
 
     <section>
       <title>E-mail Notification Via Gmail</title>
+
+      <para>In order to use GMail to send your emails you will need to
+        configure the <option>SMTP server</option> to <varname>smtp.gmail
+          .com</varname>. In addition you will have to have a Gmail account
+        and provide the GMail e-mail address, or any other email address
+        configured to be accepted in your Gmail account, as the <option>User
+        Name</option> and configure the <option>Password</option>.
+      </para>
     </section>
 
     <section>

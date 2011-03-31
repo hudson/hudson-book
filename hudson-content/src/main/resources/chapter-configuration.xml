@@ -6,10 +6,11 @@
 
   <para>To configure Hudson, click on the Manage Hudson link in the left-hand
   navigation menu, which will display the screen shown in <xref
-  linkend="fig-using-manage-matrix" />. This section will focus on the
+  linkend="fig-using-manage-matrix" />. This chapter will focus on the
   <indexterm>
       <primary>Configure System</primary>
-    </indexterm>Configure System section.</para>
+    </indexterm><option>Configure System</option>
+      section.</para>
 
   <figure id="fig-using-manage-matrix">
     <title>Managing Hudson</title>
@@ -37,11 +38,12 @@
   <section>
     <title>Global Hudson Configuration</title>
 
-    <para>The first configuration section in the <option>Manage Hudson</option> screen
-      as
-    shown in <xref linkend="fig-using-manage-matrix" /> contains options that
-    allow you to configure global Hudson configuration attributes. This
-    section is shown in <xref linkend="fig-using-global-config" />.</para>
+    <para>The first section in the
+      <option>Configure System</option>
+      screen contains options that allow you to configure global Hudson
+      configuration attributes. This section is shown in
+      <xref linkend="fig-using-global-config"/>.
+    </para>
 
     <figure id="fig-using-global-config">
       <title>Configuring Global Hudson Configuration</title>
@@ -66,12 +68,15 @@
         <term>Home Directory</term>
 
         <listitem>
-          <para>This is not a runtime configurable parameter. It is set by the
-          server on startup. By default it will be the value of the
-          HUDSON_HOME environment variable or the <varname>.hudson</varname>
-          folder in the home directory of the operating system user running
-          Hudson. The value is displayed here to allow the administrator to
-          verify the correct setting.</para>
+          <para>This parameter displays the absolute installation path of the
+            currently running Hudson system. It is not a runtime configurable
+            parameter. It is set by the server on startup. By default it will be
+            the value of the HUDSON_HOME environment variable or the
+            <varname>.hudson</varname>
+            folder in the home directory of the operating system user running
+            Hudson. The value is displayed here to allow the administrator to
+            verify the correct setting.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -79,12 +84,12 @@
         <term>System Message</term>
 
         <listitem>
-          <para>This is a global system message that is displayed by Hudson in
+          <para>This message is displayed by Hudson in
           the main screen above the list of projects. It can be used as a
           welcome message or to e.g. broadcast upcoming maintenance to users
-          of the Hudson instance via the user interface. It support plain text
+          of the Hudson instance via the user interface. It supports plain text
           as well a HTML snippets for formatting and enriching the
-          message.</para>
+          message with dynamic content.</para>
         </listitem>
       </varlistentry>
 
@@ -92,8 +97,12 @@
         <term># of Executors</term>
 
         <listitem>
-          <para>This parameter controls the number of executors that can
-          execute concurrent Hudson builds.</para>
+          <para>This parameter controls the number of concurrent builds
+            Hudson is configured to run. Optimal values in terms of performance
+            will depend on the number of CPU's, IO performance and other hardware
+            characteristics of the server running Hudson as well as the type
+            of builds configured to run. A good starting point for
+            experimentation is the number of CPUs.</para>
         </listitem>
       </varlistentry>
 
@@ -101,29 +110,34 @@
         <term>Quiet period</term>
 
         <listitem>
-          <para>A quiet period as specified in this configuration causes
-          Hudson to wait the specified number of seconds before a triggered
-          build is started. If your Hudson project is constantly "flapping"
-          (switching between failure and success frequently), you may want to
-          set the Quiet period to achieve more build stability. Another
-          scenario this can be helpful is when large commits to your source
-          control system are typically carried out in multiple smaller commits
-          within a short time frame, so that the committer has a chance to get
-          everything in without a build kicking off straight after the first
-          commit causing a build failure. Setting this number to a large
-          amount can generally reduce the number of builds running for this
-          project, which will reduce the overall load for your Hudson
-          server.</para>
+          <para>A
+            <option>Quiet Period</option>
+            as specified in this configuration causes Hudson to wait the
+            specified number of seconds before a triggered build is started. If
+            your Hudson project is constantly "flapping" (switching between
+            failure and success frequently), you may want to set the Quiet
+            period to achieve more build stability. Another scenario this can be
+            helpful is when large commits to your source control system are
+            typically carried out in multiple smaller commits within a short
+            time frame, so that the committer has a chance to get everything in
+            without a build kicking off straight after the first commit causing
+            a build failure. Setting this number to a large amount can generally
+            reduce the number of builds running for this project, which will
+            reduce the overall load for your Hudson server.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
-        <term>SCM checkout retry count</term>
+      <term>SCM checkout retry count</term>
 
         <listitem>
-          <para>The SCM checkout retry count determines the number of attempts
-          Hudson makes to check out any updates when polling the SCM system
-          for changes and finds the system to be unavailable.</para>
+          <para>The
+            <option>SCM checkout retry count</option>
+            determines the number of attempts Hudson makes to check out any
+            updates when polling the SCM system for changes and finds the system
+            to be unavailable.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -131,11 +145,15 @@
         <term>Enable Security</term>
 
         <listitem>
-          <para>The "Enable Security" checkbox switches on the security system
-          that will require username and password for any access to run builds
-          or change configurations of Hudson and build projects. More
-          information about securing Hudson can be found in
-            <xref linkend="chapter-security"/></para>
+          <para>The
+            <option>Enable Security</option>
+            checkbox switches on the security system that will require username
+            and password for any access to run builds or change configurations
+            of Hudson and build projects. A large number of configuration
+            options and security providers can be used and more information can
+            be found in
+            <xref linkend="chapter-security"/>
+          </para>
         </listitem>
       </varlistentry>
 
@@ -159,10 +177,7 @@
         <term>Help make Hudson better...</term>
 
         <listitem>
-          <!-- TODO need to create a JIRA issue updates the in app help pointing to a wiki page with more up to date
-          info and results about the data gathered, remove link to old nabble list
-
-SEE HBOOK-40          -->
+          <!-- SEE HBOOK-40 -->
 
           <para>By selecting this feature to be enabled you agree for
           anonymous usage statistics about your Hudson installation to be
@@ -205,27 +220,32 @@ SEE HBOOK-40          -->
     variables. Depending on the build system used they can be picked up with
     different syntax e.g. $key or ${key}</para>
 
-    <!-- TODO this has to be expanded in terms of usage as well as
-      some concrete examples, 
-
-SEE HBOOK-41-->
+    <!-- SEE HBOOK-41-->
   </section>
 
   <section id="section-configure-jdk">
     <title>Configuring JDK Installations</title>
 
-    <para>Hudson can support one or more JDK installations. Setting up
-    multiple JDK installs allows the configuration of different projects being
-    built by different Java versions in separate jobs. You can use this to
-    ensure e.g. that builds as well as test suites run fine on an older Java
-    version to ensure compatibility. Another application would be to run with
-    JDK versions supplied by different vendors.</para>
+    <para>Hudson can support one or more JDK installations used for running your
+      builds. Setting up multiple JDK installs allows the configuration of
+      different projects being built by different Java versions in separate
+      jobs. You can use this to ensure e.g. that builds as well as test suites
+      run fine on an older Java version to ensure compatibility. Another
+      application would be to run with JDK versions supplied by different
+      vendors.
+    </para>
 
     <para>The most common configuration of a JDK is to point to the already
-    installed instance as used for running Hudson itself. This can be achieved
-    simply by supplying a name like Oracle-JDK-6 in the name input field and
-    the absolute path in the JAVA_HOME input field in the screen as shown in
-    <xref linkend="fig-using-jdk-config" />.</para>
+      installed instance as used for running Hudson itself. This can be achieved
+      simply by supplying a name like
+      <varname>Open JDK 6</varname>
+      in the
+      <option>Name</option>
+      input field and the absolute path in the
+      <option>JAVA_HOME</option>
+      input field in the screen as shown in
+      <xref linkend="fig-using-jdk-config"/>.
+    </para>
 
     <figure id="fig-using-jdk-config">
       <title>Configuring JDK Installations</title>
@@ -233,12 +253,12 @@ SEE HBOOK-41-->
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-jdk-config.png" scalefit="1" />
+                     fileref="figs/web/configure-jdk.png" scalefit="1" />
         </imageobject>
 
         <imageobject role="print">
           <imagedata align="center"
-                     fileref="figs/print/ci-using-jdk-config.pdf" scalefit="0"
+                     fileref="figs/print/configure-jdk.pdf" scalefit="0"
                      width="100%" />
         </imageobject>
       </mediaobject>
@@ -253,49 +273,96 @@ SEE HBOOK-41-->
       <option>Install from Oracle</option>
       ,<!-- currently still says java.sun.com but changed and pull request on github done -->
       <option>Extract *.zip/*.tar.gz</option>
-      and<option>Run Command</option>.
+      and<option>Run Command</option> as visible in <xref
+        linkend="fig-using-jdk-config"/>.</para>
 
-      All the automatic install configurations cause Hudson to wait for the
+    <para>All the automatic install configurations cause Hudson to wait for the
       first build, which is configured to use a named instance of the JDK to
       initiate the JDK installation.
     </para>
+
     <para>The option
       <option>Install from Oracle</option>
       brings up a drop down to choose the version as well as a checkbox that
       needs to be clicked to the JavaSE license agreement.
     </para>
+
     <para>If you select to use
       <option>Extract *.zip/*.tar.gz</option>
+      as shown in
+      <xref linkend="fig-extract-archive-installer"/>
       you will be able to configure a
       <option>Label</option>, the
       <option>Download URL for binary archive</option>
       and the
-      <option>Subdirectory of extracted archive</option>. If you specifiy a
-      label, only Hudson nodes with the same label will use this installer. By
-      using different labels it is possible for example to get the same tool
-      installed on different nodes with different operating systems from
-      different automatic install setups. The download url specifies the full
-      url from which the JDK will be downloaded. The actual download is run off
-      the Hudson master, so that any Hudson nodes that need the JDK installed do
-      not need to have access to the url location. After successful download the
-      JDK will be installed in the specified sub directory of the Hudson install
-      directory.
+      <option>Subdirectory of extracted archive</option>.
     </para>
-    <para>The last automatic installation option is to<option>Run a
-      command</option>. The
+
+
+    <figure id="fig-extract-archive-installer">
+      <title>Extract *zip/*.tar.gz archive Installer Configuration</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/extract-archive-installer.png"
+                     scalefit="1"/>
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/extract-archive-installer.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>
+      If you specify a label, only Hudson nodes with the same label will use
+      this installer. By using different labels it is possible for example to
+      get the same tool installed on different nodes with different operating
+      systems from different automatic install setups. The download url
+      specifies the full url from which the JDK will be downloaded. The actual
+      download is run off the Hudson master, so that any Hudson nodes that need
+      the JDK installed do not need to have access to the url location. After
+      successful download the JDK will be installed in the specified sub
+      directory of the Hudson install directory.
+    </para>
+
+    <figure id="fig-run-commamd-installer">
+      <title>Run Command Installer Configuration</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/run-command-installer.png"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/run-command-installer.pdf" scalefit="0"
+                     width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>The last automatic installation option is the
+      <option>Run a command</option>
+      option displayed in<xref linkend="fig-run-command-installer"/>. The
       <option>Label</option>
       options works the same as for the archive extraction based install. The
       <option>Command</option>
       input allows you to specify the shell command to execute on the node for
       the install. Typically this is some package management invocation. The
-      resulting tool directory has to be specified in the <option>Tool Home
-      </option> input box.
+      resulting tool directory has to be specified in the
+      <option>Tool Home
+      </option>
+      input box.
     </para>
 
     <para>Once more than one JDK is configured in the global settings, each
-      project configuration has an additional drop down which allows the
-      selection of the JDK to be usd to build the project.
-    </para> <!-- xref to screen shot or add screenshot here -->
+      project configuration has an additional drop down, which allows the
+      selection of the JDK to be usd to build the project and is visible in
+      <xref linkend="fig-extract-archive-installer"/>
+    </para>
   </section>
 
   <section>

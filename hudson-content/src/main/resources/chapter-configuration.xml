@@ -369,16 +369,20 @@
     <title>Configuring Ant Installations</title>
     <para>In a similar fashion to the JDK install Apache Ant can be installed in
       multiple versions to be available for your Hudson configured builds. The
-      default configuration is to supply a name for the Ant installation and a
+      default configuration is to supply a name like <varname>Apache Ant 1
+      .8.2</varname> for the Ant
+                                                           installation and a
       value in the
       <option>ANT_HOME</option>
       input that is defined by the absolute path to the folder containing your
-      pre-existing local Apache Ant install.
+      pre-existing local Apache Ant install e.g.
+      <varname>/opt/apache-ant-1.8.2</varname>
     </para>
-    <para>In addition to using an already existing Ant install e.g. from your
-      operating system package management system, a provisioning system used or
-      as part of a virtual machine image used Hudson can install a required
-      Apache Ant version automatically when needed.
+
+    <para>Using a preinstalled Ant requires manual install or the use of your
+      operating system package management system, a provisioning system or as
+      part of a virtual machine image management. To avoid this need Hudson can
+      install a required Apache Ant version automatically when needed.
     </para>
 
     <para>The simplest way achieve this is to select the
@@ -387,6 +391,7 @@
       <option>Install from Apache</option>
       and choose the desired version from the drop down.
     </para>
+
     <para>Similar to the JDK installation from Oracle it is possible to use
       <option>Install from Apache</option>
       to get Ant installed. The options to install from an archive or by
@@ -402,7 +407,7 @@
 
     <para>One of the main uses cases for Hudson is building projects with
       Apache Maven. The first step to using Maven is to configure one or more
-      Maven installations. Like the JDK and Ant installation options
+      Maven installations. Like the JDK and Ant installation options,
       Maven can be configured in multiple ways: </para>
       <variablelist>
         <varlistentry>
@@ -410,7 +415,7 @@
           <listitem>
             <para>Specify a <option>Name</option> and add the path to your
               Maven install in the <option>MAVEN_HOME</option> input control.
-            </para> <!-- why is this MAVEN_HOME and not M2_HOME ?? -->
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -436,28 +441,22 @@
           <listitem>
             <para>Select the <option>Install automatically</option> checkbox
               and <option>Run Command</option> and configure the installation
-              as documented in <!-- xref to jdk installation
-                          above -->
+              as documented in <xref linkend="section-configure-jdk"/>.
             </para>
           </listitem>
         </varlistentry>
       </variablelist>
-     <figure id="fig-using-maven-config">
+     <figure id="fig-configure-maven-installation">
       <title>Configuring Maven Installations</title>
-
-      <!-- TODO update screenshot to have Maven 3.0.3 and not a beta version,
-       also needs to be the dropdown.. rather than an input box
-      -->
-
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-maven-config.png" scalefit="1" />
+                     fileref="figs/web/configure-maven.png" scalefit="1" />
         </imageobject>
 
         <imageobject role="print">
           <imagedata align="center"
-                     fileref="figs/print/ci-using-maven-config.pdf"
+                     fileref="figs/print/configure-maven.pdf"
                      scalefit="0" width="100%" />
         </imageobject>
       </mediaobject>
@@ -466,8 +465,9 @@
     <para>We recommend that you run your build using
     the latest Maven 3.0 release. With multiple Maven installations
       configured a dropdown in the project task configuration will allow you
-      to choose the desired Maven version as visible in <!-- xref and
-      screenshot-->. <xref linkend="chapter-maven"/>
+      to choose the desired Maven version as visible in <xref
+        linkend="fig-configure-maven-installation"/>.
+      <xref linkend="chapter-maven"/>
         provides an in-depth documentation using Maven with Hudson.
     </para>
   </section>

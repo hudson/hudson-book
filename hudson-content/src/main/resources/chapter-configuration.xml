@@ -504,18 +504,15 @@
   <section>
     <title>Configuring E-mail Notification</title>
 
-    <!-- TODO there should be more and better docu here for this critical
-      feature.. 
+    <!-- SEE HBOOK-45-->
 
-SEE HBOOK-45-->
-
-    <para>Email notification is a core feature of a continuous integration
-    server, and you can configure the way in which Hudson will connect to an
-    SMTP server in the Email Notification section of the server configuration
-    screen. In this form you can configure an SMTP server, a default user
-    e-mail suffix which is appended to build usernames. You can set the
-    administrative email address, and the URL to be used in emails which link
-    back to the Hudson UI.</para>
+    <para>Notification of build results and email based notification
+      specifically is a core feature of a continuous integration server. This
+      configuration section as displayed in<xref
+        linkend="fig-configure-email-notification"/>allows you to configure the
+      SMTP<!--
+    do we need to explain what that is .. I think not but who knows... -->
+      related settings to connect to the server and send the emails.</para>
 
     <figure id="fig-using-email-notify">
       <title>Configuring Email Notification</title>
@@ -523,34 +520,121 @@ SEE HBOOK-45-->
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-email-notify.png" scalefit="1" />
+                     fileref="figs/web/configure-email-configuration.png"
+                     scalefit="1" />
         </imageobject>
 
         <imageobject role="print">
           <imagedata align="center"
-                     fileref="figs/print/ci-using-email-notify.pdf"
+                     fileref="figs/print/configure-email-configuration.pdf"
                      scalefit="0" width="100%" />
         </imageobject>
       </mediaobject>
     </figure>
 
-    <para>In addition to basic SMTP configuration parameters, it is also
-    possible to configure Hudson to use SMTP auth to send email through local
-    services which require secure credentials for sending email or public
-    services such as Gmail. To configure these parameters, populate the User
-    Name, Password, SSL, SMTP Port parameters. Once you have completed the
-    SMTP configuration, click on "Test configuration" to send a test email to
-    the administrator email address.</para>
+    <para>The following options can be configured:</para>
+
+    <variablelist>
+       <varlistentry>
+         <term>SMTP Server</term>
+
+         <listitem>
+           <para></para>
+         </listitem>
+       </varlistentry>
+
+      <varlistentry>
+        <term>Default user e-mail suffix</term>
+
+        <listitem>
+          <para>suffix which is appended to build usernames</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>System Admin E-Mail Address</term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Hudson URL</term>
+
+        <listitem>
+          <para>URL to be used in emails which link
+       back to the Hudson UI</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+
+    <para>In addition to basic SMTP configuration parameters,
+      you can click the <option>Advanced Options</option> button for further
+      configuration that allow you to send email via servers that required
+      authentication.</para>
+    <variablelist>
+
+      <varlistentry>
+        <term>Use SMTP Authentication</term>
+
+        <listitem>
+          <para><option>User Name</option> and <option>Password</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Use SSL</term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>SMTP Port</term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Charset</term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Test configuration</term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <section>
+      <title>E-mail Notification Via Gmail</title>
+    </section>
+
+    <section>
+      <title>E-mail Notification Via Exchange Server</title>
+      <!-- TODO ... I cant write that up.. no exchange server access for me -->
+    </section>
+
+    <section>
+      <title>Trobuleshooting E-mail Notification</title>
+    </section>
   </section>
 
-  <!-- TODO this is not there by default, what triggers it (which plugin)
-  and therefore where should it be documented.. maybe here anyway but with a
-  remark..
-
-See HBOOk-45
-  -->
-
   <section>
+    <!-- TODO When does this option actually come up?? Its not on my install
+    at the moment..
+    t-->
     <title>Configuring SCM Polling Concurrency</title>
 
     <para>This is a simple, global parameter to Hudson which controls the

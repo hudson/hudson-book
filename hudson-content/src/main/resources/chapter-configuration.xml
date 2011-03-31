@@ -577,8 +577,13 @@
 
       <varlistentry>
         <term>System Admin E-Mail Address</term>
-
+          <!-- TODO watch http://issues.hudson-ci.org/browse/HUDSON-8797
+          and remove whatever paragraph needs to be removed below,
+          also update screen shot when changed version is released -->
         <listitem>
+          <para>This is the email address used as the email sender in any
+            E-mail notification.</para>
+
           <para>This is the email address of the system administrator of the
             Hudson install or a mailinglist for the administrator team.
           </para>
@@ -602,15 +607,23 @@
 
     <para>In addition to basic SMTP configuration parameters,
       you can click the <option>Advanced Options</option> button for further
-      configuration that allow you to send email via servers that required
-      authentication.</para>
+      configuration that allow you to send email via servers that require
+      authentication. Most SMTP servers will require at least user name and
+      password to be accessed.</para>
     <variablelist>
 
       <varlistentry>
         <term>Use SMTP Authentication</term>
 
         <listitem>
-          <para><option>User Name</option> and <option>Password</option></para>
+          <para>Clicking on the checkbox will reveal <option>User
+            Name</option> and
+            <option>Password</option> input fields. Depending on the server
+            configuration your user name will be just the login name or the
+            full email address or either.
+            <!-- TODO do we need to talk about how secure (or insecure) the
+            password is stored on the server? -->
+          </para>
         </listitem>
       </varlistentry>
 
@@ -618,7 +631,9 @@
         <term>Use SSL</term>
 
         <listitem>
-          <para></para>
+          <para>Select this checkbox if your SMTP server supports connecting
+            with SSL activated.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -626,7 +641,13 @@
         <term>SMTP Port</term>
 
         <listitem>
-          <para></para>
+          <para>This configuration allows you to specify a custom port for
+            the communication with mail server. If the field is left empty the
+            default ports are used. These are 25 for SMTP and 465 for SSL
+            secured SMTP. It is a common practice to configure a different
+            port, so be sure to check with the administrator of the mail
+            server what port you should be using.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -634,7 +655,9 @@
         <term>Charset</term>
 
         <listitem>
-          <para></para>
+          <para>The <option>Charset</option> configuration determines the
+            character set used for the composed e-mail message.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -656,16 +679,28 @@
         and provide the GMail e-mail address, or any other email address
         configured to be accepted in your Gmail account, as the <option>User
         Name</option> and configure the <option>Password</option>.
+
+        Does it support SSL? What port? See http://184.73.106.215:8080/
       </para>
     </section>
 
     <section>
       <title>E-mail Notification Via Exchange Server</title>
       <!-- TODO ... I cant write that up.. no exchange server access for me -->
+      <para>need to explain how to setup different advanced config related to
+        SSL and others by using javamail parameters in system properties as
+        linked in the built in help, </para>
     </section>
 
     <section>
-      <title>Trobuleshooting E-mail Notification</title>
+      <title>Advanced configuration with JavaMail system properties</title>
+      <!-- I can figure this out but if anybody already knows it might be
+      easier for them to write up -->
+    </section>
+    <section>
+      <title>Trouleshooting E-mail Notification</title>
+      <para>not sure what to put here..
+      </para>
     </section>
   </section>
 

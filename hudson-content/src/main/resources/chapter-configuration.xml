@@ -529,13 +529,13 @@
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/configure-email-configuration.png"
+                     fileref="figs/web/configure-email-notification.png"
                      scalefit="1" />
         </imageobject>
 
         <imageobject role="print">
           <imagedata align="center"
-                     fileref="figs/print/configure-email-configuration.pdf"
+                     fileref="figs/print/configure-email-notification.pdf"
                      scalefit="0" width="100%" />
         </imageobject>
       </mediaobject>

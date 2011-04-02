@@ -35,7 +35,7 @@
   example the source code management related global configurations for the
   different SCM systems is available in <xref
       linkend="chapter-source-control"/>.</para>
-  <section>
+  <section id="section-global-hudson-configuration">
     <title>Global Hudson Configuration</title>
 
     <para>The first section in the
@@ -518,7 +518,7 @@
     <para>In general it can be advantageous to configure all email recipients in
       Hudson as mailing list addresses. Combined with a mailing list management
       system available to your potential recipients e.g. development and QA team
-      members, this setup allows users to join any mailinglist and therefore
+      members, this setup allows users to join any mailing list and therefore
       notifications for specific jobs without any configuration changes on
       Hudson.
     </para>

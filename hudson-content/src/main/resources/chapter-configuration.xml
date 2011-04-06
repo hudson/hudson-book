@@ -350,8 +350,7 @@
       input allows you to specify the shell command to execute on the node for
       the install. Typically this is some package management invocation. The
       resulting tool directory has to be specified in the
-      <option>Tool Home
-      </option>
+      <option>Tool Home</option>
       input box.
     </para>
 
@@ -709,8 +708,9 @@
               and/or client side of the recipient. Most spam filter systems will
               allow you to access a list of filtered message and configure a
               white list of senders. Adding the <option>System Admin
-              E-mail Address</para> to the white list will ensure that your
+              E-mail Address</option> to the white list will ensure that your
             build notifications reach you.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>

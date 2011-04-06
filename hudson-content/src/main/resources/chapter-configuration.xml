@@ -247,7 +247,7 @@
 
     <figure id="fig-using-jdk-config">
       <title>Configuring JDK Installations</title>
-
+      <!-- HBOOK-56 -->
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
@@ -268,8 +268,7 @@
       check box. This exposes a drop down labelled
       <option>Add installer</option>
       which lets you choose from the options
-      <option>Install from Oracle</option>
-      ,<!-- currently still says java.sun.com but changed and pull request on github done -->
+      <option>Install from Oracle</option>,
       <option>Extract *.zip/*.tar.gz</option>
       and<option>Run Command</option> as visible in <xref
         linkend="fig-using-jdk-config"/>.</para>
@@ -327,7 +326,7 @@
       directory of the Hudson install directory.
     </para>
 
-    <figure id="fig-run-commamd-installer">
+    <figure id="fig-run-command-installer">
       <title>Run Command Installer Configuration</title>
       <mediaobject>
         <imageobject role="web">
@@ -367,10 +366,9 @@
     <title>Configuring Ant Installations</title>
     <para>In a similar fashion to the JDK install Apache Ant can be installed in
       multiple versions to be available for your Hudson configured builds. The
-      default configuration is to supply a name like <varname>Apache Ant 1
-      .8.2</varname> for the Ant
-                                                           installation and a
-      value in the
+      default configuration is to supply a name like
+      <varname>Apache Ant 1 .8.2</varname>
+      for the Ant installation and a value in the
       <option>ANT_HOME</option>
       input that is defined by the absolute path to the folder containing your
       pre-existing local Apache Ant install e.g.
@@ -460,13 +458,12 @@
       </mediaobject>
     </figure>
 
-    <para>We recommend that you run your build using
-    the latest Maven 3.0 release. With multiple Maven installations
-      configured a dropdown in the project task configuration will allow you
-      to choose the desired Maven version as visible in <xref
-        linkend="fig-configure-maven-installation"/>.
+    <para>We recommend that you run your build using the latest Maven 3.0
+      release. With multiple Maven installations configured a dropdown in the
+      project task configuration will allow you to choose the desired Maven
+      version as visible in<xref linkend="fig-configure-maven-installation"/>.
       <xref linkend="chapter-maven"/>
-        provides an in-depth documentation using Maven with Hudson.
+      provides an in-depth documentation using Maven with Hudson.
     </para>
   </section>
 
@@ -503,23 +500,21 @@
     <title>Configuring E-mail Notification</title>
 
     <!-- SEE HBOOK-45-->
-
     <para>Notification of build results and email based notification
       specifically is a core feature of a continuous integration server. This
-      configuration section as displayed in<xref
-        linkend="fig-configure-email-notification"/>allows you to configure the
-      SMTP<!--
-    do we need to explain what that is .. I think not but who knows... -->
-      related settings to connect to the server and send the emails. </para>
+      configuration section as displayed in
+      <xref linkend="fig-configure-email-notification"/>
+      allows you to configure the SMTP related settings to connect to the server
+      and send the emails.
+    </para>
 
-    <!-- TODO make this a special practical tip layout or so -->
-    <para>In general it can be advantageous to configure all email recipients in
+    <tip>In general it can be advantageous to configure all email recipients in
       Hudson as mailing list addresses. Combined with a mailing list management
       system available to your potential recipients e.g. development and QA team
       members, this setup allows users to join any mailing list and therefore
       notifications for specific jobs without any configuration changes on
       Hudson.
-    </para>
+    </tip>
 
     <figure id="fig-configure-email-notification">
       <title>Configuring Email Notification</title>
@@ -552,8 +547,8 @@
              fully qualified name including the domain e.g.
              <varname>smtp.example.com</varname>
              . If the mail server is reachable by host name or some alias e.g.
-             <varname>hermes</varname>from the Hudson server you can use it as
-             the SMTP server configuration
+             <varname>hermes</varname> from the Hudson server you can use it as
+             the SMTP server configuration.
            </para>
          </listitem>
        </varlistentry>
@@ -562,13 +557,17 @@
         <term>Default user e-mail suffix</term>
 
         <listitem>
-          <para>This suffix is appended to the Hudson user names used to
-            login to Hudson
-            and the result can be used for e-mail notifaication. E.g. if
-            the Hudson instance runs for <varname>example.com</varname> you
-            could supply the suffix of <varname>@example.com</varname>. A
-            Hudson user with username jane.doe would then receive email
-            notifications at the email <varname>jane.doe@example.com</varname>.
+          <para>This suffix is appended to the Hudson user names used to login
+            to Hudson and the result can be used for e-mail notification. E.g.
+            if the Hudson instance runs for
+            <varname>example.com</varname>
+            you could supply the suffix of <varname>@example.com</varname>. A
+            Hudson user with username
+            <varname>jane.doe</varname> would then receive email
+            notifications at the email<varname>jane.doe@example.com</varname>.
+            This can be especially useful with security setups using an identity
+            management system like LDAP for Hudson access as well as email
+            address setup as documented in <xref linkend="chapter-security"/>.
           </para>
         </listitem>
       </varlistentry>
@@ -583,7 +582,7 @@
             E-mail notification.</para>
 
           <para>This is the email address of the system administrator of the
-            Hudson install or a mailinglist for the administrator team.
+            Hudson install or a mailing list for the administrator team.
           </para>
         </listitem>
       </varlistentry>
@@ -614,13 +613,12 @@
         <term>Use SMTP Authentication</term>
 
         <listitem>
-          <para>Clicking on the checkbox will reveal <option>User
-            Name</option> and
-            <option>Password</option> input fields. Depending on the server
-            configuration your user name will be just the login name or the
-            full email address or either.
-            <!-- TODO do we need to talk about how secure (or insecure) the
-            password is stored on the server? -->
+          <para>Clicking on the checkbox will reveal
+            <option>User Name</option>
+            and
+            <option>Password</option>
+            input fields. Depending on the server configuration your user name
+            will be just the login name or the full email address or either.
           </para>
         </listitem>
       </varlistentry>
@@ -663,14 +661,17 @@
         <term>Test configuration</term>
 
         <listitem>
-          <para></para>
+          <para>Pressing this button will execute the current configuration
+            for sending emails. Depending on your configuration and network
+            setup you should receive an email after a short while.
+          </para>
         </listitem>
       </varlistentry>
     </variablelist>
 
     <section>
       <title>E-mail Notification Via Gmail</title>
-
+      <!-- HBOOK-60 -->
       <para>In order to use GMail to send your emails you will need to
         configure the <option>SMTP server</option> to <varname>smtp.gmail
           .com</varname>. In addition you will have to have a Gmail account
@@ -678,34 +679,46 @@
         configured to be accepted in your Gmail account, as the <option>User
         Name</option> and configure the <option>Password</option>.
 
-        Does it support SSL? What port? See http://184.73.106.215:8080/
+<!--        Does it support SSL? What port? See http://184.73.106.215:8080/ -->
       </para>
     </section>
 
     <section>
       <title>E-mail Notification Via Exchange Server</title>
-      <!-- TODO ... I cant write that up.. no exchange server access for me -->
-      <para>need to explain how to setup different advanced config related to
+      <!-- HBOOK-58 -->
+      <!-- <para>need to explain how to setup different advanced config related
+      to
         SSL and others by using javamail parameters in system properties as
-        linked in the built in help, </para>
+        linked in the built in help, </para> -->
     </section>
 
     <section>
       <title>Advanced configuration with JavaMail system properties</title>
-      <!-- I can figure this out but if anybody already knows it might be
-      easier for them to write up -->
+      <!-- HBOOK-57 -->
     </section>
     <section>
       <title>Troubleshooting E-mail Notification</title>
       <para>not sure what to put here..
       </para>
+      <variablelist>
+        <varlistentry>
+          <term>Spam filter related problems</term>
+          <listitem>
+            <para>One of the common problems for build server notification
+              emails not being received are spam filter setting on the server
+              and/or client side of the recipient. Most spam filter systems will
+              allow you to access a list of filtered message and configure a
+              white list of senders. Adding the <option>System Admin
+              E-mail Address</para> to the white list will ensure that your
+            build notifications reach you.
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
   </section>
 
   <section>
-    <!-- TODO When does this option actually come up?? Its not on my install
-    at the moment..
-    t-->
+    <!-- HBOOK-59 -->
     <title>Configuring SCM Polling Concurrency</title>
 
     <para>This is a simple, global parameter to Hudson which controls the

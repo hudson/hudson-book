@@ -29,7 +29,7 @@
     </mediaobject>
   </figure>
 
-  <para>Depending on the plugins installed and activated on your Hudson system
+  <para>Depending on the plugins installed and activated on your Hudson system,
   different sections will be available in the system configuration section.
   These will either be explained below or with a plugin specific section. For
   example the source code management related global configurations for the
@@ -177,21 +177,19 @@
         <term>Help make Hudson better...</term>
 
         <listitem>
-          <!-- SEE HBOOK-40 -->
-
-          <para>By selecting this feature to be enabled you agree for
-          anonymous usage statistics about your Hudson installation to be
-          created and sent to the Hudson development team (TODO who actually
-          gets the data and is this working at the moment?, who has access to
-          it) periodically (whats the period?). The data sent consists of
-          <itemizedlist>
+          <para>By selecting this feature to be enabled you agree for anonymous
+            usage statistics about your Hudson installation to be created and
+            securely sent to the Hudson development team and made available to
+            the user community. The data sent consists of
+            <itemizedlist>
               <listitem>
-                <para>the Hudson version you are using</para>
+              <para>the Hudson version you are using</para>
               </listitem>
 
               <listitem>
-                <para>operating system and number of executors for you master
-                Hudson and any slaves being used</para>
+                <para>operating system, JVM and number of executors for your
+                  master Hudson and any slaves being used
+                </para>
               </listitem>
 
               <listitem>
@@ -698,7 +696,7 @@
       easier for them to write up -->
     </section>
     <section>
-      <title>Trouleshooting E-mail Notification</title>
+      <title>Troubleshooting E-mail Notification</title>
       <para>not sure what to put here..
       </para>
     </section>

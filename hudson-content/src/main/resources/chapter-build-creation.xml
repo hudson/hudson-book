@@ -8,14 +8,13 @@
     <title>Creating New Hudson Projects</title>
 
     <para>To create a new Hudson project, click on
-      <option>New Job</option>
-      the left navigation menu, which will display the form shown in<xref
-        linkend="fig-using-new-project"/>.<!-- do we need to clarify that we use project,
-      and job pretty much interchangeably -->
+      <option>New Job</option> in
+      the left navigation menu, which will display the form shown in
+      <xref linkend="fig-using-new-project"/>.
     </para>
 
     <figure id="fig-using-new-project">
-      <title>Creating a New Project in Hudson</title>
+      <title>Creating a New Job in Hudson</title>
 
       <mediaobject>
         <imageobject role="web">
@@ -32,7 +31,7 @@
       </mediaobject>
     </figure>
 
-    <para>The most common way to create a new build using Hudson is to select
+    <para>The most common way to create a new job using Hudson is to select
       <option>Build a free-style software project</option>. This will allow you
       to invoke a number of external and internal executions. If you are
       creating a project that is similar to an existing Hudson build, you may
@@ -57,7 +56,7 @@
     <warning>
       <para>Your Hudson installation may provide an option to<option>
         Build a maven 2/3 project</option>. This feature has numerous issues
-        with the use of different Maven versions especially new Maven 3 versions
+        with the use of different Maven versions, especially Maven 3 versions
         and is not supported in Hudson. We recommend not to use this job type.
         Instead, we encourage you to use the native Maven support which is
         available in a free-style software project.
@@ -233,9 +232,8 @@
 
         <varlistentry>
           <term>This Build is Parameterized</term>
-          <!-- TODO MM-->
           <listitem>
-            <para>TBD</para>
+            <para></para>
           </listitem>
         </varlistentry>
 
@@ -281,10 +279,6 @@
           </listitem>
         </varlistentry>
 
-        <!-- TODO investigate if this still comes up in some use cases or if
-        it is replaced by parameters or something, maybe only available if
-        there are nodes in a cluster
-        -->
         <varlistentry>
           <term>Restrict where this project can be run</term>
           <listitem>
@@ -342,7 +336,7 @@
               <option>Quiet Period</option>
               set in this section overrides the global configuration documented
               in
-              <xref linkend="section-global-hudson-configuration"/>
+              <xref linkend="section-global-hudson-configuration"/> and
               has the same effect. This settings depends on your build trigger
               configuration as documented below.
             </para>
@@ -395,21 +389,24 @@
 
     <section>
       <title>Configuring Source Code Management</title>
-      <para>Hudson is typically used in conjunction with the source of for the
-        project available in a source code management system. This section
-        allows for the configuration of the respective setting for the chosen
-        system. The available list will contain all SCM systems
-        provided by Hudson and the installed plugins. See
-        <xref linkend="chapter-plugin-management"/> and
-        <xref linkend="chapter-source-control"/>
-        for further details.
+      <para>Hudson is typically used in conjunction with the source of the
+        project available in a source code management system. Support for a
+        large variety of SCM's is one the strength's of Hudson. This section
+        allows for the configuration of the respective settings for your SCM of
+        choice. The available list of choices will contain all SCM systems
+        provided by Hudson and the installed plugins.
+        <xref linkend="chapter-plugin-management"/>
+        explains how to get support for your SCM installed, if it is not yet
+        available. Once installed each SCM configuration will have different
+        parameters, which are documented in
+        <xref linkend="chapter-source-control"/>.
       </para>
     </section>
 
     <section>
       <title>Configuring Build Triggers</title>
       <para>The next section to configure is
-        <option>Build Triggers</option> . A Hudson job can
+        <option>Build Triggers</option>. A Hudson job can
       be configured to build in response to build activity on a Hudson
       instance, in accordance with a regular schedule, or as a reaction to
       activity in a SCM system. Build triggers are configured on a Project's
@@ -459,7 +456,7 @@
               system for changes and trigger a build if changes have been found
               and successfully retrieved.
             </para>
-            <para>Selecting this option displays a text area which accepts a
+            <para>Selecting this option displays a text area, which accepts a
               standard cron expression. This allows for arbitrary polling
               interval from minutes to weekly and way beyond. It is important to
               consider the impact of this polling frequency setting on your SCM
@@ -497,9 +494,9 @@
         crucial role of a continuous integration server as communication
         tool.</para>
 
-      <para>Beyond the core post-build actions documented in the following various
-        plugins will make additional actions available,
-        which are documented in
+      <para>Beyond the core post-build actions documented in the following,
+        various plugins will make additional actions available, which are
+        documented in
         <xref linkend="chapter-plugins"/>.
       </para>
 
@@ -524,7 +521,7 @@
       <para>Other important post-build events include the archiving of
       artifacts. If you would like Hudson to keep an archive of specific files
       from each build, preserving version between build. Check the box next to
-      "Archive the artifacts" and then specify paths, relative to the
+      <option>Archive the artifacts</option> and then specify paths, relative to the
       workspace directory, of artifacts to preserve and associate with
       numbered builds.</para>
 
@@ -535,9 +532,9 @@
             <para>With this feature activated Hudson will generate Javadoc from
               the build and publish it to the specified folder. This in turn
               makes the Javadoc available to your users via a web browser.
-              Checking the "Retain Javadoc for each successful build" will keep
-              the generated Javadoc for all successful builds in the specified
-              folder for older builds as well instead of overwriting the
+              Checking the <option>Retain Javadoc for each successful build</option>
+              will keep the generated Javadoc for all successful builds in the
+              specified folder for older builds instead of overwriting the
               documentation with each build.
             </para>
           </listitem>
@@ -551,7 +548,7 @@
               useful when long running test are actually set up as separate
               downstream projects. You can either let Hudson figure out all
               downstream projects automatically or supply a specific list of
-              projects in the "Jobs to aggregate" input box.
+              projects in the <option>Jobs to aggregate</option> input box.
             </para>
           </listitem>
         </varlistentry>
@@ -559,14 +556,13 @@
         <varlistentry>
           <term>Publish JUnit test result report</term>
           <listitem>
-            <para>Activating this feature allows Hudson to interpret the
-              JUnit test report format, produced by your test runs in the project
-              and produce historic test result trends,
-              a web interface for viewing the reports and more features. The
-              location of the produced xml files has to be specified in the
-              text input box. In addition it is possible to retain the build
-              log output in addition to the xml reports by checking the
-              "Retain long standard output/error"
+            <para>Activating this feature allows Hudson to interpret the JUnit
+              test report format, produced by your test runs in the project and
+              produce historic test result trends, a web interface for viewing
+              the reports and more features. The location of the produced xml
+              files has to be specified in the text input box. In addition it is
+              possible to retain the build log output by checking the
+              <option>Retain long standard output/error</option>
             </para>
           </listitem>
         </varlistentry>
@@ -575,14 +571,15 @@
           <term>Archive the artifacts</term>
           <listitem>
             <para>
-              With this feature enabled Hudson will keep the specified
-              artifacts available on the web interface. Using a wildcard
-              syntax in the "Files to archive"  as well as the
-              "Excludes" input boxes you can specify the artifacts that should
-              be archived after each successful build. You can therefore for
-              example keep release artifacts like war,
-              ear or zip files available for retrieval by other users as well
-              as for archival purposes.
+              With this feature enabled Hudson will keep the specified artifacts
+              available on the web interface. Using a wildcard syntax in the
+              <option>Files to archive</option>
+              as well as the
+              <option>Excludes</option>
+              input boxes you can specify the artifacts that should be archived
+              after each successful build. You can therefore for example keep
+              release artifacts like war, ear or zip files available for
+              retrieval by other users as well as for archival purposes.
             </para>
           </listitem>
         </varlistentry>
@@ -590,11 +587,12 @@
         <varlistentry>
           <term>Recording fingerprints of files to track usage</term>
           <listitem>
-            <para>The feature to record fingerprints of files to track usage can
-              help you track down where files are used and produced. It will
-              allow you to determine the build number that created an artifact
-              by looking at the fingerprint, which is a unique identifier for
-              the file that Hudson creates and keep track of.
+            <para>The feature to
+              <option>Record fingerprints of files to track usage</option>
+              can help you track down, where files are used and produced. It
+              will allow you to determine the build number that created an
+              artifact by looking at the fingerprint, which is a unique
+              identifier for the file that Hudson creates and keep track of.
             </para>
           </listitem>
         </varlistentry>
@@ -602,21 +600,22 @@
         <varlistentry>
           <term>Build other projects</term>
           <listitem>
-            <para>Building other projects after completing of the current
-              projects build is one of the key features that allows you to
-              set up chains of projects that are each small in focus and
-              build time, while in the bigger picture still being able to run
-              a build for very large and complex systems. The input
-              box
-              "Projects to build" accepts a comma separated list of projects
-              to build together with a checkbox that allows you to trigger
-              the dependent builds even if the current project build failed.
+            <para>Building other projects, after completion of the current
+              projects build, is one of the key features that allows you to set
+              up chains of projects. They can then all be small in focus and
+              build time. However in the bigger picture you are able to to run a
+              build for very large and complex systems. The input box
+              <option>Projects to build</option>
+              accepts a comma separated list of projects to build together with
+              a checkbox that allows you to trigger the dependent builds even if
+              the current project build failed.
             </para>
             <para>Some examples for the usage of this feature are a main project
               triggering separate projects that invoke unit and/integration
               tests, shared libraries invoking server as well as client side
               application builds or build system plugin builds triggering all
-              projects that use the plugin.
+              projects that use the plugin. <!-- TODO link to example in
+              maven chapter -->
             </para>
           </listitem>
         </varlistentry>
@@ -635,13 +634,14 @@
             </para>
             <para>To configure this feature, check the checkbox next to E-mail
               Notification and then specify a recipient email addresses in
-              Recipients separate by whitespace. Selecting "Send e-mail for
-              every unstable build" will instruct Hudson to send an email for
-              each build even if a build experience consecutive failures.
-              Selecting "Send separate e-mails to individuals who broke the
-              build" will send email to all committers that affected a build
-              that broke. The email will be retrieved from the SCM system, where
-              possible.
+              Recipients separate by whitespace. Selecting
+              <option>Send e-mail for every unstable build</option>
+              will instruct Hudson to send an email for each build even if a
+              build experience consecutive failures. Selecting
+              <option>Send separate e-mails to individuals who broke the build
+              </option>
+              will send email to all SCM committers that affected a build that
+              broke.
             </para>
           </listitem>
         </varlistentry>
@@ -653,28 +653,25 @@
 
   <section>
     <title>Configuring Free-style Projects</title>
-
+    <!-- HBOOK-67 -->
     <para>In addition to the common project configurations we discussed prior,
       a free-style Hudson project has a section for the build definition that
-      allows you to add individual build steps. Pressing the "Add build
-      step" button will provide you with the options:
+      allows you to add individual build steps. Pressing the <option>Add build
+      step</option> button will provide you with the options:
     </para>
   </section>
 
 
   <section>
     <title>Configuring Multi-Configuration Projects</title>
-
-    <para>TBD - has build steps and configuration matrix
-    </para>
+    <!-- HBOOK-66 -->
+    <para></para>
   </section>
 
     <section>
     <title>Configuring External Monitoring Projects</title>
-
-    <para>TBD or beyond scope of book, only has job name,
-      description and discard old builds in configuration on UI..
-    </para>
+    <!-- HBOOK-65 -->
+    <para></para>
   </section>
 
 

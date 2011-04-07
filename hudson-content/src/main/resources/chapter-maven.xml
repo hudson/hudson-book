@@ -5,7 +5,24 @@
   <title>Working with Apache Maven Builds</title>
 
   <section>
-    <title>Configuring Maven Build Options</title>
+    <title>Installing and Configuring Apache Maven</title>
+    <para>
+      xref to global config,
+      talk about install options (e.g. downside of package managed maven in
+      terms of version), what about multiple versions
+    </para>
+  </section>
+
+  <section>
+    <title>A Simple Example for a Apache Maven built project</title>
+    <para>should be a simple project which just calls mvn clean install,
+      talk about pros and cons of using clean, also talk about plugin:goal
+      steps?
+    </para>
+  </section>
+
+  <section>
+    <title>Details of Configuring Maven Build Options</title>
 
     <para>After configuring the general project options
       (see <xref linkend="chapter-build-creation"/>),
@@ -129,4 +146,26 @@
 
     </variablelist>
   </section>
+
+  <section>
+    <title>Managing the build artifacts of a Maven build</title>
+    <para>in hudson artifact, Nexus, Sonar, in hudson maven repo plugin.
+      .</para>
+  </section>
+
+  <section>
+    <title>Complex builds with Maven multi-module setup</title>
+    <para></para>
+  </section>
+
+  <section>
+    <title>Complex builds with Hudson job dependencies</title>
+    <para></para>
+  </section>
+
+  <section>
+    <title>Automating release builds</title>
+    <para></para>
+  </section>
+
 </chapter>

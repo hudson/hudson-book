@@ -471,10 +471,17 @@
 
     <!--See HBOOK-44-->
 
-    <para>Hudson allows for the ability to configure Shell builds. If you have
-    a build which requires the execution of bash script or a csh script, you
-    can configure which interpreter is used to execute shell scripts in this
-    configuration variable.</para>
+    <para>Hudson allows for the ability to configure shell builds. If you have a
+      build that requires the execution of shell scripts Hudson will by default
+      execute<varname>/bin/sh</varname>. For more complex builds scripts running
+      on different *nix environments, this can cause problems.
+      <varname>/bin/sh</varname>
+      often symlinks to a concrete shell like bash, ash, zsh or ksh. This setup
+      of a specific shell will change from operating system to operating system
+      as well as from user to user. If your scripts depend on a specific shell
+      you should therefore specify your default shell in this input to e.g.
+      <varname>/bin/bash</varname>.
+    </para>
 
     <figure id="fig-using-shell-execute">
       <title>Configuring Shell Executable</title>

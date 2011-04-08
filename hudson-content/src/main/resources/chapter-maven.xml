@@ -4,7 +4,7 @@
 <chapter id="chapter-maven">
   <title>Working with Apache Maven Builds</title>
 
-  <section>
+  <section id="section-installing-maven">
     <title>Installing and Configuring Apache Maven</title>
     <!-- HBOOK-69-->
         <para>
@@ -14,7 +14,7 @@
     </para>
   </section>
 
-  <section>
+  <section id="section-maven-example">
     <title>A Simple Example for a Apache Maven built project</title>
     <!-- HBOOK-70-->
         <para>should be a simple project which just calls mvn clean install,
@@ -23,7 +23,7 @@
     </para>
   </section>
 
-  <section>
+  <section id="section-maven-build-configuration">
     <title>Details of Configuring Maven Build Options</title>
     <!-- HBOOK-71-->
 
@@ -150,26 +150,26 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="section-maven-artifacts">
     <title>Managing the build artifacts of a Maven build</title>
     <!-- HBOOK-72 -->
     <para>in hudson artifact, Nexus, Sonar, in hudson maven repo plugin.
       .</para>
   </section>
 
-  <section>
+  <section id="section-maven-multi-module">
     <title>Complex builds with Maven multi-module setup</title>
     <!-- HBOOK-73-->
     <para></para>
   </section>
 
-  <section>
+  <section id="section-maven-hudson-dependencies">
     <title>Complex builds with Hudson job dependencies</title>
     <!-- HBOOK-74-->
     <para></para>
   </section>
 
-  <section>
+  <section id="section-maven-release-build">
     <title>Automating release builds</title>
     <!-- HBOOK-75-->
     <para></para>

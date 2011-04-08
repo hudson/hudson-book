@@ -653,12 +653,61 @@
 
   <section>
     <title>Configuring Free-style Projects</title>
-    <!-- HBOOK-67 -->
     <para>In addition to the common project configurations we discussed prior,
       a free-style Hudson project has a section for the build definition that
-      allows you to add individual build steps. Pressing the <option>Add build
-      step</option> button will provide you with the options:
+      allows you to add individual build steps. Press the <option>Add build
+      step</option> button in the <option>Build</option> configuration 
+      section to set up one or multiple steps that define your build.
     </para>
+    <variablelist>
+      <varlistentry>
+        <term>Execute Windows batch command</term>
+        <listitem>
+          <para>The <option>Command</option> input allows you to specify the the
+            name of the batch file to execute. The script has to return an error
+            level value of zero to be recognized as a build success by Hudson.
+            The script will be executed with the current workspace of the
+            project as the directory. A number of environment variables about
+            Hudson and the current project are passed to the execution of the
+            script and can be used from within the script.
+          </para>
+        </listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term>Execute shell</term>
+        <listitem>
+          <para>Executing a shell script as a build step is configured just like
+            a Windows batch command. The unix convention to use the first line
+            with a #! and the path to a executable allows you to write shell
+            scripts in many available shell and scripting languages.
+          </para>
+        </listitem>
+      </varlistentry>
+    
+      <varlistentry>
+        <term>Invoke Ant</term>
+        <listitem>
+          <para>Invoking an Ant target can be added just like a shell script
+            task, but with more configuration options. Find out more on how
+            to configure Ant invocations in
+            <xref linkend="section-ant-build-configuration"/>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Invoke top-level Maven targets</term>
+        <listitem>
+          <para>A Maven based build step can be configured as documented in 
+            <xref linkend="section-maven-build-configuration"/>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
   </section>
 
 

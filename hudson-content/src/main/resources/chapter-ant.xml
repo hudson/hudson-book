@@ -6,7 +6,7 @@
 
   <para></para>
 
-  <section>
+  <section id="section-installing-ant">
     <title>Installing Apache Ant for Hudson</title>
 
     <!--TODO: See HBOOK-34-->
@@ -17,7 +17,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-build-configuration">
     <title>Configuring Apache Ant Builds</title>
 
     <!--TODO: See HBOOK-38-->
@@ -25,7 +25,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-example">
     <title>Hudson Apache Ant Example</title>
 
     <!--TODO: See HBOOK-35-->
@@ -33,7 +33,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-best-pratices">
     <title>Apache Ant Build Best Practices</title>
 
     <!--TODO: See HBOOK-37-->
@@ -41,7 +41,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-troubleshooting">
     <title>Apache Ant Build Troubleshooting</title>
 
     <!--TODO: See HBOOK-36-->

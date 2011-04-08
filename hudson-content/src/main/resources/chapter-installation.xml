@@ -314,7 +314,7 @@ See HBOOK-11-->
     Hudson as a service. The following sections provide instructions for
     configuring Hudson as a service.</para>
 
-    <tsection id="ci-quickstart-sect-startup-scripts">
+    <section id="ci-quickstart-sect-startup-scripts">
       <title>Startup Scripts for Linux</title>
 
       <para><indexterm>

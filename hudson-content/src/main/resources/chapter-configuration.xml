@@ -361,7 +361,7 @@
     </para>
   </section>
 
-  <section>
+  <section id="section-configure-ant">
     <title>Configuring Ant Installations</title>
     <para>In a similar fashion to the JDK install Apache Ant can be installed in
       multiple versions to be available for your Hudson configured builds. The
@@ -397,7 +397,7 @@
       <xref linkend="chapter-ant"/></para>
   </section>
 
-  <section>
+  <section id="section-configure-maven">
     <title>Configuring Maven Installations</title>
 
     <para>One of the main uses cases for Hudson is building projects with
@@ -466,7 +466,7 @@
     </para>
   </section>
 
-  <section>
+  <section id="section-configure-shell">
     <title>Configuring the Shell Executable</title>
 
     <!--See HBOOK-44-->
@@ -502,7 +502,7 @@
     </figure>
   </section>
 
-  <section>
+  <section id="section-configure-email-notification">
     <title>Configuring E-mail Notification</title>
 
     <!-- SEE HBOOK-45-->
@@ -675,7 +675,7 @@
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section id="section-configure-email-gmail">
       <title>E-mail Notification Via Gmail</title>
       <!-- HBOOK-60 -->
       <para>In order to use GMail to send your emails you will need to
@@ -689,7 +689,7 @@
       </para>
     </section>
 
-    <section>
+    <section id="section-configure-email-exchange">
       <title>E-mail Notification Via Exchange Server</title>
       <!-- HBOOK-58 -->
       <!-- <para>need to explain how to setup different advanced config related
@@ -698,7 +698,7 @@
         linked in the built in help, </para> -->
     </section>
 
-    <section>
+    <section id="section-configure-email-advanced">
       <title>Advanced configuration with JavaMail system properties</title>
       <!-- HBOOK-57 -->
     </section>

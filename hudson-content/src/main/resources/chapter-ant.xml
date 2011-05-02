@@ -9,12 +9,30 @@
   <section id="section-installing-ant">
     <title>Installing Apache Ant for Hudson</title>
 
-    <!--TODO: See HBOOK-34-->
-    <!-- add an example of a custom ant install from a custom zip file that
-    contains ant contrib as well as a jar for a custom inhouse task and add
-    link to Hudson configuration chapter. -->
+    <para>The general configuration for Apache Ant installs on Hudson is
+      available in
+      <xref linkend="section-configure-ant"/>. You can read about influencing
+      factors for your Apache Maven install, that apply to your strategy for
+      installing Ant as well in <xref linkend="section-installing-maven"/>.
+    </para>
 
-    <para></para>
+    <para>A common scenario for Apache Ant installs is the requirement of a
+      build to have access to Ant tasks as provided in Ant-Contrib (add URL
+      here?) like
+      <command>For</command>
+      or
+      <command>If</command>
+      or to have some required libraries like jsch (add url?) for the
+      <command>scp</command>
+      available on the Ant classpath. Custom developed Ant tasks can be needed
+      in a similar fashion. A convenient way to achieve this, is the creation of
+      a custom archive containing the Ant install as well as additional
+      libraries necessary. This archive can then be used with the
+      <option>Extract from*.zip/*.tar.gz</option>
+      option to get a fully working Ant and dependencies installed on all build
+      cluster nodes.
+    </para>
+
   </section>
 
   <section id="section-ant-build-configuration">

@@ -580,16 +580,12 @@
 
       <varlistentry>
         <term>System Admin E-Mail Address</term>
-          <!-- TODO watch http://issues.hudson-ci.org/browse/HUDSON-8797
-          and remove whatever paragraph needs to be removed below,
-          also update screen shot when changed version is released -->
-        <listitem>
+       <listitem>
           <para>This is the email address used as the email sender in any
-            E-mail notification.</para>
-
-          <para>This is the email address of the system administrator of the
-            Hudson install or a mailing list for the administrator team.
-          </para>
+            E-mail notification sent by the server. When configuring this
+            email you should either ensure that emails sent back as a reply
+            are monitored by somebody or bounced by the server with some
+            meaningful error message.</para>
         </listitem>
       </varlistentry>
 

@@ -37,10 +37,103 @@
 
   <section id="section-ant-build-configuration">
     <title>Configuring Apache Ant Builds</title>
+    <para>After configuring the general project options as documented in
+        <xref linkend="chapter-build-creation"/>),
+        you can configure one
+        or more build steps. To add a build step, click on the Add build step
+        button and select <option>Invoke Ant</option>.
+      </para>
 
-    <!--TODO: See HBOOK-38-->
+      <para>The basic and advanced options for invoking Ant are shown in <xref
+        linkend="fig-configure-ant-build-step" />.</para>
 
-    <para></para>
+      <figure id="fig-configure-ant-build-step">
+        <title>Configuring an Ant Build Steps</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/configure-ant-build-step.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/configure-ant-build-step.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <variablelist>
+        <varlistentry>
+          <term>Ant Version</term>
+          <listitem>
+            <para>Your Hudson installation may have one or more Ant
+              installations configured as part of the global Hudson
+              configuration. This drop down allows you to specify the version of
+              Ant for usage with the current build step.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Targets</term>
+          <listitem>
+            <para>This field allows you to specify the command line parameters
+              used for the Ant invocation. These are all options and targets
+              supported by the specified Ant and the current
+              <option>Build File</option>. If nothing is specified in this
+              field, the build step will invoke Ant without parameters. With a
+              default target specified in the build file, this can be sufficient
+              for a full build depending on your build file.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build File</term>
+          <listitem>
+            <para>If your project uses the standard
+              <varname>build.xml</varname>
+              filename, there is no need to specify a
+              <option>Build File</option>
+              If your projects uses a build file with an alternative name or
+              path other than directly in the project root, you can specify that
+              file name and path here. This setting is equivalent to the command
+              line option
+              <option>-f buildfilepath</option>. The path specified has to be
+              relative to the project root.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Properties</term>
+          <listitem>
+            <para>You can pass one or more properties to the Ant process. This
+              field accepts a list of properties with lines in a
+              <option>key=value</option> format. These properties will be
+              passed into the Ant build step invocation using the standard
+              way of passing properties of <option>-Dkey1=value1
+                -Dkey2=value2</option>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Java Options</term>
+          <listitem>
+            <para>If your build requires specific Java options, they can be set
+              in this field. The options are passed straight through as ANT_OPTS
+              and use the normal
+              <option>java</option>
+              command line options syntax. A common configuration for complex
+              builds is to specify a larger memory for the JVM running Ant via
+              <option>-Xmx1024m</option>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
   </section>
 
   <section id="section-ant-example">

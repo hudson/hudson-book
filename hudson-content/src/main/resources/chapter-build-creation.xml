@@ -500,26 +500,24 @@
         <xref linkend="chapter-plugins"/>.
       </para>
 
-      <figure id="fig-using-new-post-build">
+      <figure id="fig-post-build-actions">
         <title>Configuring Project Post-build Options</title>
-
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-new-post-build.png"
-                       scalefit="1" />
+                       fileref="figs/web/post-build-actions.png" scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/ci-using-new-post-build.pdf"
-                       scalefit="0" width="100%" />
+                       fileref="figs/print/post-build-actions.pdf" scalefit="0"
+                       width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
 
       <para>Other important post-build events include the archiving of
-      artifacts. If you would like Hudson to keep an archive of specific files
+        artifacts. If you would like Hudson to keep an archive of specific files
       from each build, preserving version between build. Check the box next to
       <option>Archive the artifacts</option> and then specify paths, relative to the
       workspace directory, of artifacts to preserve and associate with
@@ -529,6 +527,22 @@
         <varlistentry>
           <term>Publish Javadoc</term>
           <listitem>
+            <figure id="fig-post-build-actions-javadoc">
+              <title>Configuring the Javadoc post build action</title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-javadoc.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-javadoc.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
             <para>With this feature activated Hudson will generate Javadoc from
               the build and publish it to the specified folder. This in turn
               makes the Javadoc available to your users via a web browser.
@@ -543,6 +557,24 @@
         <varlistentry>
           <term>Aggregate downstream test results</term>
           <listitem>
+            <figure id="fig-post-build-actions-aggregate-test">
+              <title>Configuring the test result aggregation post build action
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-aggregate-test.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-aggregate-test.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+
             <para>This feature allows you to pull the test results of this
               project and any downstream projects together. This is especially
               useful when long running test are actually set up as separate
@@ -556,6 +588,24 @@
         <varlistentry>
           <term>Publish JUnit test result report</term>
           <listitem>
+            <figure id="fig-post-build-actions-junit">
+              <title>Configuring the JUnit test result report post build
+                action
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-junit.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-junit.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
             <para>Activating this feature allows Hudson to interpret the JUnit
               test report format, produced by your test runs in the project and
               produce historic test result trends, a web interface for viewing
@@ -570,8 +620,25 @@
         <varlistentry>
           <term>Archive the artifacts</term>
           <listitem>
+            <figure id="fig-post-build-actions-archive-artifacts">
+              <title>Configuring the artifacts archival post build action
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-archive-artifacts.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-archive-artifacts.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
             <para>
-              With this feature enabled Hudson will keep the specified artifacts
+            With this feature enabled Hudson will keep the specified artifacts
               available on the web interface. Using a wildcard syntax in the
               <option>Files to archive</option>
               as well as the
@@ -587,6 +654,22 @@
         <varlistentry>
           <term>Recording fingerprints of files to track usage</term>
           <listitem>
+            <figure id="fig-post-build-actions-fingerprint">
+              <title>Configuring the fingerprinting post build action</title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-fingerprint.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-fingerprint.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
             <para>The feature to
               <option>Record fingerprints of files to track usage</option>
               can help you track down, where files are used and produced. It
@@ -600,6 +683,24 @@
         <varlistentry>
           <term>Build other projects</term>
           <listitem>
+            <figure id="fig-post-build-actions-build-other">
+              <title>Configuring downstream builds post build action
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-build-other.png"
+                             scalefit="1"/>
+                </imageobject>
+
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-build-other.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+
             <para>Building other projects, after completion of the current
               projects build, is one of the key features that allows you to set
               up chains of projects. They can then all be small in focus and
@@ -623,6 +724,24 @@
         <varlistentry>
           <term>E-mail Notification</term>
           <listitem>
+              <figure id="fig-post-build-actions-email">
+                <title>Configuring the email notification post build action
+                </title>
+                <mediaobject>
+                  <imageobject role="web">
+                    <imagedata contentdepth="100%"
+                               fileref="figs/web/post-build-actions-email.png"
+                               scalefit="1"/>
+                  </imageobject>
+
+                  <imageobject role="print">
+                    <imagedata align="center"
+                               fileref="figs/print/post-build-actions-email.pdf"
+                               scalefit="0" width="100%"/>
+                  </imageobject>
+                </mediaobject>
+              </figure>
+
             <para>One of the most valuable post-build action for a continuous
               integration build is the sending of build notification emails.
               Hudson can be configured to send out build failure notices to any

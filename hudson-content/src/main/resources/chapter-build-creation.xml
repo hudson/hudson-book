@@ -489,15 +489,23 @@
       <title>Configuring Post-build Actions</title>
 
       <para>Post build actions are an important part of Hudson. They allow you
-        to communicate the results of the build in various ways as well as
-        chain other builds to this build. As such these actions are
-        crucial role of a continuous integration server as communication
-        tool.</para>
+        to trigger a number of events upon build completion. These include the
+        communication of the results of the build in various ways as well as
+        chain other builds to this build. As such these actions fulfill a
+        crucial role of a continuous integration server as communication tool.
+        Other important actions allow you to deal with the various artifacts
+        produced by the build in the form of test results, documentation as well
+        as actual executables or archives produced.
+      </para>
 
       <para>Beyond the core post-build actions documented in the following,
-        various plugins will make additional actions available, which are
+        various plugins will make additional actions available. Source code
+        management related plugin documentation can be found in
+        <xref linkend="chapter-source-control"/>. Other plugins are
         documented in
-        <xref linkend="chapter-plugins"/>.
+        <xref linkend="chapter-plugins"/>. The minimum list of build actions
+        available is visible in <xref linkend="fig-post-build-actions"/> and
+        documented in more detail below.
       </para>
 
       <figure id="fig-post-build-actions">
@@ -516,12 +524,6 @@
         </mediaobject>
       </figure>
 
-      <para>Other important post-build events include the archiving of
-        artifacts. If you would like Hudson to keep an archive of specific files
-      from each build, preserving version between build. Check the box next to
-      <option>Archive the artifacts</option> and then specify paths, relative to the
-      workspace directory, of artifacts to preserve and associate with
-      numbered builds.</para>
 
       <variablelist>
         <varlistentry>
@@ -535,7 +537,6 @@
                              fileref="figs/web/post-build-actions-javadoc.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-javadoc.pdf"
@@ -543,13 +544,26 @@
                 </imageobject>
               </mediaobject>
             </figure>
-            <para>With this feature activated Hudson will generate Javadoc from
-              the build and publish it to the specified folder. This in turn
-              makes the Javadoc available to your users via a web browser.
-              Checking the <option>Retain Javadoc for each successful build</option>
+            <para>If you build produces Javadoc you can configure Hudson to make
+              it available to users on the project page of Hudson. To configure
+              this you have to select the checkbox and provide the relative path
+              to the Javadoc in the
+              <option>Javadoc directory</option>
+              input field. Checking the
+              <option>Retain Javadoc for each successful build</option>
               will keep the generated Javadoc for all successful builds in the
               specified folder for older builds instead of overwriting the
               documentation with each build.
+            </para>
+            <para>If a warning of
+              <option>No such directory</option>
+              is visible, it means that the current project workspace does
+              not contain the specified path. This is not a problem as long as
+              your build will create the folder. The
+              <option>Console Output</option>
+              of a specific build contains logging information started by
+              <option>Publishing Javadoc</option>
+              that can be used to debug any problems.
             </para>
           </listitem>
         </varlistentry>
@@ -566,7 +580,6 @@
                              fileref="figs/web/post-build-actions-aggregate-test.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-aggregate-test.pdf"
@@ -577,7 +590,7 @@
 
             <para>This feature allows you to pull the test results of this
               project and any downstream projects together. This is especially
-              useful when long running test are actually set up as separate
+              useful when long running test are set up as separate
               downstream projects. You can either let Hudson figure out all
               downstream projects automatically or supply a specific list of
               projects in the <option>Jobs to aggregate</option> input box.
@@ -598,7 +611,6 @@
                              fileref="figs/web/post-build-actions-junit.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-junit.pdf"
@@ -612,7 +624,8 @@
               the reports and more features. The location of the produced xml
               files has to be specified in the text input box. In addition it is
               possible to retain the build log output by checking the
-              <option>Retain long standard output/error</option>
+              <option>Retain long standard output/error</option>. Everything
+              will be available to users from a link on the project page.
             </para>
           </listitem>
         </varlistentry>
@@ -629,7 +642,6 @@
                              fileref="figs/web/post-build-actions-archive-artifacts.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-archive-artifacts.pdf"
@@ -648,6 +660,14 @@
               release artifacts like war, ear or zip files available for
               retrieval by other users as well as for archival purposes.
             </para>
+
+
+      <para>Other important post-build events include the archiving of
+        artifacts. If you would like Hudson to keep an archive of specific files
+      from each build, preserving version between build. Check the box next to
+      <option>Archive the artifacts</option> and then specify paths, relative to the
+      workspace directory, of artifacts to preserve and associate with
+      numbered builds.</para>
           </listitem>
         </varlistentry>
 
@@ -662,7 +682,6 @@
                              fileref="figs/web/post-build-actions-fingerprint.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-fingerprint.pdf"
@@ -692,7 +711,6 @@
                              fileref="figs/web/post-build-actions-build-other.png"
                              scalefit="1"/>
                 </imageobject>
-
                 <imageobject role="print">
                   <imagedata align="center"
                              fileref="figs/print/post-build-actions-build-other.pdf"
@@ -733,7 +751,6 @@
                                fileref="figs/web/post-build-actions-email.png"
                                scalefit="1"/>
                   </imageobject>
-
                   <imageobject role="print">
                     <imagedata align="center"
                                fileref="figs/print/post-build-actions-email.pdf"

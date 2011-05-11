@@ -545,10 +545,29 @@
               </mediaobject>
             </figure>
             <para>If your build produces Javadoc you can configure Hudson to
-              make
-              it available to users on the project page of Hudson. To configure
-              this you have to select the checkbox and provide the relative path
-              to the Javadoc in the
+              make it available to users on the project page of Hudson:
+            </para>
+            <figure id="fig-post-build-actions-javadoc-junit-project">
+              <title>Project page providing access to Javadoc and latest test
+                results
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-javadoc-junit-project.png"
+                             scalefit="1"/>
+                </imageobject>
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-javadoc-junit-project.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+
+            <para>
+              To configure this you have to select the checkbox and provide the
+              relative path to the Javadoc in the
               <option>Javadoc directory</option>
               input field. Checking the
               <option>Retain Javadoc for each successful build</option>
@@ -622,11 +641,13 @@
             <para>Activating this feature allows Hudson to interpret the JUnit
               test report format, produced by your test runs in the project and
               produce historic test result trends, a web interface for viewing
-              the reports and more features. The location of the produced xml
-              files has to be specified in the text input box. In addition it is
-              possible to retain the build log output by checking the
-              <option>Retain long standard output/error</option>. Everything
-              will be available to users from a link on the project page.
+              the reports accessible from the project page as visible in <xref
+                  linkend="fig-post-build-actions-javadoc-junit-project"/>. The
+              location of the produced xml files has to be specified in the text
+              input box, which allows the use of patterns to find files in
+              multiple sub folders of the project.In addition it is possible to
+              retain the build log output by checking the
+              <option>Retain long standard output/error</option>.
             </para>
           </listitem>
         </varlistentry>

@@ -544,7 +544,8 @@
                 </imageobject>
               </mediaobject>
             </figure>
-            <para>If you build produces Javadoc you can configure Hudson to make
+            <para>If your build produces Javadoc you can configure Hudson to
+              make
               it available to users on the project page of Hudson. To configure
               this you have to select the checkbox and provide the relative path
               to the Javadoc in the
@@ -650,24 +651,64 @@
               </mediaobject>
             </figure>
             <para>
-            With this feature enabled Hudson will keep the specified artifacts
-              available on the web interface. Using a wildcard syntax in the
+              With this feature enabled Hudson will keep the specified artifacts
+              and make them available on the web interface. Using a wildcard
+              syntax in the
               <option>Files to archive</option>
               as well as the
               <option>Excludes</option>
-              input boxes you can specify the artifacts that should be archived
-              after each successful build. You can therefore for example keep
-              release artifacts like war, ear or zip files available for
-              retrieval by other users as well as for archival purposes.
+              input boxes you can specify the artifacts that should be saved
+              after each successful build.The artifacts of the last successful
+              build are available on the project overview page as visible in
+              <xref linkend="fig-post-build-actions-archive-artifacts-project
+              "/>.
             </para>
-
-
-      <para>Other important post-build events include the archiving of
-        artifacts. If you would like Hudson to keep an archive of specific files
-      from each build, preserving version between build. Check the box next to
-      <option>Archive the artifacts</option> and then specify paths, relative to the
-      workspace directory, of artifacts to preserve and associate with
-      numbered builds.</para>
+            <figure id="fig-post-build-actions-archive-artifacts-project">
+              <title>A project overview page for the Hudson book build with the
+                latest build artifact available for download
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-archive-artifacts-project.png"
+                             scalefit="1"/>
+                </imageobject>
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-archive-artifacts-project.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+            <para>In addition
+              <xref linkend="fig-post-build-actions-archive-artifacts-build"/>
+              shows how the artifacts produced by a specific build can be
+              accessed on build specific page.
+            </para>
+            <figure id="fig-post-build-actions-archive-artifacts-build">
+              <title>A build specific page for the Hudson book build with build
+                artifact available for download
+              </title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/post-build-actions-archive-artifacts-build.png"
+                             scalefit="1"/>
+                </imageobject>
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/post-build-actions-archive-artifacts-build.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+            <para>
+              This feature is useful to make release artifacts like war, ear or
+              zip files available for retrieval by other users and for archival
+              purposes. Hudson can be used as the reference storage place for
+              these artifacts that are in turn used e.g. for QA and production
+              deployments or for distribution to customers.
+            </para>
           </listitem>
         </varlistentry>
 
@@ -719,11 +760,11 @@
               </mediaobject>
             </figure>
 
-            <para>Building other projects, after completion of the current
-              projects build, is one of the key features that allows you to set
-              up chains of projects. They can then all be small in focus and
-              build time. However in the bigger picture you are able to to run a
-              build for very large and complex systems. The input box
+            <para>Building other projects after completion of the current
+              project build, is one of the key features that allows you to set
+              up chains of project builds. They can then all be small in focus
+              and build time. However in the bigger picture you are able to to
+              run a build for very large and complex systems. The input box
               <option>Projects to build</option>
               accepts a comma separated list of projects to build together with
               a checkbox that allows you to trigger the dependent builds even if
@@ -733,8 +774,7 @@
               triggering separate projects that invoke unit and/integration
               tests, shared libraries invoking server as well as client side
               application builds or build system plugin builds triggering all
-              projects that use the plugin. <!-- TODO link to example in
-              maven chapter -->
+              projects that use the plugin.
             </para>
           </listitem>
         </varlistentry>
@@ -759,7 +799,8 @@
                 </mediaobject>
               </figure>
 
-            <para>One of the most valuable post-build action for a continuous
+            <para>A very valuable post-build action for a
+              continuous
               integration build is the sending of build notification emails.
               Hudson can be configured to send out build failure notices to any
               email address. In most instances it will be best to send the
@@ -777,7 +818,8 @@
               <option>Send separate e-mails to individuals who broke the build
               </option>
               will send email to all SCM committers that affected a build that
-              broke.
+              broke. The email will be sent with the configuration specified in
+              <xref linkend="section-configure-email-notification"/>.
             </para>
           </listitem>
         </varlistentry>

@@ -88,7 +88,7 @@
     <xi:include href="chapter-configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-security.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-plugin-management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="chapter-build-creation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-project-configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-maven.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-ant.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-source-control.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>

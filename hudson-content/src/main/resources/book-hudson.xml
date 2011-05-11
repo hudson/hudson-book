@@ -93,11 +93,12 @@
     <xi:include href="chapter-ant.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-source-control.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-grid.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-notable-plugins.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-ide-integration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-nexus.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-sonar.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-polyglot.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-plugin-writing.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="chapter-notable-plugins.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="appendix-license.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="appendix-changes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 

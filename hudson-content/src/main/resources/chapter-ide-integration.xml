@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
+<chapter id="chapter-ide-integration">
+    <title>IDE Integration</title>
+    <para>The default way of interacting with Hudson is the web-based user
+      interface. In addition Hudson ships with web service interfaces, that
+      enable integration with others tools such as integrated development
+      environments.</para>
+
+  <section>
+    <title>Eclipse Integration</title>
+    <para>coming with the new Maven builder... will document when available</para>
+  </section>
+
+</chapter>

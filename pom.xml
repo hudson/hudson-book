@@ -74,6 +74,26 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.0</version>
+        <executions>
+          <execution>
+            <id>enforce-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireMavenVersion>
+                  <version>[3.0.0,]</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-release-plugin</artifactId>
         <version>2.0</version>
@@ -82,35 +102,35 @@
           <autoVersionSubmodules>true</autoVersionSubmodules>
           <goals>clean compile install site-deploy</goals>
           <releaseProfiles>publish</releaseProfiles>
-	      <preparationGoals>clean install</preparationGoals>
+          <preparationGoals>clean install</preparationGoals>
           <useReleaseProfile>false</useReleaseProfile>
         </configuration>
-	<dependencies>
-	  <dependency>
-	    <groupId>org.apache.maven.scm</groupId>
-	    <artifactId>maven-scm-provider-gitexe</artifactId>
-	    <version>1.2</version>
-	  </dependency>
-	</dependencies>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>1.2</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-scm-plugin</artifactId>
-	<version>1.2</version>
-	<dependencies>
-	  <dependency>
-	    <groupId>org.apache.maven.scm</groupId>
-	    <artifactId>maven-scm-provider-gitexe</artifactId>
-	    <version>1.2</version>
-	  </dependency>
-	</dependencies>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.2</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>1.2</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
     <extensions>
       <extension>
         <groupId>org.apache.maven.wagon</groupId>
-         <artifactId>wagon-ssh</artifactId>
-         <version>1.0-beta-6</version>
+        <artifactId>wagon-ssh</artifactId>
+        <version>1.0-beta-6</version>
       </extension>
     </extensions>
   </build>

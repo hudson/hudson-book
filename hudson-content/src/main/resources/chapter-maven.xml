@@ -94,6 +94,14 @@
     </para>
   </section>
 
+  <section>
+    <title>Maven 2 or Maven 3</title>
+    <para>Explain difference between Maven 2 (Legacy) and Maven 3
+      configuration and build steps as well as the deprecated Maven project
+      type, do that either here or in an earlier section or chapter
+    </para>
+  </section>
+
   <section id="section-maven-example">
     <title>A Simple Example for a Apache Maven built project</title>
     <!-- HBOOK-70-->
@@ -103,8 +111,8 @@
     </para>
   </section>
 
-  <section id="section-maven-build-configuration">
-    <title>Details of Configuring Maven Build Options</title>
+  <section id="section-maven-2-build-configuration">
+    <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
 
     <para>After configuring the general project options
       (see <xref linkend="chapter-build-creation"/>),
@@ -113,7 +121,9 @@
       button as shown in <xref linkend="fig-using-new-build-config"/>. To
       configure a Maven build, select <option>Invoke top-level Maven targets</option>.
     </para>
+    <!-- TODO Change to Invoke Maven 2 (Legacy) -->
 
+    <!-- TODO new screen shot with Maven 2 and Maven 3 when its in a release -->
     <figure id="fig-using-new-build-config">
       <title>Configuring Project Build Options</title>
 
@@ -136,7 +146,7 @@
     target are shown in <xref linkend="fig-using-top-level-maven" />.</para>
 
     <figure id="fig-using-top-level-maven">
-      <title>Configuring Top-level Maven Build Options</title>
+      <title>Configuring a Maven 2 (Legacy) Build Step</title>
 
       <mediaobject>
         <imageobject role="web">
@@ -286,8 +296,251 @@
         </imageobject>
       </mediaobject>
     </figure>
+  </section>
 
+  <section id="section-maven-3-build-configuration">
+    <title>Details of Configuring Maven 3 Build Options</title>
 
+    <para>After configuring the general project options
+      (see <xref linkend="chapter-build-creation"/>),
+      you can configure one
+      or more build steps. To add a build step, click on the Add build step
+      button as shown in <xref linkend="fig-using-new-build-config"/>. To
+      configure a Maven build, select <option>Invoke Maven 3</option>.
+    </para>
+
+    <para>The basic and advanced options for configuring a Maven 3 build step
+      are shown in <xref linkend="fig-maven-3-build-step-default"/> and
+      <xref linkend="fig-maven-3-build-step-advanced"/>
+      .</para>
+
+    <figure id="fig-maven-3-build-step-default">
+      <title>Configuring a Maven 3 Build Step - Default Options</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/build-step-maven-3-default.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/build-step-maven-3-default.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <figure id="fig-maven-3-build-step-advanced">
+      <title>Configuring a Maven 3 Build Step - Advanced Options</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/build-step-maven-3-advanced-.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/build-step-maven-3-advanced.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <variablelist>
+      <varlistentry>
+        <term>Maven Version</term>
+        <listitem>
+          <para>Your Hudson installation may have one or more Maven
+            installations configured as part of the global Hudson configuration.
+            This drop down allows you to specify the version of Maven for usage
+            with the current build step. By default the Maven 3 integration
+            will use a bundled version of Maven 3.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Goals</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Properties</term>
+        <listitem>
+          <para>You can pass one or more properties to the Maven process. This
+            field accepts a list of properties with lines in a
+            <option>key=value</option> format. These properties will be
+            passed into the Maven build step invocation using the standard
+            way of passing properties of <option>-Dkey1=value1
+              -Dkey2=value2</option>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>POM File</term>
+        <listitem>
+          <para>If your project uses the standard
+            <varname>pom.xml</varname>
+            filename, there is no need to specify a POM. If your projects uses a
+            POM with an alternative name or path other than directly in the
+            project root, you can specify that file name and path here. This
+            setting is equivalent to the command line option
+            <option>-f pomfilepath</option>
+            or<option>--file pomfilepath</option>. The path specified has to be
+            relative to the project root.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Private repository</term>
+        <listitem>
+          <para>By default a Maven invocation will use a local repository in the
+            current users home directory taking any further repository
+            configuration done in
+            <option>settings.xml</option>
+            into account. Depending on the necessary separation of the different
+            jobs running on Hudson it can be useful to have a separate Maven
+            repository for each project. Activating this feature will cause the
+            creation of a separate Maven repository in a
+            <varname>.repository</varname>
+            folder in the projects workspace. This can cause considerable usage
+            of storage space, which consequently should be monitored carefully.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Private temporary directory</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Offline</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Profiles</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Show Errors</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Verbosity</term>
+        <listitem>
+          <para>NORMAL, QUIET or DEBUG</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Checksum Mode</term>
+        <listitem>
+          <para>Normal, strict or lax</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Snapshot Updates</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Recursive</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Projects</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Resume From</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Fail Mode</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Make Mode</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Threading</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Settings</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Global Settings</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Tool Chains</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>JVM Options</term>
+        <listitem>
+          <para>If your build requires specific JVM options, they can be set in
+            this field. The options are passed straight through as MAVEN_OPTS
+            and use the normal
+            <option>java</option>
+            command line options syntax. A common configuration for complex
+            builds is to specify a larger memory for the JVM running Maven via
+            <option>-Xmx1024m</option>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </section>
 
   <section id="section-maven-artifacts">

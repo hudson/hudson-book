@@ -689,6 +689,9 @@
                 latest build artifact available for download
               </title>
               <mediaobject>
+                <!-- TODO this screenshot needs to be updated when the
+                changed wording for the artifacts is deployed on the server
+                see https://github.com/hudson/hudson/pull/40 -->
                 <imageobject role="web">
                   <imagedata contentdepth="100%"
                              fileref="figs/web/post-build-actions-archive-artifacts-project.png"
@@ -900,7 +903,7 @@
       <varlistentry>
         <term>Invoke top-level Maven targets</term>
         <listitem>
-          <para>A Maven based build step can be configured as documented in 
+          <para>A Maven based build step can be configured as documented in
             <xref linkend="section-maven-build-configuration"/>
           </para>
         </listitem>

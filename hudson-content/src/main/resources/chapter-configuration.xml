@@ -6,16 +6,19 @@
 
   <para>To configure Hudson, click on the Manage Hudson link in the left-hand
   navigation menu, which will display the screen shown in <xref
-  linkend="fig-using-manage-matrix" />. This chapter will focus on the
+  linkend="fig-using-manage-hudson" />. This chapter will focus on the
   <indexterm>
       <primary>Configure System</primary>
     </indexterm><option>Configure System</option>
       section.</para>
 
-  <figure id="fig-using-manage-matrix">
+  <figure id="fig-using-manage-hudson">
     <title>Managing Hudson</title>
 
-    <mediaobject>
+    <!-- TODO HBOOK-81  need new screenshot with Maven 3 configuration added if
+      that is how it will be or otherwise update related documentation
+    -->
+    configuration on<mediaobject>
       <imageobject role="web">
         <imagedata contentdepth="100%"
                    fileref="figs/web/manage-hudson.png" scalefit="1" />
@@ -362,7 +365,7 @@
   </section>
 
   <section id="section-configure-ant">
-    <title>Configuring Ant Installations</title>
+    <title>Configuring Ant Installations</title>   fig-mange-mvn-config
     <para>In a similar fashion to the JDK install Apache Ant can be installed in
       multiple versions to be available for your Hudson configured builds. The
       default configuration is to supply a name like
@@ -749,4 +752,134 @@
       </mediaobject>
     </figure>
   </section>
+
+
+  <section>
+     <title>Managing Maven 3 Configuration</title>
+
+     <para>The Maven 3 integration of Hudson provides you with the ability to
+     manage custom Maven configuration files directly through the Hudson user
+     interface. You can manage:</para>
+
+     <itemizedlist>
+       <listitem>
+         <para>Maven Settings Configuration</para>
+       </listitem>
+
+       <listitem>
+         <para>Maven Toolchains Configuration</para>
+       </listitem>
+     </itemizedlist>
+
+    <section>
+      <title>Opening the Maven 3 Configuration Page</title>
+
+      <para>To open the Maven 3 Configuration page, click on
+        <option>Manage Server</option>
+        in the left-hand Hudson menu, and then select the
+        <option>Maven 3 Configuration</option>
+        item shown in<xref linkend="fig-using-manage-hudson"/>.
+      </para>
+
+      <para>Once you select the Maven 3 Configuration option, you will see the
+        page shown in<xref linkend="fig-manage-mvn-3-configurations"/>. If you
+        have already configured Maven Settings or Maven Toolchains configuration
+        documents they will appear in the list of documents shown on this page.
+        If you have not configured any Maven configuration documents, you will
+        see the empty configuration screen shown in<xref
+            linkend="fig-manage-mvn-3-configurations"/>.
+      </para>
+
+      <figure id="fig-manage-mvn-3-configurations">
+        <title>The Maven 3 Configuration Page</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/manage-mvn-3-configurations.png"
+                       scalefit="1"/>
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/manage-mvn-3-configurations.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>To create a new Maven 3 Configuration document, click on the
+        <option>Add</option>
+        button. This will create a new configuration document and display a form
+        that will allow you to name the document, describe the document, select
+        a document type, and supply configuration content for a configuration
+        document.
+      </para>
+
+      <para>To remove an existing document, select the document from the list of
+        documents shown and click on the
+        <option>Remove</option>
+        button. This will load a confirmation dialog. If the action is
+        confirmed, the document will be permanently removed from your Hudson
+        instance.
+      </para>
+
+      <para>Click the Refresh button in the interface to reload the Hudson
+        configuration and display any configuration documents which may have
+        been altered since you first loaded this page.
+      </para>
+    </section>
+
+    <section>
+      <title>Managing Maven 3 Settings Configuration</title>
+
+      <para>To create a new Maven 3 Setting configuration file which can be
+        referenced by a Hudson Maven 3 build step, click on the
+        <option>Add</option>
+        button as shown in<xref linkend="fig-manage-mvn-3-configurations"/>.
+        Clicking on Add will display a form containing the ID, Type, Name,
+        Description, and Attribute fields as shown in<xref
+            linkend="fig-manage-mvn-3-settings"/>. Select
+        <option>SETTINGS</option>
+        for the Type field.
+      </para>
+
+      <figure id="fig-manage-mvn-3-settings">
+        <title>Managing Maven 3 Settings in Hudson</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/manage-mvn-3-config-settings.png"
+                       scalefit="1"/>
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/manage-mvn-3-config-settings.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>The sample Maven 3 Settings configuration shown in
+        <xref linkend="fig-manage-mvn-3-settings"/>
+        define a General Maven 3 Settings file which configures all Maven 3
+        builds to read artifacts from a corporate Nexus repository. This sample
+        XML was copied from
+        <ulink
+            url="http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html">
+          the Maven 3 Settings example
+        </ulink>
+        in the Sonatype Nexus book and customized to reference a hypothetical
+        server running on
+        <varname>nexus.sonatype.org:8081</varname>.
+      </para>
+
+      <para>Usage of the Maven 3 Settings configuration file in a Hudson job is
+        documented in<xref linkend="section-maven-3-build-configuration"/>.
+      </para>
+
+
+    </section>
+  </section>
+
 </chapter>

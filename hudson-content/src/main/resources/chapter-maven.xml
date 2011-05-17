@@ -509,14 +509,25 @@
       <varlistentry>
         <term>Settings</term>
         <listitem>
-          <para></para>
+          <para>This option corresponds to the -s command-line option for
+             Maven 3 and supplies a Maven 3 build step with a custom
+
+            Settings
+             configuration file. The dropdown for this field is populated with
+             the Maven 3 Settings files configured in the Hudson
+             Maven 3 Configuration page as shown in <xref
+             linkend="fig-manage-mvn-3-settings" />.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Global Settings</term>
         <listitem>
-          <para></para>
+          <para>This option corresponds to the -gs command-line option for
+             Maven and isn't used as frequently as the -s option. This option
+             allows you to reference a custom Global configuration file that
+             is an alternative to the Global Settings file that ships with
+             Apache Maven.</para>
         </listitem>
       </varlistentry>
 

@@ -555,26 +555,26 @@
   </section>
 
   <section id="section-maven-artifacts">
-    <title>Managing the build artifacts of a Maven build</title>
+    <title>Managing the Build Artifacts of a Maven Build</title>
     <!-- HBOOK-72 -->
     <para>in hudson artifact, Nexus, Sonar, in hudson maven repo plugin.
       .</para>
   </section>
 
   <section id="section-maven-multi-module">
-    <title>Complex builds with Maven multi-module setup</title>
+    <title>Complex Builds with Maven Multi-module Setup</title>
     <!-- HBOOK-73-->
     <para></para>
   </section>
 
   <section id="section-maven-hudson-dependencies">
-    <title>Complex builds with Hudson job dependencies</title>
+    <title>Complex Builds with Hudson Job Dependencies</title>
     <!-- HBOOK-74-->
     <para></para>
   </section>
 
   <section id="section-maven-release-build">
-    <title>Automating release builds</title>
+    <title>Automating Release Builds</title>
     <!-- HBOOK-75-->
     <para></para>
   </section>

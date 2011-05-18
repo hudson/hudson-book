@@ -365,7 +365,7 @@
   </section>
 
   <section id="section-configure-ant">
-    <title>Configuring Ant Installations</title>   fig-mange-mvn-config
+    <title>Configuring Ant Installations</title>
     <para>In a similar fashion to the JDK install Apache Ant can be installed in
       multiple versions to be available for your Hudson configured builds. The
       default configuration is to supply a name like

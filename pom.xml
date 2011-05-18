@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.sonatype.hudsonbook</groupId>
   <artifactId>hudson-book-parent</artifactId>
-  <version>2.9</version>
+  <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>The Hudson Book</name>
-  <description>A book about Hudson</description>
+  <description>A User's Guide to Hudson</description>
   <url>http://hudson.sonatype.org/book</url>
   <organization>
     <name>Sonatype, Inc.</name>

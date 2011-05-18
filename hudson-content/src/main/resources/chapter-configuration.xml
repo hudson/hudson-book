@@ -766,7 +766,7 @@
   </section>
 
 
-  <section>
+  <section id="section-configure-maven-3-configuration">
      <title>Managing Maven 3 Configuration</title>
 
      <para>The Maven 3 integration of Hudson provides you with the ability to
@@ -887,10 +887,14 @@
       </para>
 
       <para>Usage of the Maven 3 Settings configuration file in a Hudson job is
-        documented in<xref linkend="section-maven-3-build-configuration"/>.
+        documented in <xref linkend="section-maven-3-build-configuration"/>.
       </para>
 
 
+      <!-- TODO add more stuff about tool chains and link to
+      http://maven.apache.org/guides/mini/guide-using-toolchains.html
+      potentially
+      -->
     </section>
   </section>
 

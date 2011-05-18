@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
   <name>The Hudson Book</name>
   <description>A User's Guide to Hudson</description>
-  <url>http://hudson.sonatype.org/book</url>
+  <url>http://hudson-ci.org/book</url>
   <organization>
     <name>Sonatype, Inc.</name>
     <url>http://www.sonatype.com</url>

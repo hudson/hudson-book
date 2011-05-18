@@ -122,10 +122,15 @@
       configure a Maven build, select <option>Invoke Maven 3</option>.
     </para>
 
-    <para>The basic and advanced options for configuring a Maven 3 build step
+    <para>The basic and advanced options for configuring a Maven 3 build steps
       are shown in <xref linkend="fig-maven-3-build-step-default"/> and
       <xref linkend="fig-maven-3-build-step-advanced"/>
-      .</para>
+      . When adding a new Maven 3 build step all parameters are prepopulated
+      with the default parameters defined for Maven 3 build steps. These are
+      configured in the global Hudson configuration documented in
+      <xref linkend="chapter-configuration"/> in
+      <xref linkend="section-configure-maven-3-builder-defaults"/>.
+    </para>
 
     <figure id="fig-maven-3-build-step-default">
       <title>Configuring a Maven 3 Build Step - Default Options</title>
@@ -166,11 +171,13 @@
       <varlistentry>
         <term>Maven Version</term>
         <listitem>
-          <para>Your Hudson installation may have one or more Maven
+          <para>Your Hudson installation may have one or more Maven 3
             installations configured as part of the global Hudson configuration.
-            This drop down allows you to specify the version of Maven for usage
+            This drop down allows you to specify the version of Maven 3 to
+            use
             with the current build step. By default the Maven 3 integration
-            will use a bundled version of Maven 3.
+            will use a bundled version of Maven 3, that is installed as part
+            of the Maven 3 integration itself.
           </para>
         </listitem>
       </varlistentry>
@@ -178,7 +185,31 @@
       <varlistentry>
         <term>Goals</term>
         <listitem>
-          <para></para>
+          <para>This field allows you to specify the goals and phases you would
+            like to use for the Maven 3 invocation, separate by spaces and in
+            order of desired invocation just like you would use Maven 3 on the
+            command line. Typically these would be<varname>clean
+              install</varname>, but depending on your project and build step
+            others may apply. The plugin with automatically show the Maven
+            version and operate in batch mode equivalent to the
+            <varname>-V</varname>
+            and
+            <varname>-B</varname>
+            options. It is also to specify other specific Maven to command-line
+            options like
+            <varname>-P</varname>
+            for profile selection, selection of a specific
+            <varname>settings.xml</varname>
+            file,
+            <varname>-X</varname>
+            for debuggin logging and so on. However this is not recommended
+            since there are specific configuration settings for most parameters
+            in the
+            <option>Advanced</option>
+            section. Specifying them in their separate option allows for
+            programmatic changes across project defined in your Hudson instance
+            and is easier scriptable in the Hudson console.
+          </para>
         </listitem>
       </varlistentry>
 
@@ -213,17 +244,15 @@
       <varlistentry>
         <term>Private repository</term>
         <listitem>
-          <para>By default a Maven invocation will use a local repository in the
-            current users home directory taking any further repository
-            configuration done in
-            <option>settings.xml</option>
-            into account. Depending on the necessary separation of the different
-            jobs running on Hudson it can be useful to have a separate Maven
-            repository for each project. Activating this feature will cause the
-            creation of a separate Maven repository in a
-            <varname>.repository</varname>
-            folder in the projects workspace. This can cause considerable usage
-            of storage space, which consequently should be monitored carefully.
+          <para>By default a Maven invocation will use a private repository in
+            the project workspace in a
+            <varname>.maven/repo</varname>
+            folder. This ensures that other project builds do not have any side
+            effects. However it can cause considerable usage of storage space,
+            which consequently should be monitored carefully. If this option is
+            disabled the standard Maven repository location in the current users
+            home directory will be used. The user will the operating system user
+            running Hudson and therefore invoking Maven 3 via the plugin.
           </para>
         </listitem>
       </varlistentry>
@@ -371,8 +400,10 @@
     <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
 
     <para>If for some reason you are still using Maven 2 and can not upgrade to
-      Maven 3 and therefore take advantage of the advanced features the Maven 3
-      integration of Hudson offers you, should use the Maven 2 (Legacy)
+      Maven 3 and therefore take advantage of the advanced performance and
+      features of Maven 3 and the
+      Maven 3
+      integration of Hudson offers you, you should use the Maven 2 (Legacy)
       integration in a free-style project build step. After configuring the
       general project options (see<xref linkend="chapter-build-creation"/>), you
       can configure one

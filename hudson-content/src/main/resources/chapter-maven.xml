@@ -260,91 +260,191 @@
       <varlistentry>
         <term>Private temporary directory</term>
         <listitem>
-          <para></para>
+          <para>When this option is activated the java environment variable
+            <varname>java.io .tmpdir</varname>
+            will be set to a folder
+            <varname>.maven/tmp</varname>
+            in the project specific workspace. This is useful when your build
+            accesses the temporary directory for storage of artifacts or any
+            temporary files e.g. used while running tests. When using the option
+            with builds that produce large amounts of data in the temporary
+            folder it is important to monitor the size of the folder and
+            potentially add a clean up routine to the host operating system
+            regular scheduled jobs.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Offline</term>
         <listitem>
-          <para></para>
+          <para>Activating this option causes Maven to be run with the
+            <varname>-o</varname> offline option enabled and it will
+            therefore not access any remote repositories.</para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Profiles</term>
         <listitem>
-          <para></para>
+          <para>Adding a comma or space separated list of profile names
+            causes the Maven 3 integration to pass them to the invocation
+            with the <varname>-P</varname> parameter.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Show Errors</term>
         <listitem>
-          <para></para>
+          <para>Enabling the
+            <option>Show Errors</option>
+            option is equivalent to use the
+            <varname>-e</varname>
+            command line parameter, which will cause Maven to output any errors
+            in the console.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Verbosity</term>
         <listitem>
-          <para>NORMAL, QUIET or DEBUG</para>
+          <para>Configure the verbosity of the log output to the console by
+            Maven to be at normal, quiet or debug levels. These levels are
+            equivalent to no option and the
+            <varname>-q</varname>
+            and
+            <varname>-X</varname>
+            options for Maven command line invocation.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Checksum Mode</term>
         <listitem>
-          <para>Normal, strict or lax</para>
+          <para>Configure the strictness of the checksum validation when
+            downloading artifacts from repositories to be at normal, lax or
+            strict levels. These level are equivalent to no option and the
+            <varname>-c</varname>
+            and
+            <varname>-C</varname>
+            options for Maven command line invocation.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Snapshot Updates</term>
         <listitem>
-          <para></para>
+          <para>The <option>Snapshot Updates</option> options provides
+            control over the way Maven treats
+            <varname>SNAPSHOT</varname> artifacts. The
+            <option>NORMAL</option> activates the standard Maven behaviour,
+            where as <option>FORCE</option> and <option>SUPPRESS</option>
+            will activate the <varname>-U</varname> and
+            <varname>-nsu</varname> options.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Recursive</term>
         <listitem>
-          <para></para>
+          <para>Just like for normal Maven invocation this options is activated
+            by default, which means that nested modules in a multi-module
+            project will be build. Deactivating this feature is equivalent to
+            the non-recursive command line option
+            <varname>-N</varname>.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Projects</term>
         <listitem>
-          <para></para>
+          <para>The
+            <option>Projects</option>
+            option allows you to specify the projects that should be added to
+            the reactor during build. You can either specify them by the
+            relative path in your project workspace or by
+            <varname>artifactId</varname>
+            and optionally
+            <varname>groupId</varname>
+            in a
+            <varname>groupId:artifactId</varname>
+            format. The equivalent command line option is<varname>-pl</varname>.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Resume From</term>
         <listitem>
-          <para></para>
+          <para>The
+            <option>Resume From</option>
+            uses the same syntax as the
+            <option>Projects</option>
+            and sets the
+            <varname>-rf</varname>
+            command line option to resume the build from the specified artifact.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Fail Mode</term>
         <listitem>
-          <para></para>
+          <para>The <option>Fail Mode</option> option support the modes
+            <option>NORMAL</option>, <option>FAST</option>,
+            <option>AT_END</option> and <option>NEVER</option> that determine
+          how your Maven build proceeds in case of any failures. The equivalent
+           command line options are no option, <varname>-ff</varname>,
+            <varname>-fae</varname> and <varname>-fn</varname>. This can have
+            considerable impact on the load on your Hudson server e.g. by not
+            proceeding past failed tests  but instead failing the build so
+            that developer can fix it before a long running build needs to be
+            kicked off again.
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Make Mode</term>
         <listitem>
-          <para></para>
+          <para>The <option>Make Mode</option> option can be used to enable
+            Make-like build behaviour of Maven. The options are the default
+            behaviour equivalent to <option>NONE</option> and
+            <option>DEPENDENCIES</option>, <option>DEPENDENTS</option> and
+            <option>BOTH</option> respectively <varname>-am</varname>,
+            <varname>-amd</varname> and <varname>-am -amd</varname>.
+
+            <!-- TODO add url to external resource explaining this more and
+            explain how this can work with a project in relation to checked
+            out workspace project and external dependencies,
+            also how does thsi work with Hudson upstream,
+            downstream dependencies and so on  -->
+          </para>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Threading</term>
         <listitem>
-          <para></para>
+          <para>This input takes the value for the
+            <varname>-T</varname>
+            command line option that enables the experimental support for
+            parallel builds in Maven 3. A value of
+            <varname>4</varname>
+            enables four threads for the build. A value of
+            <varname>2.5C</varname>
+            would enable 2.5 threads per CPU core. When activating this feature,
+            keep the experiemental nature of this feature as well as the not yet
+            wide spread support for this feature in the various plugins.<!-- add link to external link like
+            https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html
+            maybe-->
+          </para>
         </listitem>
       </varlistentry>
 

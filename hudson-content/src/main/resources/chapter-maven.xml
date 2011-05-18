@@ -370,9 +370,12 @@
   <section id="section-maven-2-build-configuration">
     <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
 
-    <para>After configuring the general project options
-      (see <xref linkend="chapter-build-creation"/>),
-      you can configure one
+    <para>If for some reason you are still using Maven 2 and can not upgrade to
+      Maven 3 and therefore take advantage of the advanced features the Maven 3
+      integration of Hudson offers you, should use the Maven 2 (Legacy)
+      integration in a free-style project build step. After configuring the
+      general project options (see<xref linkend="chapter-build-creation"/>), you
+      can configure one
       or more build steps. To add a build step, click on the Add build step
       button as shown in <xref linkend="fig-using-new-build-config"/>. To
       configure a Maven build, select <option>Invoke top-level Maven targets</option>.

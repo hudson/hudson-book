@@ -111,193 +111,6 @@
     </para>
   </section>
 
-  <section id="section-maven-2-build-configuration">
-    <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
-
-    <para>After configuring the general project options
-      (see <xref linkend="chapter-build-creation"/>),
-      you can configure one
-      or more build steps. To add a build step, click on the Add build step
-      button as shown in <xref linkend="fig-using-new-build-config"/>. To
-      configure a Maven build, select <option>Invoke top-level Maven targets</option>.
-    </para>
-    <!-- TODO Change to Invoke Maven 2 (Legacy) -->
-
-    <!-- TODO new screen shot with Maven 2 and Maven 3 when its in a release -->
-    <figure id="fig-using-new-build-config">
-      <title>Configuring Project Build Options</title>
-
-      <mediaobject>
-        <imageobject role="web">
-          <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-new-build-config.png"
-                     scalefit="1" />
-        </imageobject>
-
-        <imageobject role="print">
-          <imagedata align="center"
-                     fileref="figs/print/ci-using-new-build-config.pdf"
-                     scalefit="0" width="100%" />
-        </imageobject>
-      </mediaobject>
-    </figure>
-
-    <para>The basic and advanced options for invoking a top-level Maven
-    target are shown in <xref linkend="fig-using-top-level-maven" />.</para>
-
-    <figure id="fig-using-top-level-maven">
-      <title>Configuring a Maven 2 (Legacy) Build Step</title>
-
-      <mediaobject>
-        <imageobject role="web">
-          <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-top-level-maven.png"
-                     scalefit="1" />
-        </imageobject>
-
-        <imageobject role="print">
-          <imagedata align="center"
-                     fileref="figs/print/ci-using-top-level-maven.pdf"
-                     scalefit="0" width="100%" />
-        </imageobject>
-      </mediaobject>
-    </figure>
-
-    <variablelist>
-      <varlistentry>
-        <term>Maven Version</term>
-        <listitem>
-          <para>Your Hudson installation may have one or more Maven
-            installations configured as part of the global Hudson configuration.
-            This drop down allows you to specify the version of Maven for usage
-            with the current build step.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Goals</term>
-        <listitem>
-          <para>This field allows you to specify the command line
-            parameters used for the Maven invocation. These are phases,
-            plugin goals as well as specific Maven command-line options like
-            <varname>-P</varname> for profile selection, selection of a specific
-            <varname>settings.xml</varname> file
-            and
-            so on.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>POM</term>
-        <listitem>
-          <para>If your project uses the standard
-            <varname>pom.xml</varname>
-            filename, there is no need to specify a POM. If your projects uses a
-            POM with an alternative name or path other than directly in the
-            project root, you can specify that file name and path here. This
-            setting is equivalent to the command line option
-            <option>-f pomfilepath</option>
-            or<option>--file pomfilepath</option>. The path specified has to be
-            relative to the project root.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Properties</term>
-        <listitem>
-          <para>You can pass one or more properties to the Maven process. This
-            field accepts a list of properties with lines in a
-            <option>key=value</option> format. These properties will be
-            passed into the Maven build step invocation using the standard
-            way of passing properties of <option>-Dkey1=value1
-              -Dkey2=value2</option>.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>JVM Options</term>
-        <listitem>
-          <para>If your build requires specific JVM options, they can be set in
-            this field. The options are passed straight through as MAVEN_OPTS
-            and use the normal
-            <option>java</option>
-            command line options syntax. A common configuration for complex
-            builds is to specify a larger memory for the JVM running Maven via
-            <option>-Xmx1024m</option>.
-          </para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>Use private Maven repository</term>
-        <listitem>
-          <para>By default a Maven invocation will use a local repository in the
-            current users home directory taking any further repository
-            configuration done in
-            <option>settings.xml</option>
-            into account. Depending on the necessary separation of the different
-            jobs running on Hudson it can be useful to have a separate Maven
-            repository for each project. Activating this feature will cause the
-            creation of a separate Maven repository in a
-            <varname>.repository</varname>
-            folder in the projects workspace. This can cause considerable usage
-            of storage space, which consequently should be monitored carefully.
-          </para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
-    <para>
-      The standard way of invoking a Maven build is to run the
-      <option>clean</option>
-      and
-      <option>install</option>
-      lifecycle phases in a command line call like<command>mvn clean
-      install</command>. This can be easily achieved by adding a Maven build
-      step and adding
-      <option>clean install</option>
-      as a
-      <option>Goals</option>
-      parameter. If so desired these two lifecycle phases can also be invoked
-      separately by creating two Maven build steps with separate
-      <option>clean</option>
-      and
-      <option>install</option>
-      parameters. This would cause two separate invocations of Maven in
-      sequence equivalent to <command>mvn clean; mvn install</command>
-      Breaking up the invocations allows you to add further build steps in
-      between and build an arbitrarily complex sequence of Maven and other
-      invocations with completely separate parameters and so on. The You could
-      for
-      example slip a plugin goal invocation in between the clean and install
-      invocations that prepares the execution environment for your build for
-      example by setting up a test environment like an emulator or a specific
-      database and content. Since you can do this in a separate build step you
-      can invoke a shell script or an Ant target for such tasks, in case it is
-      not automated via a Maven plugin or configuration.
-    </para>
-
-     <figure id="fig-using-top-level-maven-two-times">
-      <title>Configuring two build steps as top-level Maven invocations</title>
-
-      <mediaobject>
-        <imageobject role="web">
-          <imagedata contentdepth="100%"
-                     fileref="figs/web/build-steps-maven-twice.png"
-                     scalefit="1" />
-        </imageobject>
-
-        <imageobject role="print">
-          <imagedata align="center"
-                     fileref="figs/print/build-steps-maven-twice.pdf"
-                     scalefit="0" width="100%" />
-        </imageobject>
-      </mediaobject>
-    </figure>
-  </section>
-
   <section id="section-maven-3-build-configuration">
     <title>Details of Configuring Maven 3 Build Options</title>
 
@@ -552,6 +365,193 @@
         </listitem>
       </varlistentry>
     </variablelist>
+  </section>
+
+  <section id="section-maven-2-build-configuration">
+    <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
+
+    <para>After configuring the general project options
+      (see <xref linkend="chapter-build-creation"/>),
+      you can configure one
+      or more build steps. To add a build step, click on the Add build step
+      button as shown in <xref linkend="fig-using-new-build-config"/>. To
+      configure a Maven build, select <option>Invoke top-level Maven targets</option>.
+    </para>
+    <!-- TODO Change to Invoke Maven 2 (Legacy) -->
+
+    <!-- TODO new screen shot with Maven 2 and Maven 3 when its in a release -->
+    <figure id="fig-using-new-build-config">
+      <title>Configuring Project Build Options</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-new-build-config.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-new-build-config.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <para>The basic and advanced options for invoking a top-level Maven
+    target are shown in <xref linkend="fig-using-top-level-maven" />.</para>
+
+    <figure id="fig-using-top-level-maven">
+      <title>Configuring a Maven 2 (Legacy) Build Step</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/ci-using-top-level-maven.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/ci-using-top-level-maven.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
+
+    <variablelist>
+      <varlistentry>
+        <term>Maven Version</term>
+        <listitem>
+          <para>Your Hudson installation may have one or more Maven
+            installations configured as part of the global Hudson configuration.
+            This drop down allows you to specify the version of Maven for usage
+            with the current build step.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Goals</term>
+        <listitem>
+          <para>This field allows you to specify the command line
+            parameters used for the Maven invocation. These are phases,
+            plugin goals as well as specific Maven command-line options like
+            <varname>-P</varname> for profile selection, selection of a specific
+            <varname>settings.xml</varname> file
+            and
+            so on.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>POM</term>
+        <listitem>
+          <para>If your project uses the standard
+            <varname>pom.xml</varname>
+            filename, there is no need to specify a POM. If your projects uses a
+            POM with an alternative name or path other than directly in the
+            project root, you can specify that file name and path here. This
+            setting is equivalent to the command line option
+            <option>-f pomfilepath</option>
+            or<option>--file pomfilepath</option>. The path specified has to be
+            relative to the project root.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Properties</term>
+        <listitem>
+          <para>You can pass one or more properties to the Maven process. This
+            field accepts a list of properties with lines in a
+            <option>key=value</option> format. These properties will be
+            passed into the Maven build step invocation using the standard
+            way of passing properties of <option>-Dkey1=value1
+              -Dkey2=value2</option>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>JVM Options</term>
+        <listitem>
+          <para>If your build requires specific JVM options, they can be set in
+            this field. The options are passed straight through as MAVEN_OPTS
+            and use the normal
+            <option>java</option>
+            command line options syntax. A common configuration for complex
+            builds is to specify a larger memory for the JVM running Maven via
+            <option>-Xmx1024m</option>.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>Use private Maven repository</term>
+        <listitem>
+          <para>By default a Maven invocation will use a local repository in the
+            current users home directory taking any further repository
+            configuration done in
+            <option>settings.xml</option>
+            into account. Depending on the necessary separation of the different
+            jobs running on Hudson it can be useful to have a separate Maven
+            repository for each project. Activating this feature will cause the
+            creation of a separate Maven repository in a
+            <varname>.repository</varname>
+            folder in the projects workspace. This can cause considerable usage
+            of storage space, which consequently should be monitored carefully.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>
+      The standard way of invoking a Maven build is to run the
+      <option>clean</option>
+      and
+      <option>install</option>
+      lifecycle phases in a command line call like<command>mvn clean
+      install</command>. This can be easily achieved by adding a Maven build
+      step and adding
+      <option>clean install</option>
+      as a
+      <option>Goals</option>
+      parameter. If so desired these two lifecycle phases can also be invoked
+      separately by creating two Maven build steps with separate
+      <option>clean</option>
+      and
+      <option>install</option>
+      parameters. This would cause two separate invocations of Maven in
+      sequence equivalent to <command>mvn clean; mvn install</command>
+      Breaking up the invocations allows you to add further build steps in
+      between and build an arbitrarily complex sequence of Maven and other
+      invocations with completely separate parameters and so on. The You could
+      for
+      example slip a plugin goal invocation in between the clean and install
+      invocations that prepares the execution environment for your build for
+      example by setting up a test environment like an emulator or a specific
+      database and content. Since you can do this in a separate build step you
+      can invoke a shell script or an Ant target for such tasks, in case it is
+      not automated via a Maven plugin or configuration.
+    </para>
+
+     <figure id="fig-using-top-level-maven-two-times">
+      <title>Configuring two build steps as top-level Maven invocations</title>
+
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/build-steps-maven-twice.png"
+                     scalefit="1" />
+        </imageobject>
+
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/build-steps-maven-twice.pdf"
+                     scalefit="0" width="100%" />
+        </imageobject>
+      </mediaobject>
+    </figure>
   </section>
 
   <section id="section-maven-artifacts">

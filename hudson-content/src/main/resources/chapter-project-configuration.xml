@@ -527,6 +527,22 @@
 
       <variablelist>
         <varlistentry>
+          <term>Archive Maven 3 artifacts</term>
+          <listitem>
+            <!-- TODO -->
+            <para>part of the maven 3 integration..</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Record fingerprints of Maven artifacts</term>
+          <listitem>
+            <!-- TODO -->
+            <para>part of the maven 3 integration.. </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>Publish Javadoc</term>
           <listitem>
             <figure id="fig-post-build-actions-javadoc">
@@ -845,6 +861,14 @@
               broke. The email will be sent with the configuration specified in
               <xref linkend="section-configure-email-notification"/>.
             </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Notify that Maven dependencies have been updated</term>
+          <listitem>
+            <!-- TODO -->
+            <para><option>Notify even when build is unstable</option> </para>
           </listitem>
         </varlistentry>
       </variablelist>

@@ -95,7 +95,7 @@
   </section>
 
   <section>
-    <title>Selecting components of your Maven and Hudson integration</title>
+    <title>Selecting Components of your Maven and Hudson Integration</title>
     <para>The recommended way to configure a Maven build on Hudson is to
       create a free-style software project as documented in <xref
         linkend="chapter-build-creation"/> and then creating one or more

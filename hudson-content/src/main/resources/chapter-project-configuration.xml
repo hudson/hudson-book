@@ -4,7 +4,7 @@
 <chapter id="chapter-build-creation">
   <title>Creating Hudson Projects</title>
 
-  <section>
+  <section id="section-creating-new-project">
     <title>Creating New Hudson Projects</title>
 
     <para>To create a new Hudson project, click on
@@ -93,7 +93,7 @@
     </para>
   </section>
 
-  <section>
+  <section id="section-common-job-configurations">
     <title>Configuring Common Job Configuration Settings</title>
 
     <para>Independent of the job type you selected you will be able to configure
@@ -137,7 +137,7 @@
       sections.
     </para>
 
-    <section>
+    <section id="section-configuring-general-project-settings">
       <title>Configuring General Project Settings</title>
 
       <para>The first section on the Project Screen is the general project
@@ -233,7 +233,7 @@
         <varlistentry>
           <term>This Build is Parameterized</term>
           <listitem>
-            <para></para>
+            <para></para><!-- TODO build is parameterized-->
           </listitem>
         </varlistentry>
 
@@ -303,7 +303,7 @@
       </warning>
     </section>
 
-    <section>
+    <section id="section-configuring-advanced-project-options">
       <title>Configuring Advanced Project Options</title>
       <para>The next section after the general project configuration is the
       <option>Advanced Project Options</option> section shown in <xref
@@ -387,7 +387,7 @@
       </variablelist>
     </section>
 
-    <section>
+    <section id="section-configuring-source-code-management">
       <title>Configuring Source Code Management</title>
       <para>Hudson is typically used in conjunction with the source of the
         project available in a source code management system. Support for a
@@ -403,7 +403,7 @@
       </para>
     </section>
 
-    <section>
+    <section id="section-configuring-build-triggers">
       <title>Configuring Build Triggers</title>
       <para>The next section to configure is
         <option>Build Triggers</option>. A Hudson job can
@@ -448,6 +448,19 @@
         </varlistentry>
 
         <varlistentry>
+          <term>Build when Maven dependencies have been updated</term>
+          <listitem>
+            <para>Hudson projects can be configured to send out a notification
+              to all projects that Maven dependencies have been updated as post
+              build action (see
+              <xref linkend="section-configuring-post-build-actions"/>). When
+              you activate this build trigger a build of the project will be
+              started once a such a notification is received.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>Poll SCM</term>
           <listitem>
             <para>Selecting
@@ -485,7 +498,7 @@
       </variablelist>
     </section>
 
-    <section>
+    <section id="section-configuring-post-build-actions">
       <title>Configuring Post-build Actions</title>
 
       <para>Post build actions are an important part of Hudson. They allow you
@@ -529,16 +542,32 @@
         <varlistentry>
           <term>Archive Maven 3 artifacts</term>
           <listitem>
-            <!-- TODO -->
-            <para>part of the maven 3 integration..</para>
+            <para>Activating this option and potentially the detail option
+              <option>Include generate POMs</option> will trigger Hudson to
+              archive the artifacts built by Maven 3 build steps during the
+              project build
+              and potentially the associated POM files. With the option
+            <option>Discard old artifacts</option> set,
+              old artifacts will be removed after each successful build. It
+              is a Maven 3 build step specific automation of the option to
+              <option>Archive artifacts</option> without the need to specify the
+              artifacts. The artifacts will be made available on the web
+              interface like other archived artifacts. This option is especially
+              useful in refactorings of the project and the resulting artifacts,
+              since all artifacts are always archived and name or folder changes
+              do not affect the archiving. Since there is no necessity to
+              configure matching patterns, this option is more robust.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Record fingerprints of Maven artifacts</term>
           <listitem>
-            <!-- TODO -->
-            <para>part of the maven 3 integration.. </para>
+            <para>This option activated will trigger the Maven 3 integration
+              of Hudson to record fingerprints of the created Maven
+              artifacts, which will allow Hudson to keep track of when these
+              artifacts are produced and used.</para>
           </listitem>
         </varlistentry>
 
@@ -672,8 +701,7 @@
           <term>Archive the artifacts</term>
           <listitem>
             <figure id="fig-post-build-actions-archive-artifacts">
-              <title>Configuring the artifacts archival post build action
-              </title>
+              <title>Configuring the artifacts archival post build action</title>
               <mediaobject>
                 <imageobject role="web">
                   <imagedata contentdepth="100%"
@@ -697,8 +725,7 @@
               input boxes you can specify the artifacts that should be saved
               after each successful build.The artifacts of the last successful
               build are available on the project overview page as visible in
-              <xref linkend="fig-post-build-actions-archive-artifacts-project
-              "/>.
+              <xref linkend="fig-post-build-actions-archive-artifacts-project"/>.
             </para>
             <figure id="fig-post-build-actions-archive-artifacts-project">
               <title>A project overview page for the Hudson book build with the
@@ -748,6 +775,13 @@
               purposes. Hudson can be used as the reference storage place for
               these artifacts that are in turn used e.g. for QA and production
               deployments or for distribution to customers.
+            </para>
+            <para>If your artifacts are created by a Maven 3 based build using
+              Maven 3 build steps, it might be a better option to activate the
+              option
+              <option>Archive Maven 3 artifacts</option>
+              for better archiving robustness as documented above in the
+              respective section.
             </para>
           </listitem>
         </varlistentry>
@@ -867,8 +901,18 @@
         <varlistentry>
           <term>Notify that Maven dependencies have been updated</term>
           <listitem>
-            <!-- TODO -->
-            <para><option>Notify even when build is unstable</option> </para>
+            <para>
+              When activating this option Hudson will notify all projects with a
+              build trigger configured to watch for Maven dependencies that have
+              been updated (see<xref
+              linkend="section-configuring-build-triggers"/>). When the
+              additional option
+              <option>Notify even when build is unstable</option>
+              is selected this notification will occur even when an unstable
+              build ran. A sideeffect of this could be that only some Maven
+              dependencies have been updated, which could lead to further
+              failures of the dependent projects.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -877,7 +921,7 @@
   </section>
 
 
-  <section>
+  <section id="section-configuring-free-style-project">
     <title>Configuring Free-style Projects</title>
     <para>In addition to the common project configurations we discussed prior,
       a free-style Hudson project has a section for the build definition that
@@ -937,13 +981,13 @@
   </section>
 
 
-  <section>
+  <section id="section-configuring-multi-config-project">
     <title>Configuring Multi-Configuration Projects</title>
     <!-- HBOOK-66 -->
     <para></para>
   </section>
 
-    <section>
+  <section id="section-configuring-external-monitoring-project">
     <title>Configuring External Monitoring Projects</title>
     <!-- HBOOK-65 -->
     <para></para>

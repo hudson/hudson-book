@@ -95,10 +95,42 @@
   </section>
 
   <section>
-    <title>Maven 2 or Maven 3</title>
-    <para>Explain difference between Maven 2 (Legacy) and Maven 3
-      configuration and build steps as well as the deprecated Maven project
-      type, do that either here or in an earlier section or chapter
+    <title>Selecting components of your Maven and Hudson integration</title>
+    <para>The recommended way to configure a Maven build on Hudson is to
+      create a free-style software project as documented in <xref
+        linkend="chapter-build-creation"/> and then creating one or more
+      build steps that <option>Invoke Maven 3</option>. More details on the
+      specific configuration options and more can be found in
+      <xref linkend="section-maven-3-build-configuration"/>.
+    </para>
+
+    <para>If your require Maven 2 for your build for some legacy reason, even
+      though Maven 3 is a higher performing, drop-in replacement you can fall
+      back to using the
+      <option>Invoke Maven 2 (Legacy)</option>
+      build step documented in <xref
+        linkend="section-maven-2-build-configuration"/>. Even though this option
+      exists, we recommend to move forward and migrate to Maven 3 and the Maven
+      3 build step.
+    </para>
+
+    <para>Finally your Hudson install may contain a separate project type
+      labeled
+      <option>Build a maven 2/3 project</option>
+      available when creating a new project. This feature has numerous issues
+      with the use of different Maven versions and use cases, especially Maven
+      3, and is not supported in Hudson. We recommend not to use this job type.
+      If you do not need this job type anymore after migrating to the Maven 3
+      build step and want to avoid the accidental creation of projects with this
+      type, you should disable the<varname>Hudson Maven :: Plugin</varname>.
+      Read more about managing your plugins in
+      <xref linkend="chapter-plugin-management"/>.
+    </para>
+
+    <para>Both the Maven 2/3 project type as well as the Maven 2 build step are
+      part of Hudson as legacy components and are not the focus of active
+      development and improvements. If your existing jobs use either of these we
+      recommend to migrate to Maven 3 build step based free-style projects.
     </para>
   </section>
 
@@ -115,7 +147,7 @@
     <title>Details of Configuring Maven 3 Build Options</title>
 
     <para>After configuring the general project options
-      (see <xref linkend="chapter-build-creation"/>),
+      as documented in <xref linkend="chapter-build-creation"/>,
       you can configure one
       or more build steps. To add a build step, click on the Add build step
       button as shown in <xref linkend="fig-using-new-build-config"/>. To

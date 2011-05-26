@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<book id="book-nexus">
+"http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
+<book id="book-hudson">
   <?dbhtml filename="index.html"?>
 
   <title>${book.title}</title>
@@ -21,31 +21,26 @@
 
     <author>
       <surname>Moser</surname>
-
       <firstname>Manfred</firstname>
     </author>
 
     <author>
       <surname>Yeary</surname>
-
       <firstname>John</firstname>
     </author>
 
     <author>
       <surname>Prakash</surname>
-
       <firstname>Winston</firstname>
     </author>
 
     <author>
       <surname>van Zyl</surname>
-
       <firstname>Jason</firstname>
     </author>
 
     <author>
       <surname>O'Brien</surname>
-
       <firstname>Tim</firstname>
     </author>
 
@@ -55,7 +50,6 @@
 
     <copyright>
       <year>${copyright.year}</year>
-
       <holder>Oracle, Inc.</holder>
     </copyright>
 
@@ -63,7 +57,6 @@
 
     <publisher>
       <publishername>Sonatype, Inc.</publishername>
-
       <address><street>12501 Prosperity Drive, Suite 350</street><city>Silver Spring</city><state>MD</state><postcode>20904</postcode></address>
     </publisher>
 
@@ -88,16 +81,17 @@
     <xi:include href="chapter-configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-security.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-plugin-management.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="chapter-build-creation.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-project-configuration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-maven.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-ant.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-source-control.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-grid.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-notable-plugins.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="chapter-ide-integration.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-nexus.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-sonar.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-polyglot.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="chapter-plugin-writing.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
-    <xi:include href="chapter-notable-plugins.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="appendix-license.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
     <xi:include href="appendix-changes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
 

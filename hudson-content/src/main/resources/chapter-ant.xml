@@ -1,28 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<chapter>
-  <title>Working with Apache Ant builds</title>
+"http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
+<chapter id="chapter-ant">
+  <title>Working with Apache Ant Builds</title>
 
   <para></para>
 
-  <section>
+  <section id="section-installing-ant">
     <title>Installing Apache Ant for Hudson</title>
 
-    <!--TODO: See HBOOK-34-->
+    <para>The general configuration for Apache Ant installs on Hudson is
+      available in
+      <xref linkend="section-configure-ant"/>. You can read about influencing
+      factors for your Apache Maven install, that apply to your strategy for
+      installing Ant as well in <xref linkend="section-installing-maven"/>.
+    </para>
 
-    <para></para>
+    <para>A common scenario for Apache Ant installs is the requirement of a
+      build to have access to Ant tasks as provided in Ant-Contrib (add URL
+      here?) like
+      <command>For</command>
+      or
+      <command>If</command>
+      or to have some required libraries like jsch (add url?) for the
+      <command>scp</command>
+      available on the Ant classpath. Custom developed Ant tasks can be needed
+      in a similar fashion. A convenient way to achieve this, is the creation of
+      a custom archive containing the Ant install as well as additional
+      libraries necessary. This archive can then be used with the
+      <option>Extract from*.zip/*.tar.gz</option>
+      option to get a fully working Ant and dependencies installed on all build
+      cluster nodes.
+    </para>
+
   </section>
 
-  <section>
+  <section id="section-ant-build-configuration">
     <title>Configuring Apache Ant Builds</title>
+    <para>After configuring the general project options as documented in
+        <xref linkend="chapter-build-creation"/>),
+        you can configure one
+        or more build steps. To add a build step, click on the Add build step
+        button and select <option>Invoke Ant</option>.
+      </para>
 
-    <!--TODO: See HBOOK-38-->
+      <para>The basic and advanced options for invoking Ant are shown in <xref
+        linkend="fig-configure-ant-build-step" />.</para>
 
-    <para></para>
+      <figure id="fig-configure-ant-build-step">
+        <title>Configuring an Ant Build Steps</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/configure-ant-build-step.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/configure-ant-build-step.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <variablelist>
+        <varlistentry>
+          <term>Ant Version</term>
+          <listitem>
+            <para>Your Hudson installation may have one or more Ant
+              installations configured as part of the global Hudson
+              configuration. This drop down allows you to specify the version of
+              Ant for usage with the current build step.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Targets</term>
+          <listitem>
+            <para>This field allows you to specify the command line parameters
+              used for the Ant invocation. These are all options and targets
+              supported by the specified Ant and the current
+              <option>Build File</option>. If nothing is specified in this
+              field, the build step will invoke Ant without parameters. With a
+              default target specified in the build file, this can be sufficient
+              for a full build depending on your build file.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Build File</term>
+          <listitem>
+            <para>If your project uses the standard
+              <varname>build.xml</varname>
+              filename, there is no need to specify a
+              <option>Build File</option>
+              If your projects uses a build file with an alternative name or
+              path other than directly in the project root, you can specify that
+              file name and path here. This setting is equivalent to the command
+              line option
+              <option>-f buildfilepath</option>. The path specified has to be
+              relative to the project root.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Properties</term>
+          <listitem>
+            <para>You can pass one or more properties to the Ant process. This
+              field accepts a list of properties with lines in a
+              <option>key=value</option> format. These properties will be
+              passed into the Ant build step invocation using the standard
+              way of passing properties of <option>-Dkey1=value1
+                -Dkey2=value2</option>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Java Options</term>
+          <listitem>
+            <para>If your build requires specific Java options, they can be set
+              in this field. The options are passed straight through as ANT_OPTS
+              and use the normal
+              <option>java</option>
+              command line options syntax. A common configuration for complex
+              builds is to specify a larger memory for the JVM running Ant via
+              <option>-Xmx1024m</option>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
   </section>
 
-  <section>
+  <section id="section-ant-example">
     <title>Hudson Apache Ant Example</title>
 
     <!--TODO: See HBOOK-35-->
@@ -30,7 +144,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-best-pratices">
     <title>Apache Ant Build Best Practices</title>
 
     <!--TODO: See HBOOK-37-->
@@ -38,7 +152,7 @@
     <para></para>
   </section>
 
-  <section>
+  <section id="section-ant-troubleshooting">
     <title>Apache Ant Build Troubleshooting</title>
 
     <!--TODO: See HBOOK-36-->

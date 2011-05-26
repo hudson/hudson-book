@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.sonatype.com/tmp/docbook/xml/4.5/docbookx.dtd">
-<chapter id="install">
+"http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
+<chapter id="chapter-install">
   <title>Installing and Running Hudson</title>
 
   <section>
@@ -281,12 +281,12 @@ INFO  ... [ServletContainer:default] - SelectChannelConnector@0.0.0.0:8082
           <mediaobject>
             <imageobject role="web">
               <imagedata align="center"
-                         fileref="figs/web/ci-using-sonatype-matrix.png" />
+                         fileref="figs/web/home-job-list.png"/>
             </imageobject>
 
             <imageobject role="print">
               <imagedata align="center"
-                         fileref="figs/print/ci-using-sonatype-matrix.pdf"
+                         fileref="figs/print/home-job-list.pdf"
                          scalefit="0" width="100%" />
             </imageobject>
           </mediaobject>

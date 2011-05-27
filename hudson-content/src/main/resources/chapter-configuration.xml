@@ -483,10 +483,8 @@
 
   <section id="section-configure-shell">
     <title>Configuring the Shell Executable</title>
-
-    <!--See HBOOK-44-->
-
-    <para>Hudson allows for the ability to configure shell builds. If you have a
+    <para>Hudson allows for the ability to configure shell builds. If you
+      have a
       build that requires the execution of shell scripts Hudson will by default
       execute<varname>/bin/sh</varname>. For more complex builds scripts running
       on different *nix environments, this can cause problems.
@@ -495,7 +493,9 @@
       of a specific shell will change from operating system to operating system
       as well as from user to user. If your scripts depend on a specific shell
       you should therefore specify your default shell in this input to e.g.
-      <varname>/bin/bash</varname>.
+      <varname>/bin/bash</varname>. In a similar way you can add the path to
+      a cygwin install of e.g. bash on your Windows server to run unix
+      scripts as part of your build.
     </para>
 
     <figure id="fig-using-shell-execute">

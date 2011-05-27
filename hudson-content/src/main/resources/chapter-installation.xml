@@ -7,36 +7,44 @@
   <section>
     <title>Installing Hudson</title>
 
-    <para>The following sections detail the installation process for
-    Hudson.</para>
+    <para>The following sections detail the installation process for Hudson.
+    </para>
 
     <section id="ci-quickstart-sect-prereq">
       <title>Hudson Prerequisites</title>
 
-      <para>Hudson only has one prerequisite, a <indexterm>
+      <para>Hudson only has one prerequisite, a
+        <indexterm>
           <primary>Java</primary>
-
           <secondary>Java Runtime Environment (JRE)</secondary>
-        </indexterm>Java Runtime Environment (JRE) compatible with Java 5 or
-      higher. Hudson is most often run with the JRE that is bundled with a
-      <indexterm>
+        </indexterm>
+        Java Runtime Environment (JRE) compatible with Java 5 or higher. Hudson
+        is most often run with the JRE that is bundled with a
+        <indexterm>
           <primary>Java</primary>
 
           <secondary>Java Development Kit (JDK)</secondary>
-        </indexterm>Java Development Kit (JDK) installation, and it can be run
-      with the latest version of Oracle's JDK of Java 5 or Java 6. To download
-      the latest release of the Oracle JDK, go to <ulink
-      url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"><indexterm>
-          <primary>Java</primary>
+        </indexterm>
+        Java Development Kit (JDK) installation, and it can be run with the
+        latest version of Oracle's JDK of Java 5 or Java 6. To download the
+        latest release of the Oracle JDK, go to
+        <ulink
+            url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
+          <indexterm>
+            <primary>Java</primary>
+            <secondary>Java Development Kit</secondary>
+            <tertiary>downloading</tertiary>
+          </indexterm>
+          http://www.oracle.com/technetwork/java/javase/downloads/index.html
+        </ulink>
+        , and download the latest Java 6 JDK or an older Java 5 JDK, either will
+        work but Java 6 is recommended.
+      </para>
 
-          <secondary>Java Development Kit</secondary>
-
-          <tertiary>downloading</tertiary>
-        </indexterm>http://www.oracle.com/technetwork/java/javase/downloads/index.html</ulink>,
-      and download the latest Java 6 JDK or an older Java 5 JDK, either will
-      work but Java 6 is recommended. <!-- TODO we should add that it also works fine with OpenJDK -->
-      <!-- TODO we should document how a user can figure out if they got Java already installed
- --></para>
+      <para>OpenJDK as available with many Linux distributions as part of their
+        packages is fully supported as a runtime for Hudson. Hudson is also
+        known to work with other JVM implementations such HP-UX JDK and IBM JDK.
+      </para>
     </section>
 
     <!-- TODO from here on it seems that all the documentation is the Nexus documentation

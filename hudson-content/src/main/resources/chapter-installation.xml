@@ -25,7 +25,12 @@
 
           <secondary>Java Development Kit (JDK)</secondary>
         </indexterm>
-        Java Development Kit (JDK) installation, and it can be run with the
+        Java Development Kit (JDK) installation. We recommend to use the
+        latest version of the JDK/JRE that comes as part of your operating
+        system.
+      </para>
+
+      <para>It can be run with the
         latest version of Oracle's JDK of Java 5 or Java 6. To download the
         latest release of the Oracle JDK, go to
         <ulink
@@ -42,8 +47,9 @@
       </para>
 
       <para>OpenJDK as available with many Linux distributions as part of their
-        packages is fully supported as a runtime for Hudson. Hudson is also
-        known to work with other JVM implementations such HP-UX JDK and IBM JDK.
+        package system is fully supported as a runtime for Hudson. Hudson is
+        also known to work with other JVM implementations such HP-UX JDK and IBM
+        JDK.
       </para>
     </section>
 

@@ -581,12 +581,12 @@
       </mediaobject>
     </figure>
 
-    <para>The basic and advanced options for invoking a top-level Maven
+    <para>The basic and advanced options for invoking a Maven 2 (Legacy)
     target are shown in <xref linkend="fig-using-top-level-maven" />.</para>
 
     <figure id="fig-using-top-level-maven">
       <title>Configuring a Maven 2 (Legacy) Build Step</title>
-
+      <!-- TODO new screen shot required -->
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"

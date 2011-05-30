@@ -55,7 +55,8 @@
 
     <warning>
       <para>Your Hudson installation may provide an option to<option>
-        Build a maven 2/3 project</option>. This feature has numerous issues
+        Build a Maven 2/3 project (Legacy)</option>. This feature has numerous
+        issues
         with the use of different Maven versions, especially Maven 3 versions
         and is not supported in Hudson. We recommend not to use this job type.
         Instead, we encourage you to use the native Maven support which is

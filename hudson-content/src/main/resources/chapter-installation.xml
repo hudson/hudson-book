@@ -4,7 +4,36 @@
 <chapter id="chapter-install">
   <title>Installing and Running Hudson</title>
 
-  <para>The following sections detail the installation process for Hudson.
+  <para>The following sections detail the installation process for Hudson. In
+    general there are two different approaches available.
+  </para>
+
+  <variablelist>
+    <varlistentry>
+      <term>WAR File</term>
+      <listitem>
+        <para>The Hudson website provides a Java web archive file (WAR) for
+          download. This file can either be started directly or used in an
+          existing Java servlet container or application server.
+        </para>
+      </listitem>
+    </varlistentry>
+    <varlistentry>
+      <term>Native Package</term>
+      <listitem>
+        <para>Besides the web archive you can download packages for Hudson
+          suitable for the the native package management of Ubuntu/Debian,
+          Oracle Linux, Redhat/Fedora/CentOS and openSUSE.
+        </para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>As a server based application running 24x7 Hudson intrinsically should
+    be installed as a operating system service, so that any system reboots
+    necessary for maintenance or other reasons will automatically restart
+    Hudson. The documentation for the Hudson install will therefore include
+    documentation for setting up these services.
   </para>
 
   <section id="section-install-preprequisites">
@@ -15,7 +44,8 @@
         <primary>Java</primary>
         <secondary>Java Runtime Environment (JRE)</secondary>
       </indexterm>
-      Java Runtime Environment (JRE) compatible with Java 5 or higher. Hudson is
+      Java Runtime Environment (JRE) compatible with Java 6 or higher.
+      Hudson is
       most often run with the JRE that is bundled with a
       <indexterm>
         <primary>Java</primary>
@@ -26,8 +56,13 @@
       version of the JDK/JRE that comes as part of your operating system.
     </para>
 
-    <para>It can be run with the latest version of Oracle's JDK of Java 5 or
-      Java 6. To download the latest release of the Oracle JDK, go to
+    <para>The use of the latest version of
+      Oracle's JDK is Java 6 is the officially supported runtime. To
+      download the
+      latest
+      release of the
+      Oracle
+      JDK, go to
       <ulink
           url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
         <indexterm>
@@ -37,13 +72,12 @@
         </indexterm>
         http://www.oracle.com/technetwork/java/javase/downloads/index.html
       </ulink>
-      , and download the latest Java 6 JDK or an older Java 5 JDK, either will
-      work but Java 6 is recommended.
+      , and download the latest Java 6 JDK.
     </para>
 
     <para>OpenJDK as available with many Linux distributions as part of their
-      package system is fully supported as a runtime for Hudson. Hudson is also
-      known to work with other JVM implementations such HP-UX JDK and IBM JDK.
+      package system is known to work a runtime for Hudson as are other JVM
+      implementations such Oracle JRockit, HP-UX JDK and IBM JDK.
     </para>
   </section>
 

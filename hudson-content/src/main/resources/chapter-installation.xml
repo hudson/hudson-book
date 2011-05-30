@@ -84,92 +84,50 @@
   <section id="section-install-war">
     <title>Installing Hudson with the WAR File Distribution</title>
 
-    <para>The following instructions are for installing Hudson as a stand-alone
-      server. Hudson is bundled with a Jetty instance which listens to all
-      configured IP addresses on a host (0.0.0.0) and runs on port 8080 by
-      default.
-    </para>
-
-    <para>
-      <indexterm>
-        <primary>Hudson</primary>
-        <secondary>downloading</secondary>
-      </indexterm>
-      <indexterm>
-        <primary>Hudson</primary>
-        <secondary>installation</secondary>
-      </indexterm>
-
-      Installing Hudson is straightforward - just unpack the Hudson distribution
-      archive in a directory. If you are installing Hudson on a local
-      workstation to give it a test run, you can install it in your home
-      directory or wherever you like; Hudson doesn't have any hard coded
-      directories, it will run from any directory. If you downloaded the
-      <acronym>ZIP</acronym>
-      archive, run:
-    </para>
-
+    <para>The WAR file available for download on the Hudson web site
+      is an executable WAR that has a servlet container embedded. Once
+      downloaded and copied to the desired directory, it
+      is therefore possible to start Hudson with the command</para>
     <screen>$
-      <command>unzip hudson-1.396.zip</command>
+      <command>java -jar hudson.war</command>
     </screen>
-
-    <para>And, if you download the GZip'd
-      <acronym>TAR</acronym>
-      archive, run:
+    <para>This will start the servlet container as the current operating
+      system user inheriting  access rights to the file system and so on. The
+      Hudson home directory will be set to the <varname>.hudson</varname>
+      folder in the users home directory. Once started the web based Hudson
+      user interface will be available at <ulink
+      url="http://localhost:8080/hudson">http://localhost:8080/hudson</ulink>
     </para>
 
-    <screen>$
-      <command>tar xvzf hudson-1.396.tgz</command>
-    </screen>
-
-    <para>
-      <indexterm>
-        <primary>Hudson</primary>
-
-        <!-- TODO isnt /opt a better place? -->
-
-        <secondary>installation directory</secondary>
-      </indexterm>
-      If you are installing Hudson on a server, you might want to use a
-      directory other than your home directory. On a Unix machine, this book
-      assumes that Hudson is installed in
-      <filename>/usr/local/hudson-1.396</filename>
-      with a symbolic link
-      <filename>/usr/local/hudson</filename>
-      to the hudson-1.396 directory. Using a symbolic link hudson to a directory
-      which holds a specific version of Hudson is a common practice that makes
-      it easier to upgrade to a newer version of Hudson.
+    <para>This approach is suitable for testing and exploring Hudson,
+      but it is not recommended to run Hudson like that in a production usage.
+      Conveniently the WAR file is suitable to be deployed in most of the
+      commonly used Java servlet containers and application server. The
+      detailed process differs for these container but in general the
+      required steps are:
     </para>
-
-    <screen>$
-      <command>sudo cp hudson-1.396.tgz /usr/local</command>
-      $
-      <command>cd /usr/local</command>
-      $
-      <command>sudo tar xvzf hudson-1.396.tgz</command>
-      $
-      <command>ln -s hudson-1.396 hudson</command>
-    </screen>
-
-    <para>
-      <indexterm>
-        <primary>Environment Variables</primary>
-
-        <secondary>HUDSON_HOME</secondary>
-      </indexterm>
-      Although it isn't required for Hudson to run, you may want to set an
-      environment variable
-      <varname>HUDSON_HOME</varname>
-      in your environment which points to the installation directory of Hudson.
-      This chapter will refer to this location as
-      <varname>\${HUDSON_HOME}</varname>. The Hudson installation directory
-      <filename>hudson-1.396</filename>
-      has a sibling directory named
-      <filename>sonatype-work</filename>. This directory contains all of the
-      builds and configuration data for Hudson and is stored outside of the
-      Hudson installation directory to make it easier to upgrade to a newer
-      version of Hudson.
-    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Set up HUDSON_HOME</term>
+        <listitem>
+          <para>Hudson locates its configuration files and all other data in
+            one folder and a multitude of sub folders. This folder should be
+            configured by setting up an environment variable of
+            <varname>HUDSON_HOME</varname>. The application will pick up this
+            setting and use the specified folder.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Deploy to the server</term>
+        <listitem>
+          <para>Depending on the application server and your access rights
+            you can deploy the WAR file via a web based administration
+            console or by copying the WAR into a deployment folder.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </section>
 
   <section id="section-install-deb">

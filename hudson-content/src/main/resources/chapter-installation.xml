@@ -22,7 +22,7 @@
       <term>Native Package</term>
       <listitem>
         <para>Besides the web archive you can download packages for Hudson
-          suitable for the the native package management of Ubuntu/Debian,
+          suitable for the use with the native package management of Ubuntu/Debian,
           Oracle Linux, Redhat/Fedora/CentOS and openSUSE.
         </para>
       </listitem>
@@ -32,12 +32,12 @@
   <para>As a server based application running 24x7 Hudson intrinsically should
     be installed as a operating system service, so that any system reboots
     necessary for maintenance or other reasons will automatically restart
-    Hudson. The documentation for the Hudson install will therefore include
+    Hudson. The documentation for the Hudson install therefore includes
     documentation for setting up these services.
   </para>
 
   <section id="section-install-preprequisites">
-    <title>Hudson Prerequisites</title>
+    <title>Prerequisites</title>
 
     <para>Hudson only has one prerequisite, a
       <indexterm>
@@ -56,13 +56,8 @@
       version of the JDK/JRE that comes as part of your operating system.
     </para>
 
-    <para>The use of the latest version of
-      Oracle's JDK is Java 6 is the officially supported runtime. To
-      download the
-      latest
-      release of the
-      Oracle
-      JDK, go to
+    <para>The latest version of Oracle's JDK 6 is the officially supported
+      runtime. To download the latest release of the Oracle JDK, go to
       <ulink
           url="http://www.oracle.com/technetwork/java/javase/downloads/index.html">
         <indexterm>
@@ -76,7 +71,7 @@
     </para>
 
     <para>OpenJDK as available with many Linux distributions as part of their
-      package system is known to work a runtime for Hudson as are other JVM
+      package system is known to work as a runtime for Hudson as are other JVM
       implementations such Oracle JRockit, HP-UX JDK and IBM JDK.
     </para>
   </section>
@@ -88,7 +83,7 @@
       is an executable WAR that has a servlet container embedded. Once
       downloaded and copied to the desired directory, it
       is therefore possible to start Hudson with the command</para>
-    <screen>$
+    <screen>
       <command>java -jar hudson.war</command>
     </screen>
     <para>This will start the servlet container as the current operating
@@ -98,6 +93,25 @@
       user interface will be available at <ulink
       url="http://localhost:8080/hudson">http://localhost:8080/hudson</ulink>
     </para>
+
+     <figure floatstyle="" id="fig-ci-quickstart-app-win">
+        <title>Hudson Application Window</title>
+
+        <screenshot>
+          <mediaobject>
+            <imageobject role="web">
+              <imagedata align="center"
+                         fileref="figs/web/home-job-list.png"/>
+            </imageobject>
+
+            <imageobject role="print">
+              <imagedata align="center"
+                         fileref="figs/print/home-job-list.pdf"
+                         scalefit="0" width="100%" />
+            </imageobject>
+          </mediaobject>
+        </screenshot>
+      </figure>
 
     <para>This approach is suitable for testing and exploring Hudson,
       but it is not recommended to run Hudson like that in a production usage.
@@ -128,34 +142,216 @@
         </listitem>
       </varlistentry>
     </variablelist>
+    <!-- TODO add a specific hudson user maybe .. but not when other stuff
+    runs on app server .. then the app server user needs access to
+    HUDSON_HOME and whatever..  -->
+    <para>When using Hudson on your application server,
+      you should ensure that the server is set up as a operating system
+      service. The details of this setup widely vary between the various operating
+      systems as well as the different application servers. The preferred and
+      simpler method to install Hudson and run it as a service is a
+      dedicated host and the operating system specific package as supplied by
+      the Hudson website and documented in the following sections.
+    </para>
   </section>
 
   <section id="section-install-deb">
     <title>Installing Hudson on Ubuntu/Debian</title>
 
-    <para>Ubuntu 10.04 LTS and Ubuntu 11.04, Debian X</para>
+    <para>Hudson provides a package repository of deb files for users of
+      Debian based distributions such as Debian, Ubuntu and others. This package
+      will install Hudson and set it up as a service.
+    </para>
 
     <procedure>
       <step>
-        <para>Install a JDK. Either OpenJDK or the Oracle JDK.</para>
+        <title>Install Java runtime</title>
+        <para>In order to fulfill the prerequisite of an installed Java runtime
+          on a Debian based distribution it is best to install the meta package
+          <varname>default-jdk</varname>, which will install OpenJDK,
+          with your preferred package manager user interface. Either use a
+          graphical user interface like
+          <varname>synaptic</varname>
+          or install from on the command line with
+        </para>
+        <screen>
+          <command>sudo apt-get install default-jdk</command>
+        </screen>
+        <para>If you prefer to use the Oracle Java runtime install it with</para>
+        <screen>
+          <command>sudo apt-get install sun-java6-jdk</command>
+        </screen>
       </step>
 
       <step>
-        <para>Update APT Repositories</para>
+        <title>Add Hudson repository key to package management</title>
+        <para>When you first install Hudson you will need to download and add
+          the
+          repository key to the package management system with</para>
+        <screen>
+          <command>sudo wget -q -O - http://hudson-ci.org/debian/hudson-ci.org.key | apt-key add -</command>
+        </screen>
+        <para>Future upgrades will not require this step to be repeated.</para>
       </step>
 
       <step>
-        <para>Install the daemon package</para>
+        <title>Add Hudson repository URL to package management</title>
+        <para>The Hudson project hosts its packages in its own repository
+          server. In order to use it you have to add its URL to your list of
+          package sources with
+        </para>
+        <screen>
+          <command>sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"</command>
+        </screen>
+        <para>or</para>
+        <screen>
+          <command>sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ </command>
+          <command>> /etc/apt/sources.list.d/hudson.list"</command>
+        </screen>
+        <para>or by adding the APT line <varname>deb http://hudson-ci
+          .org/debian binary/</varname> in your graphical package manager as
+          a repository URL.
+        </para>
+        <para>Future upgrades will not require this step to be repeated
+          .</para>
       </step>
 
       <step>
-        <para>Download the deb from Hudson</para>
+        <title>Update the list of available packages</title>
+        <para>Once the prior steps are completed you can update the list of
+          available packages in your graphical package manager or with
+        </para>
+        <screen>
+          <command>sudo apt-get update</command>
+        </screen>
+        <para>This step has to be repeated whenever you want to check for the
+          availability of upgrades. Common practice is for the update of the
+          list to run automatically on a regular basis.
+        </para>
       </step>
 
       <step>
-        <para>Install the package using dpkg</para>
+        <title>Install Hudson</title>
+        <para>Once your list of available packages is updated,
+          you can install Hudson with</para>
+        <screen>
+          <command>sudo apt-get install hudson</command>
+        </screen>
+        <para>which will require you to confirm and will then proceed to
+          install and start Hudson. Your console output will look similar to this
+        </para>
+        <screen>
+          <command>
+$ sudo apt-get install hudson
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  hudson
+0 upgraded, 1 newly installed, 0 to remove and 4 not upgraded.
+Need to get 38.8 MB of archives.
+After this operation, 39.7 MB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  hudson
+Install these packages without verification [y/N]? y
+Get:1 http://hudson-ci.org/debian/ binary/ hudson 2.0.0 [38.8 MB]
+Fetched 38.8 MB in 39s (981 kB/s)
+Selecting previously deselected package hudson.
+(Reading database ... 180192 files and directories currently installed.)
+Unpacking hudson (from .../archives/hudson_2.0.0_all.deb) ...
+Processing triggers for ureadahead ...
+ureadahead will be reprofiled on next reboot
+Setting up hudson (2.0.0) ...
+Adding system user `hudson' (UID 114) ...
+Adding new user `hudson' (UID 114) with group `nogroup' ...
+Not creating home directory `/var/lib/hudson'.
+ * Starting Hudson Continuous Integration Server hudson  [ OK ]
+          </command>
+        </screen>
+        <para>As you can see from the output above a hudson user was created
+          . This user will run the Hudson server. The Hudson home folder is
+          configured to be located in <varname>/var/lib/hudson</varname>,
+          which will contain configuration, workspaces and so on and
+          should be added to your backup strategy.
+        </para>
+      </step>
+
+      <step>
+        <title>Upgrade Hudson</title>
+        <para>To upgrade Hudson when a new release is available you would run
+        </para>
+        <screen>
+          <command>sudo apt-get upgrade</command>
+        </screen>
+        <para>which will stop the running Hudson server,
+          upgrade Hudson and restart the server. Prior to upgrading you might
+        want to backup your Hudson data configuration located in
+          <varname>/var/lib/hudson</varname> and owned by the hudson user.
+          created.
+        </para>
       </step>
     </procedure>
+
+
+    <para>The install configured Hudson as a service so that you can stop and
+      start the service with
+    </para>
+    <screen>
+      <command>sudo service hudson stop</command>
+      <command>sudo service hudson start</command>
+    </screen>
+    <para>or with the equivalent direct call</para>
+    <screen>
+      <command>sudo /etc/init.d/hudson stop</command>
+      <command>sudo /etc/init.d/hudson start</command>
+    </screen>
+
+    <para>Following the Linux standard base convention Hudson will create its
+      log files into  <varname>/var/log/hudson/hudson.log</varname> and the
+      log files will be rotated so you will no accumulate large log files
+      using up disk space.
+    </para>
+
+    <para>Looking at the list of files installed by the package</para>
+    <screen>
+      <command>$dpkg -L hudson
+        /.
+        /var
+        /var/log
+        /var/log/hudson
+        /var/lib
+        /var/lib/hudson
+        /var/run
+        /var/run/hudson
+        /usr
+        /usr/share
+        /usr/share/doc
+        /usr/share/doc/hudson
+        /usr/share/doc/hudson/changelog.gz
+        /usr/share/doc/hudson/copyright
+        /usr/share/hudson
+        /usr/share/hudson/hudson.war
+        /usr/bin
+        /usr/sbin
+        /etc
+        /etc/apt
+        /etc/apt/sources.list.d
+        /etc/apt/sources.list.d/hudson.list
+        /etc/default
+        /etc/default/hudson
+        /etc/init.d
+        /etc/init.d/hudson
+        /etc/logrotate.d
+        /etc/logrotate.d/hudson
+      </command>
+    </screen>
+    <para>reveals that a configuration file <varname>/etc/default/hudson</varname>
+      was created. It contains a number of configuration parameters that you
+      might want to adapt to your needs. These include e.g. the
+      <varname>JAVA_ARGS</varname> that can be used to increase the memory
+      allocation for Hudson or the <varname>HTTP-PORT</varname> parameter set
+      to the common 8080. If you modify this file to suit your needs,
+      you should add it to you backup strategy.</para>
   </section>
 
   <section id="section-install-oracle">
@@ -172,318 +368,195 @@
     </para>
   </section>
 
+  <!-- TODO add OpenSUSE documentation at a later stage -->
+  <!--<section id="section-install-opensuse">-->
+    <!--<title>Installing Hudson on OpenSUSE</title>-->
 
+  <!--</section>-->
 
-      <!-- TODO add OpenSUSE documentation at a later stage -->
-      <!--<section id="section-install-opensuse">-->
-        <!--<title>Installing Hudson on OpenSUSE</title>-->
+  <!--<section id="section-install-service-manually">-->
+    <!--<title>Manually Configuring Hudson as a Service</title>-->
 
+    <!-- TODO This is different for each OS .. and not necessary since we have
+    the native packages ... therefore this chapter should be optional for now
+ and it a nice to have for later  -->
+
+    <!--<para>When installing Hudson, you will often want to configure Hudson -->
+  <!--as a-->
+    <!--service. <indexterm>-->
+        <!--<primary>Windows service</primary>-->
+      <!--</indexterm>If you are on Windows, the Hudson distribution includes-->
+    <!--binaries that can work with the Windows Services subsystem and if you are-->
+    <!--on another platform such as Linux, <indexterm>-->
+        <!--<primary>Unix startup scripts</primary>-->
+      <!--</indexterm>Hudson also includes scripts that can be configured to start-->
+    <!--Hudson as a service. The following sections provide instructions for-->
+    <!--configuring Hudson as a service.</para>-->
+<!---->
+    <!--<section id="ci-quickstart-sect-startup-scripts">-->
+      <!--<title>Startup Scripts for Linux</title>-->
+<!---->
+      <!--<para>-->
+        <!--<indexterm>-->
+          <!--<primary>Installation</primary>-->
+<!---->
+          <!--<secondary>Unix startup scripts</secondary>-->
+        <!--</indexterm>-->
+        <!--You can configure Hudson to start automatically, by copying the-->
+        <!--<filename>Hudson</filename>-->
+        <!--script to the-->
+        <!--<filename>/etc/init.d</filename>-->
+        <!--directory. On a Linux system (tested with Redhat, Fedora, Ubuntu, or-->
+        <!--CentOS) perform the following operations as the root user:-->
+      <!--</para>-->
+<!---->
+      <!--<orderedlist>-->
+        <!--<listitem>-->
+          <!--<para>Create a init script needs to be documented...and then copy to-->
+            <!--<filename>/etc/init.d/matrix</filename>.-->
+          <!--</para>-->
+        <!--</listitem>-->
+<!---->
+        <!--<listitem>-->
+          <!--<para>Make the-->
+            <!--<filename>/etc/init.d/hudson</filename>-->
+            <!--script executable—-->
+            <!--<command>chmod 755 /etc/init.d/hudson</command>-->
+          <!--</para>-->
+        <!--</listitem>-->
+<!---->
+        <!--<listitem>-->
+          <!--<para>(Optional) Set the RUN_AS_USER to "hudson". If you do this, you-->
+            <!--will need to:-->
+          <!--</para>-->
+<!---->
+          <!--<itemizedlist>-->
+            <!--<listitem>-->
+              <!--<para>Create a Hudson user</para>-->
+            <!--</listitem>-->
+<!---->
+            <!--<listitem>-->
+              <!--<para>Change the Owner and Group of your Hudson install directory-->
+                <!--to matrix-->
+              <!--</para>-->
+            <!--</listitem>-->
+          <!--</itemizedlist>-->
+<!---->
+          <!--<note>-->
+            <!--<para>If you set the "RUN_AS_USER" variable, you'll have to change-->
+              <!--the "pid" directory to point to a directory where this user has-->
+              <!--read/write permissions. In most Linux distributions, /var/run is-->
+              <!--only writable by root. The properties that would need to be added-->
+              <!--to customize the PID file location is "wrapper.pid". For more-->
+              <!--information about this property and how it would be configured in-->
+              <!--wrapper.conf, see:-->
+              <!--<ulink-->
+                  <!--url="http://wrapper.tanukisoftware.com/doc/english/properties.html">-->
+                <!--http://wrapper.tanukisoftware.com/doc/english/properties.html-->
+              <!--</ulink>-->
+            <!--</para>-->
+          <!--</note>-->
+        <!--</listitem>-->
+      <!--</orderedlist>-->
+<!---->
+<!---->
+      <!--<para>At the end of this you should have a file in-->
+        <!--<filename>/etc/init.d/matrix</filename>-->
+        <!--which starts with a series of configuration properties which look-->
+        <!--something like this (assuming that you've installed Hudson in-->
+        <!--<filename>/usr/local/matrix</filename>-->
+        <!--and that you have Java installed in-->
+        <!--<filename>/usr/java/latest</filename>):-->
+      <!--</para>-->
+<!---->
+<!---->
+      <!--<section id="ci-quickstart-sect-redhat-fedora">-->
+        <!--<title>Add Hudson as a Service on Redhat, Fedora, and CentOS</title>-->
+<!---->
+        <!--<para>-->
+          <!--<indexterm>-->
+            <!--<primary>Installation</primary>-->
+<!---->
+            <!--<secondary>Redhat</secondary>-->
+          <!--</indexterm>-->
+          <!--<indexterm>-->
+            <!--<primary>Installation</primary>-->
+<!---->
+            <!--<secondary>Fedora</secondary>-->
+          <!--</indexterm>-->
+          <!--<indexterm>-->
+            <!--<primary>Installation</primary>-->
+<!---->
+            <!--<secondary>CentOS</secondary>-->
+          <!--</indexterm>-->
+          <!--This script has the appropriate-->
+          <!--<command>chkconfig</command>-->
+          <!--directives, so all you need to do to add Hudson as a service is run-->
+          <!--the following commands:-->
+        <!--</para>-->
+<!---->
+        <!--<screen>$-->
+          <!--<command>cd /etc/init.d</command>-->
+          <!--$-->
+          <!--<command>chkconfig -add matrix</command>-->
+          <!--$-->
+          <!--<command>chkconfig -levels 345 matrix on</command>-->
+          <!--$-->
+          <!--<command>service matrix start</command>-->
+          <!--Starting Hudson... Started Hudson. $-->
+          <!--<command>tail -f /usr/local/matrix/logs/wrapper.log</command>-->
+        <!--</screen>-->
+<!---->
+        <!--<para>The second command adds Hudson as a service to be started and-->
+          <!--stopped with the-->
+          <!--<command>service</command>-->
+          <!--command and managed by the-->
+          <!--<command>chkconfig</command>-->
+          <!--command.-->
+          <!--<command>chkconfig</command>-->
+          <!--manages the symbolic links in-->
+          <!--<filename>/etc/rc[0-6].d</filename>-->
+          <!--which control the services to be started and stopped when the-->
+          <!--operating system restarts or transitions between run-levels. The third-->
+          <!--command adds Hudson to run-levels 3, 4, and 5. The service command-->
+          <!--starts Hudson, and the last command tails the-->
+          <!--<filename>wrapper.log</filename>-->
+          <!--to verify that Hudson has been started successfully. If Hudson has-->
+          <!--started successfully, you should see a message notifying you that-->
+          <!--Hudson is listening for-->
+          <!--<acronym>HTTP</acronym>-->
+          <!--connections on a port.-->
+        <!--</para>-->
       <!--</section>-->
-
-  <section>
-      <para><indexterm>
-          <primary>Hudson</primary>
-
-          <secondary>running</secondary>
-        </indexterm>When you start Hudson, you are starting a web server on
-      the default port of <varname>localhost:8082</varname>. Hudson runs
-      within a servlet container called <indexterm>
-          <primary>Jetty</primary>
-        </indexterm>Jetty and it is started with a native service wrapper
-      called the <ulink
-      url="http://wrapper.tanukisoftware.org/doc/english/introduction.html">Tanuki
-      Java Service Wrapper</ulink>. This service wrapper can be configured to
-      run Hudson as a <indexterm>
-          <primary>Windows service</primary>
-        </indexterm>Windows service or a Unix daemon. To start Hudson, you
-      will need to find the appropriate startup script for your platform. To
-      see the list of available platforms, list the contents of the
-      <filename>\${HUDSON_HOME}/bin/jsw</filename> directory.</para>
-
-      <para>The following example listing starts Hudson using the script for
-      <indexterm>
-          <primary>Installation</primary>
-
-          <secondary>on Mac OSX</secondary>
-        </indexterm>Mac OSX. First we list the contents of the
-      <filename>\${HUDSON_HOME}/bin/jsw</filename> to show you the available
-      platforms, then we make the contents of the bin directory executable
-      with <command>chmod</command>. The Mac OS X wrapper is started with a
-      call to <command>hudson start</command>, and then we tail the
-      <filename>wrapper.log</filename> in
-      <filename>\${HUDSON_HOME}/logs</filename>. Hudson will initialize itself
-      and print a message stating what IP address and port it is listening
-      on.</para>
-
-      <screen>$ <command>cd /usr/local/hudson</command>
-$ <command>ls ./bin/jsw/</command>
-conf/                linux-x86-32/        solaris-sparc-32/
-lib/                 linux-x86-64/        solaris-sparc-64/
-license/             macosx-universal-32/ solaris-x86-32/
-linux-ppc-64/        macosx-universal-64/ windows-x86-32/
-$ <command>chmod -R a+x bin</command>
-$ <command>./bin/jsw/macosx-universal-64/hudson start</command>
-Starting Hudson...
-Started Hudson.
-$ <command>tail -f logs/wrapper.log</command> 
-INFO  ... [ServletContainer:default] - SelectChannelConnector@0.0.0.0:8082
-</screen>
-
-      <para>At this point, Hudson will be running and listening on all IP
-      addresses (0.0.0.0) that are configured for the current host on port
-      8082. To use Hudson, fire up a web browser and type in the URL: <ulink
-      url="http://localhost:8082/matrix">http://localhost:8082/hudson</ulink>.
-      While we use "localhost" throughout this book, you may need to use the
-      IP Loopback Address of "127.0.0.1" or the IP address assigned to the
-      machine running Hudson.</para>
-
-      <figure floatstyle="" id="fig-ci-quickstart-app-win">
-        <title>Hudson Application Window</title>
-
-        <screenshot>
-          <mediaobject>
-            <imageobject role="web">
-              <imagedata align="center"
-                         fileref="figs/web/home-job-list.png"/>
-            </imageobject>
-
-            <imageobject role="print">
-              <imagedata align="center"
-                         fileref="figs/print/home-job-list.pdf"
-                         scalefit="0" width="100%" />
-            </imageobject>
-          </mediaobject>
-        </screenshot>
-      </figure>
-    </section>
-
-  <section>
-    <title>Configuring Hudson as a Service</title>
-
-    <!--TODO: Setting up Hudson as a Service should fall into the various platform-specific sections listed above.   If you are going to install Hudson on CentOS,
-I don't want to have to force users to click through a series of pages, I want everything CentOS-specific to show up in a single procedure.
-
-See HBOOK-11-->
-
-    <para>When installing Hudson, you will often want to configure Hudson as a
-    service. <indexterm>
-        <primary>Windows service</primary>
-      </indexterm>If you are on Windows, the Hudson distribution includes
-    binaries that can work with the Windows Services subsystem and if you are
-    on another platform such as Linux, <indexterm>
-        <primary>Unix startup scripts</primary>
-      </indexterm>Hudson also includes scripts that can be configured to start
-    Hudson as a service. The following sections provide instructions for
-    configuring Hudson as a service.</para>
-
-    <section id="ci-quickstart-sect-startup-scripts">
-      <title>Startup Scripts for Linux</title>
-
-      <para><indexterm>
-          <primary>Installation</primary>
-
-          <secondary>Unix startup scripts</secondary>
-        </indexterm>You can configure Hudson to start automatically, by
-      copying the <filename>Hudson</filename> script to the
-      <filename>/etc/init.d</filename> directory. On a Linux system (tested
-      with Redhat, Fedora, Ubuntu, or CentOS) perform the following operations
-      as the root user:</para>
-
-      <orderedlist>
-        <listitem>
-          <para>Copy either
-          <filename>\${MATRIX_HOME}/bin/jsw/linux-ppc-64/matrix</filename>,
-          <filename>\${MATRIX_HOME}/bin/jsw/linux-x86-32/matrix</filename>, or
-          <filename>\${MATRIX_HOME}/bin/jsw/linux-x86-64/matrix</filename> to
-          <filename>/etc/init.d/matrix</filename>.</para>
-        </listitem>
-
-        <listitem>
-          <para>Make the <filename>/etc/init.d/matrix</filename> script
-          executable—<command>chmod 755 /etc/init.d/matrix</command></para>
-        </listitem>
-
-        <listitem>
-          <para>Edit this script changing the following variables:</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Change <varname>APP_NAME</varname> to "matrix"</para>
-            </listitem>
-
-            <listitem>
-              <para>Change <varname>APP_LONG_NAME</varname> to "Hudson"</para>
-            </listitem>
-
-            <listitem>
-              <para>Add a variable <varname>MATRIX_HOME</varname> which points
-              to your Hudson installation directory</para>
-            </listitem>
-
-            <listitem>
-              <para>Add a variable <varname>PLATFORM</varname> which contains
-              either <varname>linux-x86-32</varname>,
-              <varname>linux-x86-64</varname>, or
-              <varname>linux-ppc-64</varname></para>
-            </listitem>
-
-            <listitem>
-              <para>Change <varname>WRAPPER_CMD</varname> to
-              <filename>\${MATRIX_HOME}/bin/jsw/\${PLATFORM}/wrapper</filename></para>
-            </listitem>
-
-            <listitem>
-              <para>Change <varname>WRAPPER_CONF</varname> to
-              <filename>\${MATRIX_HOME}/bin/jsw/conf/wrapper.conf</filename></para>
-            </listitem>
-
-            <listitem>
-              <para>Change <varname>PIDDIR</varname> to
-              <filename>/var/run</filename>.</para>
-            </listitem>
-
-            <listitem>
-              <para>Add a <varname>JAVA_HOME</varname> variable which points
-              to your local Java installation</para>
-            </listitem>
-
-            <listitem>
-              <para>Add a <filename>\${JAVA_HOME}/bin</filename> to the
-              <varname>PATH</varname></para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>(Optional) Set the RUN_AS_USER to "matrix". If you do this,
-          you will need to:</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Create a Hudson user</para>
-            </listitem>
-
-            <listitem>
-              <para>Change the Owner and Group of your Hudson install
-              directory to matrix</para>
-            </listitem>
-          </itemizedlist>
-
-          <note>
-            <para>If you set the "RUN_AS_USER" variable, you'll have to change
-            the "pid" directory to point to a directory where this user has
-            read/write permissions. In most Linux distributions, /var/run is
-            only writable by root. The properties that would need to be added
-            to customize the PID file location is "wrapper.pid". For more
-            information about this property and how it would be configured in
-            wrapper.conf, see: <ulink
-            url="http://wrapper.tanukisoftware.com/doc/english/properties.html">http://wrapper.tanukisoftware.com/doc/english/properties.html</ulink></para>
-          </note>
-        </listitem>
-      </orderedlist>
-
-      <figure id="fig-ci-quickstart_bin-dir-l32">
-        <title>Script Directory for 32-bit Linux in
-        \${MATRIX_HOME}/bin/jsw</title>
-
-        <mediaobject>
-          <imageobject role="web">
-            <imagedata align="center"
-                       fileref="figs/web/installing_bin-dir-l32.png" />
-          </imageobject>
-
-          <imageobject role="print">
-            <imagedata align="center"
-                       fileref="figs/print/installing_bin-dir-l32.pdf"
-                       scalefit="0" width="100%" />
-          </imageobject>
-        </mediaobject>
-      </figure>
-
-      <para>At the end of this you should have a file in
-      <filename>/etc/init.d/matrix</filename> which starts with a series of
-      configuration properties which look something like this (assuming that
-      you've installed Hudson in <filename>/usr/local/matrix</filename> and
-      that you have Java installed in
-      <filename>/usr/java/latest</filename>):</para>
-
-      <programlisting>JAVA_HOME=/usr/java/latest
-PATH=\${PATH}:\${JAVA_HOME}/bin
-APP_NAME="matrix"
-APP_LONG_NAME="Hudson"
-MATRIX_HOME=/usr/local/matrix
-PLATFORM=linux-x86-64
-WRAPPER_CMD="\${MATRIX_HOME}/bin/jsw/\${PLATFORM}/wrapper"
-WRAPPER_CONF="\${MATRIX_HOME}/bin/jsw/conf/wrapper.conf"
-PRIORITY=
-PIDDIR="/var/run"
-#RUN_AS_USER=matrix
-</programlisting>
-
-      <section id="ci-quickstart-sect-redhat-fedora">
-        <title>Add Hudson as a Service on Redhat, Fedora, and CentOS</title>
-
-        <para><indexterm>
-            <primary>Installation</primary>
-
-            <secondary>Redhat</secondary>
-          </indexterm><indexterm>
-            <primary>Installation</primary>
-
-            <secondary>Fedora</secondary>
-          </indexterm><indexterm>
-            <primary>Installation</primary>
-
-            <secondary>CentOS</secondary>
-          </indexterm>This script has the appropriate
-        <command>chkconfig</command> directives, so all you need to do to add
-        Hudson as a service is run the following commands:</para>
-
-        <screen>$ <command>cd /etc/init.d</command>
-$ <command>chkconfig --add matrix</command>
-$ <command>chkconfig --levels 345 matrix on</command>
-$ <command>service matrix start</command>
-Starting Hudson...
-Started Hudson.
-$ <command>tail -f /usr/local/matrix/logs/wrapper.log</command></screen>
-
-        <para>The second command adds Hudson as a service to be started and
-        stopped with the <command>service</command> command and managed by the
-        <command>chkconfig</command> command. <command>chkconfig</command>
-        manages the symbolic links in <filename>/etc/rc[0-6].d</filename>
-        which control the services to be started and stopped when the
-        operating system restarts or transitions between run-levels. The third
-        command adds Hudson to run-levels 3, 4, and 5. The service command
-        starts Hudson, and the last command tails the
-        <filename>wrapper.log</filename> to verify that Hudson has been
-        started successfully. If Hudson has started successfully, you should
-        see a message notifying you that Hudson is listening for
-        <acronym>HTTP</acronym> connections on a port.</para>
-      </section>
-
-      <section id="ci-quickstart-sect-ubntu">
-        <title>Add Hudson as a Service on Ubuntu</title>
-
-        <para><indexterm>
-            <primary>Installation</primary>
-
-            <secondary>Ubuntu</secondary>
-          </indexterm>The process for setting Hudson up as a service on Ubuntu
-        differs slightly from the process used on a Redhat variant. Instead of
-        running chkconfig, you should run the following sequence of commands
-        once you've configured the startup script in
-        <filename>/etc/init.d</filename>:</para>
-
-        <screen>$ <command>cd /etc/init.d</command>
-$ <command>update-rc.d matrix defaults</command>
-$ <command>service matrix start</command>
-Starting Hudson...
-Started Hudson.
-$ <command>tail -f /usr/local/matrix/logs/wrapper.log</command>
-</screen>
-      </section>
-             </section>
-    </section>
+<!---->
+      <!--<section id="ci-quickstart-sect-ubuntu">-->
+        <!--<title>Add Hudson as a Service on Ubuntu</title>-->
+<!---->
+        <!--<para>-->
+          <!--<indexterm>-->
+            <!--<primary>Installation</primary>-->
+<!---->
+            <!--<secondary>Ubuntu</secondary>-->
+          <!--</indexterm>-->
+          <!--The process for setting Hudson up as a service on Ubuntu differs-->
+          <!--slightly from the process used on a Redhat variant. Instead of running-->
+          <!--chkconfig, you should run the following sequence of commands once-->
+          <!--you've configured the startup script in-->
+          <!--<filename>/etc/init.d</filename>:-->
+        <!--</para>-->
+<!---->
+        <!--<screen>$-->
+          <!--<command>cd /etc/init.d</command>-->
+          <!--$-->
+          <!--<command>update-rc.d matrix defaults</command>-->
+          <!--$-->
+          <!--<command>service matrix start</command>-->
+          <!--Starting Hudson... Started Hudson. $-->
+          <!--<command>tail -f /usr/local/matrix/logs/wrapper.log</command>-->
+        <!--</screen>-->
+      <!--</section>-->
+    <!--</section>-->
+  <!--</section>-->
 
   <section id="ci-quickstart-sect-upgrading">
     <title>Upgrading Hudson</title>
@@ -494,16 +567,11 @@ $ <command>tail -f /usr/local/matrix/logs/wrapper.log</command>
         <secondary>upgrading</secondary>
       </indexterm>Since Hudson separates it's configuration and data storage
     from the application, it is easy to upgrade an existing Hudson
-    installation. To upgrade Hudson, unpack the Hudson archive in the
-    directory which contains the existing Hudson installation. Once the
-    archive is unpacked, the new Hudson application directory should be a
-    sibling to your existing <filename>sonatype-work/</filename> directory. If
-    you have defined a symbolic link for the version of Nexus to use, change
-    that to point at the new Nexus application directory. When you start the
-    new instance of Hudson it will read the existing repository configuration
-    from the <filename>sonatype-work/</filename> directory.</para>
-
-    <!--TODO: See HBOOK-12 - this section needs massive expansion-->
+    installation. For native package users this will be handled transparently
+     with their package management system. For WAR file based installs,
+      you only have to remove the old version WAR and replace it with the new
+      version in your application server.</para>
+    <!--TODO: See HBOOK-12 - this section needs  expansion-->
   </section>
 
   <section id="ci-quickstart-sect-behind-proxy">
@@ -540,7 +608,7 @@ $ <command>tail -f /usr/local/matrix/logs/wrapper.log</command>
 
     <orderedlist>
       <listitem>
-        <para> Need to explain how to run Hudson in the root context here </para>
+        <para>Need to explain how to run Hudson in the root context here </para>
       </listitem>
 
       <listitem>

@@ -314,35 +314,36 @@ Not creating home directory `/var/lib/hudson'.
 
     <para>Looking at the list of files installed by the package</para>
     <screen>
-      <command>$dpkg -L hudson
-        /.
-        /var
-        /var/log
-        /var/log/hudson
-        /var/lib
-        /var/lib/hudson
-        /var/run
-        /var/run/hudson
-        /usr
-        /usr/share
-        /usr/share/doc
-        /usr/share/doc/hudson
-        /usr/share/doc/hudson/changelog.gz
-        /usr/share/doc/hudson/copyright
-        /usr/share/hudson
-        /usr/share/hudson/hudson.war
-        /usr/bin
-        /usr/sbin
-        /etc
-        /etc/apt
-        /etc/apt/sources.list.d
-        /etc/apt/sources.list.d/hudson.list
-        /etc/default
-        /etc/default/hudson
-        /etc/init.d
-        /etc/init.d/hudson
-        /etc/logrotate.d
-        /etc/logrotate.d/hudson
+      <command>
+$ dpkg -L hudson
+/.
+/var
+/var/log
+/var/log/hudson
+/var/lib
+/var/lib/hudson
+/var/run
+/var/run/hudson
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/hudson
+/usr/share/doc/hudson/changelog.gz
+/usr/share/doc/hudson/copyright
+/usr/share/hudson
+/usr/share/hudson/hudson.war
+/usr/bin
+/usr/sbin
+/etc
+/etc/apt
+/etc/apt/sources.list.d
+/etc/apt/sources.list.d/hudson.list
+/etc/default
+/etc/default/hudson
+/etc/init.d
+/etc/init.d/hudson
+/etc/logrotate.d
+/etc/logrotate.d/hudson
       </command>
     </screen>
     <para>reveals that a configuration file <varname>/etc/default/hudson</varname>
@@ -431,7 +432,7 @@ Not creating home directory `/var/lib/hudson'.
         <screen>
           <command>
 $ sudo yum install hudson
-...
+TODO...
           </command>
         </screen>
         <para>As you can see from the output above a hudson user was created
@@ -465,7 +466,7 @@ $ sudo yum install hudson
     <screen>
       <command>sudo service hudson stop</command>
       <command>sudo service hudson start</command>
-    </screen>                                       f
+    </screen>
 
     <para>Following the Linux standard base convention Hudson will create its
       log files into  <varname>/var/log/hudson/hudson.log</varname> and the
@@ -475,15 +476,16 @@ $ sudo yum install hudson
 
  <para>Looking at the list of files installed by the package</para>
     <screen>
-      <command>$rpm -ql hudson
-        /etc/init.d/hudson
-        /etc/logrotate.d/hudson
-        /etc/sysconfig/hudson
-        /usr/lib/hudson
-        /usr/lib/hudson/hudson.war
-        /usr/sbin/hudson
-        /var/lib/hudson
-        /var/log/hudson
+      <command>
+$ rpm -ql hudson
+/etc/init.d/hudson
+/etc/logrotate.d/hudson
+/etc/sysconfig/hudson
+/usr/lib/hudson
+/usr/lib/hudson/hudson.war
+/usr/sbin/hudson
+/var/lib/hudson
+/var/log/hudson
       </command>
     </screen>
     <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>

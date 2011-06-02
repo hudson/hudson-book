@@ -425,85 +425,231 @@ $ dpkg -L hudson
           you can install Hudson with</para>
         <screen>
           <command>sudo yum install hudson</command>
-        </screen>
-        <para>which will require you to confirm and will then proceed to
-          install and start Hudson. Your console output will look similar to this
-        </para>
-        <screen>
-          <command>
-$ sudo yum install hudson
-TODO...
-          </command>
-        </screen>
-        <para>As you can see from the output above a hudson user was created
-          . This user will run the Hudson server. The Hudson home folder is
-          configured to be located in <varname>/var/lib/hudson</varname>,
-          which will contain configuration, workspaces and so on and
-          should be added to your backup strategy.
-        </para>
-      </step>
+      </screen>
+      <para>which will require you to confirm and will then proceed to
+        install and start Hudson. Your console output will look similar to this
+      </para>
+      <screen>
+        <command>
+          $ sudo yum install hudson
+          TODO...
+        </command>
+      </screen>
+      <para>As you can see from the output above a hudson user was created
+        . This user will run the Hudson server. The Hudson home folder is
+        configured to be located in <varname>/var/lib/hudson</varname>,
+        which will contain configuration, workspaces and so on and
+        should be added to your backup strategy.
+      </para>
+    </step>
 
-      <step>
-        <title>Upgrade Hudson</title>
-        <para>To upgrade Hudson when a new release is available you would run
-        </para>
-        <screen>
-          <command>sudo yum update</command>
-        </screen>
-        <para>which will stop the running Hudson server,
-          upgrade Hudson and restart the server. Prior to upgrading you might
-        want to backup your Hudson data configuration located in
-          <varname>/var/lib/hudson</varname> and owned by the hudson user.
-          created.
-        </para>
-      </step>
-    </procedure>
+   <step>
+     <title>Upgrade Hudson</title>
+     <para>To upgrade Hudson when a new release is available you would run
+     </para>
+     <screen>
+       <command>sudo yum update</command>
+     </screen>
+     <para>which will stop the running Hudson server,
+       upgrade Hudson and restart the server. Prior to upgrading you might
+       want to backup your Hudson data configuration located in
+       <varname>/var/lib/hudson</varname> and owned by the hudson user.
+       created.
+     </para>
+   </step>
+ </procedure>
 
 
-    <para>The install configured Hudson as a service so that you can stop and
-      start the service with
-    </para>
-    <screen>
-      <command>sudo service hudson stop</command>
-      <command>sudo service hudson start</command>
-    </screen>
+  <para>The install configured Hudson as a service so that you can stop and
+    start the service with
+  </para>
+  <screen>
+    <command>sudo service hudson stop</command>
+    <command>sudo service hudson start</command>
+  </screen>
 
-    <para>Following the Linux standard base convention Hudson will create its
-      log files into  <varname>/var/log/hudson/hudson.log</varname> and the
-      log files will be rotated so you will no accumulate large log files
-      using up disk space.
-    </para>
+  <para>Following the Linux standard base convention Hudson will create its
+    log files into  <varname>/var/log/hudson/hudson.log</varname> and the
+    log files will be rotated so you will no accumulate large log files
+    using up disk space.
+  </para>
 
- <para>Looking at the list of files installed by the package</para>
-    <screen>
-      <command>
-$ rpm -ql hudson
-/etc/init.d/hudson
-/etc/logrotate.d/hudson
-/etc/sysconfig/hudson
-/usr/lib/hudson
-/usr/lib/hudson/hudson.war
-/usr/sbin/hudson
-/var/lib/hudson
-/var/log/hudson
-      </command>
-    </screen>
-    <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>
-      was created. It contains a number of configuration parameters that you
-      might want to adapt to your needs. These include e.g. the
-      <varname>HUDSON_JAVA_OPTIONS</varname> that can be used to increase the
-      memory
-      allocation for Hudson or the <varname>HUDSON_PORT</varname> parameter set
-      to the common 8080. If you modify this file to suit your needs,
-      you should add it to you backup strategy.</para>
+  <para>Looking at the list of files installed by the package</para>
+  <screen>
+    <command>
+      $ rpm -ql hudson
+      /etc/init.d/hudson
+      /etc/logrotate.d/hudson
+      /etc/sysconfig/hudson
+      /usr/lib/hudson
+      /usr/lib/hudson/hudson.war
+      /usr/sbin/hudson
+      /var/lib/hudson
+      /var/log/hudson
+    </command>
+  </screen>
+  <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>
+    was created. It contains a number of configuration parameters that you
+    might want to adapt to your needs. These include e.g. the
+    <varname>HUDSON_JAVA_OPTIONS</varname> that can be used to increase the
+    memory
+    allocation for Hudson or the <varname>HUDSON_PORT</varname> parameter set
+    to the common 8080. If you modify this file to suit your needs,
+    you should add it to you backup strategy.</para>
 
   </section>
 
   <!-- TODO add OpenSUSE documentation at a later stage -->
-  <!--<section id="section-install-opensuse">-->
-    <!--<title>Installing Hudson on OpenSUSE</title>-->
+  <section id="section-install-opensuse">
+    <title>Installing Hudson on OpenSUSE</title>
+    <!-- at a later stage we can split this up but not now while it is all
+    the same package and infrastructure -->
+    <para>OpenSUSE uses a special rpm package provided by the Hudson project.
+      This package
+      will install Hudson and set it up as a service.
+    </para>
 
-  <!--</section>-->
+    <procedure>
+      <step>
+        <title>Install Java runtime</title>
+        <para>In order to fulfill the prerequisite of an installed Java runtime
+          on openSUSE it is best to install the meta package
+          <varname>java</varname>, which will install OpenJDK,
+          with your preferred package manager user interface. Either use a
+          graphical user interface like
+          <varname>YaST</varname>
+          or install from on the command line with
+        </para>
+        <screen>
+          <command>sudo zypper install java</command>
+        </screen>
+      </step>
+
+      <step>
+        <title>Add Hudson repository key to package management</title>
+        <para>When you first install Hudson you will need to download and add
+          the repository key to the package management system with</para>
+        <screen>
+          <command>sudo rpm --import http://hudson-ci.org/opensuse/hudson-ci.org
+            .key</command>
+        </screen>
+        <para>Future upgrades will not require this step to be repeated.</para>
+      </step>
+
+      <step>
+        <title>Add Hudson repository URL to package management</title>
+        <para>The Hudson project hosts its packages in its own repository
+          server. In order to use it you have to add the repository meta data to
+          your list of package sources with
+        </para>
+        <screen>
+          <command>sudo wget -O /etc/zypp/repos.d/hudson.repo
+            http://hudson-ci.org/opensuse/hudson.repo</command>
+        </screen>
+        <!--<screen>-->
+          <!--<command>sudo zypper addrepo-->
+            <!--http://hudson-ci.org/opensuse/hudson.repo-->
+          <!--</command>-->
+        <!--</screen>-->
+
+        <para>Future upgrades will not require this step to be repeated.</para>
+      </step>
+
+      <step>
+        <title>Update the list of available packages</title>
+        <para>Once the prior steps are completed you can update the list of
+          available packages in your graphical package manager or with
+        </para>
+        <screen>
+          <command>sudo zypper refresh</command>
+        </screen>
+        <para>This step has to be repeated whenever you want to check for the
+          availability of upgrades. Common practice is for the update of the
+          list to run automatically on a regular basis.
+        </para>
+      </step>
+
+      <step>
+        <title>Install Hudson</title>
+        <para>Once your list of available packages is updated,
+          you can install Hudson with</para>
+        <screen>
+          <command>sudo zypper install hudson</command>
+      </screen>
+      <para>which will require you to confirm and will then proceed to
+        install and start Hudson. Your console output will look similar to this
+      </para>
+      <screen>
+        <command>
+          $ sudo zypper install hudson
+          TODO...
+        </command>
+      </screen>
+      <!--TODO --><para>As you can see from the output above a hudson user was
+      created
+        . This user will run the Hudson server. The Hudson home folder is
+        configured to be located in <varname>/var/lib/hudson</varname>,
+        which will contain configuration, workspaces and so on and
+        should be added to your backup strategy.
+      </para>
+    </step>
+
+   <step>
+     <title>Upgrade Hudson</title>
+     <para>To upgrade Hudson when a new release is available you would run
+     </para>
+     <screen>
+       <command>sudo zypper update</command>
+     </screen>
+     <para>which will stop the running Hudson server,
+       upgrade Hudson and restart the server. Prior to upgrading you might
+       want to backup your Hudson data configuration located in
+       <varname>/var/lib/hudson</varname> and owned by the hudson user.
+       created.
+     </para>
+   </step>
+ </procedure>
+
+
+  <para>The install configured Hudson as a service so that you can stop and
+    start the service with
+  </para>
+  <screen>
+    <command>sudo service hudson stop</command>
+    <command>sudo service hudson start</command>
+  </screen>
+
+  <!-- -->
+    <para>Following the Linux standard base convention Hudson will
+    create its
+    log files into  <varname>/var/log/hudson/hudson.log</varname> and the
+    log files will be rotated so you will no accumulate large log files
+    using up disk space.
+  </para>
+
+  <para>Looking at the list of files installed by the package</para>
+  <screen>
+    <command>
+      $ rpm -ql hudson
+      /etc/init.d/hudson
+      /etc/logrotate.d/hudson
+      /etc/sysconfig/hudson
+      /usr/lib/hudson
+      /usr/lib/hudson/hudson.war
+      /usr/sbin/hudson
+      /var/lib/hudson
+      /var/log/hudson
+    </command>
+  </screen>
+  <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>
+    was created. It contains a number of configuration parameters that you
+    might want to adapt to your needs. These include e.g. the
+    <varname>HUDSON_JAVA_OPTIONS</varname> that can be used to increase the
+    memory
+    allocation for Hudson or the <varname>HUDSON_PORT</varname> parameter set
+    to the common 8080. If you modify this file to suit your needs,
+    you should add it to you backup strategy.</para>
+  </section>
 
   <!--<section id="section-install-service-manually">-->
     <!--<title>Manually Configuring Hudson as a Service</title>-->

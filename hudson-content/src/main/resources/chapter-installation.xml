@@ -359,7 +359,6 @@ $ dpkg -L hudson
  <section id="section-install-rpm">
     <title>Installing Hudson on Oracle Linux, Redhat Enterprise Linux, CentOS and Fedora
     </title>
-
     <!-- at a later stage we can split this up but not now while it is all
     the same package and infrastructure -->
     <para>Oracle Linux, Redhat Enterprise Linux, CentOS and Fedora all use
@@ -421,16 +420,45 @@ $ dpkg -L hudson
       </para>
       <screen>
         <command>
-          $ sudo yum install hudson
-          TODO...
-        </command>
+$ sudo yum install hudson
+Loaded plugins: langpacks, presto, refresh-packagekit
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package hudson.noarch 0:2.0.1-1.1 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+======================================================================
+ Package       	Arch          	Version          	Repository   	Size
+======================================================================
+Installing:
+ hudson        	noarch        	2.0.1-1.1        	test         	37 M
+
+Transaction Summary
+======================================================================
+Install   	1 Package(s)
+
+Total download size: 37 M
+Installed size: 37 M
+Is this ok [y/N]: y
+Downloading Packages:
+Setting up and reading Presto delta metadata
+Processing delta metadata
+Package(s) data still to download: 37 M
+hudson-2.0.1-1.1.noarch.100% [=======] 953 kB/s | 37 MB 	00:40
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : hudson-2.0.1-1.1.noarch  	1/1
+
+Installed:
+  hudson.noarch 0:2.0.1-1.1
+
+Complete!</command>
       </screen>
-      <para>As you can see from the output above a hudson user was created
-        . This user will run the Hudson server. The Hudson home folder is
-        configured to be located in <varname>/var/lib/hudson</varname>,
-        which will contain configuration, workspaces and so on and
-        should be added to your backup strategy.
-      </para>
     </step>
 
    <step>
@@ -478,25 +506,28 @@ $ dpkg -L hudson
       /var/log/hudson
     </command>
   </screen>
-  <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>
-    was created. It contains a number of configuration parameters that you
-    might want to adapt to your needs. These include e.g. the
-    <varname>HUDSON_JAVA_OPTIONS</varname> that can be used to increase the
-    memory
-    allocation for Hudson or the <varname>HUDSON_PORT</varname> parameter set
-    to the common 8080. If you modify this file to suit your needs,
-    you should add it to you backup strategy.</para>
+   <para>reveals that a configuration file
+     <varname>/etc/sysconfig/hudson</varname>
+     was created. It contains a number of configuration parameters that you
+     might want to adapt to your needs. These include e.g. the
+     <varname>HUDSON_JAVA_OPTIONS</varname>
+     that can be used to increase the memory allocation for Hudson or the
+     <varname>HUDSON_PORT</varname>
+     parameter set to the common 8080. If you modify this file to suit your
+     needs, you should add it to you backup strategy.
+   </para>
+   <para>As part of the install a hudson user was created . This user will run
+     the Hudson server. The Hudson home folder is configured to be located in
+     <varname>/var/lib/hudson</varname>, which will contain configuration,
+     workspaces and so on and should be added to your backup strategy.
+   </para>
+ </section>
 
-  </section>
-
-  <!-- TODO add OpenSUSE documentation at a later stage -->
   <section id="section-install-opensuse">
     <title>Installing Hudson on OpenSUSE</title>
-    <!-- at a later stage we can split this up but not now while it is all
-    the same package and infrastructure -->
+
     <para>OpenSUSE uses a special rpm package provided by the Hudson project.
-      This package
-      will install Hudson and set it up as a service.
+      This package will install Hudson and set it up as a service.
     </para>
 
     <procedure>

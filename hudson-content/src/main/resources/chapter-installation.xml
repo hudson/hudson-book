@@ -653,21 +653,22 @@ hudson                    0:off  1:off  2:off  3:on   4:off  5:on   6:off
       /var/log/hudson
     </command>
   </screen>
-  <para>reveals that a configuration file <varname>/etc/sysconfig/hudson</varname>
-    was created. It contains a number of configuration parameters that you
-    might want to adapt to your needs. These include e.g. the
-    <varname>HUDSON_JAVA_OPTIONS</varname> that can be used to increase the
-    memory
-    allocation for Hudson or the <varname>HUDSON_PORT</varname> parameter set
-    to the common 8080. If you modify this file to suit your needs,
-    you should add it to you backup strategy.</para>
+    <para>reveals that a configuration file
+      <varname>/etc/sysconfig/hudson</varname>
+      was created. It contains a number of configuration parameters that you
+      might want to adapt to your needs. These include e.g. the
+      <varname>HUDSON_JAVA_OPTIONS</varname>
+      that can be used to increase the memory allocation for Hudson or the
+      <varname>HUDSON_PORT</varname>
+      parameter set to the common 8080. If you modify this file to suit your
+      needs, you should add it to you backup strategy.
+    </para>
+    <para>As part of the install a hudson user was created . This user will run
+      the Hudson server. The Hudson home folder is configured to be located in
+      <varname>/var/lib/hudson</varname>, which will contain configuration,
+      workspaces and so on and should be added to your backup strategy.
+    </para>
   </section>
-
-  <para>As part of the install a hudson user was created . This user will run
-    the Hudson server. The Hudson home folder is configured to be located in
-    <varname>/var/lib/hudson</varname>, which will contain configuration,
-    workspaces and so on and should be added to your backup strategy.
-  </para>
 
   <!--<section id="section-install-service-manually">-->
     <!--<title>Manually Configuring Hudson as a Service</title>-->
@@ -857,15 +858,21 @@ hudson                    0:off  1:off  2:off  3:on   4:off  5:on   6:off
     <title>Upgrading Hudson</title>
 
     <para><indexterm>
-        <primary>Hudson</primary>
-
-        <secondary>upgrading</secondary>
-      </indexterm>Since Hudson separates it's configuration and data storage
-    from the application, it is easy to upgrade an existing Hudson
-    installation. For native package users this will be handled transparently
-     with their package management system. For WAR file based installs,
-      you only have to remove the old version WAR and replace it with the new
-      version in your application server.</para>
+      <primary>Hudson</primary>
+      <secondary>upgrading</secondary>
+    </indexterm>
+      Since Hudson separates it's configuration and data storage from the
+      application, it is easy to upgrade an existing Hudson installation. After
+      a full backup of all configuration and data, you should be ready to
+      proceed after notifying your users about potential downtime. You might
+      also want to disable all jobs before proceeding.
+    </para>
+    <para>
+      . For native package users this will be handled transparently with their
+      package management system. For WAR file based installs, you only have to
+      remove the old version WAR and replace it with the new version in your
+      application server.
+    </para>
     <!--TODO: See HBOOK-12 - this section needs  expansion-->
   </section>
 

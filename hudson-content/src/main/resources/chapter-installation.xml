@@ -184,17 +184,6 @@
       </step>
 
       <step>
-        <title>Add Hudson repository key to package management</title>
-        <para>When you first install Hudson you will need to download and add
-          the
-          repository key to the package management system with</para>
-        <screen>
-          <command>sudo wget -q -O - http://hudson-ci.org/debian/hudson-ci.org.key | apt-key add -</command>
-        </screen>
-        <para>Future upgrades will not require this step to be repeated.</para>
-      </step>
-
-      <step>
         <title>Add Hudson repository URL to package management</title>
         <para>The Hudson project hosts its packages in its own repository
           server. In order to use it you have to add its URL to your list of

@@ -383,15 +383,15 @@ $ dpkg -L hudson
         </screen>
       </step>
 
-      <step>
-        <title>Add Hudson repository key to package management</title>
-        <para>When you first install Hudson you will need to download and add
-          the repository key to the package management system with</para>
-        <screen>
-          <command>sudo rpm --import http://hudson-ci.org/redhat/hudson-ci.org.key</command>
-        </screen>
-        <para>Future upgrades will not require this step to be repeated.</para>
-      </step>
+      <!--<step>-->
+        <!--<title>Add Hudson repository key to package management</title>-->
+        <!--<para>When you first install Hudson you will need to download and add-->
+          <!--the repository key to the package management system with</para>-->
+        <!--<screen>-->
+          <!--<command>sudo rpm --import http://hudson-ci.org/redhat/hudson-ci.org.key</command>-->
+        <!--</screen>-->
+        <!--<para>Future upgrades will not require this step to be repeated.</para>-->
+      <!--</step>-->
 
       <step>
         <title>Add Hudson repository URL to package management</title>
@@ -411,7 +411,7 @@ $ dpkg -L hudson
           available packages in your graphical package manager or with
         </para>
         <screen>
-          <command>sudo yum check-updates</command>
+          <command>sudo yum check-update</command>
         </screen>
         <para>This step has to be repeated whenever you want to check for the
           availability of upgrades. Common practice is for the update of the
@@ -525,16 +525,16 @@ $ dpkg -L hudson
         </screen>
       </step>
 
-      <step>
-        <title>Add Hudson repository key to package management</title>
-        <para>When you first install Hudson you will need to download and add
-          the repository key to the package management system with</para>
-        <screen>
-          <command>sudo rpm --import http://hudson-ci.org/opensuse/hudson-ci.org
-            .key</command>
-        </screen>
-        <para>Future upgrades will not require this step to be repeated.</para>
-      </step>
+      <!--<step>-->
+        <!--<title>Add Hudson repository key to package management</title>-->
+        <!--<para>When you first install Hudson you will need to download and add-->
+          <!--the repository key to the package management system with</para>-->
+        <!--<screen>-->
+          <!--<command>sudo rpm --import http://hudson-ci.org/opensuse/hudson-ci.org-->
+            <!--.key</command>-->
+        <!--</screen>-->
+        <!--<para>Future upgrades will not require this step to be repeated.</para>-->
+      <!--</step>-->
 
       <step>
         <title>Add Hudson repository URL to package management</title>
@@ -546,12 +546,6 @@ $ dpkg -L hudson
           <command>sudo wget -O /etc/zypp/repos.d/hudson.repo
             http://hudson-ci.org/opensuse/hudson.repo</command>
         </screen>
-        <!--<screen>-->
-          <!--<command>sudo zypper addrepo-->
-            <!--http://hudson-ci.org/opensuse/hudson.repo-->
-          <!--</command>-->
-        <!--</screen>-->
-
         <para>Future upgrades will not require this step to be repeated.</para>
       </step>
 
@@ -581,17 +575,24 @@ $ dpkg -L hudson
       </para>
       <screen>
         <command>
-          $ sudo zypper install hudson
-          TODO...
+$ sudo zypper install hudson
+Loading repository data...
+Reading installed packages...
+Resolving package dependencies...
+
+The following NEW package is going to be installed:
+  hudson
+
+1 new package to install.
+Overall download size: 37.1 MiB. After the operation, additional 37.1 MiB will be
+used.
+Continue? [y/n/?] (y):
+Installing: hudson-2.0.1-1.1 [done]
+Additional rpm output:
+hudson                    0:off  1:off  2:off  3:on   4:off  5:on   6:off
         </command>
       </screen>
-      <!--TODO --><para>As you can see from the output above a hudson user was
-      created
-        . This user will run the Hudson server. The Hudson home folder is
-        configured to be located in <varname>/var/lib/hudson</varname>,
-        which will contain configuration, workspaces and so on and
-        should be added to your backup strategy.
-      </para>
+
     </step>
 
    <step>
@@ -615,8 +616,8 @@ $ dpkg -L hudson
     start the service with
   </para>
   <screen>
-    <command>sudo service hudson stop</command>
-    <command>sudo service hudson start</command>
+    <command>sudo /etc/init.d/hudson stop</command>
+    <command>sudo /etc/init.d/hudson start</command>
   </screen>
 
   <!-- -->
@@ -634,9 +635,10 @@ $ dpkg -L hudson
       /etc/init.d/hudson
       /etc/logrotate.d/hudson
       /etc/sysconfig/hudson
+      /etc/zypp/repos.d/hudson.repo
       /usr/lib/hudson
       /usr/lib/hudson/hudson.war
-      /usr/sbin/hudson
+      /usr/sbin/rchudson
       /var/lib/hudson
       /var/log/hudson
     </command>
@@ -650,6 +652,12 @@ $ dpkg -L hudson
     to the common 8080. If you modify this file to suit your needs,
     you should add it to you backup strategy.</para>
   </section>
+
+  <para>As part of the install a hudson user was created . This user will run
+    the Hudson server. The Hudson home folder is configured to be located in
+    <varname>/var/lib/hudson</varname>, which will contain configuration,
+    workspaces and so on and should be added to your backup strategy.
+  </para>
 
   <!--<section id="section-install-service-manually">-->
     <!--<title>Manually Configuring Hudson as a Service</title>-->

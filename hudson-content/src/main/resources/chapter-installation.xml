@@ -383,16 +383,6 @@ $ dpkg -L hudson
         </screen>
       </step>
 
-      <!--<step>-->
-        <!--<title>Add Hudson repository key to package management</title>-->
-        <!--<para>When you first install Hudson you will need to download and add-->
-          <!--the repository key to the package management system with</para>-->
-        <!--<screen>-->
-          <!--<command>sudo rpm --import http://hudson-ci.org/redhat/hudson-ci.org.key</command>-->
-        <!--</screen>-->
-        <!--<para>Future upgrades will not require this step to be repeated.</para>-->
-      <!--</step>-->
-
       <step>
         <title>Add Hudson repository URL to package management</title>
         <para>The Hudson project hosts its packages in its own repository
@@ -524,17 +514,6 @@ $ dpkg -L hudson
           <command>sudo zypper install java</command>
         </screen>
       </step>
-
-      <!--<step>-->
-        <!--<title>Add Hudson repository key to package management</title>-->
-        <!--<para>When you first install Hudson you will need to download and add-->
-          <!--the repository key to the package management system with</para>-->
-        <!--<screen>-->
-          <!--<command>sudo rpm --import http://hudson-ci.org/opensuse/hudson-ci.org-->
-            <!--.key</command>-->
-        <!--</screen>-->
-        <!--<para>Future upgrades will not require this step to be repeated.</para>-->
-      <!--</step>-->
 
       <step>
         <title>Add Hudson repository URL to package management</title>

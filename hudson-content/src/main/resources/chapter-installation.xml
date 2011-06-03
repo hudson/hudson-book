@@ -189,20 +189,20 @@
           server. In order to use it you have to add its URL to your list of
           package sources with
         </para>
-        <screen>
-          <command>sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"</command>
-        </screen>
-        <para>or</para>
+        <!-- this does not work since sources deb is missing on
+        the repo -->
+        <!--<screen>-->
+          <!--<command>sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"</command>-->
+        <!--</screen>-->
+        <!--<para>or</para>-->
         <screen>
           <command>sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ </command>
           <command>> /etc/apt/sources.list.d/hudson.list"</command>
         </screen>
-        <para>or by adding the APT line <varname>deb http://hudson-ci
-          .org/debian binary/</varname> in your graphical package manager as
-          a repository URL.
+        <para>or by adding the APT line <varname>deb http://hudson-ci.org/debian binary/</varname>
+          in your graphical package manager as a repository URL.
         </para>
-        <para>Future upgrades will not require this step to be repeated
-          .</para>
+        <para>Future upgrades will not require this step to be repeated .</para>
       </step>
 
       <step>

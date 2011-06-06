@@ -7,7 +7,7 @@
    <para>Hudson plugins can be managed by selecting the "Manage Plugins" link
    shown in <xref linkend="fig-using-matrix-history" />.</para>
 
-   <section>
+   <section id="section-plugin-management-advanced">
      <title>Advanced Plugin Management Options</title>
 
      <para>Hudson retrieves a list of plugins and downloads plugins over the
@@ -41,7 +41,7 @@
      one on your Hudson instance, just upload it using this form.</para>
    </section>
 
-   <section>
+   <section id="section-plugin-management-updates">
      <title>Available Plugin Updates</title>
 
      <para>Hudson checks with an available list of Hudson plugins and will
@@ -69,7 +69,7 @@
      </figure>
    </section>
 
-   <section>
+   <section id="section-plugin-management-available">
      <title>Available Plugins</title>
 
      <para>Hudson is compatible with most of the freely available Hudson
@@ -95,7 +95,7 @@
      </figure>
    </section>
 
-   <section>
+   <section id="section-plugin-management-installed">
      <title>Listing Installed Plugins</title>
 
      <para>To get a list of installed plugins, click in the Installed Tab on

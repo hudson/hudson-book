@@ -4,10 +4,42 @@
 <chapter id="chapter-source-control">
   <title>Working with Source Control</title>
 
-  <para>One of the most important parts of the Hudson project configuration
-  is the settings that connect your Hudson project to source control. By
-    installing the respective plugins Hudson supports all the common source
-    control systems:</para>
+  <para>One of the most important parts of the Hudson project configuration are
+    the settings that connect your Hudson project to source control. Any
+    software development project should be managed in a
+    <ulink url="http://en.wikipedia.org/wiki/Source_code_management">source
+      control management system</ulink>, many of which are open source software
+    and have large user communities. Hudson has support for all common SCM
+    systems as well as many of the less popular ones. Most likely you will find
+    support for your SCM already installed or available as a plugin for
+    installation in the
+    <option>Source Code Management</option>
+    section of available plugins in the plugin management as displayed in<xref
+      linkend="fig-scm-plugins"/>. Read more about available plugins and their
+    management in
+    <xref linkend="section-plugin-management-available"/>
+    in
+    <xref linkend="chapter-plugin-management"/>.
+  </para>
+
+   <figure id="fig-scm-plugins">
+    <title>Source Code Management Plugins</title>
+
+    <mediaobject>
+      <imageobject role="web">
+        <imagedata contentdepth="100%"
+                   fileref="figs/web/scm-plugins.png" scalefit="1"/>
+      </imageobject>
+
+      <imageobject role="print">
+        <imagedata align="center" fileref="figs/print/scm-plugins.pdf"
+                   scalefit="0" width="100%"/>
+      </imageobject>
+    </mediaobject>
+  </figure>
+  <para>By default Hudson has support Subversion and CVS pre-installed. This
+    chapter will document the following SCM systems:
+  </para>
 
   <itemizedlist>
     <listitem>
@@ -24,20 +56,36 @@
     </listitem>
   </itemizedlist>
 
-  <para>Beyond those popular ones, there are numerous plugins available enabling
-    support for other source code management systems. Each of these plugins can
-    be configured in the global Hudson configuration setting in its specific
-    section.
+  <para>Each of these plugins can be configured in the global Hudson
+    configuration setting in its specific section added by the plugin.
   </para>
-  <!-- TODO xref to all sections global and the scm specific ones -->
 
   <para>After the global settings for the desired source management system are
     configured, you can configure the project specific settings. Simply load the
     project's configuration page and scroll down to the Source Code Management
     section. In this section, you must then select one of the radio buttons for
-    the source code management system you are using. The following sections
-    outline the configuration and options for each supported source code
-    management system.
+    the source code management system you are using as visible in
+    <xref linkend="fig-scm-selection"/>
+  </para>
+
+    <figure id="fig-scm-selection">
+    <title>Selecting an SCM in the project configuration</title>
+
+    <mediaobject>
+      <imageobject role="web">
+        <imagedata contentdepth="100%"
+                   fileref="figs/web/scm-selection.png" scalefit="1"/>
+      </imageobject>
+
+      <imageobject role="print">
+        <imagedata align="center" fileref="figs/print/scm-selection.pdf"
+                   scalefit="0" width="100%"/>
+      </imageobject>
+    </mediaobject>
+  </figure>
+
+  <para>After this selection you will to configure parameters specific to the
+    selected SCM.
   </para>
 
   <section>

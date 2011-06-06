@@ -23,7 +23,7 @@
   </para>
 
    <figure id="fig-scm-plugins">
-    <title>Source Code Management Plugins</title>
+    <title>The beginning of the list of Source Code Management Plugins</title>
 
     <mediaobject>
       <imageobject role="web">
@@ -84,19 +84,42 @@
     </mediaobject>
   </figure>
 
+
   <para>After this selection you will to configure parameters specific to the
     selected SCM.
   </para>
 
   <section>
     <title>Configuring Subversion</title>
-
-    <para>Hudson Subversion Plugin ... </para>
-
+    <para>Hudson Subversion Plugin ... included by default.. </para>
     <section>
       <title>Global Subversion Configuration</title>
-    </section>
 
+    <para>To configure Subversion, find the Subversion section in the
+      Hudson Server
+      configuration screen as displayed in
+        <xref linkend="fig-scm-svn-global-config"/> ...</para>
+
+      <figure id="fig-scm-svn-global-config">
+        <title>Configuring Git Installations</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-svn-global-config.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-svn-global-config.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+
+    </section>
     <section>
       <title>Project Specific Subversion Configuration</title>
 
@@ -236,36 +259,67 @@
 
   <section>
     <title>Configuring Git</title>
-
-    <para>Hudson GIT Plugin does the job.. </para>
-
+    <para>Hudson GIT Plugin does the job.. and git rocks sort of intro! </para>
     <section>
       <title>Global Git Configuration</title>
 
       <para>To configure Git, find the Git section in the Hudson Server
-      configuration screen. To configure git, supply a Name for your Git
+      configuration screen as displayed in
+        <xref linkend="fig-scm-git-global-config"/> and
+        supply a Name for your
+        Git
       installation and then specify an installation directory for git. If Git
       is configured and already available on in your operating system's PATH,
       you can just leave the Installation directory as "git".</para>
 
-      <figure id="fig-using-git-config">
+      <figure id="fig-scm-git-global-config">
         <title>Configuring Git Installations</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-git-config.png" scalefit="1" />
+                       fileref="figs/web/scm-git-global-config.png"
+                       scalefit="1" />
           </imageobject>
 
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/ci-using-git-config.pdf"
+                       fileref="figs/print/scm-git-global-config.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>In addition the Git plugin facilitates the tool installer from
+        Hudson that allows <option>Run Command</option> and
+        <option>Extract from *.zip/*.tar.gz</option> based installs similar
+        to the JDK installs documented in details in
+        <xref linkend="section-configure-jdk"/>. The Ant and the Maven
+        plugins installers
+        described in <xref linkend="section-configure-ant"/> and
+        <xref linkend="section-configure-maven"/> use the same installers and
+        you can find more hints of its usage there.
+      </para>
+
+    <!-- TODO text about this figure.. -->
+      <figure id="fig-scm-git-global-user-config">
+        <title>Configuring Git Installations</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-global-user-config.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-global-user-config.pdf"
                        scalefit="0" width="100%" />
           </imageobject>
         </mediaobject>
       </figure>
     </section>
-
     <section>
       <title>Project Specific Git Configuration</title>
 
@@ -389,7 +443,6 @@
         </varlistentry>
       </variablelist>
     </section>
-
     <section>
       <title>Configuring the post-build action Git Publisher</title>
       <para></para>
@@ -402,12 +455,50 @@
     <para>Hudson Mercurial Plugin .. Mercurial aka Hg .. </para>
     <section>
       <title>Global Mercurial Configuration</title>
+
+      <para>To configure Mercurial, find the Mercurial section in the Hudson Server
+      configuration screen as displayed in
+        <xref linkend="fig-scm-hg-global-config"/>. To configure git,
+        supply a Name for your
+        Git
+      installation and then specify an installation directory for git. If Git
+      is configured and already available on in your operating system's PATH,
+      you can just leave the Installation directory as "git".</para>
+
+      <figure id="fig-scm-hg-global-config">
+        <title>Configuring Git Installations</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-global-config.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-global-config.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <para>In addition the Git plugin facilitates the tool installer from
+        Hudson that allows <option>Run Command</option> and
+        <option>Extract from *.zip/*.tar.gz</option> based installs similar
+        to the JDK installs documented in details in
+        <xref linkend="section-configure-jdk"/>. The Ant and the Maven
+        plugins installers
+        described in <xref linkend="section-configure-ant"/> and
+        <xref linkend="section-configure-maven"/> use the same installers and
+        you can find more hints of its usage there.
+      </para>
     </section>
     <section>
       <title>Project Specific Mercurial Configuration</title>
       <para>Selecting Mercurial under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="fig-using-scm-hg" xrefstyle="select:label"/>.
+          linkend="fig-using-scm-hg"/>.
       </para>
 
       <figure id="fig-using-scm-hg">
@@ -496,6 +587,30 @@
     <para>Hudson CVS Plugin...</para>
     <section>
       <title>Global CVS Configuration</title>
+
+
+    <para>To configure CVS, find the CVS section in the
+      Hudson Server
+      configuration screen as displayed in
+        <xref linkend="fig-scm-cvs-global-config"/> ...</para>
+
+      <figure id="fig-scm-cvs-global-config">
+        <title>Configuring Git Installations</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-cvs-global-config.png"
+                       scalefit="1" />
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-cvs-global-config.pdf"
+                       scalefit="0" width="100%" />
+          </imageobject>
+        </mediaobject>
+      </figure>
     </section>
     <section>
       <title>Project Specific CVS Configuration</title>

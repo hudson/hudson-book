@@ -231,7 +231,7 @@
         </mediaobject>
       </figure>
 
-      <para>The following paramters can be configured:
+      <para>The following parameters can be configured:
       </para>
 
       <variablelist>
@@ -305,7 +305,10 @@
             </para>
             <para>Finally the option
               <option>Always check out a fresh copy</option>
-              will delete the workspace content and perform a fresh checkout.
+              will delete the workspace content and perform a fresh checkout
+              for each build. Choosing this option should be considered
+              carefully since it can put a significant load on the Subversion
+              and Hudson servers.
             </para>
           </listitem>
         </varlistentry>
@@ -318,26 +321,47 @@
               the SCM activity and changes that contribute to a specific build.
               When Hudson displays information about a Subversion commit or a
               file that has been modified, it can be configured to link to a
-              Repository browser which provides a rich web view of a source code
-              management tool. Hudson supports the following repository
-              browsers: ViewSVN, WebSVN, FishEye, CollabNet, Sventon, and Trac.
+              Repository browser, which provides a rich web view of the source
+              code repository. Hudson supports the repository
+              browsers
+              <option>CollabNet</option>,
+              <option>Sventon 2.x</option>,
+              <option>ViewSVN</option>,
+              <option>FishEye</option>,
+              <option>WebSVN</option> and
+              <option>Sventon 1.x</option> as options in the the drop down.
+              The <option>(Auto)</option> option will attempt to
+              automatically detect the used browser.
             </para>
           </listitem>
         </varlistentry>
-
+      </variablelist>
+      <para>Beyond these basic configuration options the Subversion plugin
+        supports advanced options to provide more parameters to your
+        Subversion commands used for the build.
+      </para>
+      <variablelist>
         <varlistentry>
           <term>Excluded Regions, Included Regions</term>
 
           <listitem>
-            <para>These fields provide the Hudson project administrator with the
+            <para>These fields provide you with the
               option to either specifically include or exclude files and
-              directories from the SCM Build trigger. If Included Regions is
+              directories to determine if a build should be triggered. If
+              <option>Included Regions</option> is
               set, Hudson will only trigger a build if a matching file has been
-              altered. If Excluded Regions is set, Hudson will not trigger a
-              build if a file matching an excluded pattern is matched. This
-              option can be useful if are only interested in a subset of files
-              and directories contained in a Subversion module.
+              altered. If
+              <option>Excluded Regions</option> is set,
+              Hudson will not trigger a
+              build if a file matching an excluded pattern is matched. These
+              options are useful if are only interested in a subset of files
+              and directories contained in a Subversion module to trigger a
+              build on Hudson. An example would be if documentation files
+              contained in the repository should not trigger a new build.
             </para>
+            <para>Both parameters support usage of regular expression
+              patterns to specify the desired files as well as multiple lines
+            to configure larger sets of files and directories to match.</para>
           </listitem>
         </varlistentry>
 
@@ -345,20 +369,22 @@
           <term>Excluded Users</term>
 
           <listitem>
-            <para>If this field is populated and Hudson is configured to Poll
-              SCM as a build trigger. Hudson will not trigger builds for commits
-              from the specified users.
+            <para>If this field is populated and Hudson is configured to poll
+              subversion as a build trigger, Hudson will not trigger builds
+              for commits from the specified users. This can be used to avoid
+              builds to be triggered by commits done by Hudson or other
+              systems that commit changes that should not trigger a build.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Excluded Commit Messages</term>
-
           <listitem>
-            <para>This field contains a regular expression. If an SCM commit
-              message matches this regular expression, Hudson will not trigger a
-              project build from an SCM commit.
+            <para>Similar to the option
+              <option>Exclude users</option>
+              this field contains a regular expression and will cause Hudson not
+              to trigger a build for commits with a matching commit message.
             </para>
           </listitem>
         </varlistentry>
@@ -369,7 +395,10 @@
           <listitem>
             <para>A Subversion revision can be associated with a property. If
               Hudson encounters a revision with the specified property, it will
-              not trigger a build from an SCM commit.
+              not trigger a build from an SCM commit,
+              similar to the behaviour for the options
+              <option>Excluded Users</option> or
+              <option>Excluded Commit Messages</option>
             </para>
           </listitem>
         </varlistentry>

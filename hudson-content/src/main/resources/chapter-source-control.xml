@@ -193,11 +193,14 @@
 
       <para>Selecting Subversion under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="fig-scm-svn-project-config" xrefstyle="select:label"/>.
+          linkend="fig-scm-svn-project-config" xrefstyle="select:label"/>. 
+        Clicking on the <option>Advanced</option> button will reveal the 
+        advanced configuration parameters shown in 
+        <xref linkend="fig-scm-svn-project-config-advanced"/>.
       </para>
 
       <figure id="fig-scm-svn-project-config">
-        <title>Configuring Subversion Source Control Information</title>
+        <title>Configuring project specific Subversion settings</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -213,7 +216,7 @@
       </figure>
 
       <figure id="fig-scm-svn-project-config-advanced">
-        <title>Configuring Subversion Source Control Information</title>
+        <title>Configuring advanced project specific Subversion settings</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -228,9 +231,7 @@
         </mediaobject>
       </figure>
 
-      <para>The section shown in
-        <xref linkend="fig-using-scm-svn" xrefstyle="select:label"/>
-        contains the following options:
+      <para>The following paramters can be configured:
       </para>
 
       <variablelist>
@@ -240,36 +241,71 @@
           <listitem>
             <para>Hudson can checkout one or more Subversion modules from a
               Subversion repository. To configure a repository location, supply
-              a Subversion URL in the Repository URL text field. If you are
-              checking out more than one Subversion module, you can also supply
-              a Local module directory that Hudson will checkout the specified
-              module to. If you leave the Local module directory blank, Hudson
-              will check out the specific module to the root of the project's
+              a Subversion URL in the
+              <option>Repository URL</option>
+              text field. This field supports Subversion repository URLs
+              including revisions specified with
+              <varname>@number</varname>
+              as well as subversion keywords for revisions and dates.
+            </para>
+            <para>If you are checking out more than one Subversion module, you
+              can also supply a
+              <option>Local module directory</option>
+              that Hudson will checkout the specified module to. If you leave
+              the Local module directory blank, Hudson will check out the
+              specific module to the root of the project's workspace.
+            </para>
+            <para>The
+              <option>Repository depth option</option>
+              allows you to specify the depth for the checkout of this module,
+              with the default being<varname>infinity</varname>, which means
+              that all nested directories of the repository will be checked out.
+              This is useful to limit the size and scope of your checkout.
+            </para>
+            <para>
+              You can add a new module with the
+              <option>Add more locations</option>
+              button and remove it with the
+              <option>Delete</option>
+              button.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Check-out Strategy</term>
+
+          <listitem>
+            <para>The
+              <option>Check-out Strategy</option>
+              option determines the subversion commands issues prior to starting
+              a build.
+            </para>
+            <para>The default value of
+              <option>Use 'svn update' as much as possible</option>
+              will cause the least load on the Subversion server by only issuing
+              an update command on top of the existing checkout in the project
               workspace.
             </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>Use update</term>
-
-          <listitem>
-            <para>If Use update is checked, Hudson will execute an "svn update"
-              in the workspace at the start of each build. If Use update is not
-              selected, Hudson will checkout a clean copy of the repository on
-              each build.
+            <para>The option
+              <option>Use 'svn update' as much as possible, with 'svn revert'
+                before update
+              </option>
+              will do minor cleanup of the workspace by reverting any local
+              modifications.
             </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>Revert</term>
-
-          <listitem>
-            <para>If Revert is checked, Hudson will issue an "svn revert" prior
-              to calling "svn update". This option can be useful if you need to
-              be certain that there are no artifacts left over from the previous
-              build.
+            <para>The option
+              <option>Emulate clean checkout by first deleting
+                unversioned/ignored files, then 'svn update'
+              </option>
+              provides a good compromise between performance and thoroughness,
+              since it closely resembles a clean checkout without the
+              performance and load implications for the Subversion server as
+              well as Hudson.
+            </para>
+            <para>Finally the option
+              <option>Always check out a fresh copy</option>
+              will delete the workspace content and perform a fresh checkout.
             </para>
           </listitem>
         </varlistentry>

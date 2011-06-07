@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
 <chapter id="chapter-source-control">
   <title>Working with Source Control</title>
 
@@ -22,13 +22,13 @@
     <xref linkend="chapter-plugin-management"/>.
   </para>
 
-   <figure id="fig-scm-plugins">
+  <figure id="fig-scm-plugins">
     <title>The beginning of the list of Source Code Management Plugins</title>
 
     <mediaobject>
       <imageobject role="web">
-        <imagedata contentdepth="100%"
-                   fileref="figs/web/scm-plugins.png" scalefit="1"/>
+        <imagedata contentdepth="100%" fileref="figs/web/scm-plugins.png"
+                   scalefit="1"/>
       </imageobject>
 
       <imageobject role="print">
@@ -49,7 +49,7 @@
       <para>Git</para>
     </listitem>
     <listitem>
-        <para>Mercurial</para>
+      <para>Mercurial</para>
     </listitem>
     <listitem>
       <para>CVS</para>
@@ -68,13 +68,13 @@
     <xref linkend="fig-scm-selection"/>
   </para>
 
-    <figure id="fig-scm-selection">
+  <figure id="fig-scm-selection">
     <title>Selecting an SCM in the project configuration</title>
 
     <mediaobject>
       <imageobject role="web">
-        <imagedata contentdepth="100%"
-                   fileref="figs/web/scm-selection.png" scalefit="1"/>
+        <imagedata contentdepth="100%" fileref="figs/web/scm-selection.png"
+                   scalefit="1"/>
       </imageobject>
 
       <imageobject role="print">
@@ -84,40 +84,69 @@
     </mediaobject>
   </figure>
 
-
-  <para>After this selection you will to configure parameters specific to the
-    selected SCM.
+  <para>After this selection you will be able to configure the parameters
+    specific to the selected SCM and the current project.
   </para>
 
   <section>
     <title>Configuring Subversion</title>
-    <para>Hudson Subversion Plugin ... included by default.. </para>
+    <para>The Subversion Plugin for Hudson and therefore support for the popular
+      <ulink url="http://subversion.tigris.org/">Subversion SCM system</ulink>
+      is part of the default install of Hudson. It is therefore not necessary to
+      perform any further plugin installation to use Subversion for your
+      project.
+    </para>
     <section>
       <title>Global Subversion Configuration</title>
-
-    <para>To configure Subversion, find the Subversion section in the
-      Hudson Server
-      configuration screen as displayed in
-        <xref linkend="fig-scm-svn-global-config"/> ...</para>
+      <para>In order to use Subversion successfully, you need to set up the
+        global configuration in the Hudson Server configuration screen displayed
+        in
+        <xref linkend="fig-scm-svn-global-config"/>.
+      </para>
 
       <figure id="fig-scm-svn-global-config">
-        <title>Configuring Git Installations</title>
-
+        <title>Global Subversion Configuration</title>
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-svn-global-config.png"
-                       scalefit="1" />
+                       scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-svn-global-config.pdf"
-                       scalefit="0" width="100%" />
+                       scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
 
+      <para>The following parameters need to be configured as desired:</para>
+      <variablelist>
+        <varlistentry>
+          <term>Subversion Workspace Version</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Subversion Revision Policy</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Exclusion revprop name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Validate repository URLs up to the first variable name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
 
     </section>
     <section>
@@ -259,18 +288,18 @@
 
   <section>
     <title>Configuring Git</title>
-    <para>Hudson GIT Plugin does the job.. and git rocks sort of intro! </para>
+    <para>Hudson GIT Plugin does the job.. and git rocks sort of intro!</para>
     <section>
       <title>Global Git Configuration</title>
 
       <para>To configure Git, find the Git section in the Hudson Server
-      configuration screen as displayed in
-        <xref linkend="fig-scm-git-global-config"/> and
-        supply a Name for your
-        Git
-      installation and then specify an installation directory for git. If Git
-      is configured and already available on in your operating system's PATH,
-      you can just leave the Installation directory as "git".</para>
+        configuration screen as displayed in
+        <xref linkend="fig-scm-git-global-config"/>
+        and supply a Name for your Git installation and then specify an
+        installation directory for git. If Git is configured and already
+        available on in your operating system's PATH, you can just leave the
+        Installation directory as "git".
+      </para>
 
       <figure id="fig-scm-git-global-config">
         <title>Configuring Git Installations</title>
@@ -279,29 +308,48 @@
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-global-config.png"
-                       scalefit="1" />
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-git-global-config.pdf"
-                       scalefit="0" width="100%" />
+                       scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
 
       <para>In addition the Git plugin facilitates the tool installer from
-        Hudson that allows <option>Run Command</option> and
-        <option>Extract from *.zip/*.tar.gz</option> based installs similar
-        to the JDK installs documented in details in
-        <xref linkend="section-configure-jdk"/>. The Ant and the Maven
-        plugins installers
-        described in <xref linkend="section-configure-ant"/> and
-        <xref linkend="section-configure-maven"/> use the same installers and
-        you can find more hints of its usage there.
+        Hudson that allows
+        <option>Run Command</option>
+        and
+        <option>Extract from *.zip/*.tar.gz</option>
+        based installs similar to the JDK installs documented in details in
+        <xref linkend="section-configure-jdk"/>. The Ant and the Maven plugins
+        installers described in
+        <xref linkend="section-configure-ant"/>
+        and
+        <xref linkend="section-configure-maven"/>
+        use the same installers and you can find more hints of its usage there.
       </para>
 
-    <!-- TODO text about this figure.. -->
+      <variablelist>
+        <varlistentry>
+          <term>Name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Path to git executable</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <!-- TODO text about this figure.. -->
       <figure id="fig-scm-git-global-user-config">
         <title>Configuring Git Installations</title>
 
@@ -309,13 +357,13 @@
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-global-user-config.png"
-                       scalefit="1" />
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-git-global-user-config.pdf"
-                       scalefit="0" width="100%" />
+                       scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
@@ -452,46 +500,82 @@
 
   <section>
     <title>Configuring Mercurial</title>
-    <para>Hudson Mercurial Plugin .. Mercurial aka Hg .. </para>
+    <para>Hudson Mercurial Plugin .. Mercurial aka Hg ..</para>
     <section>
       <title>Global Mercurial Configuration</title>
 
-      <para>To configure Mercurial, find the Mercurial section in the Hudson Server
-      configuration screen as displayed in
-        <xref linkend="fig-scm-hg-global-config"/>. To configure git,
-        supply a Name for your
-        Git
-      installation and then specify an installation directory for git. If Git
-      is configured and already available on in your operating system's PATH,
-      you can just leave the Installation directory as "git".</para>
+      <para>To configure Mercurial, find the Mercurial section in the Hudson
+        Server configuration screen as displayed in
+        <xref linkend="fig-scm-hg-global-config"/>. ....
+      </para>
 
       <figure id="fig-scm-hg-global-config">
-        <title>Configuring Git Installations</title>
+        <title>Configuring Mercurial Installations</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/scm-git-global-config.png"
-                       scalefit="1" />
+                       fileref="figs/web/scm-hg-global-config.png"
+                       scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
-                       fileref="figs/print/scm-git-global-config.pdf"
-                       scalefit="0" width="100%" />
+                       fileref="figs/print/scm-hg-global-config.pdf"
+                       scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
 
-      <para>In addition the Git plugin facilitates the tool installer from
-        Hudson that allows <option>Run Command</option> and
-        <option>Extract from *.zip/*.tar.gz</option> based installs similar
-        to the JDK installs documented in details in
-        <xref linkend="section-configure-jdk"/>. The Ant and the Maven
-        plugins installers
-        described in <xref linkend="section-configure-ant"/> and
-        <xref linkend="section-configure-maven"/> use the same installers and
-        you can find more hints of its usage there.
+      <variablelist>
+        <varlistentry>
+          <term>Name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Installation directory</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Executable</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Use Repository Caches</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Debug Flag</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Download Forest extension</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>In addition the Mercurial plugin facilitates the tool installer from
+        Hudson that allows
+        <option>Run Command</option>
+        and
+        <option>Extract from *.zip/*.tar.gz</option>
+        based installs similar to the JDK installs documented in details in
+        <xref linkend="section-configure-jdk"/>. The Ant and the Maven plugins
+        installers described in
+        <xref linkend="section-configure-ant"/>
+        and
+        <xref linkend="section-configure-maven"/>
+        use the same installers and you can find more hints of its usage there.
       </para>
     </section>
     <section>
@@ -589,28 +673,51 @@
       <title>Global CVS Configuration</title>
 
 
-    <para>To configure CVS, find the CVS section in the
-      Hudson Server
-      configuration screen as displayed in
-        <xref linkend="fig-scm-cvs-global-config"/> ...</para>
+      <para>To configure CVS, find the CVS section in the Hudson Server
+        configuration screen as displayed in
+        <xref linkend="fig-scm-cvs-global-config"/>
+        ...
+      </para>
 
       <figure id="fig-scm-cvs-global-config">
-        <title>Configuring Git Installations</title>
+        <title>Global CVS Configuration</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-cvs-global-config.png"
-                       scalefit="1" />
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-cvs-global-config.pdf"
-                       scalefit="0" width="100%" />
+                       scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
+
+      <para>The following parameters need to be configured as desired:</para>
+      <variablelist>
+        <varlistentry>
+          <term>cvs executable</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>.cvspass file</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Disable CVS compression</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
     <section>
       <title>Project Specific CVS Configuration</title>

@@ -736,13 +736,14 @@
   </section>
 
   <section>
-    <!-- HBOOK-59 -->
+    <!-- HBOOK-59 this might be deprecated in Hudson and if so will be
+    removed, including the screen shot-->
     <title>Configuring SCM Polling Concurrency</title>
 
     <para>This is a simple, global parameter to Hudson which controls the
     number of concurrent threads to be used when polling an SCM system. Most
     CI systems discover code changes in an SCM by continuously polling source
-    control. If you have enough project configured, this polling can grow to
+    control. If you have enough projects configured, this polling can grow to
     become a significant factor in SCM performance. If you are suffering
     performance issues because you have configured hundreds of projects to
     poll SCM, you can use this one property to define concurrency limits on

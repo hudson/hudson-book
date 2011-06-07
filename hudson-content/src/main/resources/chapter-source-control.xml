@@ -23,7 +23,7 @@
   </para>
 
   <figure id="fig-scm-plugins">
-    <title>The beginning of the list of Source Code Management Plugins</title>
+    <title>The beginning of the list of Source Code Management plugins</title>
 
     <mediaobject>
       <imageobject role="web">
@@ -38,7 +38,7 @@
     </mediaobject>
   </figure>
   <para>By default Hudson has support Subversion and CVS pre-installed. This
-    chapter will document the following SCM systems:
+    chapter will document the following popular, open source SCM systems:
   </para>
 
   <itemizedlist>
@@ -125,25 +125,64 @@
         <varlistentry>
           <term>Subversion Workspace Version</term>
           <listitem>
-            <para></para>
+            <para>Subversion uses different formats for storing data in a
+              checked out location. Ideally you should have the same
+              Subversion version installed on the SCM server as well as on
+              the Hudson server and specify that version here. If your
+              Hudson project tasks only require read access to the Subversion
+              repository it is safe to use a higher version on the Hudson
+              server and specify it here. However if you are automating a
+              release process or any other tasks that will write to the
+              Subversion repository e.g. by creating tags or branches or
+              editing files and checking them in, you should make sure to
+              use the same format on the Hudson server as on the Subversion
+              server since mismatches can produce problems in the Subversion
+              repository and potentially break expected behaviour. An
+              important issue related to this setup is that you can not
+              support different Subversion servers with different versions
+              accessed from one Hudson instance. It is advisable to update
+              the Subversion servers and Hudson installed clients before
+              proceeding.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Subversion Revision Policy</term>
           <listitem>
-            <para></para>
+            <para>The default revision policy is
+              <varname>Queue Time</varname>, which will cause a build to be
+              run
+              off the revision present in the repository when the job is
+              added to the Hudson build queue. The <varname>Build
+                Time</varname> policy one the other hand will use the
+              revision in the repository found when the build actually starts
+              . The <varname>Head revision</varname> policy will use the HEAD
+              revision in the repository. Finally these setting are
+              overridden if a revision is specified in the subversion url or
+              as a revision parameter in a parameterized build.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Exclusion revprop name</term>
           <listitem>
-            <para></para>
+            <para>This parameter can be used to cause the plugin to exclude
+              revisions with the specified revision property from triggering
+              new builds. This is useful for builds that cause a commit so
+              that this commit done by Hudson will not in turn trigger the
+              execution of another build. The commits carried out by Hudson
+              as part of the build have to be configured to use the same
+              property.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Validate repository URLs up to the first variable name</term>
           <listitem>
-            <para></para>
+            <para>With this setting activated subversion urls will only be
+              validated up to the first variable. A variable in a url would
+              be preceded by a <varname>$</varname> character.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -219,7 +258,7 @@
               in the workspace at the start of each build. If Use update is not
               selected, Hudson will checkout a clean copy of the repository on
               each build.
-            </para>                       repository1
+            </para>
           </listitem>
         </varlistentry>
 

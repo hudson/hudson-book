@@ -154,20 +154,36 @@
 
       <para>Selecting Subversion under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="fig-using-scm-svn" xrefstyle="select:label"/>.
+          linkend="fig-scm-svn-project-config" xrefstyle="select:label"/>.
       </para>
 
-      <figure id="fig-using-scm-svn">
+      <figure id="fig-scm-svn-project-config">
         <title>Configuring Subversion Source Control Information</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-svn.png" scalefit="1"/>
+                       fileref="figs/web/scm-svn-project-config.png" scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
-            <imagedata align="center" fileref="figs/print/ci-using-scm-svn.pdf"
+            <imagedata align="center" fileref="figs/print/scm-svn-project-config.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <figure id="fig-scm-svn-project-config-advanced">
+        <title>Configuring Subversion Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-svn-project-config-advanced.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/scm-svn-project-config-advanced.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
@@ -203,7 +219,7 @@
               in the workspace at the start of each build. If Use update is not
               selected, Hudson will checkout a clean copy of the repository on
               each build.
-            </para>
+            </para>                       repository1
           </listitem>
         </varlistentry>
 
@@ -296,7 +312,7 @@
         configuration screen as displayed in
         <xref linkend="fig-scm-git-global-config"/>
         and supply a Name for your Git installation and then specify an
-        installation directory for git. If Git is configured and already
+        installation directory for git. Ifrepository1 Git is configured and already
         available on in your operating system's PATH, you can just leave the
         Installation directory as "git".
       </para>
@@ -384,11 +400,13 @@
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-git.png" scalefit="1"/>
+                       fileref="figs/web/scm-git-project-config.png"
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
-            <imagedata align="center" fileref="figs/print/ci-using-scm-git.pdf"
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-project-config.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
@@ -409,17 +427,35 @@
         </varlistentry>
       </variablelist>
 
+      <figure id="fig-scm-git-project-config-repository">
+        <title>Configuring Additional Git Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-project-config-repository.png"
+                       scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/scm-git-project-config-repository.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
       <figure id="fig-using-scm-git2">
         <title>Configuring Additional Git Source Control Information</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-git2.png" scalefit="1"/>
+                       fileref="figs/web/scm-git-project-config-advanced.png"
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
-            <imagedata align="center" fileref="figs/print/ci-using-scm-git2.pdf"
+            <imagedata align="center" fileref="figs/print/scm-git-project-config-advanced.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
@@ -582,21 +618,21 @@
       <title>Project Specific Mercurial Configuration</title>
       <para>Selecting Mercurial under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="fig-using-scm-hg"/>.
+          linkend="scm-hg-project-config"/>.
       </para>
 
-      <figure id="fig-using-scm-hg">
+      <figure id="fig-scm-hg-project-config">
         <title>Configuring Mercurial Source Control Information</title>
 
         <!-- TODO take screenshot -->
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-hg.png" scalefit="1"/>
+                       fileref="figs/web/scm-hg-project-config.png" scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
-            <imagedata align="center" fileref="figs/print/ci-using-scm-hg.pdf"
+            <imagedata align="center" fileref="figs/print/scm-hg-project-config.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
@@ -727,17 +763,36 @@
                                                 xrefstyle="select:label"/>.
       </para>
 
-      <figure id="fig-using-scm-cvs">
+      <figure id="fig-scm-cvs-project-config">
         <title>Configuring CVS Source Control Information</title>
 
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
-                       fileref="figs/web/ci-using-scm-cvs.png" scalefit="1"/>
+                       fileref="figs/web/scm-cvs-project-config.png"
+                       scalefit="1"/>
           </imageobject>
 
           <imageobject role="print">
-            <imagedata align="center" fileref="figs/print/ci-using-scm-cvs.pdf"
+            <imagedata align="center" fileref="figs/print/scm-cvs-project-config.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
+      <figure id="fig-scm-cvs-project-config-advanced">
+        <title>Configuring CVS Source Control Information</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-cvs-project-config-advanced.png"
+                       scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-cvs-project-config-advanced.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>

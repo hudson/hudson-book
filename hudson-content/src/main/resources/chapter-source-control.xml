@@ -408,29 +408,35 @@
 
   <section>
     <title>Configuring Git</title>
-    <para>Hudson GIT Plugin does the job.. and git rocks sort of intro!</para>
+    <para>
+      <ulink url="http://git-scm.com/">Git</ulink>
+      is the most successful, modern distributed version control system and has
+      gained wide acceptance in the open source community and beyond.
+    </para>
+    <para>The Hudson Git Plugin and therefore support for Git is available in
+      default Hudson installs from version 2.1 onwards. If it is not installed
+      in your Hudson instance, simply find the plugin in the
+      <option>Source Code Management</option>
+      section of the available plugin and install it like any other plugins as
+      documented in
+      <xref linkend="chapter-plugin-management"/>.
+    </para>
     <section>
       <title>Global Git Configuration</title>
 
-      <para>To configure Git, find the Git section in the Hudson Server
-        configuration screen as displayed in
-        <xref linkend="fig-scm-git-global-config"/>
-        and supply a Name for your Git installation and then specify an
-        installation directory for git. Ifrepository1 Git is configured and already
-        available on in your operating system's PATH, you can just leave the
-        Installation directory as "git".
+      <para>The global configuration for using Git is set up in the Git section
+        of the Hudson Server configuration screen as displayed in
+        <xref linkend="fig-scm-git-global-config"/>.
       </para>
 
       <figure id="fig-scm-git-global-config">
         <title>Configuring Git Installations</title>
-
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-global-config.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-git-global-config.pdf"
@@ -439,8 +445,28 @@
         </mediaobject>
       </figure>
 
-      <para>In addition the Git plugin facilitates the tool installer from
-        Hudson that allows
+      <variablelist>
+        <varlistentry>
+          <term>Name</term>
+          <listitem>
+            <para>A name for your Git installation can be specified to
+              distinguish between multiple installs.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Path to git executable</term>
+          <listitem>
+            <para>If the git command is available on the operating system
+              PATH or the PATH for the user running Hudson,
+              you can simply specify <varname>git</varname>. Otherwise an
+              absolute path can be used as well.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>In addition to using an already installed git, the Git plugin
+        facilitates the tool installer from Hudson that allows
         <option>Run Command</option>
         and
         <option>Extract from *.zip/*.tar.gz</option>
@@ -453,33 +479,28 @@
         use the same installers and you can find more hints of its usage there.
       </para>
 
-      <variablelist>
-        <varlistentry>
-          <term>Name</term>
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
 
-        <varlistentry>
-          <term>Path to git executable</term>
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <!-- TODO text about this figure.. -->
+      <para>A further global configuration for git can be done in the
+        <option>Git plugin</option>
+        section displayed in<xref linkend="fig-scm-git-global-user-config"/>.
+        Specifying
+        <option>Global Config user.name Value</option>
+        and
+        <option>Global Config user.email Value</option>
+        values will cause the plugin to issue
+        <command>git config</command>
+        commands setting these options for each project that is configured to
+        use git. The specific project configuration allows you to override these
+        setting for each project individually.
+      </para>
       <figure id="fig-scm-git-global-user-config">
-        <title>Configuring Git Installations</title>
-
+        <title>Configuring Git user name and email values</title>
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-global-user-config.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-git-global-user-config.pdf"
@@ -490,15 +511,17 @@
     </section>
     <section>
       <title>Project Specific Git Configuration</title>
-
-
-      <para>Selecting Git under the Source Code Management section will display
-        the configuration options shown in
-        <xref linkend="fig-using-scm-git" xrefstyle="select:label"/>
-        and<xref linkend="fig-using-scm-git2"/>.
+      <para>Once you have configured Git in the global Hudson configuration you
+        can configure project specific Git settings. Selecting Git under the
+        Source Code Management section will display the configuration options
+        shown in
+        <xref linkend="fig-scm-git-project-config"/>
+        as well as the advanced settings in
+        <xref linkend="fig-scm-git-project-config-repository"/>
+        and<xref linkend="fig-scm-git-project-config-advanced"/>.
       </para>
 
-      <figure id="fig-using-scm-git">
+      <figure id="fig-scm-git-project-config">
         <title>Configuring Git Source Control Information</title>
 
         <mediaobject>
@@ -517,14 +540,13 @@
       </figure>
 
       <para>The section shown in
-        <xref linkend="fig-using-scm-git" xrefstyle="select:label"/>
+        <xref linkend="fig-scm-git-project-config"/>
         contains the following options:
       </para>
 
       <variablelist>
         <varlistentry>
           <term></term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -532,15 +554,13 @@
       </variablelist>
 
       <figure id="fig-scm-git-project-config-repository">
-        <title>Configuring Additional Git Source Control Information</title>
-
+        <title>Configuring repository specific Git configuration</title>
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-project-config-repository.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center" fileref="figs/print/scm-git-project-config-repository.pdf"
                        scalefit="0" width="100%"/>
@@ -548,27 +568,20 @@
         </mediaobject>
       </figure>
 
-      <figure id="fig-using-scm-git2">
-        <title>Configuring Additional Git Source Control Information</title>
-
+      <figure id="fig-scm-git-project-config-advanced">
+        <title>Configuring advanced Git configuration</title>
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-project-config-advanced.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center" fileref="figs/print/scm-git-project-config-advanced.pdf"
                        scalefit="0" width="100%"/>
           </imageobject>
         </mediaobject>
       </figure>
-
-      <para>The section shown in
-        <xref linkend="fig-using-scm-git2"/>
-        contains the following options:
-      </para>
 
       <variablelist>
         <varlistentry>
@@ -584,7 +597,6 @@
 
         <varlistentry>
           <term>Merge options</term>
-
           <listitem>
             <para>Your project can be configured to merge git</para>
           </listitem>
@@ -592,7 +604,6 @@
 
         <varlistentry>
           <term>Clean after checkout</term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -600,7 +611,6 @@
 
         <varlistentry>
           <term>Use commit author in changelog</term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -608,7 +618,6 @@
 
         <varlistentry>
           <term>Wipe out workspace</term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -616,7 +625,6 @@
 
         <varlistentry>
           <term>Choosing strategy</term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -624,7 +632,6 @@
 
         <varlistentry>
           <term>Git executable</term>
-
           <listitem>
             <para></para>
           </listitem>
@@ -722,13 +729,12 @@
       <title>Project Specific Mercurial Configuration</title>
       <para>Selecting Mercurial under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="scm-hg-project-config"/>.
+          linkend="fig-scm-hg-project-config"/>.
       </para>
 
       <figure id="fig-scm-hg-project-config">
         <title>Configuring Mercurial Source Control Information</title>
 
-        <!-- TODO take screenshot -->
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
@@ -742,7 +748,7 @@
         </mediaobject>
       </figure>
       <para>The section show in
-        <xref linkend="fig-using-scm-hg" xrefstyle="select:label"/>
+        <xref linkend="fig-scm-hg-project-config" xrefstyle="select:label"/>
         contains the following options:
       </para>
 
@@ -863,8 +869,8 @@
       <title>Project Specific CVS Configuration</title>
 
       <para>Selecting CVS under the Source Code Management section will display
-        the configuration options shown in<xref linkend="fig-using-scm-cvs"
-                                                xrefstyle="select:label"/>.
+        the configuration options shown in
+        <xref linkend="fig-scm-cvs-project-config"/>.
       </para>
 
       <figure id="fig-scm-cvs-project-config">
@@ -876,7 +882,6 @@
                        fileref="figs/web/scm-cvs-project-config.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center" fileref="figs/print/scm-cvs-project-config.pdf"
                        scalefit="0" width="100%"/>
@@ -893,7 +898,6 @@
                        fileref="figs/web/scm-cvs-project-config-advanced.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-cvs-project-config-advanced.pdf"
@@ -903,8 +907,10 @@
       </figure>
 
       <para>The section show in
-        <xref linkend="fig-using-scm-cvs" xrefstyle="select:label"/>
-        contains the following options:
+        <xref linkend="fig-scm-cvs-project-config" xrefstyle="select:label"/>
+        and
+        <xref linkend="fig-scm-cvs-project-config-advanced" xrefstyle="select:label"/>
+        contain the following options:
       </para>
 
       <variablelist>

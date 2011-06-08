@@ -513,24 +513,19 @@
       <title>Project Specific Git Configuration</title>
       <para>Once you have configured Git in the global Hudson configuration you
         can configure project specific Git settings. Selecting Git under the
-        Source Code Management section will display the configuration options
-        shown in
-        <xref linkend="fig-scm-git-project-config"/>
-        as well as the advanced settings in
-        <xref linkend="fig-scm-git-project-config-repository"/>
-        and<xref linkend="fig-scm-git-project-config-advanced"/>.
+        Source Code Management section of your project configuration will
+        display the configuration options shown in
+        <xref linkend="fig-scm-git-project-config"/>.
       </para>
 
       <figure id="fig-scm-git-project-config">
-        <title>Configuring Git Source Control Information</title>
-
+        <title>Basic Git source control information</title>
         <mediaobject>
           <imageobject role="web">
             <imagedata contentdepth="100%"
                        fileref="figs/web/scm-git-project-config.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-git-project-config.pdf"
@@ -541,14 +536,57 @@
 
       <para>The section shown in
         <xref linkend="fig-scm-git-project-config"/>
-        contains the following options:
-      </para>
+        contains the following options for the basic configuration of git in
+        your project configuration:
+     </para>
 
       <variablelist>
         <varlistentry>
-          <term></term>
+          <term>Repositories</term>
           <listitem>
-            <para></para>
+            <para>Specifying one or more repositories to access for your
+              project can be considered the main configuration of the git
+              details for your project. The minimum configuration is to
+              provide a valid value for <option>URL of repository</option>.
+              The typical protocols supported by it of
+              <varname>http://</varname>, <varname>ssh://</varname> and
+              <varname>git://</varname> are all supported. Advanced
+              configuration as displayed in
+              <xref linkend="fig-scm-git-project-config-repository"/> allows
+              you to provide a name of the repository as well as a refspec.
+            </para>
+          </listitem>
+        </varlistentry>
+         <varlistentry>
+          <term>Branches to build</term>
+          <listitem>
+            <para>In this section you can specify one or more branches that
+              should be built. The default of an empty branch specifier
+              causes the git plugin to track and build all branches.
+              <!-- TODO .. really .. need to check this out and clarify ..
+              . somehow this does not make sense to me,
+              one project per branch would seem more logic,
+              e.g. how it is -->
+              A common configuration would be to specify the
+              main branch in the repository e.g. <varname>master</varname>.
+            </para>
+          </listitem>
+        </varlistentry>
+         <varlistentry>
+          <term>Repository browser</term>
+          <listitem>
+            <para>The default
+              <option>Auto</option>
+              option will cause the plugin to attempt to detect a web based user
+              interface to access the git repository. Selecting one of the
+              supported repository browsers
+              <option>gitweb</option>,
+              <option>redmineweb</option>
+              and
+              <option>githubweb</option> lets you provide a base url to the
+              repository browser. With the browser url specified the changes
+              view of each build will have added links to the repository.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -568,6 +606,14 @@
         </mediaobject>
       </figure>
 
+      <para>In many use cases you will be able to configure everything
+        necessary with regards to git using the basic configuration options
+        documented above. For more complex cases the plugin provides various
+        advanced parameters as displayed in
+        <xref linkend="fig-scm-git-project-config-advanced"/>,
+        which becomes accessible by pressing the <option>Advanced</option>
+        button.
+      </para>
       <figure id="fig-scm-git-project-config-advanced">
         <title>Configuring advanced Git configuration</title>
         <mediaobject>
@@ -585,8 +631,25 @@
 
       <variablelist>
         <varlistentry>
+          <term>Excluded Regions</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Excluded Users</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Checkout/merge to local branch (optional)</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term>Local subdirectory for repo (optional)</term>
-
           <listitem>
             <para>You can specify the name of the subdirectory to checkout a git
               project to. If you omit this subdirectory, the git repository will
@@ -594,42 +657,66 @@
             </para>
           </listitem>
         </varlistentry>
-
+        <varlistentry>
+          <term>Config user.name Value</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Config user.email Value</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term>Merge options</term>
           <listitem>
             <para>Your project can be configured to merge git</para>
           </listitem>
         </varlistentry>
-
+        <varlistentry>
+          <term>Prune remote branches before build</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Skip internal tag</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term>Clean after checkout</term>
           <listitem>
             <para></para>
           </listitem>
         </varlistentry>
-
+        <varlistentry>
+          <term>Recursively update submodules</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term>Use commit author in changelog</term>
           <listitem>
             <para></para>
           </listitem>
         </varlistentry>
-
         <varlistentry>
-          <term>Wipe out workspace</term>
+          <term>Wipe out workspace before build</term>
           <listitem>
             <para></para>
           </listitem>
         </varlistentry>
-
         <varlistentry>
           <term>Choosing strategy</term>
           <listitem>
             <para></para>
           </listitem>
         </varlistentry>
-
         <varlistentry>
           <term>Git executable</term>
           <listitem>

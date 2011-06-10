@@ -748,7 +748,10 @@
         <varlistentry>
           <term>Recursively update submodules</term>
           <listitem>
-            <para></para>
+            <para>With this option selected and a new enough Git version
+              installed submodules will be updated as part of the update
+              prior to building.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -812,6 +815,36 @@
           </imageobject>
         </mediaobject>
       </figure>
+      <variablelist>
+        <varlistentry>
+          <term>Push Only If Build Succeeds</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Merge Results</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Tags</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Branches</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
       <figure id="fig-scm-git-project-pub-tags">
         <title>Configuring Git merge options</title>
         <mediaobject>
@@ -826,6 +859,28 @@
           </imageobject>
         </mediaobject>
       </figure>
+      
+      <variablelist>
+        <varlistentry>
+          <term>Tag to push</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Create new tag</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Target remote name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
       <figure id="fig-scm-git-project-pub-branches">
         <title>Configuring Git merge options</title>
         <mediaobject>
@@ -840,8 +895,21 @@
           </imageobject>
         </mediaobject>
       </figure>
-
-
+      
+      <variablelist>
+        <varlistentry>
+          <term>Branch to push</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Target remote name</term>
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
   </section>
 

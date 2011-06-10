@@ -735,38 +735,6 @@
     </section>
   </section>
 
-  <section>
-    <!-- HBOOK-59 this might be deprecated in Hudson and if so will be
-    removed, including the screen shot-->
-    <title>Configuring SCM Polling Concurrency</title>
-
-    <para>This is a simple, global parameter to Hudson which controls the
-    number of concurrent threads to be used when polling an SCM system. Most
-    CI systems discover code changes in an SCM by continuously polling source
-    control. If you have enough projects configured, this polling can grow to
-    become a significant factor in SCM performance. If you are suffering
-    performance issues because you have configured hundreds of projects to
-    poll SCM, you can use this one property to define concurrency limits on
-    Hudson's ability to concurrently poll an SCM.</para>
-
-    <figure id="fig-using-scm-poll">
-      <title>Configuring SCM Polling Concurrency</title>
-
-      <mediaobject>
-        <imageobject role="web">
-          <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-scm-poll.png" scalefit="1" />
-        </imageobject>
-
-        <imageobject role="print">
-          <imagedata align="center" fileref="figs/print/ci-using-scm-poll.pdf"
-                     scalefit="0" width="100%" />
-        </imageobject>
-      </mediaobject>
-    </figure>
-  </section>
-
-
   <section id="section-configure-maven-3-configuration">
      <title>Managing Maven 3 Configuration</title>
 

@@ -6,19 +6,19 @@
 
   <para>To configure Hudson, click on the Manage Hudson link in the left-hand
   navigation menu, which will display the screen shown in <xref
-  linkend="fig-using-manage-hudson" />. This chapter will focus on the
+  linkend="fig-config-manage-hudson" />. This chapter will focus on the
   <indexterm>
       <primary>Configure System</primary>
     </indexterm><option>Configure System</option>
       section.</para>
 
-  <figure id="fig-using-manage-hudson">
+  <figure id="fig-config-manage-hudson">
     <title>Managing Hudson</title>
 
     <!-- TODO HBOOK-81  need new screenshot with Maven 3 configuration added if
       that is how it will be or otherwise update related documentation
     -->
-    configuration on<mediaobject>
+    <mediaobject>
       <imageobject role="web">
         <imagedata contentdepth="100%"
                    fileref="figs/web/manage-hudson.png" scalefit="1" />
@@ -759,7 +759,7 @@
         <option>Manage Server</option>
         in the left-hand Hudson menu, and then select the
         <option>Maven 3 Configuration</option>
-        item shown in<xref linkend="fig-using-manage-hudson"/>.
+        item shown in<xref linkend="fig-config-manage-hudson"/>.
       </para>
 
       <para>Once you select the Maven 3 Configuration option, you will see the

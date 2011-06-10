@@ -12,7 +12,7 @@
     <varlistentry>
       <term>WAR File</term>
       <listitem>
-        <para>The Hudson website provides a Java web archive file (WAR) for
+       section-maven-3-build-configuration <para>The Hudson website provides a Java web archive file (WAR) for
           download. This file can either be started directly or used in an
           existing Java servlet container or application server.
         </para>

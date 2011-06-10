@@ -4,8 +4,10 @@
 <chapter id="chapter-plugin-management">
    <title>Managing Hudson Plugins</title>
 
-   <para>Hudson plugins can be managed by selecting the "Manage Plugins" link
-   shown in <xref linkend="fig-using-matrix-history" />.</para>
+  <para>Hudson plugins can be managed by selecting the
+    <option>Manage Plugins</option>
+    link shown in<xref linkend="fig-config-manage-hudson"/>.
+  </para>
 
    <section id="section-plugin-management-advanced">
      <title>Advanced Plugin Management Options</title>

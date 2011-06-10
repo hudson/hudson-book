@@ -57,69 +57,69 @@
     </variablelist>
   </section>
 
-  <section id="preface-sect-conventions">
-    <title>Maven Writing Conventions</title>
+  <!--<section id="preface-sect-conventions">-->
+    <!--<title>Huds Writing Conventions</title>-->
 
-    <para>The book follows certain conventions for naming and font usage in
-    relation to Apache Maven. Understanding these conventions up-front makes
-    it easier to read this book.</para>
+    <!--<para>The book follows certain conventions for naming and font usage in-->
+    <!--relation to Apache Maven. Understanding these conventions up-front makes-->
+    <!--it easier to read this book.</para>-->
 
-    <variablelist>
-      <varlistentry>
-        <term>Compiler plugin</term>
+    <!--<variablelist>-->
+      <!--<varlistentry>-->
+        <!--<term>Compiler plugin</term>-->
 
-        <listitem>
-          <para>Maven plugins are capitalized.</para>
-        </listitem>
-      </varlistentry>
+        <!--<listitem>-->
+          <!--<para>Maven plugins are capitalized.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
 
-      <varlistentry>
-        <term><varname>create</varname> goal</term>
+      <!--<varlistentry>-->
+        <!--<term><varname>create</varname> goal</term>-->
 
-        <listitem>
-          <para>Maven goal names are displayed in a constant width
-          font.</para>
-        </listitem>
-      </varlistentry>
+        <!--<listitem>-->
+          <!--<para>Maven goal names are displayed in a constant width-->
+          <!--font.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
 
-      <varlistentry>
-        <term>"plugin"</term>
+      <!--<varlistentry>-->
+        <!--<term>"plugin"</term>-->
 
-        <listitem>
-          <para>Maven revolves around the heavy use of plug-ins but you won't
-          find plugin defined in the dictionary. This book writes the term as
-          "plugin" both because it is easier to read and write and because it
-          is a standard throughout the Maven community.</para>
-        </listitem>
-      </varlistentry>
+        <!--<listitem>-->
+          <!--<para>Maven revolves around the heavy use of plug-ins but you won't-->
+          <!--find plugin defined in the dictionary. This book writes the term as-->
+          <!--"plugin" both because it is easier to read and write and because it-->
+          <!--is a standard throughout the Maven community.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
 
-      <varlistentry>
-        <term>Maven Lifecycle, Maven Standard Directory Layout, Maven Plugin,
-        Project Object Model</term>
+      <!--<varlistentry>-->
+        <!--<term>Maven Lifecycle, Maven Standard Directory Layout, Maven Plugin,-->
+        <!--Project Object Model</term>-->
 
-        <listitem>
-          <para>Core Maven concepts are capitalized whenever they are being
-          referenced in the text.</para>
-        </listitem>
-      </varlistentry>
+        <!--<listitem>-->
+          <!--<para>Core Maven concepts are capitalized whenever they are being-->
+          <!--referenced in the text.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
 
-      <varlistentry>
-        <term><varname>goalParameter</varname></term>
+      <!--<varlistentry>-->
+        <!--<term><varname>goalParameter</varname></term>-->
 
-        <listitem>
-          <para>A Maven goal parameter is displayed in a constant width
-          font.</para>
-        </listitem>
-      </varlistentry>
+        <!--<listitem>-->
+          <!--<para>A Maven goal parameter is displayed in a constant width-->
+          <!--font.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
 
-      <varlistentry>
-        <term><varname>compile</varname> phase</term>
+      <!--<varlistentry>-->
+        <!--<term><varname>compile</varname> phase</term>-->
 
-        <listitem>
-          <para>Lifecycle phases are displayed in a constant width
-          font.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </section>
+        <!--<listitem>-->
+          <!--<para>Lifecycle phases are displayed in a constant width-->
+          <!--font.</para>-->
+        <!--</listitem>-->
+      <!--</varlistentry>-->
+    <!--</variablelist>-->
+  <!--</section>-->
 </preface>

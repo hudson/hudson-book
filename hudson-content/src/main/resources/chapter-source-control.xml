@@ -37,24 +37,10 @@
       </imageobject>
     </mediaobject>
   </figure>
-  <para>By default Hudson has support Subversion and CVS pre-installed. This
-    chapter will document the following popular, open source SCM systems:
+  <para>By default Hudson has support for Git, Subversion and CVS pre-installed.
+    This chapter will document usage of the respective Hudson plugins as well as
+    the plugin supporting the popular open source SCM system Mercurial.
   </para>
-
-  <itemizedlist>
-    <listitem>
-      <para>Subversion</para>
-    </listitem>
-    <listitem>
-      <para>Git</para>
-    </listitem>
-    <listitem>
-      <para>Mercurial</para>
-    </listitem>
-    <listitem>
-      <para>CVS</para>
-    </listitem>
-  </itemizedlist>
 
   <para>Each of these plugins can be configured in the global Hudson
     configuration setting in its specific section added by the plugin.
@@ -88,7 +74,7 @@
     specific to the selected SCM and the current project.
   </para>
 
-  <section>
+  <section id="section-scm-svn">
     <title>Configuring Subversion</title>
     <para>The Subversion Plugin for Hudson and therefore support for the popular
       <ulink url="http://subversion.tigris.org/">Subversion SCM system</ulink>
@@ -96,7 +82,7 @@
       perform any further plugin installation to use Subversion for your
       project.
     </para>
-    <section>
+    <section id="section-scm-svn-global">
       <title>Global Subversion Configuration</title>
       <para>In order to use Subversion successfully, you need to set up the
         global configuration in the Hudson Server configuration screen displayed
@@ -188,7 +174,7 @@
       </variablelist>
 
     </section>
-    <section>
+    <section id="section-scm-svn-project">
       <title>Project Specific Subversion Configuration</title>
 
       <para>Selecting Subversion under the Source Code Management section will
@@ -406,13 +392,16 @@
     </section>
   </section>
 
-  <section>
+  <section id="section-scm-git">
     <title>Configuring Git</title>
     <para>
       <ulink url="http://git-scm.com/">Git</ulink>
       is the most successful, modern distributed version control system and has
       gained wide acceptance in the open source community and beyond.
     </para>
+
+    <!-- TODO add some links to external git related help and mention that
+     we assume some git knowledge here-->
     <para>The Hudson Git Plugin and therefore support for Git is available in
       default Hudson installs from version 2.1 onwards. If it is not installed
       in your Hudson instance, simply find the plugin in the
@@ -421,7 +410,7 @@
       documented in
       <xref linkend="chapter-plugin-management"/>.
     </para>
-    <section>
+    <section id="section-scm-git-global">
       <title>Global Git Configuration</title>
 
       <para>The global configuration for using Git is set up in the Git section
@@ -509,7 +498,7 @@
         </mediaobject>
       </figure>
     </section>
-    <section>
+    <section id="section-scm-git-project">
       <title>Project Specific Git Configuration</title>
       <para>Once you have configured Git in the global Hudson configuration you
         can configure project specific Git settings. Selecting Git under the
@@ -548,7 +537,7 @@
               project can be considered the main configuration of the git
               details for your project. The minimum configuration is to
               provide a valid value for <option>URL of repository</option>.
-              The typical protocols supported by it of
+              The typical protocols
               <varname>http://</varname>, <varname>ssh://</varname> and
               <varname>git://</varname> are all supported. Advanced
               configuration as displayed in
@@ -611,8 +600,8 @@
         documented above. For more complex cases the plugin provides various
         advanced parameters as displayed in
         <xref linkend="fig-scm-git-project-config-advanced"/>,
-        which becomes accessible by pressing the <option>Advanced</option>
-        button.
+        which become accessible by pressing the <option>Advanced</option>
+        button and documented below.ex
       </para>
       <figure id="fig-scm-git-project-config-advanced">
         <title>Configuring advanced Git configuration</title>
@@ -633,18 +622,38 @@
         <varlistentry>
           <term>Excluded Regions</term>
           <listitem>
-            <para></para>
+            <para>This configuration allows you specifically exclude files and
+              directories to determine if a build should be triggered. If set,
+              Hudson will not trigger a build if only files and directories
+              matching the patterns have been changed. This option is useful if
+              you are only interested in a subset of files and directories
+              contained in a Git repository to trigger a build on Hudson. An
+              example would be if documentation files contained in the
+              repository should not trigger a new build.
+            </para>
+            <para>The configuration supports usage of regular expression
+              patterns to specify the desired files as well as multiple lines to
+              configure larger sets of files and directories to match.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Excluded Users</term>
           <listitem>
-            <para></para>
+            <para>If this field is populated and Hudson is configured to poll
+              git as a build trigger, Hudson will not trigger builds
+              for commits from the specified users. This can be used to avoid
+              builds to be triggered by commits done by Hudson or other
+              systems that commit changes that should not trigger a build.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Checkout/merge to local branch (optional)</term>
           <listitem>
+            <!-- TODO still need to test this to see what it actually does
+            and what to specify
+            -->
             <para></para>
           </listitem>
         </varlistentry>
@@ -660,37 +669,80 @@
         <varlistentry>
           <term>Config user.name Value</term>
           <listitem>
-            <para></para>
+            <para>This option allows you to cause git to set the
+              <varname>user.name</varname>
+              property prior to checkout and build. It overrides the global git
+              configuration of the same property
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Config user.email Value</term>
           <listitem>
-            <para></para>
+            <para>This option allows you to cause git to set the
+              <varname>user.email</varname>
+              property prior to checkout and build. It overrides the global git
+              configuration of the same property
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Merge options</term>
           <listitem>
-            <para>Your project can be configured to merge git</para>
+            <figure id="fig-scm-git-project-config-adv-merge">
+              <title>Configuring Git merge options</title>
+              <mediaobject>
+                <imageobject role="web">
+                  <imagedata contentdepth="100%"
+                             fileref="figs/web/scm-git-project-config-adv-merge.png"
+                             scalefit="1"/>
+                </imageobject>
+                <imageobject role="print">
+                  <imagedata align="center"
+                             fileref="figs/print/scm-git-project-config-adv-merge.pdf"
+                             scalefit="0" width="100%"/>
+                </imageobject>
+              </mediaobject>
+            </figure>
+            <para>When you activate the option <option>Merge before
+              build</option> the configuration parameters displayed in
+              <xref linkend="fig-scm-git-project-config-adv-merge"/> become
+              accessible. This powerful option can be used to specify a
+              repository to merge from in <option>Name of repository</option>
+              . The content of the repository will be merged to the branch
+              specified in <option>Branch to merge to</option> and if the
+              operation succeeds the build will proceed. The merge can then
+              be pushed back to the remote repository by configuring a Git
+              publisher post build action as documented in
+              <xref linkend="section-scm-git-project-publisher"/></para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Prune remote branches before build</term>
           <listitem>
-            <para></para>
+            <para>Selecting this option will cause the build to run the
+              command <command>git remote prune</command> before each build
+              . This is especially useful if remote branches are created and
+              removed regularly allowing the local checkout in Hudson to stay
+              in sync and only build the branches that alos exist remotely.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Skip internal tag</term>
           <listitem>
-            <para></para>
+            <para>Selecting this option will cause Hudson to omit the tagging
+              of the local repository after each checkout,
+              which performed by default.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Clean after checkout</term>
           <listitem>
-            <para></para>
+            <para>This option causes git to remove all untracked files after
+              each checkout and prior to the build.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -702,40 +754,101 @@
         <varlistentry>
           <term>Use commit author in changelog</term>
           <listitem>
-            <para></para>
+            <para>Selecting this option changes the display of the changelog
+              to show the commits <varname>author</varname>,
+              rather than the default <varname>committer</varname>.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Wipe out workspace before build</term>
           <listitem>
-            <para></para>
+            <para>This option will cause a complete wipe of the
+              workspace prior to each build. Use caution when activating this
+              option since it can have a significant impact on data transfer
+              and time for the checkout and therefore build. The other
+              options for keeping the workspace cleaned documented above are
+              more advisable to be used in most cases.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Choosing strategy</term>
           <listitem>
-            <para></para>
+            <para><!-- TODO where is this configured and what does it do
+            --></para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Git executable</term>
           <listitem>
-            <para></para>
+            <para>This drop down allows you to select a specific git
+              executable used for all operations on this projects build.
+              Configuration of the executables is documented in
+              <xref linkend="section-scm-git-global"/>.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
     </section>
-    <section>
+    <section id="section-scm-git-project-publisher">
       <title>Configuring the post-build action Git Publisher</title>
-      <para></para>
+      <para>The git plugin adds the post build action
+        <option>Git Publisher</option> as displayed in
+        <xref linkend="fig-scm-git-project-pub"/> to the project specific
+        configuration. It can be used to push merges done prior to the
+        build back out to the remote repository after a successful build.</para>
+      <figure id="fig-scm-git-project-pub">
+        <title>Configuring Git merge options</title>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-project-pub.png" scalefit="1"/>
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-project-pub.pdf" scalefit="0"
+                       width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <figure id="fig-scm-git-project-pub-tags">
+        <title>Configuring Git merge options</title>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-project-pub-tags.png" scalefit="1"/>
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-project-pub-tags.pdf" scalefit="0"
+                       width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <figure id="fig-scm-git-project-pub-branches">
+        <title>Configuring Git merge options</title>
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-git-project-pub-branches.png" scalefit="1"/>
+          </imageobject>
+          <imageobject role="print">
+            <imagedata align="center"
+                       fileref="figs/print/scm-git-project-pub-branches.pdf" scalefit="0"
+                       width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+
 
     </section>
   </section>
 
-  <section>
+  <section id="section-scm-hg">
     <title>Configuring Mercurial</title>
     <para>Hudson Mercurial Plugin .. Mercurial aka Hg ..</para>
-    <section>
+    <section id="section-scm-hg-global">
       <title>Global Mercurial Configuration</title>
 
       <para>To configure Mercurial, find the Mercurial section in the Hudson
@@ -812,7 +925,7 @@
         use the same installers and you can find more hints of its usage there.
       </para>
     </section>
-    <section>
+    <section id="section-scm-hg-project">
       <title>Project Specific Mercurial Configuration</title>
       <para>Selecting Mercurial under the Source Code Management section will
         display the configuration options shown in<xref
@@ -899,10 +1012,10 @@
     </section>
   </section>
 
-  <section>
+  <section id="section-scm-cvs">
     <title>Configuring CVS</title>
     <para>Hudson CVS Plugin...</para>
-    <section>
+    <section id="section-scm-cvs-global">
       <title>Global CVS Configuration</title>
 
 
@@ -952,7 +1065,7 @@
         </varlistentry>
       </variablelist>
     </section>
-    <section>
+    <section id="section-scm-cvs-projectf">
       <title>Project Specific CVS Configuration</title>
 
       <para>Selecting CVS under the Source Code Management section will display

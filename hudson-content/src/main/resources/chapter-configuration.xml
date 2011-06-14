@@ -216,17 +216,41 @@
   <section id="section-configure-global-properties">
     <title>Global Properties Configuration</title>
 
-    <para>The global properties configuration allows the definition of
-    key-value pairs that are exposed to all running builds as environment
-    variables. Depending on the build system used they can be picked up with
-    different syntax e.g. $key or ${key}. By default a number of default
-      variables are populated by Hudson automatically. These include
-      job related ones like <varname>JOB_NAME</varname>,
-      <varname>BUILD_TAG</varname> or <varname>BUILD_NUMBER</varname>,
-      Hudson node related ones like
-      <varname>NODE_NAME</varname> or more global ones like
-      <varname>JAVA_HOME</varname>. A comprehensive list is available at <ulink
-        url="env-vars.html">env-vars.html</ulink> on your Hudson server as
+    <para>The global properties configuration allows the definition of key-value
+      pairs that are exposed to all running builds as environment variables.
+      Simply select the check box
+      <option>Environment Variables</option>
+      and add the desired name and value for the property in the interface
+      displayed in<xref linkend="fig-configure-global-properties"/>.
+
+    </para>
+
+    <figure id="fig-configure-global-properties">
+      <title>Configuring global properties</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/configure-global-properties.png"
+                     scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/configure-global-properties.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>
+      Depending on the build system used they can be picked up with different
+      syntax e.g. $key or ${key}. By default a number of default variables are
+      populated by Hudson automatically. These include job related ones like
+      <varname>JOB_NAME</varname>,
+      <varname>BUILD_TAG</varname>
+      or<varname>BUILD_NUMBER</varname>, Hudson node related ones like
+      <varname>NODE_NAME</varname>
+      or more global ones like
+      <varname>JAVA_HOME</varname>. A comprehensive list is available at
+      <ulink url="env-vars.html">env-vars.html</ulink> on your Hudson server as
       linked from the inline help for the properties configuration.
     </para>
   </section>

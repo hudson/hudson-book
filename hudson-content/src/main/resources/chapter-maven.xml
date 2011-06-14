@@ -737,6 +737,14 @@
     </figure>
   </section>
 
+  <section id="section-blacklist-maven-legacy">
+    <title>Using the blacklist plugin to improve Maven usage</title>
+    <para>Describe how the blacklist plugin can be used to have the legacy
+      Maven integrations installed without them appearing as choices in the
+      configurttion so that new builds do not accidently use it.
+    </para>
+  </section>
+
   <section id="section-maven-artifacts">
     <title>Managing the Build Artifacts of a Maven Build</title>
     <!-- HBOOK-72 -->

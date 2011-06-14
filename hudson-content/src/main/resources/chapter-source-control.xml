@@ -555,7 +555,9 @@
               <!-- TODO .. really .. need to check this out and clarify ..
               . somehow this does not make sense to me,
               one project per branch would seem more logic,
-              e.g. how it is -->
+              I tested this a bit and I can not get multiple branches to be
+              built, I think this should be changed and ask on the mailing
+              list about it -->
               A common configuration would be to specify the
               main branch in the repository e.g. <varname>master</varname>.
             </para>
@@ -778,7 +780,9 @@
         <varlistentry>
           <term>Choosing strategy</term>
           <listitem>
-            <para><!-- TODO where is this configured and what does it do
+            <para><!-- TODO where is this configured and what does it do,
+            Hudson on Hudson shows Gerrit and Default, I only have Default on
+             my installs, what does it do?
             --></para>
           </listitem>
         </varlistentry>
@@ -878,10 +882,13 @@
           <term>Tag to push</term>
           <listitem>
             <para>This input allows you to provide the name for the tag to
-              use. It supports expansion o f environment variables as part of
-              the tag name. <!-- TODO add example for this after testing
-              with e.g. build number or datestamp or whatever,
-              update screenshot above respectively-->
+              use. It supports the expansion of environment variables as part
+              of the tag name using the ${key} syntax. An example would be to
+              use <varname>Hudson-Build-${BUILD_NUMBER}</varname> to create a
+              tag called e.g. Hudson-Build-123. Read
+              <xref linkend="section-configure-global-properties"/> for more
+              information about defining properties and available predefined
+              ones.
             </para>
           </listitem>
         </varlistentry>
@@ -947,7 +954,7 @@
   <section id="section-scm-hg">
     <title>Configuring Mercurial</title>
     <para>Hudson Mercurial Plugin .. Mercurial aka Hg ..</para>
-    <section id="section-scm-hg-globHBOOK-90 some git publisher fields documentedal">
+    <section id="section-scm-hg-global">
       <title>Global Mercurial Configuration</title>
 
       <para>To configure Mercurial, find the Mercurial section in the Hudson

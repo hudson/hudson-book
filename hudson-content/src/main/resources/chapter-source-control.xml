@@ -800,7 +800,7 @@
         <option>Git Publisher</option> as displayed in
         <xref linkend="fig-scm-git-project-pub"/> to the project specific
         configuration. It can be used to push merges done prior to the
-        build back out to the remote repository after a successful build.</para>
+        build back out to a remote repository after a build.</para>
       <figure id="fig-scm-git-project-pub">
         <title>Configuring Git merge options</title>
         <mediaobject>
@@ -819,32 +819,45 @@
         <varlistentry>
           <term>Push Only If Build Succeeds</term>
           <listitem>
-            <para></para>
+            <para>Selecting this option will cause Hudson to skip publishing
+              any changes via push if the build failed.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Merge Results</term>
           <listitem>
-            <para></para>
+            <para>With this option activated Hudson will push any merge
+              results done prior to the build back to the remote origin.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Tags</term>
           <listitem>
-            <para></para>
+            <para>The <option>Add Tag</option> button allows you to
+              configure one or more tags to push to and potentially create.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Branches</term>
           <listitem>
-            <para></para>
+            <para>The
+              <option>Add Branch</option>
+              button allows you to configure one or more branch and remote
+              combinations to push to.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
 
+      <para>When configuring the Git Publisher you can specify Tags in
+        fields displayed in <xref linkend="fig-scm-git-project-pub-tags"/>.
+      </para>
       <figure id="fig-scm-git-project-pub-tags">
         <title>Configuring Git merge options</title>
         <mediaobject>
@@ -864,23 +877,31 @@
         <varlistentry>
           <term>Tag to push</term>
           <listitem>
-            <para></para>
+            <para>This input allows you to provide the name for the tag to
+              use. It supports expansion of environment variables as part of
+              the tag name.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Create new tag</term>
           <listitem>
-            <para></para>
+            <para>p</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Target remote name</term>
           <listitem>
-            <para></para>
+            <para>Needs to be configured above in merge options section.
+              . </para>
           </listitem>
         </varlistentry>
       </variablelist>
-      
+
+      <para>Configuring branches to push to is done in the user
+        interface displayed in <xref
+          linkend="fig-scm-git-project-pub-branches"/>.
+      </para>
       <figure id="fig-scm-git-project-pub-branches">
         <title>Configuring Git merge options</title>
         <mediaobject>

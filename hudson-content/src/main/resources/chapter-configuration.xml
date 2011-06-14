@@ -213,17 +213,23 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="section-configure-global-properties">
     <title>Global Properties Configuration</title>
 
     <para>The global properties configuration allows the definition of
     key-value pairs that are exposed to all running builds as environment
     variables. Depending on the build system used they can be picked up with
-    different syntax e.g. $key or ${key}</para>
-
-    <!-- SEE HBOOK-41-->
+    different syntax e.g. $key or ${key}. By default a number of default
+      variables are populated by Hudson automatically. These include
+      job related ones like <varname>JOB_NAME</varname>,
+      <varname>BUILD_TAG</varname> or <varname>BUILD_NUMBER</varname>,
+      Hudson node related ones like
+      <varname>NODE_NAME</varname> or more global ones like
+      <varname>JAVA_HOME</varname>. A comprehensive list is available at <ulink
+        url="env-vars.html">env-vars.html</ulink> on your Hudson server as
+      linked from the inline help for the properties configuration.
+    </para>
   </section>
-
   <section id="section-configure-jdk">
     <title>Configuring JDK Installations</title>
 

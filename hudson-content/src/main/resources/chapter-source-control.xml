@@ -878,22 +878,27 @@
           <term>Tag to push</term>
           <listitem>
             <para>This input allows you to provide the name for the tag to
-              use. It supports expansion of environment variables as part of
-              the tag name.
+              use. It supports expansion o f environment variables as part of
+              the tag name. <!-- TODO add example for this after testing
+              with e.g. build number or datestamp or whatever,
+              update screenshot above respectively-->
             </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Create new tag</term>
           <listitem>
-            <para>p</para>
+            <para>This checkbox determines if the tag to push to as
+              provided above should be created as a new tag or be used
+              as an existing tag.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Target remote name</term>
           <listitem>
-            <para>Needs to be configured above in merge options section.
-              . </para>
+            <para>The name of the remote to push the tag to. The name needs
+              to be configured as a repository in the SCM setion for this
+              project.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -921,13 +926,18 @@
         <varlistentry>
           <term>Branch to push</term>
           <listitem>
-            <para></para>
+            <para>This parameter specifies the branch the changes get push to
+              after the build completes.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Target remote name</term>
           <listitem>
-            <para></para>
+            <para>The <option>Target remote name</option> specifies the
+              remote repository to which a push will be done and needs to be
+            one of the names configured as a repository in the SCM sectio
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -937,7 +947,7 @@
   <section id="section-scm-hg">
     <title>Configuring Mercurial</title>
     <para>Hudson Mercurial Plugin .. Mercurial aka Hg ..</para>
-    <section id="section-scm-hg-global">
+    <section id="section-scm-hg-globHBOOK-90 some git publisher fields documentedal">
       <title>Global Mercurial Configuration</title>
 
       <para>To configure Mercurial, find the Mercurial section in the Hudson

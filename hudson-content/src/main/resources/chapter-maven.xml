@@ -64,7 +64,7 @@
           <listitem>
             <para>Your team or yourself might have pre-existing expertise with
               native package management, provisioning software, virtual machine
-              snapshots or Hudson itself than can be an influencing factor on
+              snapshots or Hudson itself that can be an influencing factor on
               how to set up your Maven installs.
             </para>
           </listitem>
@@ -88,7 +88,9 @@
     <para>With assessing these influencing parameters you will be able to derive
       a strategy for your Maven install(s), that will work across the different
       machines in your build cluster and for all your projects. This strategy
-      can potentially involve different installation methods. A minimal setup of
+      can potentially involve different installation methods. When using the
+      recommended Maven 3 integration no Maven install is necessary, since a
+      Maven 3 install is embedded with the plugin. Otherwise a minimal setup of
       one Maven install can be used to set up your first project, that is built
       with Maven on Hudson.
     </para>
@@ -116,13 +118,13 @@
 
     <para>Finally your Hudson install may contain a separate project type
       labeled
-      <option>Build a maven 2/3 project</option>
+      <option>Build a Maven 2/3 project (Legacy)</option>
       available when creating a new project. This feature has numerous issues
       with the use of different Maven versions and use cases, especially Maven
       3, and is not supported in Hudson. We recommend not to use this job type.
       If you do not need this job type anymore after migrating to the Maven 3
       build step and want to avoid the accidental creation of projects with this
-      type, you should disable the<varname>Hudson Maven :: Plugin</varname>.
+      type, you should disable the <varname>Hudson Maven :: Plugin</varname>.
       Read more about managing your plugins in
       <xref linkend="chapter-plugin-management"/>.
     </para>
@@ -131,6 +133,12 @@
       part of Hudson as legacy components and are not the focus of active
       development and improvements. If your existing jobs use either of these we
       recommend to migrate to Maven 3 build step based free-style projects.
+    </para>
+    <para>In order to be able to keep existing legacy build around without
+      cluttering to user interface or have inexperienced users create builds
+      with the legacy systems, you can enable the blacklist plugin to disable
+      certain views within Hudson without completely disabling the still
+      required plugins.
     </para>
   </section>
 

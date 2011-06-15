@@ -543,8 +543,8 @@
   <section id="section-configure-maven-3-builder-defaults">
     <title>Maven 3 Builder Defaults</title>
     <para>The Maven 3 integration allows for a set of default values to be
-      defined that are used when a new build step for invoking Maven 3 is added
-      to a project configuration. These values are defined in the section
+      defined that are used when a new build step for invoking Maven 3 is added.
+      These values can be defined in the section
       <option>Maven 3 Builder Defaults</option>
       in the global Hudson configuration here. The individual fields and their
       purpose and usage are documented in

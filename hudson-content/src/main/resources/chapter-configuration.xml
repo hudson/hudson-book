@@ -433,69 +433,110 @@
   <section id="section-configure-maven">
     <title>Configuring Maven Installations</title>
 
-    <para>One of the main uses cases for Hudson is building projects with
-      Apache Maven. The first step to using Maven is to configure one or more
-      Maven installations. Like the JDK and Ant installation options,
-      Maven can be configured in multiple ways: </para>
-      <variablelist>
-        <varlistentry>
-          <term>Use an existing installation</term>
-          <listitem>
-            <para>Specify a <option>Name</option> and add the path to your
-              Maven install in the <option>MAVEN_HOME</option> input control.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>Automatically install from Apache</term>
-          <listitem>
-            <para>Select the <option>Install automatically</option> checkbox
-              and <option>Install from Apache</option> in the drop down and
-              choose the Maven version, you wish to install.
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>Automatically install from an archive file</term>
-          <listitem>
-            <para>Select the <option>Install automatically</option> checkbox
-              and <option>Extract *zip/*.tar.gz</option> and configure the
-              installation as documented in <xref linkend="section-configure-jdk"/>
-            </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>Automatically install via a command</term>
-          <listitem>
-            <para>Select the <option>Install automatically</option> checkbox
-              and <option>Run Command</option> and configure the installation
-              as documented in <xref linkend="section-configure-jdk"/>.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-     <figure id="fig-configure-maven-installation">
-      <title>Configuring Maven Installations</title>
+    <para>One of the main uses cases for Hudson is building projects with Apache
+      Maven. As explained in more detail in
+      <xref linkend="chapter-maven"/>
+      the preferred way to build Maven projects is the Maven 3 integration. It
+      comes with a bundled Maven 3 install so you do not actually need to
+      install Maven 3 at all to get started. However if you want, you can
+      install additional Maven 3 installs with the user interface displayed in
+      <xref linkend="fig-configure-maven-3-installation"/>.
+    </para>
+
+    <figure id="fig-configure-maven-3-installation">
+      <title>Configuring Maven 3 Installations</title>
       <mediaobject>
         <imageobject role="web">
           <imagedata contentdepth="100%"
-                     fileref="figs/web/configure-maven.png" scalefit="1" />
+                     fileref="figs/web/configure-maven-3.png" scalefit="1"/>
         </imageobject>
 
         <imageobject role="print">
-          <imagedata align="center"
-                     fileref="figs/print/configure-maven.pdf"
-                     scalefit="0" width="100%" />
+          <imagedata align="center" fileref="figs/print/configure-maven-3.pdf"
+                     scalefit="0" width="100%"/>
         </imageobject>
       </mediaobject>
     </figure>
+    <para>
+      The legacy Maven project type and Maven plugin use a separate installer as
+      displayed in<xref linkend="fig-configure-maven-installation"/>. In
+      addition to the same features as the Maven 3 installer it can be
+      configured to download a Maven version from the Apache website when
+      required.
+    </para>
+    <figure id="fig-configure-maven-installation">
+      <title>Configuring Maven Installations</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%" fileref="figs/web/configure-maven.png"
+                     scalefit="1"/>
+        </imageobject>
 
-    <para>We recommend that you run your build using the latest Maven 3.0
-      release. With multiple Maven installations configured a dropdown in the
-      project task configuration will allow you to choose the desired Maven
-      version as visible in<xref linkend="fig-configure-maven-installation"/>.
+        <imageobject role="print">
+          <imagedata align="center" fileref="figs/print/configure-maven.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>Both the Maven 3 and the Maven installation work in a similar way to
+      the JDK and Ant installation options:
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term>Use an existing installation</term>
+        <listitem>
+          <para>Specify a
+            <option>Name</option>
+            and add the path to your Maven install in the
+            <option>MAVEN_HOME</option>
+            input control.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Automatically install from Apache</term>
+        <listitem>
+          <para>Select the
+            <option>Install automatically</option>
+            checkbox and
+            <option>Install from Apache</option>
+            in the drop down and choose the Maven version, you wish to install.
+            This option is only available for the Maven installation.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Automatically install from an archive file</term>
+        <listitem>
+          <para>Select the
+            <option>Install automatically</option>
+            checkbox and
+            <option>Extract *zip/*.tar.gz</option>
+            and configure the installation as documented in
+            <xref linkend="section-configure-jdk"/>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Automatically install via a command</term>
+        <listitem>
+          <para>Select the
+            <option>Install automatically</option>
+            checkbox and
+            <option>Run Command</option>
+            and configure the installation as documented in<xref
+              linkend="section-configure-jdk"/>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>In general we recommend that you run your build using the latest Maven
+      3.0 release. With multiple Maven installations configured a dropdown in
+      the project build step configuration will allow you to choose the desired
+      Maven version.
       <xref linkend="chapter-maven"/>
-      provides an in-depth documentation using Maven with Hudson.
+      provides an in-depth documentation for using Maven with Hudson.
     </para>
   </section>
 

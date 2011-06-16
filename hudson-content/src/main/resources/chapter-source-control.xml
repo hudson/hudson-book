@@ -544,6 +544,10 @@
               configuration as displayed in
               <xref linkend="fig-scm-git-project-config-repository"/> allows
               you to provide a name of the repository as well as a refspec.
+              Providing multiple repositories only makes sense when they are
+              clones or instances off the same repository,
+              since they will be used for merging together the content prior
+              to the build.
             </para>
           </listitem>
         </varlistentry>
@@ -552,15 +556,20 @@
           <listitem>
             <para>In this section you can specify one or more branches that
               should be built. The default of an empty branch specifier
-              causes the git plugin to track and build all branches.
-              <!-- TODO .. really .. need to check this out and clarify ..
-              . somehow this does not make sense to me,
-              one project per branch would seem more logic,
-              I tested this a bit and I can not get multiple branches to be
-              built, I think this should be changed and ask on the mailing
-              list about it -->
+              causes the git plugin to track all branches and build the
+              latest changed branch. </para>
+            <para>
               A common configuration would be to specify the
               main branch in the repository e.g. <varname>master</varname>.
+              This would ensure that the build is only triggered for changes
+              committed to master. If you want to have other branches
+              built as well it is advisable to create separate Hudson
+              projects for the different branches.
+            </para>
+            <para>The advanced usage of this feature would be to specify
+              multiple branches. These branches would be used for a merge
+              prior to a build and could be configured to push the merge
+              result back to the remote repository after a successful build.
             </para>
           </listitem>
         </varlistentry>
@@ -654,10 +663,9 @@
         <varlistentry>
           <term>Checkout/merge to local branch (optional)</term>
           <listitem>
-            <!-- TODO still need to test this to see what it actually does
-            and what to specify
-            -->
-            <para></para>
+            <para>Supplying a value here causes git to create a local
+            branch to checkout to. All the branches specified in the
+            configuration above would be merged into that local branch.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -771,10 +779,12 @@
           <listitem>
             <para>This option will cause a complete wipe of the
               workspace prior to each build. Use caution when activating this
-              option since it can have a significant impact on data transfer
-              and time for the checkout and therefore build. The other
-              options for keeping the workspace cleaned documented above are
-              more advisable to be used in most cases.
+              option since it can have a significant impact on data transfer and
+              time for the checkout and therefore build. For Maven projects it
+              potentially wipes the local repository as well causing further
+              increases in build time. The other options for keeping the
+              workspace cleaned documented above are more advisable to be used
+              in most cases.
             </para>
           </listitem>
         </varlistentry>
@@ -784,6 +794,7 @@
             <para><!-- TODO where is this configured and what does it do,
             Hudson on Hudson shows Gerrit and Default, I only have Default on
              my installs, what does it do?
+             depends on http://issues.hudson-ci.org/browse/HUDSON-8906
             --></para>
           </listitem>
         </varlistentry>

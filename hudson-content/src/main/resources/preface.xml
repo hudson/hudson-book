@@ -39,7 +39,7 @@
         bold</literal> </emphasis></term>
 
         <listitem>
-          <para>Used for commands you enter at the command line and to
+          <para>Used for commands you enter at the command-line and to
           highlight new code inserted in a running example.</para>
         </listitem>
       </varlistentry>

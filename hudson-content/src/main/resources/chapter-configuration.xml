@@ -34,8 +34,8 @@
 
   <para>Depending on the plugins installed and activated on your Hudson system,
   different sections will be available in the system configuration section.
-  These will either be explained below or with a plugin specific section. For
-  example the source code management related global configurations for the
+  These will either be explained below or with a plugin-specific section. For
+  example the source code management-related global configurations for the
   different SCM systems is available in <xref
       linkend="chapter-source-control"/>.</para>
   <section id="section-global-hudson-configuration">
@@ -91,7 +91,7 @@
           the main screen above the list of projects. It can be used as a
           welcome message or to e.g. broadcast upcoming maintenance to users
           of the Hudson instance via the user interface. It supports plain text
-          as well a HTML snippets for formatting and enriching the
+          as well as HTML snippets for formatting and enriching the
           message with dynamic content.</para>
         </listitem>
       </varlistentry>
@@ -243,10 +243,10 @@
     <para>
       Depending on the build system used they can be picked up with different
       syntax e.g. $key or ${key}. By default a number of default variables are
-      populated by Hudson automatically. These include job related ones like
+      populated by Hudson automatically. These include job-related ones like
       <varname>JOB_NAME</varname>,
       <varname>BUILD_TAG</varname>
-      or<varname>BUILD_NUMBER</varname>, Hudson node related ones like
+      or<varname>BUILD_NUMBER</varname>, Hudson node-related ones like
       <varname>NODE_NAME</varname>
       or more global ones like
       <varname>JAVA_HOME</varname>. A comprehensive list is available at
@@ -298,7 +298,7 @@
     <para>Furthermore it is possible to configure a JDK to be installed
       automatically by specifying a name as before and then selecting the
       <option>Install Automatically</option>
-      check box. This exposes a drop down labelled
+      check box. This exposes a drop-down labelled
       <option>Add installer</option>
       which lets you choose from the options
       <option>Install from Oracle</option>,
@@ -313,7 +313,7 @@
 
     <para>The option
       <option>Install from Oracle</option>
-      brings up a drop down to choose the version as well as a checkbox that
+      brings up a drop-down to choose the version as well as a checkbox that
       needs to be clicked to the JavaSE license agreement.
     </para>
 
@@ -388,7 +388,7 @@
     </para>
 
     <para>Once more than one JDK is configured in the global settings, each
-      project configuration has an additional drop down, which allows the
+      project configuration has an additional drop-down, which allows the
       selection of the JDK to be usd to build the project and is visible in
       <xref linkend="fig-extract-archive-installer"/>
     </para>
@@ -413,11 +413,11 @@
       install a required Apache Ant version automatically when needed.
     </para>
 
-    <para>The simplest way achieve this is to select the
+    <para>The simplest way to achieve this is to select the
       <option>Install automatically</option>
       checkbox and select
       <option>Install from Apache</option>
-      and choose the desired version from the drop down.
+      and choose the desired version from the drop-down.
     </para>
 
     <para>Similar to the JDK installation from Oracle it is possible to use
@@ -500,7 +500,7 @@
             <option>Install automatically</option>
             checkbox and
             <option>Install from Apache</option>
-            in the drop down and choose the Maven version, you wish to install.
+            in the drop-down and choose the Maven version, you wish to install.
             This option is only available for the Maven installation.
           </para>
         </listitem>
@@ -592,11 +592,11 @@
     <title>Configuring E-mail Notification</title>
 
     <!-- SEE HBOOK-45-->
-    <para>Notification of build results and email based notification
+    <para>Notification of build results and email-based notification
       specifically is a core feature of a continuous integration server. This
       configuration section as displayed in
       <xref linkend="fig-configure-email-notification"/>
-      allows you to configure the SMTP related settings to connect to the server
+      allows you to configure the SMTP-related settings to connect to the server
       and send the emails.
     </para>
 
@@ -606,7 +606,7 @@
       members, this setup allows users to join any mailing list and therefore
       notifications for specific jobs without any configuration changes on
       Hudson.
-    </tip>
+    </tip>         `
 
     <figure id="fig-configure-email-notification">
       <title>Configuring Email Notification</title>
@@ -649,7 +649,7 @@
         <term>Default user e-mail suffix</term>
 
         <listitem>
-          <para>This suffix is appended to the Hudson user names used to login
+          <para>This suffix is appended to the Hudson user names used to log in
             to Hudson and the result can be used for e-mail notification. E.g.
             if the Hudson instance runs for
             <varname>example.com</varname>
@@ -692,7 +692,7 @@
 
     <para>In addition to basic SMTP configuration parameters,
       you can click the <option>Advanced Options</option> button for further
-      configuration that allow you to send email via servers that require
+      configuration that allows you to send email via servers that require
       authentication. Most SMTP servers will require at least user name and
       password to be accessed.</para>
     <variablelist>

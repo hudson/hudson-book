@@ -4,7 +4,7 @@
 <chapter id="chapter-maven">
   <title>Working with Apache Maven Builds</title>
 
-  <para>Apache Maven is the most widely used build tool for Java based
+  <para>Apache Maven is the most widely used build tool for Java-based
     applications and beyond. It has  excellent support in Hudson and is
     employed by most Hudson users.
   </para>
@@ -106,13 +106,13 @@
       <xref linkend="section-maven-3-build-configuration"/>.
     </para>
 
-    <para>If your require Maven 2 for your build for some legacy reason, even
+    <para>If you require Maven 2 for your build for some legacy reason, even
       though Maven 3 is a higher performing, drop-in replacement you can fall
       back to using the
       <option>Invoke Maven 2 (Legacy)</option>
       build step documented in <xref
         linkend="section-maven-2-build-configuration"/>. Even though this option
-      exists, we recommend to move forward and migrate to Maven 3 and the Maven
+      exists, we recommend moving forward and migrating to Maven 3 and the Maven
       3 build step.
     </para>
 
@@ -132,7 +132,7 @@
     <para>Both the Maven 2/3 project type as well as the Maven 2 build step are
       part of Hudson as legacy components and are not the focus of active
       development and improvements. If your existing jobs use either of these we
-      recommend to migrate to Maven 3 build step based free-style projects.
+      recommend migrating to Maven 3 build step based free-style projects.
     </para>
     <para>In order to be able to keep existing legacy build around without
       cluttering to user interface or have inexperienced users create builds
@@ -143,7 +143,7 @@
   </section>
 
   <section id="section-maven-example">
-    <title>A Simple Example for a Apache Maven built project</title>
+    <title>A Simple Example for an Apache Maven built project</title>
     <!-- HBOOK-70-->
         <para>should be a simple project which just calls mvn clean install,
       talk about pros and cons of using clean, also talk about plugin:goal
@@ -213,7 +213,7 @@
         <listitem>
           <para>Your Hudson installation may have one or more Maven 3
             installations configured as part of the global Hudson configuration.
-            This drop down allows you to specify the version of Maven 3 to
+            This drop-down allows you to specify the version of Maven 3 to
             use
             with the current build step. By default the Maven 3 integration
             will use a bundled version of Maven 3, that is installed as part
@@ -228,7 +228,7 @@
           <para>This field allows you to specify the goals and phases you would
             like to use for the Maven 3 invocation, separate by spaces and in
             order of desired invocation just like you would use Maven 3 on the
-            command line. Typically these would be<varname>clean
+            command-line. Typically these would be<varname>clean
               install</varname>, but depending on your project and build step
             others may apply. The plugin with automatically show the Maven
             version and operate in batch mode equivalent to the
@@ -270,10 +270,10 @@
         <listitem>
           <para>If your project uses the standard
             <varname>pom.xml</varname>
-            filename, there is no need to specify a POM. If your projects uses a
+            filename, there is no need to specify a POM. If your project uses a
             POM with an alternative name or path other than directly in the
             project root, you can specify that file name and path here. This
-            setting is equivalent to the command line option
+            setting is equivalent to the command-line option
             <option>-f pomfilepath</option>
             or<option>--file pomfilepath</option>. The path specified has to be
             relative to the project root.
@@ -304,7 +304,7 @@
             <varname>java.io .tmpdir</varname>
             will be set to a folder
             <varname>.maven/tmp</varname>
-            in the project specific workspace. This is useful when your build
+            in the project-specific workspace. This is useful when your build
             accesses the temporary directory for storage of artifacts or any
             temporary files e.g. used while running tests. When using the option
             with builds that produce large amounts of data in the temporary
@@ -341,7 +341,7 @@
             <option>Show Errors</option>
             option is equivalent to use the
             <varname>-e</varname>
-            command line parameter, which will cause Maven to output any errors
+            command-line parameter, which will cause Maven to output any errors
             in the console.
           </para>
         </listitem>
@@ -356,7 +356,7 @@
             <varname>-q</varname>
             and
             <varname>-X</varname>
-            options for Maven command line invocation.
+            options for Maven command-line invocation.
           </para>
         </listitem>
       </varlistentry>
@@ -366,11 +366,11 @@
         <listitem>
           <para>Configure the strictness of the checksum validation when
             downloading artifacts from repositories to be at normal, lax or
-            strict levels. These level are equivalent to no option and the
+            strict levels. These levels are equivalent to no option and the
             <varname>-c</varname>
             and
             <varname>-C</varname>
-            options for Maven command line invocation.
+            options for Maven command-line invocation.
           </para>
         </listitem>
       </varlistentry>
@@ -378,7 +378,7 @@
       <varlistentry>
         <term>Snapshot Updates</term>
         <listitem>
-          <para>The <option>Snapshot Updates</option> options provides
+          <para>The <option>Snapshot Updates</option> option provides
             control over the way Maven treats
             <varname>SNAPSHOT</varname> artifacts. The
             <option>NORMAL</option> activates the standard Maven behaviour,
@@ -392,10 +392,10 @@
       <varlistentry>
         <term>Recursive</term>
         <listitem>
-          <para>Just like for normal Maven invocation this options is activated
+          <para>Just like for normal Maven invocation this option is activated
             by default, which means that nested modules in a multi-module
             project will be build. Deactivating this feature is equivalent to
-            the non-recursive command line option
+            the non-recursive command-line option
             <varname>-N</varname>.
           </para>
         </listitem>
@@ -414,7 +414,7 @@
             <varname>groupId</varname>
             in a
             <varname>groupId:artifactId</varname>
-            format. The equivalent command line option is
+            format. The equivalent command-line option is
             <varname>-pl</varname>.
           </para>
         </listitem>
@@ -429,7 +429,7 @@
             <option>Projects</option>
             and sets the
             <varname>-rf</varname>
-            command line option to resume the build from the specified artifact.
+            command-line option to resume the build from the specified artifact.
           </para>
         </listitem>
       </varlistentry>
@@ -437,11 +437,11 @@
       <varlistentry>
         <term>Fail Mode</term>
         <listitem>
-          <para>The <option>Fail Mode</option> option support the modes
+          <para>The <option>Fail Mode</option> option supports the modes
             <option>NORMAL</option>, <option>FAST</option>,
             <option>AT_END</option> and <option>NEVER</option> that determine
           how your Maven build proceeds in case of any failures. The equivalent
-           command line options are no option, <varname>-ff</varname>,
+           command-line options are no option, <varname>-ff</varname>,
             <varname>-fae</varname> and <varname>-fn</varname>. This can have
             considerable impact on the load on your Hudson server e.g. by not
             proceeding past failed tests  but instead failing the build so
@@ -475,7 +475,7 @@
         <listitem>
           <para>This input takes the value for the
             <varname>-T</varname>
-            command line option that enables the experimental support for
+            command-line option that enables the experimental support for
             parallel builds in Maven 3. A value of
             <varname>4</varname>
             enables four threads for the build. A value of
@@ -546,7 +546,7 @@
             this field. The options are passed straight through as MAVEN_OPTS
             and use the normal
             <option>java</option>
-            command line options syntax. A common configuration for complex
+            command-line options syntax. A common configuration for complex
             builds is to specify a larger memory for the JVM running Maven via
             <option>-Xmx1024m</option>.
           </para>
@@ -558,7 +558,7 @@
   <section id="section-maven-2-build-configuration">
     <title>Details of Configuring Maven 2 (Legacy) Build Options</title>
 
-    <para>If for some reason you are still using Maven 2 and can not upgrade to
+    <para>If for some reason you are still using Maven 2 and cannot upgrade to
       Maven 3 and therefore take advantage of the advanced performance and
       features of Maven 3 and the Maven 3 integration of Hudson offers you, you
       should use the Maven 2 (Legacy) integration in a free-style project build
@@ -613,7 +613,7 @@
         <listitem>
           <para>Your Hudson installation may have one or more Maven
             installations configured as part of the global Hudson configuration.
-            This drop down allows you to specify the version of Maven for usage
+            This drop-down allows you to specify the version of Maven for usage
             with the current build step.
           </para>
         </listitem>
@@ -622,7 +622,7 @@
       <varlistentry>
         <term>Goals</term>
         <listitem>
-          <para>This field allows you to specify the command line
+          <para>This field allows you to specify the command-line
             parameters used for the Maven invocation. These are phases,
             plugin goals as well as specific Maven command-line options like
             <varname>-P</varname> for profile selection, selection of a specific
@@ -637,10 +637,10 @@
         <listitem>
           <para>If your project uses the standard
             <varname>pom.xml</varname>
-            filename, there is no need to specify a POM. If your projects uses a
+            filename, there is no need to specify a POM. If your project uses a
             POM with an alternative name or path other than directly in the
             project root, you can specify that file name and path here. This
-            setting is equivalent to the command line option
+            setting is equivalent to the command-line option
             <option>-f pomfilepath</option>
             or<option>--file pomfilepath</option>. The path specified has to be
             relative to the project root.
@@ -667,7 +667,7 @@
             this field. The options are passed straight through as MAVEN_OPTS
             and use the normal
             <option>java</option>
-            command line options syntax. A common configuration for complex
+            command-line options syntax. A common configuration for complex
             builds is to specify a larger memory for the JVM running Maven via
             <option>-Xmx1024m</option>.
           </para>
@@ -698,7 +698,7 @@
       <option>clean</option>
       and
       <option>install</option>
-      lifecycle phases in a command line call like <command>mvn clean
+      lifecycle phases in a command-line call like <command>mvn clean
       install</command>. This can be easily achieved by adding a Maven build
       step and adding
       <option>clean install</option>
@@ -713,10 +713,10 @@
       sequence equivalent to <command>mvn clean; mvn install</command>
       Breaking up the invocations allows you to add further build steps in
       between and build an arbitrarily complex sequence of Maven and other
-      invocations with completely separate parameters and so on. The You could
+      invocations with completely separate parameters and so on. You could
       for
       example slip a plugin goal invocation in between the clean and install
-      invocations that prepares the execution environment for your build for
+      invocations, that prepares the execution environment for your build for
       example by setting up a test environment like an emulator or a specific
       database and content. Since you can do this in a separate build step you
       can invoke a shell script or an Ant target for such tasks, in case it is

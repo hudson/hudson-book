@@ -71,7 +71,7 @@
           <listitem>
             <para>Your Hudson installation may have one or more Ant
               installations configured as part of the global Hudson
-              configuration. This drop down allows you to specify the version of
+              configuration. This drop-down allows you to specify the version of
               Ant for usage with the current build step.
             </para>
           </listitem>
@@ -80,7 +80,7 @@
         <varlistentry>
           <term>Targets</term>
           <listitem>
-            <para>This field allows you to specify the command line parameters
+            <para>This field allows you to specify the command-line parameters
               used for the Ant invocation. These are all options and targets
               supported by the specified Ant and the current
               <option>Build File</option>. If nothing is specified in this
@@ -98,7 +98,7 @@
               <varname>build.xml</varname>
               filename, there is no need to specify a
               <option>Build File</option>
-              If your projects uses a build file with an alternative name or
+              If your project uses a build file with an alternative name or
               path other than directly in the project root, you can specify that
               file name and path here. This setting is equivalent to the command
               line option
@@ -127,7 +127,7 @@
               in this field. The options are passed straight through as ANT_OPTS
               and use the normal
               <option>java</option>
-              command line options syntax. A common configuration for complex
+              command-line options syntax. A common configuration for complex
               builds is to specify a larger memory for the JVM running Ant via
               <option>-Xmx1024m</option>.
             </para>

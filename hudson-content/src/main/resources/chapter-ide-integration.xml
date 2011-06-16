@@ -94,7 +94,7 @@
         configuration for Build Jobs. If you need to get more information about
         the Job's workspace in order to trouble shoot a build, you can also
         click on<option>View job workspace</option>. Clicking on this link will
-        load the project's workspace in a browser window as a another Eclipse
+        load the project's workspace in a browser window as another Eclipse
         tab.
       </para>
 
@@ -152,7 +152,7 @@
       <para>To view a specific build's SCM changes. Load the project detail view
         and click on the SCM Changes tab shown in<xref
           linkend="fig-eclipse-matrix-project"/>. This particular view of a
-        project combines the changelog of every single build into a easily
+        project combines the changelog of every single build into an easily
         navigable interface. From the view shown in
         <xref linkend="fig-eclipse-scm-changes"/>
         you can see what code changes trigger individual builds and you can get

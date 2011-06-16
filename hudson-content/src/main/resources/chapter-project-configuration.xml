@@ -115,7 +115,7 @@
       <varlistentry>
         <term>Source Code Management</term>
         <listitem>
-          <para>configure source code management related parameters for
+          <para>configure source code management-related parameters for
             various systems</para>
         </listitem>
       </varlistentry>
@@ -180,7 +180,7 @@
               a Project name contains spaces, the file path of the workspace
               will also contain spaces. The presence of spaces in a project name
               can cause unforeseen issues with builds and may results in build
-              failure. We suggest to use e.g. underscores instead. The project
+              failure. We suggest using e.g. underscores instead. The project
               name will be visible in the main Hudson page on the list of jobs.
             </para>
           </listitem>
@@ -197,7 +197,7 @@
               related parameters like branch or version or other parameters like
               target platform for the build artifacts. This will widely vary and
               depend on your job type. The description is visible on the main
-              project specific page.
+              project-specific page.
             </para>
           </listitem>
         </varlistentry>
@@ -225,7 +225,7 @@
               cause older build artifacts to get deleted, without the logs,
               reports etc. getting deleted.
             </para>
-            <para>An additional advanced configuration allows to set maximum
+            <para>An additional advanced configuration allows you to set maximum
               number of builds to keep including its artifacts.
             </para>
           </listitem>
@@ -273,7 +273,7 @@
           <listitem>
             <para>This dropdown allows the selection of a specific Java
               Development Kit (JDK) for the project. It will only be available
-              if multiple JDK's are configure in the global Hudson configuration
+              if multiple JDKs are configured in the global Hudson configuration
               as documented in
               <xref linkend="section-configure-jdk"/>.
             </para>
@@ -333,12 +333,12 @@
         <varlistentry>
           <term>Quiet period</term>
           <listitem>
-            <para>The project specific
+            <para>The project-specific
               <option>Quiet Period</option>
               set in this section overrides the global configuration documented
               in
               <xref linkend="section-global-hudson-configuration"/> and
-              has the same effect. This settings depends on your build trigger
+              has the same effect. This setting depends on your build trigger
               configuration as documented below.
             </para>
           </listitem>
@@ -347,7 +347,7 @@
         <varlistentry>
           <term>Retry Count</term>
           <listitem>
-            <para>The project specific
+            <para>The project-specific
               <option>Retry Count</option>
               overrides the global
               <option>SCM checkout retry count</option>
@@ -410,7 +410,7 @@
         <option>Build Triggers</option>. A Hudson job can
       be configured to build in response to build activity on a Hudson
       instance, in accordance with a regular schedule, or as a reaction to
-      activity in a SCM system. Build triggers are configured on a Project's
+      activity in an SCM system. Build triggers are configured on a Project's
       Configuration screen and the section is shown in <xref
       linkend="fig-using-build-triggers" xrefstyle="select:label" />.</para>
 
@@ -442,7 +442,7 @@
               field is populated, Hudson will trigger this project's build after
               a successful completion of one of the projects listed in this text
               field. The reverse behaviour of triggering a different project
-              based on this projects build completing can be configured in the
+              based on this project's build completing can be configured in the
               Post-build Actions.
             </para>
           </listitem>
@@ -514,7 +514,7 @@
 
       <para>Beyond the core post-build actions documented in the following,
         various plugins will make additional actions available. Source code
-        management related plugin documentation can be found in
+        management-related plugin documentation can be found in
         <xref linkend="chapter-source-control"/>. Other plugins are
         documented in
         <xref linkend="chapter-plugins"/>. The minimum list of build actions
@@ -729,8 +729,8 @@
               <xref linkend="fig-post-build-actions-archive-artifacts-project"/>.
             </para>
             <figure id="fig-post-build-actions-archive-artifacts-project">
-              <title>A project overview page for the Hudson book build with the
-                latest build artifact available for download
+              <title>A project overview page for the Hudson book project with
+                the latest build artifact available for download
               </title>
               <mediaobject>
                 <!-- TODO this screenshot needs to be updated when the
@@ -841,7 +841,7 @@
               and build time. However in the bigger picture you are able to to
               run a build for very large and complex systems. The input box
               <option>Projects to build</option>
-              accepts a comma separated list of projects to build together with
+              accepts a comma-separated list of projects to build together with
               a checkbox that allows you to trigger the dependent builds even if
               the current project build failed.
             </para>
@@ -885,8 +885,8 @@
               failures.
             </para>
             <para>To configure this feature, check the checkbox next to E-mail
-              Notification and then specify a recipient email addresses in
-              Recipients separate by whitespace. Selecting
+              Notification and then specify the recipients email addresses in
+              Recipients separated by whitespace. Selecting
               <option>Send e-mail for every unstable build</option>
               will instruct Hudson to send an email for each build even if a
               build experience consecutive failures. Selecting
@@ -950,7 +950,7 @@
         <listitem>
           <para>Executing a shell script as a build step is configured just like
             a Windows batch command. The unix convention to use the first line
-            with a #! and the path to a executable allows you to write shell
+            with a #! and the path to an executable allows you to write shell
             scripts in many available shell and scripting languages.
           </para>
         </listitem>

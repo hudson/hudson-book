@@ -47,7 +47,8 @@
   </para>
 
   <para>After the global settings for the desired source management system are
-    configured, you can configure the project specific settings. Simply load the
+    configured, you can configure the project-specific settings. Simply load
+    the
     project's configuration page and scroll down to the Source Code Management
     section. In this section, you must then select one of the radio buttons for
     the source code management system you are using as visible in
@@ -143,7 +144,7 @@
                 Time</varname> policy one the other hand will use the
               revision in the repository found when the build actually starts
               . The <varname>Head revision</varname> policy will use the HEAD
-              revision in the repository. Finally these setting are
+              revision in the repository. Finally these settings are
               overridden if a revision is specified in the subversion url or
               as a revision parameter in a parameterized build.
             </para>
@@ -175,7 +176,7 @@
 
     </section>
     <section id="section-scm-svn-project">
-      <title>Project Specific Subversion Configuration</title>
+      <title>Project-Specific Subversion Configuration</title>
 
       <para>Selecting Subversion under the Source Code Management section will
         display the configuration options shown in<xref
@@ -186,7 +187,7 @@
       </para>
 
       <figure id="fig-scm-svn-project-config">
-        <title>Configuring project specific Subversion settings</title>
+        <title>Configuring project-specific Subversion settings</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -202,7 +203,7 @@
       </figure>
 
       <figure id="fig-scm-svn-project-config-advanced">
-        <title>Configuring advanced project specific Subversion settings</title>
+        <title>Configuring advanced project-specific Subversion settings</title>
 
         <mediaobject>
           <imageobject role="web">
@@ -225,7 +226,7 @@
           <term>Modules</term>
 
           <listitem>
-            <para>Hudson can checkout one or more Subversion modules from a
+            <para>Hudson can check out one or more Subversion modules from a
               Subversion repository. To configure a repository location, supply
               a Subversion URL in the
               <option>Repository URL</option>
@@ -237,7 +238,7 @@
             <para>If you are checking out more than one Subversion module, you
               can also supply a
               <option>Local module directory</option>
-              that Hudson will checkout the specified module to. If you leave
+              that Hudson will check out the specified module to. If you leave
               the Local module directory blank, Hudson will check out the
               specific module to the root of the project's workspace.
             </para>
@@ -315,7 +316,7 @@
               <option>ViewSVN</option>,
               <option>FishEye</option>,
               <option>WebSVN</option> and
-              <option>Sventon 1.x</option> as options in the the drop down.
+              <option>Sventon 1.x</option> as options in the the drop-down.
               The <option>(Auto)</option> option will attempt to
               automatically detect the used browser.
             </para>
@@ -337,13 +338,13 @@
               <option>Included Regions</option> is
               set, Hudson will only trigger a build if a matching file has been
               altered. If
-              <option>Excluded Regions</option> is set,
-              Hudson will not trigger a
-              build if a file matching an excluded pattern is matched. These
-              options are useful if are only interested in a subset of files
-              and directories contained in a Subversion module to trigger a
-              build on Hudson. An example would be if documentation files
-              contained in the repository should not trigger a new build.
+              <option>Excluded Regions</option>
+              is set, Hudson will not trigger a build if a file matching an
+              excluded pattern is matched. These options are useful if you are
+              only interested in a subset of files and directories contained in
+              a Subversion module to trigger a build on Hudson. An example would
+              be if documentation files contained in the repository should not
+              trigger a new build.
             </para>
             <para>Both parameters support usage of regular expression
               patterns to specify the desired files as well as multiple lines
@@ -499,9 +500,9 @@
       </figure>
     </section>
     <section id="section-scm-git-project">
-      <title>Project Specific Git Configuration</title>
+      <title>Project-specific Git Configuration</title>
       <para>Once you have configured Git in the global Hudson configuration you
-        can configure project specific Git settings. Selecting Git under the
+        can configure project-specific Git settings. Selecting Git under the
         Source Code Management section of your project configuration will
         display the configuration options shown in
         <xref linkend="fig-scm-git-project-config"/>.
@@ -568,7 +569,7 @@
           <listitem>
             <para>The default
               <option>Auto</option>
-              option will cause the plugin to attempt to detect a web based user
+              option will cause the plugin to attempt to detect a web-based user
               interface to access the git repository. Selecting one of the
               supported repository browsers
               <option>gitweb</option>,
@@ -624,9 +625,9 @@
         <varlistentry>
           <term>Excluded Regions</term>
           <listitem>
-            <para>This configuration allows you specifically exclude files and
-              directories to determine if a build should be triggered. If set,
-              Hudson will not trigger a build if only files and directories
+            <para>This configuration allows you to specifically exclude files
+              and directories to determine if a build should be triggered. If
+              set, Hudson will not trigger a build if only files and directories
               matching the patterns have been changed. This option is useful if
               you are only interested in a subset of files and directories
               contained in a Git repository to trigger a build on Hudson. An
@@ -789,8 +790,8 @@
         <varlistentry>
           <term>Git executable</term>
           <listitem>
-            <para>This drop down allows you to select a specific git
-              executable used for all operations on this projects build.
+            <para>This drop-down allows you to select a specific git
+              executable used for all operations on this project's build.
               Configuration of the executables is documented in
               <xref linkend="section-scm-git-global"/>.
             </para>
@@ -802,7 +803,7 @@
       <title>Configuring the post-build action Git Publisher</title>
       <para>The git plugin adds the post build action
         <option>Git Publisher</option> as displayed in
-        <xref linkend="fig-scm-git-project-pub"/> to the project specific
+        <xref linkend="fig-scm-git-project-pub"/> to the project-specific
         configuration. It can be used to push merges done prior to the
         build back out to a remote repository after a build.</para>
       <figure id="fig-scm-git-project-pub">
@@ -1032,7 +1033,7 @@
       </para>
     </section>
     <section id="section-scm-hg-project">
-      <title>Project Specific Mercurial Configuration</title>
+      <title>Project-specific Mercurial Configuration</title>
       <para>Selecting Mercurial under the Source Code Management section will
         display the configuration options shown in<xref
           linkend="fig-scm-hg-project-config"/>.
@@ -1172,7 +1173,7 @@
       </variablelist>
     </section>
     <section id="section-scm-cvs-projectf">
-      <title>Project Specific CVS Configuration</title>
+      <title>Project-specific CVS Configuration</title>
 
       <para>Selecting CVS under the Source Code Management section will display
         the configuration options shown in

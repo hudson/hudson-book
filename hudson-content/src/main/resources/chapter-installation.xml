@@ -29,8 +29,8 @@
     </varlistentry>
   </variablelist>
 
-  <para>As a server based application running 24x7 Hudson intrinsically should
-    be installed as a operating system service, so that any system reboots
+  <para>As a server-based application running 24x7 Hudson intrinsically should
+    be installed as an operating system service, so that any system reboots
     necessary for maintenance or other reasons will automatically restart
     Hudson. The documentation for the Hudson install therefore includes
     documentation for setting up these services.
@@ -52,7 +52,7 @@
 
         <secondary>Java Development Kit (JDK)</secondary>
       </indexterm>
-      Java Development Kit (JDK) installation. We recommend to use the latest
+      Java Development Kit (JDK) installation. We recommend using the latest
       version of the JDK/JRE that comes as part of your operating system.
     </para>
 
@@ -89,7 +89,7 @@
     <para>This will start the servlet container as the current operating
       system user inheriting  access rights to the file system and so on. The
       Hudson home directory will be set to the <varname>.hudson</varname>
-      folder in the users home directory. Once started the web based Hudson
+      folder in the users home directory. Once started the web-based Hudson
       user interface will be available at <ulink
       url="http://localhost:8080/hudson">http://localhost:8080/hudson</ulink>
     </para>
@@ -117,7 +117,7 @@
       but it is not recommended to run Hudson like that in a production usage.
       Conveniently the WAR file is suitable to be deployed in most of the
       commonly used Java servlet containers and application server. The
-      detailed process differs for these container but in general the
+      detailed process differs for these containers but in general the
       required steps are:
     </para>
     <variablelist>
@@ -136,7 +136,7 @@
         <term>Deploy to the server</term>
         <listitem>
           <para>Depending on the application server and your access rights
-            you can deploy the WAR file via a web based administration
+            you can deploy the WAR file via a web-based administration
             console or by copying the WAR into a deployment folder.
           </para>
         </listitem>
@@ -146,11 +146,11 @@
     runs on app server .. then the app server user needs access to
     HUDSON_HOME and whatever..  -->
     <para>When using Hudson on your application server,
-      you should ensure that the server is set up as a operating system
+      you should ensure that the server is set up as an operating system
       service. The details of this setup widely vary between the various operating
       systems as well as the different application servers. The preferred and
       simpler method to install Hudson and run it as a service is a
-      dedicated host and the operating system specific package as supplied by
+      dedicated host and the operating system-specific package as supplied by
       the Hudson website and documented in the following sections.
     </para>
   </section>
@@ -172,7 +172,7 @@
           with your preferred package manager user interface. Either use a
           graphical user interface like
           <varname>synaptic</varname>
-          or install from on the command line with
+          or install from on the command-line with
         </para>
         <screen>
           <command>sudo apt-get install default-jdk</command>
@@ -364,7 +364,7 @@ $ dpkg -L hudson
           with your preferred package manager user interface. Either use a
           graphical user interface like
           <varname>Add/Remove Software</varname>
-          or install from on the command line with
+          or install from on the command-line with
         </para>
         <screen>
           <command>sudo yum install java</command>
@@ -528,7 +528,7 @@ Complete!</command>
           with your preferred package manager user interface. Either use a
           graphical user interface like
           <varname>YaST</varname>
-          or install from on the command line with
+          or install from on the command-line with
         </para>
         <screen>
           <command>sudo zypper install java</command>

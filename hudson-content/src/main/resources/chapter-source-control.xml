@@ -965,7 +965,9 @@
 
   <section id="section-scm-hg">
     <title>Configuring Mercurial</title>
-    <para>Hudson Mercurial Plugin .. Mercurial aka Hg ..</para>
+    <para>Hudson Mercurial Plugin .. Mercurial aka Hg .. widely used for e.g.
+      JDK, NetBeans and so on, hosting on Bitbucket, google code and so on
+    </para>
     <section id="section-scm-hg-global">
       <title>Global Mercurial Configuration</title>
 
@@ -1123,7 +1125,22 @@
         <varlistentry>
           <term>Repository Browser</term>
           <listitem>
-            <para></para>
+            <para>para>The default
+              <option>Auto</option>
+              option will cause the plugin to attempt to detect a web-based user
+              interface to access the Mercurial repository. Selecting one of
+              the
+              supported repository browsers
+              <option>hgweb</option>,
+              <option>bitbucket</option>,
+              <option>googlecode</option>,
+              <option>kilnhg</option>
+              and
+              <option>fisheye</option> lets you provide a <option>
+              URL</option> to the
+              repository browser. With the URL specified the changes
+              view of each build will have added links to the repository.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1263,6 +1280,14 @@
           </listitem>
         </varlistentry>
 
+          <varlistentry>
+          <term>Legacy mode</term>
+
+          <listitem>
+            <para>
+            </para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term>Use update</term>
 
@@ -1280,6 +1305,8 @@
           <listitem>
             <para>Hudson supports a number of external repository browsers, here
               you can select to tool you can Hudson to link to.
+
+              ViewCVS, FishEye
             </para>
           </listitem>
         </varlistentry>

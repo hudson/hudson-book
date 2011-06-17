@@ -6,17 +6,23 @@
 
   <section id="section-ci-what">
     <title>What is Continuous Integration</title>
-
-    <para>This is a chapter providing some motivation for continuous
-    integration.</para>
+    <para>Continuous integration is a software development practice invented
+      by Martin Fowler and Kent Beck during the emergence of the Extreme
+      Programming software development methodology.
+    </para>
+    <para>
+      Read more about it all on
+      <ulink url="http://martinfowler.com/articles/continuousIntegration.html">
+      Martin Fowler's web site</ulink> and
+      <ulink url="http://en.wikipedia.org/wiki/Continuous_integration">wikipedia</ulink>
+    </para>
   </section>
 
+    <!--<section id="section-ci-case">-->
+      <!--<title>Case Study: Climbing without a Rope</title>-->
+    <!--</section>-->
 
-    <section id="section-ci-case">
-      <title>Case Study: Climbing without a Rope</title>
-    </section>
-
-    <section id="section-ci-heartbeat">
-      <title>Heartbeat for Development</title>
-    </section>
+    <!--<section id="section-ci-heartbeat">-->
+      <!--<title>Heartbeat for Development</title>-->
+    <!--</section>-->
 </chapter>

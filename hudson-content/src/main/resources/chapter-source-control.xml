@@ -1227,12 +1227,15 @@
       project.
     </para><section id="section-scm-cvs-global">
       <title>Global CVS Configuration</title>
-
-
       <para>To configure CVS, find the CVS section in the Hudson Server
         configuration screen as displayed in
-        <xref linkend="fig-scm-cvs-global-config"/>
-        ...
+        <xref linkend="fig-scm-cvs-global-config"/>, press the
+        <option>Add</option>
+        and configure the parameters for your CVS install. If CVS
+        is already installed on your Hudson server and the
+        <command>cvs</command>
+        is available on the path, you do not need to configure a CVS
+        installation. The plugin will pick up the installed version.
       </para>
 
       <figure id="fig-scm-cvs-global-config">
@@ -1244,7 +1247,6 @@
                        fileref="figs/web/scm-cvs-global-config.png"
                        scalefit="1"/>
           </imageobject>
-
           <imageobject role="print">
             <imagedata align="center"
                        fileref="figs/print/scm-cvs-global-config.pdf"
@@ -1258,19 +1260,23 @@
         <varlistentry>
           <term>cvs executable</term>
           <listitem>
-            <para></para>
+            <para>If the cvs executable can not be found on the
+              <option>PATH</option>, you can configure an absolute path to it
+              in this input field.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>.cvspass file</term>
           <listitem>
-            <para></para>
+            <para>Specify the path to the .cvspass file that contains
+              the user credentials.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Disable CVS compression</term>
           <listitem>
-            <para></para>
+            <para>Activate this option to disable CVS compression.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1326,7 +1332,6 @@
       <variablelist>
         <varlistentry>
           <term>CVSROOT</term>
-
           <listitem>
             <para>This is the CVSROOT parameter for your source. You would enter
               in the same information here that you would use if you were
@@ -1336,10 +1341,9 @@
         </varlistentry>
 
         <varlistentry>
-          <term>Module(s), Branch</term>
-
+          <term>Module(s) and Branch</term>
           <listitem>
-            <para>Here you can specify specific modules and specific branches to
+            <para>Here you can provide specific modules and specific branches to
               be checked out by Hudson.
             </para>
           </listitem>
@@ -1347,52 +1351,49 @@
 
         <varlistentry>
           <term>CVS_RSH</term>
-
           <listitem>
-            <para>If you are using CVS over SSH, you can specific options and
+            <para>If you are using CVS over SSH, you can specify options and
               parameters in this variable.
             </para>
           </listitem>
         </varlistentry>
 
-          <varlistentry>
-          <term>Legacy mode</term>
-
-          <listitem>
-            <para>
-            </para>
-          </listitem>
-        </varlistentry>
         <varlistentry>
           <term>Use update</term>
-
           <listitem>
             <para>Hudson can be configured to do a full checkout on each build
-              or to use cvs update. Select this option will tell Hudson to use
-              update instead of performing a clean checkout.
+              or to use cvs update. Selecting this option will tell Hudson to
+              use update instead of performing a clean checkout. For most
+              reasonably sized projects you should activate this option.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Repository browser</term>
-
           <listitem>
-            <para>Hudson supports a number of external repository browsers, here
-              you can select to tool you can Hudson to link to.
-
-              ViewCVS, FishEye
+            <para>The default
+              <option>Auto</option>
+              option will cause the plugin to attempt to detect a web-based user
+              interface to access the CVS repository. Selecting one of the
+              supported repository browsers
+              <option>ViewCVS</option>
+              and
+              <option>FishEye</option>
+              lets you provide a
+              <option>URL</option>
+              to the repository browser.
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Excluded Regions</term>
-
           <listitem>
-            <para>If the module you are checking out contains some code that you
-              need to exclude, you can exclude regions by populating these
-              fields.
+            <para>If the module you are checking out contains some files that
+              you need to exclude from triggering a build when changed, you can
+              exclude regions by populating this field with the respective
+              patterns.
             </para>
           </listitem>
         </varlistentry>

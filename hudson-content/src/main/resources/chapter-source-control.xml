@@ -398,7 +398,9 @@
     <para>
       <ulink url="http://git-scm.com/">Git</ulink>
       is the most successful, modern distributed version control system and has
-      gained wide acceptance in the open source community and beyond.
+      gained wide acceptance in the open source community and beyond. and
+      repository hosting services available from multiple suppliers for
+      commercial and open source usage.
     </para>
 
     <!-- TODO add some links to external git related help and mention that
@@ -407,7 +409,7 @@
       default Hudson installs from version 2.1 onwards. If it is not installed
       in your Hudson instance, simply find the plugin in the
       <option>Source Code Management</option>
-      section of the available plugin and install it like any other plugins as
+      section of the available plugins and install it like any other plugins as
       documented in
       <xref linkend="chapter-plugin-management"/>.
     </para>
@@ -965,15 +967,34 @@
 
   <section id="section-scm-hg">
     <title>Configuring Mercurial</title>
-    <para>Hudson Mercurial Plugin .. Mercurial aka Hg .. widely used for e.g.
-      JDK, NetBeans and so on, hosting on Bitbucket, google code and so on
+    <para>
+      <ulink url="http://mercurial.selenic.com/">Mercurial</ulink>, also known
+      as hg, is a successful, modern distributed version control system and has
+      gained wide acceptance in the open source community and beyond used for
+      large projects like OpenJDK and Netbeans and repository hosting
+      services available from multiple suppliers for commercial and open
+      source usage.
     </para>
+
+    <para>The Hudson Mercurial Plugin and therefore support for Mercurial needs
+      to be installed on your Hudson instance. Simply find the plugin in the
+      <option>Source Code Management</option>
+      section of the available plugins and install it like any other plugins as
+      documented in
+      <xref linkend="chapter-plugin-management"/>.
+    </para>
+
     <section id="section-scm-hg-global">
       <title>Global Mercurial Configuration</title>
 
       <para>To configure Mercurial, find the Mercurial section in the Hudson
         Server configuration screen as displayed in
-        <xref linkend="fig-scm-hg-global-config"/>. ....
+        <xref linkend="fig-scm-hg-global-config"/>, press the
+        <option>Add</option>
+        and configure the parameters for your Mercurial install. If Mercurial
+        is already installed on your Hudson server and the <command>hg</command>
+        is available on the path, you do not need to configure a Mercurial
+        installation. The plugin will pick up the installed version.
       </para>
 
       <figure id="fig-scm-hg-global-config">
@@ -997,37 +1018,66 @@
         <varlistentry>
           <term>Name</term>
           <listitem>
-            <para></para>
+            <para>The <option>Name</option> will be displayed in the drop
+              down to select your Mercurial install in the project
+              configuration. Use a name that includes the version to be able
+              to identify the Mercurial install you desire to use in the
+              project configuration, especially when using multiple installs.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Installation directory</term>
           <listitem>
-            <para></para>
+            <para>Specify the absolute path to the Mercurial installation
+              .</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Executable</term>
           <listitem>
-            <para></para>
+            <para>This is the path to the actual <varname>hg</varname>
+              executable. The field is prefilled with
+              <varname>INSTALLTION/bin/hg</varname>,
+              which is the correct value if you use a manual install of hg.
+              If you
+              are using binary package as provided by your operating system
+              package management system the correct value is likely just
+              <varname>hg</varname>, since the command would be on the
+              <varname>PATH</varname>. Another common option is the absolute
+              path of the executable e.g. <varname>/usr/bin/hg</varname>.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Use Repository Caches</term>
           <listitem>
-            <para></para>
+            <para>Enabling this option triggers the Mercurial plugin to
+              establish a repository cache on the Hudson master that will be
+              used by the slave nodes as well. This considerably improves
+              performance and reduces load on the Mercurial server.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Debug Flag</term>
           <listitem>
-            <para></para>
+            <para>As the name suggest activating this option,
+              triggers debug output of any Mercurial command execution. This
+              is especially useful for trouble shooting your configuration.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>Download Forest extension</term>
           <listitem>
-            <para></para>
+            <para>Using one of the suggested values in the online help for
+              this option you can get the forest extension to work with
+              multiple repositories installed automatically. This is
+              especially useful if you can not easily install the extension
+             with the same mechanism you installed Mercurial itself e.g. if
+              no native package for the extension is available.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1076,49 +1126,68 @@
         <varlistentry>
           <term>Mercurial Version</term>
           <listitem>
-            <para></para>
+            <para>This drop down lets you choose from the configured
+              Mercurial installations. In most cases the
+              <option>Default</option> will be fine.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Repository URL</term>
           <listitem>
-            <para></para>
+            <para>Specify the URL of the project to build.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Branch</term>
           <listitem>
-            <para></para>
+            <para>By default a branch named <varname>default</varname> will
+              be checked out for the project build. This input allows you to
+              specify and therefore build any other branch.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Advanced - Modules</term>
           <listitem>
-            <para></para>
+            <para>The advanced setting <option>Modules</option> allows you to
+              specify a folder and its contents, known as module,  within the
+              repository to
+              be
+              the
+              exclusive source for changes triggering a build.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Advanced - Clean Build</term>
           <listitem>
-            <para></para>
+            <para>Activating the <option>Clean Build</option> option causes
+              Mercurial to remove any untracked files prior to the build.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Advanced - Subdirectory</term>
           <listitem>
-            <para></para>
+            <para>By default the repository is checked out into the workspace
+              . Supplying a value in the
+              <option>Subdirectory</option> option will cause the repository
+              to be checked out into a subdirectory in the workspace.
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term>Advanced - Forest Extension</term>
           <listitem>
-            <para></para>
+            <para>This experimental features triggers the activation of
+              the Mercurial forest extension, which will treat the
+              workspace as the root of a forest.</para>
           </listitem>
         </varlistentry>
 
@@ -1150,7 +1219,13 @@
   <section id="section-scm-cvs">
     <title>Configuring CVS</title>
     <para>Hudson CVS Plugin...</para>
-    <section id="section-scm-cvs-global">
+     <para>The Hudson CVS Plugin  and therefore support for the
+
+      <ulink url="http://cvs.nongnu.org/">CVS system</ulink>
+      is part of the default install of Hudson. It is therefore not necessary to
+      perform any further plugin installation to use CVS for your
+      project.
+    </para><section id="section-scm-cvs-global">
       <title>Global CVS Configuration</title>
 
 

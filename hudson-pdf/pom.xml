@@ -74,10 +74,9 @@
 						<classifier>res</classifier>
 					</dependency>
 					<dependency>
-						<groupId>pdfbox</groupId>
+						<groupId>org.apache.pdfbox</groupId>
 						<artifactId>pdfbox</artifactId>
-						<version>0.7.4-dev</version>
-						<classifier>dev</classifier>
+						<version>1.5.0</version>
 					</dependency>
 				</dependencies>
 				<executions>

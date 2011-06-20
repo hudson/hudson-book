@@ -34,7 +34,7 @@
         <version>2.4.1</version>
         <configuration>
           <filesets>
-            <fileset>
+<!--            <fileset>
               <directory>${basedir}/src/main/resources/figs/print</directory>
               <includes>
                 <include>**/*.pdf</include>
@@ -47,7 +47,7 @@
                 <include>**/*.png</include>
               </includes>
               <followSymlinks>false</followSymlinks>
-            </fileset>
+            </fileset> -->
           </filesets>
         </configuration>
       </plugin>

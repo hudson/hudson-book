@@ -41,13 +41,6 @@
       </roles>
     </developer>
     <developer>
-      <id>jyeary</id>
-      <name>John Yeary</name>
-      <roles>
-        <role>Author</role>
-      </roles>
-    </developer>
-    <developer>
       <id>jvanzyl</id>
       <name>Jason van Zyl</name>
       <email>jason@sonatype.com</email>

@@ -16,6 +16,10 @@
       Martin Fowler's web site</ulink> and
       <ulink url="http://en.wikipedia.org/wiki/Continuous_integration">wikipedia</ulink>
     </para>
+    <para>While continuous integration is slowly becoming a mainstream best
+      practice the more advanced usage of Hudson for continuous delivery or
+      continuous deployment is not yet widespread.
+    </para>
   </section>
 
     <!--<section id="section-ci-case">-->

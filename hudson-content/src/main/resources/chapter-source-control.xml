@@ -793,11 +793,18 @@
         <varlistentry>
           <term>Choosing strategy</term>
           <listitem>
-            <para><!-- TODO where is this configured and what does it do,
-            Hudson on Hudson shows Gerrit and Default, I only have Default on
-             my installs, what does it do?
-             depends on http://issues.hudson-ci.org/browse/HUDSON-8906
-            --></para>
+            <para>This drop down will have only a <option>Default</option>
+              option available with a default Hudson install. It determines
+              which revision of the specified repositories and branches to
+              build. For one branch and one repository HEAD will be built.
+              For multiple branches and repositories a more refined strategy
+              is used selecting revisions that have notG yet been built and
+              are on the specified branches.</para>
+            <para>Other plugins can implement a different choosing
+              strategy e.g. the <ulink url="http://wiki.hudson-ci
+              .org/display/HUDSON/Gerrit+Plugin">Gerrit Plugin</ulink>
+              enables a Gerrit change set based strategy effectively allowing
+              verified, pre-tested commits.</para>
           </listitem>
         </varlistentry>
         <varlistentry>

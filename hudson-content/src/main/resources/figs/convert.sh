@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Convert Originals to Web Images
 for IMAGE in `find ./orig -name "*.png"`

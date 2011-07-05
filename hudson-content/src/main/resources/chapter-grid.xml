@@ -3,4 +3,26 @@
 "http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
 <chapter id="chapter-grid">
     <title>Running a Hudson grid</title>
+
+  <section>
+    <title>Motivation</title>
+  </section>
+
+  <section>
+    <title>Installing a Hudson Slave</title>
+  </section>
+
+  <section>
+    <title>Advanced Tips and Tricks</title>
+
+    <section>
+      <title>hudson-slave.xml</title>
+      <para>can be edited to modify various parameters like Java version used
+        to run Hudson slave and others.
+      </para>
+
+    </section>
+  </section>
+
+
 </chapter>

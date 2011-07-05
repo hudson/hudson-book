@@ -1069,6 +1069,18 @@
     </section>
     <section id="section-scm-git-basic-config">
       <title>Minimal Basic Git Configuration</title>
+      <para>In order to build a project controlled in git you need to have
+        a git installation configured in the global configuration. In terms of
+        project specific configuration you only need to specify the public url
+        of the repository. We recommend to specify the branch to build as well
+        since the default setup without a branch specified will examine all
+        branches in the repository and build the latest changed branch. In a
+        normal project this might adversely affect the stability of the build
+        and potentially cause a confusing history for the project. We
+        suggest to set up separate projects for each branch you want to track
+        and build on Hudson.
+      </para>
+
     </section>
     <section id="section-scm-git-advanced-config">
       <title>Tips and Tricks for Advanced Git Configurations</title>

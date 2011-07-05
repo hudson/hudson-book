@@ -233,7 +233,9 @@
               text field. This field supports Subversion repository URLs
               including revisions specified with
               <varname>@number</varname>
-              as well as subversion keywords for revisions and dates.
+              as well as subversion keywords for revisions and dates. The
+              link <option>Update credentials</option> navigates you to the
+              SVN authentication screen documented below.
             </para>
             <para>If you are checking out more than one Subversion module, you
               can also supply a
@@ -261,7 +263,6 @@
 
         <varlistentry>
           <term>Check-out Strategy</term>
-
           <listitem>
             <para>The
               <option>Check-out Strategy</option>
@@ -323,6 +324,66 @@
           </listitem>
         </varlistentry>
       </variablelist>
+
+      <para>You can navigate to the<option>Subversion
+        Authentication</option>
+        screen by clicking the <option>Update credentials</option> link,
+        which will display as visible in <xref
+          linkend="fig-scm-svn-project-authentication"/>.
+      </para>
+      <figure id="fig-scm-svn-project-authentication">
+        <title>Configuring subversion authentication
+          Subversion
+          settings</title>
+
+        <mediaobject>
+          <imageobject role="web">
+            <imagedata contentdepth="100%"
+                       fileref="figs/web/scm-svn-project-authentication.png" scalefit="1"/>
+          </imageobject>
+
+          <imageobject role="print">
+            <imagedata align="center" fileref="figs/print/scm-svn-project-authentication.pdf"
+                       scalefit="0" width="100%"/>
+          </imageobject>
+        </mediaobject>
+      </figure>
+      <para>The subversion plugin can be configured to use authentication with:
+        <variablelist>
+          <varlistentry>
+            <term>User name/password authentication</term>
+            <listitem>
+              <para>Provide the user name and password in the supplied
+                input fields.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>SSH public key authentication (svn+ssh)</term>
+            <listitem>
+              <para>The <option>Private Key</option> control allows you
+                to upload a key file for which you can provide the
+                <option>User name</option>
+                in the respective input field. If you key is encrypted with a
+                password you need to add it in the <option>Pass phrase
+                </option> input.
+              </para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>HTTPS client certificate</term>
+            <listitem>
+              <para>For HTTPS based authentication you can upload a
+                Public Key Cryptography 12 (PKCS12) file and provide a
+                password in the provided controls.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        By default the above configuration will override any global
+        configuration. This behaviour can be deactivated by selecting
+        <option>no</option> in the <option>Override global
+          credentials</option> option.
+      </para>
+
       <para>Beyond these basic configuration options the Subversion plugin
         supports advanced options to provide more parameters to your
         Subversion commands used for the build.
@@ -390,6 +451,40 @@
           </listitem>
         </varlistentry>
       </variablelist>
+    </section>
+    <section id="section-scm-svn-basic-config">
+      <title>Minimal Basic SVN Configuration</title>
+      <para>In order to build a project controlled in subversion you only
+        need to configure the repository url in the project configuration
+        using an url available for anonymous read access to the repository.
+      </para>
+    </section>
+    <section id="section-scm-svn-advanced-config">
+      <title>Tips and Tricks for Advanced SVN Configurations</title>
+      <section>Subversion related environment variables</section>
+      <para>The subversion plugin exports the following environment
+        variables for your usage in build scripts and others:</para>
+      <variablelist>
+        <varlistentry>
+          <term>SVN_REVISION</term>
+          <listitem>
+            <para>The repository revision.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>SVN_URL</term>
+          <listitem>
+            <para>The url used to access the repository.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>If multiple modules are defined these environment variables get
+        and index appended in to their names and all revisions and urls of
+        the modules will be exported as <code>SVN_REVISION_1</code>,
+        <code>SVN_REVISION_2</code>, <code>SVN_REVISION_n</code> and
+        <code>SVN_URL_1</code>, <code>SVN_URL_2</code>,
+        <code>SVN_URL_n</code>.
+      </para>
     </section>
   </section>
 
@@ -970,6 +1065,12 @@
         </varlistentry>
       </variablelist>
     </section>
+    <section id="section-scm-git-basic-config">
+      <title>Minimal Basic Git Configuration</title>
+    </section>
+    <section id="section-scm-git-advanced-config">
+      <title>Tips and Tricks for Advanced Git Configurations</title>
+    </section>
   </section>
 
   <section id="section-scm-hg">
@@ -1221,6 +1322,12 @@
         </varlistentry>
       </variablelist>
     </section>
+    <section id="section-scm-hg-basic-config">
+      <title>Minimal Basic Mercurial Configuration</title>
+    </section>
+    <section id="section-scm-hg-advanced-config">
+      <title>Tips and Tricks for Advanced Mercurial Configurations</title>
+    </section>
   </section>
 
   <section id="section-scm-cvs">
@@ -1406,5 +1513,12 @@
         </varlistentry>
       </variablelist>
     </section>
+    <section id="section-scm-cvs-basic-config">
+      <title>Minimal Basic CVS Configuration</title>
+    </section>
+    <section id="section-scm-cvs-advanced-config">
+      <title>Tips and Tricks for Advanced CVS Configurations</title>
+    </section>
+
   </section>
 </chapter>

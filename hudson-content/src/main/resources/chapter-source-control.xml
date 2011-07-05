@@ -180,9 +180,9 @@
 
       <para>Selecting Subversion under the Source Code Management section will
         display the configuration options shown in<xref
-          linkend="fig-scm-svn-project-config" xrefstyle="select:label"/>. 
-        Clicking on the <option>Advanced</option> button will reveal the 
-        advanced configuration parameters shown in 
+          linkend="fig-scm-svn-project-config" xrefstyle="select:label"/>.
+        Clicking on the <option>Advanced</option> button will reveal the
+        advanced configuration parameters shown in
         <xref linkend="fig-scm-svn-project-config-advanced"/>.
       </para>
 
@@ -994,7 +994,7 @@
           </imageobject>
         </mediaobject>
       </figure>
-      
+
       <variablelist>
         <varlistentry>
           <term>Tag to push</term>
@@ -1046,7 +1046,7 @@
           </imageobject>
         </mediaobject>
       </figure>
-      
+
       <variablelist>
         <varlistentry>
           <term>Branch to push</term>
@@ -1070,13 +1070,14 @@
     <section id="section-scm-git-basic-config">
       <title>Minimal Basic Git Configuration</title>
       <para>In order to build a project controlled in git you need to have
-        a git installation configured in the global configuration. In terms of
-        project specific configuration you only need to specify the public url
-        of the repository. We recommend to specify the branch to build as well
-        since the default setup without a branch specified will examine all
-        branches in the repository and build the latest changed branch. In a
-        normal project this might adversely affect the stability of the build
-        and potentially cause a confusing history for the project. We
+        a git installation configured in the global configuration.
+      </para>
+      <para>In terms of project specific configuration you only need to specify
+        the public url of the repository. We recommend to specify the branch to
+        build as well since the default setup without a branch specified will
+        examine all branches in the repository and build the latest changed
+        branch. In a normal project this might adversely affect the stability of
+        the build and potentially cause a confusing history for the project. We
         suggest to set up separate projects for each branch you want to track
         and build on Hudson.
       </para>
@@ -1338,6 +1339,13 @@
     </section>
     <section id="section-scm-hg-basic-config">
       <title>Minimal Basic Mercurial Configuration</title>
+      <para>In order to build a project controlled in Mercurial you need to
+        install the Mercurial plugin and have a hg installation configured in
+        the global configuration.
+      </para>
+      <para>In terms of project specific configuration you only need to specify
+        the public url of the repository.
+      </para>
     </section>
     <section id="section-scm-hg-advanced-config">
       <title>Tips and Tricks for Advanced Mercurial Configurations</title>
@@ -1529,6 +1537,13 @@
     </section>
     <section id="section-scm-cvs-basic-config">
       <title>Minimal Basic CVS Configuration</title>
+      <!--TODO this aint working easily, asked on the mailing list -->
+      <!--
+      <para>In order to build a project controlled in CVS you only need to
+        configure the repository url in the project configuration using an url
+        available for anonymous read access to the repository.
+      </para>
+      -->
     </section>
     <section id="section-scm-cvs-advanced-config">
       <title>Tips and Tricks for Advanced CVS Configurations</title>

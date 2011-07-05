@@ -1085,6 +1085,35 @@
     </section>
     <section id="section-scm-git-advanced-config">
       <title>Tips and Tricks for Advanced Git Configurations</title>
+      <section>
+        <title>Multiple branches and automated merging</title>
+        <para>The recommended basic usage with the git plugin is to configure
+        the project branch for the build e.g. <code>master</code>. However
+          per default no branch is configured. This causes all branches to be
+          monitored for changes and the branch with the last branch to be
+          built.</para>
+        <para>Without further configuration this is not really that useful
+          since it will cause your project build history to be comprised of
+          builds from all the different branches individually in the order of
+          changes received and potentially even omit builds if changes hit
+          multiple branches between builds.
+        </para>
+        <para>However together with configuring <option>Merge
+          Options</option> it allows for a automated merge from
+          whichever branch to have the latest changes to the target branch e
+          .g. <code>master</code> and proceed with the build after the merge.
+        </para>
+        <para>Now you can activate the <option>Git Publisher</option>
+          post-build action <option>Push Only If Build Succeeds</option> and
+          <option>Merge Results</option> to have the remote repository
+          updated with the successful merge results.
+        </para>
+        <para>This approach can be configured with specific branches
+          rather than the default empty specification of branches to have
+          better control of the source branches to merge from. It can also be
+          combined with multiple repositories to pull changes in from.
+        </para>
+      </section>
     </section>
   </section>
 
@@ -1349,6 +1378,9 @@
     </section>
     <section id="section-scm-hg-advanced-config">
       <title>Tips and Tricks for Advanced Mercurial Configurations</title>
+      <!-- TODO this should be added in one way or another
+      http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
+      -->
     </section>
   </section>
 

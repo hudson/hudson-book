@@ -461,30 +461,32 @@
     </section>
     <section id="section-scm-svn-advanced-config">
       <title>Tips and Tricks for Advanced SVN Configurations</title>
-      <section>Subversion related environment variables</section>
-      <para>The subversion plugin exports the following environment
-        variables for your usage in build scripts and others:</para>
-      <variablelist>
-        <varlistentry>
-          <term>SVN_REVISION</term>
-          <listitem>
-            <para>The repository revision.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>SVN_URL</term>
-          <listitem>
-            <para>The url used to access the repository.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-      <para>If multiple modules are defined these environment variables get
-        and index appended in to their names and all revisions and urls of
-        the modules will be exported as <code>SVN_REVISION_1</code>,
-        <code>SVN_REVISION_2</code>, <code>SVN_REVISION_n</code> and
-        <code>SVN_URL_1</code>, <code>SVN_URL_2</code>,
-        <code>SVN_URL_n</code>.
-      </para>
+      <section>
+        <title>Subversion related environment variables</title>
+        <para>The subversion plugin exports the following environment
+          variables for your usage in build scripts and others:</para>
+        <variablelist>
+          <varlistentry>
+            <term>SVN_REVISION</term>
+            <listitem>
+              <para>The repository revision.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>SVN_URL</term>
+            <listitem>
+              <para>The url used to access the repository.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+        <para>If multiple modules are defined these environment variables get
+          and index appended in to their names and all revisions and urls of
+          the modules will be exported as <code>SVN_REVISION_1</code>,
+          <code>SVN_REVISION_2</code>, <code>SVN_REVISION_n</code> and
+          <code>SVN_URL_1</code>, <code>SVN_URL_2</code>,
+          <code>SVN_URL_n</code>.
+        </para>
+      </section>
     </section>
   </section>
 

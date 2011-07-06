@@ -1376,12 +1376,12 @@
         the public url of the repository.
       </para>
     </section>
-    <section id="section-scm-hg-advanced-config">
-      <title>Tips and Tricks for Advanced Mercurial Configurations</title>
+    <!--<section id="section-scm-hg-advanced-config">-->
+      <!--<title>Tips and Tricks for Advanced Mercurial Configurations</title>-->
       <!-- TODO this should be added in one way or another
       http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
       -->
-    </section>
+    <!--</section>-->
   </section>
 
   <section id="section-scm-cvs">
@@ -1646,17 +1646,15 @@
     </section>
     <section id="section-scm-cvs-basic-config">
       <title>Minimal Basic CVS Configuration</title>
-      <!--TODO this aint working easily, asked on the mailing list -->
-      <!--
-      <para>In order to build a project controlled in CVS you only need to
-        configure the repository url in the project configuration using an url
-        available for anonymous read access to the repository.
+      <para>In order to build a project controlled in CVS you need to have
+        CVS available on the PATH on the Hudson server or have the path
+        configured in the global configuration. For the project specific
+        settings configure the repository url and a module.
       </para>
-      -->
     </section>
-    <section id="section-scm-cvs-advanced-config">
-      <title>Tips and Tricks for Advanced CVS Configurations</title>
-    </section>
+    <!--<section id="section-scm-cvs-advanced-config">-->
+      <!--<title>Tips and Tricks for Advanced CVS Configurations</title>-->
+    <!--</section>-->
 
   </section>
 </chapter>

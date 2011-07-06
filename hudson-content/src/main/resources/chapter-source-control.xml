@@ -1386,9 +1386,7 @@
 
   <section id="section-scm-cvs">
     <title>Configuring CVS</title>
-    <para>Hudson CVS Plugin...</para>
-     <para>The Hudson CVS Plugin  and therefore support for the
-
+     <para>The Hudson CVS Plugin  and support for the
       <ulink url="http://cvs.nongnu.org/">CVS system</ulink>
       is part of the default install of Hudson. It is therefore not necessary to
       perform any further plugin installation to use CVS for your

@@ -1,125 +1,152 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE chapter PUBLIC
+  "-//OASIS//DTD DocBook XML V4.5//EN"
+  "http://www.discursive.com/docbook/xml/4.5/docbookx.dtd">
 <chapter id="chapter-plugin-management">
-   <title>Managing Hudson Plugins</title>
+  <title>Managing Hudson Plugins</title>
 
-  <para>Hudson plugin management is available via <option>Manage Hudson</option>
-    and selecting the <option>Manage Plugins</option>
-    link shown in <xref linkend="fig-config-manage-hudson"/>.
+  <para>Hudson plugin management is available via
+    <option>Manage Hudson</option>
+    and selecting the
+    <option>Manage Plugins</option>
+    link shown in<xref linkend="fig-config-manage-hudson"/>. This
+    administration interface allows you see what plugin versions are
+    currently installed, update them and install new ones as well as manage
+    some advanced settings to work with the multitude of plugins available
+    for Hudson. Using plugins allows you to support many new features beyond
+    a basic Hudson install as well as tweak the user interface and morph
+    Hudson into the CI server you need.
   </para>
 
-   <section id="section-plugin-management-advanced">
-     <title>Advanced Plugin Management Options</title>
+  <section id="section-plugin-management-installed">
+    <title>Listing Installed Plugins</title>
+    <para>To get a list of installed plugins, click in the
+      <option>Installed</option>
+      tab. This will display a list all of the Hudson plugins currently
+      installed on your instance of Hudson system.
+    </para>
 
-     <para>Hudson retrieves a list of plugins and downloads plugins over the
-     public internet. If your server is behind a proxy, you will need to
-     configure proxy settings by selecting the Advanced Tab in the plugin
-     management screen and populating the options for Server, Port, Username,
-     and Password.</para>
+    <figure id="fig-using-installed-plugin">
+      <title>Installed Plugins</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/plugin-mgt-installed.png" scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/plugin-mgt-installed.pdf" scalefit="0"
+                     width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+    <para>The
+      <option>Enabled</option>
+      check box allows you to activate and deactivate specific plugins. After
+      plugin updates your old plugin version will remain to be accessible and
+      you can downgrade to the older version by pressing the
+      <option>Downgrade to x.y.z</option>
+      button. The pinned column will then be marked for this plugin so that
+      automatic update will not occur until you unpinned the version. Any
+      changes will require you to restart Hudson by clicking the
+      <option>Restart once no jobs are running</option>
+      button to take affect.
+    </para>
+  </section>
 
-     <figure id="fig-using-advanced-plugin">
-       <title>Advanced Plugin Management Options</title>
+  <section id="section-plugin-management-available">
+    <title>Available Plugins</title>
+    <para>This list of available plugins includes hundreds of useful utilities,
+      tweaks and feature sets which extend the core feature set of Hudson. The
+      list is separated into topics and contains a short description for each
+      plugin as well as a link to the plugin web site. In order to install a
+      plugin simply select the check box in the plugin row, press the
+      <option>Install</option>
+      button on the bottom of the list. This will redirect to a progress
+      reporting page. After a success message you will have to restart
+      Hudson by clicking the
+      <option>Restart once no jobs are running</option>
+      button for the new plugin to be available.
+    </para>
 
-       <mediaobject>
-         <imageobject role="web">
-           <imagedata contentdepth="100%"
-                      fileref="figs/web/plugin-mgt-advanced.png"
-                      scalefit="1" />
-         </imageobject>
+    <figure id="fig-using-avail-plugin">
+      <title>Available Plugins</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/plugin-mgt-available.png" scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center"
+                     fileref="figs/print/plugin-mgt-available.pdf" scalefit="0"
+                     width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
 
-         <imageobject role="print">
-           <imagedata align="center"
-                      fileref="figs/print/plugin-mgt-advanced.pdf"
-                      scalefit="0" width="100%" />
-         </imageobject>
-       </mediaobject>
-     </figure>
+  <section id="section-plugin-management-updates">
+    <title>Plugin Updates</title>
 
-     <para>In addition to Proxy configuration, the Advanced tab also provides
-     you with a way to upload Hudson plugins as .hpi files. Hudson is
-     compatible with most of the freely available Hudson plugins. These
-     plugins are often distributed as .hpi file, and if you need to install
-     one on your Hudson instance, just upload it using this form.</para>
-   </section>
+    <para>Hudson regulary checks an available list of Hudson plugins on the
+      Hudson web site and will notify if an updates become available. To see if
+      any updates are currently available click on the
+      <option>Updates</option>
+      tab in the Manage Plugins screen. Plugin eligible for an update will be
+      displayed next to the available update version and the version which is
+      currently installed. To update a plugin select the check box in the
+      <option>Install</option>
+      column and press the
+      <option>Install</option>
+      button on the bottom of the list. This will redirect to a progress
+      reporting page. After a success message you will have to restart Hudson by
+      clicking the
+      <option>Restart once no jobs are running</option>
+      button for the new plugin to be available.
+    </para>
 
-   <section id="section-plugin-management-updates">
-     <title>Available Plugin Updates</title>
+    <figure id="fig-using-updates-plugin">
+      <title>Plugin Updates</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/plugin-mgt-updates.png" scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center" fileref="figs/print/plugin-mgt-updates.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+  </section>
 
-     <para>Hudson checks with an available list of Hudson plugins and will
-     notify you if an update becomes available. To check for available
-     updates, click on the Updates tab in the Manage Plugins screen. Plugin
-     eligible for an update will be displayed next to the available update
-     version and the version which is currently installed.</para>
+  <section id="section-plugin-management-advanced">
+    <title>Advanced Plugin Management Options</title>
+    <para>Hudson retrieves a list of plugins and downloads plugins over the
+      public internet. If your server is behind a proxy, you will need to
+      configure proxy settings by selecting the Advanced Tab in the plugin
+      management screen and populating the options for Server, Port, Username,
+      and Password.
+    </para>
 
-     <figure id="fig-using-updates-plugin">
-       <title>Available Plugin Updates</title>
+    <figure id="fig-using-advanced-plugin">
+      <title>Advanced Plugin Management Options</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/plugin-mgt-advanced.png" scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center" fileref="figs/print/plugin-mgt-advanced.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
 
-       <mediaobject>
-         <imageobject role="web">
-           <imagedata contentdepth="100%"
-                      fileref="figs/web/plugin-mgt-updates.png"
-                      scalefit="1" />
-         </imageobject>
-
-         <imageobject role="print">
-           <imagedata align="center"
-                      fileref="figs/print/plugin-mgt-updates.pdf"
-                      scalefit="0" width="100%" />
-         </imageobject>
-       </mediaobject>
-     </figure>
-   </section>
-
-   <section id="section-plugin-management-available">
-     <title>Available Plugins</title>
-
-     <para>Hudson is compatible with most of the freely available Hudson
-     plugins, this list of Available plugins includes hundreds of useful
-     utilities which can extend the core feature set of Hudson.</para>
-
-     <figure id="fig-using-avail-plugin">
-       <title>Available Plugins</title>
-
-       <mediaobject>
-         <imageobject role="web">
-           <imagedata contentdepth="100%"
-                      fileref="figs/web/plugin-mgt-available.png"
-                      scalefit="1" />
-         </imageobject>
-
-         <imageobject role="print">
-           <imagedata align="center"
-                      fileref="figs/print/plugin-mgt-available.pdf"
-                      scalefit="0" width="100%" />
-         </imageobject>
-       </mediaobject>
-     </figure>
-   </section>
-
-   <section id="section-plugin-management-installed">
-     <title>Listing Installed Plugins</title>
-
-     <para>To get a list of installed plugins, click in the Installed Tab on
-     the Manage Plugins screen. This will list all of the Hudson plugins
-     current installed on your instance of Hudson.</para>
-
-     <figure id="fig-using-installed-plugin">
-       <title>Installed Plugins</title>
-
-       <mediaobject>
-         <imageobject role="web">
-           <imagedata contentdepth="100%"
-                      fileref="figs/web/plugin-mgt-installed.png"
-                      scalefit="1" />
-         </imageobject>
-
-         <imageobject role="print">
-           <imagedata align="center"
-                      fileref="figs/print/plugin-mgt-installed.pdf"
-                      scalefit="0" width="100%" />
-         </imageobject>
-       </mediaobject>
-     </figure>
-   </section>
- </chapter>
+    <para>In addition to Proxy configuration, the Advanced tab also provides you
+      with a way to upload Hudson plugins as .hpi files. Hudson is compatible
+      with most of the freely available Hudson plugins. These plugins are often
+      distributed as .hpi file, and if you need to install one on your Hudson
+      instance, just upload it using this form.
+    </para>
+  </section>
+</chapter>

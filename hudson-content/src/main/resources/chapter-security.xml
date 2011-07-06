@@ -22,19 +22,23 @@
     check "Enable Security" on the Server Configuration page and then choose
     from one of the following options for Security Realms:</para>
 
+    <figure id="fig-security-overview">
+      <title>Overview of the available security settings</title>
+      <mediaobject>
+        <imageobject role="web">
+          <imagedata contentdepth="100%"
+                     fileref="figs/web/security-overview.png" scalefit="1"/>
+        </imageobject>
+        <imageobject role="print">
+          <imagedata align="center" fileref="figs/print/security-overview.pdf"
+                     scalefit="0" width="100%"/>
+        </imageobject>
+      </mediaobject>
+    </figure>
+
     <variablelist>
       <varlistentry>
-        <term>Unix user/group database</term>
-
-        <listitem>
-          <para>If you select this option, Hudson will consult the Unix
-          user/group database on the machine it is running on.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term>Delegate to Servlet Container</term>
-
         <listitem>
           <para>Selecting this option will allow you to use a custom web
           application to perform authentication.</para>
@@ -42,20 +46,65 @@
       </varlistentry>
 
       <varlistentry>
-        <term>LDAP</term>
+        <term>Unix user/group database</term>
+        <listitem>
+          <para>If you select this option, Hudson will consult the Unix
+          user/group database on the machine it is running on.</para>
+          <figure id="fig-security-unix">
+            <title>Overview of the available security settings</title>
+            <mediaobject>
+              <imageobject role="web">
+                <imagedata contentdepth="100%"
+                           fileref="figs/web/security-unix.png" scalefit="1"/>
+              </imageobject>
+              <imageobject role="print">
+                <imagedata align="center" fileref="figs/print/security-unix.pdf"
+                           scalefit="0" width="100%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
+        </listitem>
+      </varlistentry>
 
+      <varlistentry>
+        <term>LDAP</term>
         <listitem>
           <para>If you have an LDAP server, Hudson can be configured to use
           this server to authenticate users.</para>
+          <figure id="fig-security-ldap">
+            <title>Overview of the available security settings</title>
+            <mediaobject>
+              <imageobject role="web">
+                <imagedata contentdepth="100%"
+                           fileref="figs/web/security-ldap.png" scalefit="1"/>
+              </imageobject>
+              <imageobject role="print">
+                <imagedata align="center" fileref="figs/print/security-ldap.pdf"
+                           scalefit="0" width="100%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
         </listitem>
       </varlistentry>
 
       <varlistentry>
         <term>Internal user database</term>
-
         <listitem>
           <para>Selecting Internal user database gives you the ability to
           define users directly in the Hudson user interface.</para>
+          <figure id="fig-security-hudson-db">
+            <title>Overview of the available security settings</title>
+            <mediaobject>
+              <imageobject role="web">
+                <imagedata contentdepth="100%"
+                           fileref="figs/web/security-hudson-db.png" scalefit="1"/>
+              </imageobject>
+              <imageobject role="print">
+                <imagedata align="center" fileref="figs/print/security-hudson-db.pdf"
+                           scalefit="0" width="100%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -69,6 +118,42 @@
 
         <listitem>
           <para>Selecting authorization strategy, you can</para>
+
+          <figure id="fig-security-authorization-project">
+            <title>Overview of the available security settings</title>
+            <mediaobject>
+              <imageobject role="web">
+                <imagedata contentdepth="100%"
+                           fileref="figs/web/security-authorization-project.png" scalefit="1"/>
+              </imageobject>
+              <imageobject role="print">
+                <imagedata align="center" fileref="figs/print/security-authorization-project.pdf"
+                           scalefit="0" width="100%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Matrix based</term>
+        <listitem>
+          <para></para>
+          <figure id="fig-security-authorization-matrix">
+            <title>Overview of the available security settings</title>
+            <mediaobject>
+              <imageobject role="web">
+                <imagedata contentdepth="100%"
+                           fileref="figs/web/security-authorization-matrix.png" scalefit="1"/>
+              </imageobject>
+              <imageobject role="print">
+                <imagedata align="center"
+                           fileref="figs/print/security-authorization-matrix.pdf"
+                           scalefit="0" width="100%"/>
+              </imageobject>
+            </mediaobject>
+          </figure>
+
         </listitem>
       </varlistentry>
 
@@ -76,24 +161,6 @@
 
 See HBOOK-50-->
     </variablelist>
-
-    <figure id="fig-using-enable-security">
-      <title>Enabling Hudson Security</title>
-
-      <mediaobject>
-        <imageobject role="web">
-          <imagedata contentdepth="100%"
-                     fileref="figs/web/ci-using-enable-security.png"
-                     scalefit="1" />
-        </imageobject>
-
-        <imageobject role="print">
-          <imagedata align="center"
-                     fileref="figs/print/ci-using-enable-security.pdf"
-                     scalefit="0" width="100%" />
-        </imageobject>
-      </mediaobject>
-    </figure>
   </section>
 
   <section>

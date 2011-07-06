@@ -1503,11 +1503,90 @@
           <listitem>
             <para>This is the CVSROOT parameter for your source. You would enter
               in the same information here that you would use if you were
-              checking out source code use the CVS client.
+              checking out source code use the CVS client. </para>
+            <para>The format for the URL is
+              <screen>
+                <code>[[:protocol:][[user][:password]]][@servername][:serverpath]</code>
+              </screen>
+              with the parameters:
+              <variablelist>
+                <varlistentry>
+                  <term>:protocol:</term>
+                  <listitem>
+                    <para>The protocol defines the way the CVS client
+                      communicates to the repository and the protocol name has
+                      to be enclosed in<code>:</code>. Supported protocols are
+                      <code>:local:</code>
+                      for local or net file system level connection,
+                      <code>:pserver:</code>
+                      as the standard unsecured protocol,
+                      <code>:ext:</code>
+                      and
+                      <code>:ssh:</code>
+                      for secure shell based connections and
+                      <code>:sspi:</code>
+                      for Windows based access. Depending on your CVS client and
+                      server installs other protocols are supported as well.
+                    </para>
+                    <para>In general and specifically with Hudson due to its
+                      nature as an additional user for CVS we recommend not to
+                      use the local protocol, since it can cause problems if too
+                      many users will try to access it.
+                    </para>
+                    <para>When using the pserver protocol on the public internet
+                      you have to keep in mind that it is an insecure protocol
+                      and passwords and data can be sniffed theoretically.
+                      Replace it with using the ssh based protocols, when
+                      security is required.
+                    </para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>user</term>
+                  <listitem>
+                    <para>Supply the user name for the client-server protocol
+                      used.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>:password</term>
+                  <listitem>
+                    <para>Specify the password when using the
+                      <code>:pserver:</code> or
+                      <code>:sspi:</code> protocol.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>@servername</term>
+                  <listitem>
+                    <para>The server name of the repository server as
+                      reachable via the network. It can be a fully qualified
+                      server and domain name, a server name only or an IP
+                      number. The character <code>@</code> is required at the
+                      beginning of the server name.</para>
+                  </listitem>
+                </varlistentry>
+                <varlistentry>
+                  <term>:serverpath</term>
+                  <listitem>
+                    <para>The path to the repository on the server prepended
+                      by <code>:</code>. The path itself can be either unix
+                      style like <code>/opt/data/cvsrepo</code> or Windows
+                      style like <code>C:\cvs\repository</code>.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+              An example for a valid url is
+              <screen>
+                <command>:pserver:anonymous@tortoisecvs.cvs.sourceforge.net:/cvsroot/tortoisecvs</command>
+              </screen>
+              with a module defined. For anonymous connections like this it
+              might be necessary to kick off a build manually to get the
+              cvspass file created or updated and subsequently kick it off
+              manually again to get the initial checkout to proceed.
             </para>
           </listitem>
         </varlistentry>
-
         <varlistentry>
           <term>Module(s) and Branch</term>
           <listitem>

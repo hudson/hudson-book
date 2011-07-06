@@ -45,10 +45,10 @@
       <option>Configure System</option>
       screen contains options that allow you to configure global Hudson
       configuration attributes. This section is shown in
-      <xref linkend="fig-using-global-config"/>.
+      <xref linkend="fig-global-hudson-configuration"/>.
     </para>
 
-    <figure id="fig-using-global-config">
+    <figure id="fig-global-hudson-configuration">
       <title>Configuring Global Hudson Configuration</title>
 
       <mediaobject>

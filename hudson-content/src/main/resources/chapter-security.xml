@@ -4,7 +4,16 @@
 <chapter id="chapter-security">
   <title>Securing Hudson</title>
 
-  <para></para>
+  <para>As an important part for a software development infrastructure Hudson
+  is often installed on local networks. No further security requirements 
+    might be needed, when all users on the network are trusted. However with 
+    distributed teams, cooperation between companies, 
+    external contractors or just open source projects publicly available 
+    there are plenty of use cases that require Hudson to be secured. Out of 
+    the box Hudson has no security enabled, but it can easily be turned on 
+    checking <option>Enable security</option> in the global configuration of 
+    Hudson as displayed in <xref linkend="fig-global-hudson-configuration"/>.
+  </para>
 
   <section>
     <title>Managing Hudson Users</title>

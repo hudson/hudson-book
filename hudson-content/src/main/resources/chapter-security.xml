@@ -59,8 +59,8 @@
   <section>
     <title>Access Control</title>
 
-    <para>With security enabled Hudson supports the following security
-      providers</para>
+    <para>With security enabled, Hudson supports the following security
+      realms</para>
 
     <itemizedlist>
       <listitem>
@@ -108,15 +108,38 @@
         <title>Delegating to a Servlet Container</title>
         <!--We need a walk-through for how this works.  We also need to
         motivation and explanation.   What protocol is used?  How does this work?
-      SEE HBOOK-47-->
-        <para>Selecting this option will allow you to use a custom web
-        application to perform authentication.</para>
+        SEE HBOOK-47-->
+        <para>By default running from the war directly Hudson is running in the
+          winstone servlet container and there will be no security provided by
+          it. However for production usage the preferred deployment method is to
+          have Hudson running within a servlet container like Tomcat or Jetty or
+          an application server like Glassfish or JBoss AS as documented in
+          detail in
+          <xref linkend="chapter-install"/>.
+        </para>
+        <para>Depending on the servlet container you will have access to
+          management consoles that allow you to maintain and administrate users
+          and groups, which Hudson can then use for authorization.
+        </para>
+        <para>This feature can be especially useful if other application are
+          already using the servlet container authorization.
+        </para>
       </section>
 
       <section>
         <title>Relying on Unix Users and Groups</title>
-        <para>If you select this option, Hudson will consult the Unix
-        user/group database on the machine it is running on.</para>
+        <para>If you select this option, Hudson will consult the Unix user/group
+          database on the machine it is running on. To do so it will use the
+          Pluggable Authentication Modules (PAM)
+          <ulink
+            url="http://en.wikipedia.org/wiki/Pluggable_Authentication_Modules"/>
+          library. The user running Hudson has to be able to access PAM and be a
+          member of the
+          <code>shadow</code>
+          group. As visible in <xref linkend="fig-security-unix"/> the setup
+          allows for the definition of a service name and test via provided
+          button.
+        </para>
         <figure id="fig-security-unix">
           <title>Overview of the available security settings</title>
           <mediaobject>
@@ -130,10 +153,27 @@
             </imageobject>
           </mediaobject>
         </figure>
+
+        <tip>
+          <para>If you get a stack trace about not being able to find the file
+          libpam.so it might work to create the correct symlink like this
+          <screen>
+            <command>
+              sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
+            </command>
+          </screen>
+          </para>
+        </tip>
+
+        <para>User and group administration is then administrati</para>
         <!--This section needs to explore the details of relying on the Unix user/group database from the previous section.   Talk about the
   limitations of this approach.   How does it work?   Are there any limitations?   what are the pros and cons?   Try to get specific
   here by showing people what specific commands can be used to user new users and manage groups.    Feel free to choose a Linux flavor
   for this and provide some handwaving examples for other platforms.
+
+  one problem is that it relies on the machine setup and therefore can not be
+   easily backed up in one go or migrated
+
   SEE HBOOK-46-->
         <para></para>
       </section>
@@ -256,9 +296,24 @@
   </section>
 
   <section>
-    <title>Hudson Security Best Practices</title>
+    <title>Hudson Security Best Practices, Tips and Tricks</title>
     <!--SEE HBOOK-54 - Give the user some recommendations for configuring Hudson Security-->
 
     <para></para>
+
+
+    <section>
+      <title>Allowing Developers to do Forced Builds with Security On</title>
+      <para>is currently documented on the wiki nicely
+        <ulink
+        url="http://wiki.hudson-ci.org/display/HUDSON/Quick+and+Simple+Security"/>
+      </para>
+    </section>
+
+    <section>
+      <title>Authenticating in a script</title>
+      <para>is currently documented on the wiki and should be expanded on here
+        <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Authenticating+scripted+clients"/></para>
+    </section>
   </section>
 </chapter>

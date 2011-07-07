@@ -1520,7 +1520,7 @@
                       as the standard unsecured protocol,
                       <code>:ext:</code>
                       and
-                      <code>:ssh:</code>
+                      <code>:extssh:</code>
                       for secure shell based connections and
                       <code>:sspi:</code>
                       for Windows based access. Depending on your CVS client and
@@ -1578,10 +1578,7 @@
               <screen>
                 <command>:pserver:anonymous@tortoisecvs.cvs.sourceforge.net:/cvsroot/tortoisecvs</command>
               </screen>
-              with a module defined. For anonymous connections like this it
-              might be necessary to kick off a build manually to get the
-              cvspass file created or updated and subsequently kick it off
-              manually again to get the initial checkout to proceed.
+              with a module defined.
             </para>
           </listitem>
         </varlistentry>

@@ -1518,7 +1518,7 @@
                       for local or net file system level connection,
                       <code>:pserver:</code>
                       as the standard unsecured protocol,
-                      <code>:ext:</code>
+                      <code>:ext:</code>, <code>:ssh:</code>
                       and
                       <code>:extssh:</code>
                       for secure shell based connections and
@@ -1586,7 +1586,8 @@
           <term>Module(s) and Branch</term>
           <listitem>
             <para>Here you can provide specific modules and specific branches to
-              be checked out by Hudson.
+              be checked out by Hudson. Multiple module can be specified
+              using a space separated list.
             </para>
           </listitem>
         </varlistentry>

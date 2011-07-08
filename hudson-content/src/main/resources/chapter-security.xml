@@ -175,29 +175,16 @@
         </para>
 
         <para>A consequence of using this security realm is that the Hudson
-          instance and access details are tied to the specific server Hudson
-          is running on. This means that the user and group setup as to be
-          backed up in addition to Hudson data itself and it can not be easily
-          migrated
-          unless some sort of single sign on is used across all servers.
-          However on the other hand if this sort of infrastructure already
-          exists users can just reuse their current login details and have
-          should have access to change password and other facilities.
+          instance and access details are tied to the specific server Hudson is
+          running on. This means that the user and group setup as to be backed
+          up in addition to Hudson data itself and it can not be easily migrated
+          unless some sort of single sign on is used across all servers. However
+          on the other hand if this sort of infrastructure already exists users
+          can just reuse their current login details and have should have access
+          to change password and other facilities.
         </para>
-        <!--This section needs to explore the details of relying on the Unix
-        user/group database from the previous section.   Talk about the
-  limitations of this approach.   How does it work?   Are there any limitations?   what are the pros and cons?
-
-  Try to get specific here by showing people what specific commands can be
-  used to user new users and manage groups.    Feel free to choose a Linux flavor
-  for this and provide some handwaving examples for other platforms.
-
-  MM: sorry but I disagree. thats a waste of time. If you need to admin users
-  and groups on your linux install look at documentation for it and NOT the
-  Hudson book
-
-  SEE HBOOK-46-->
-        <para></para>
+        <!--  Are there any limitations?   what are the pros and cons?
+      SEE HBOOK-46-->
       </section>
 
       <section>
@@ -249,13 +236,23 @@
     <section>
 
       <title>Configuring an Authorization Strategy</title>
-      <para></para>
+      <para>Once you decided upon the secruity realm you basically know how
+        users and groups will be created and what has to be done for a user
+        to be able to log in to Hudson. As a next step you need to decide on
+        the authorization strategy, which determines what user can do once
+        they are logged in.
+      </para>
 
       <section>
         <title>Logged-in users can do anything</title>
-
-        <!--what are the consequences.. -->
-
+        <para>This authorization strategy grants read access to Hudson anybody,
+          but reserves any modifications for users with a valid account. Once
+          the user is logged-in however they have full access rights to
+          everything including project deletion and other critical
+          functionality. You therefore should be certain to have a good backup
+          strategy in place for critical data and that ytiur users are capable
+          of using Hudson in an administrative function.
+        </para>
       </section>
 
       <section>

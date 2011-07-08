@@ -136,9 +136,10 @@
           library. The user running Hudson has to be able to access PAM and be a
           member of the
           <code>shadow</code>
-          group. As visible in <xref linkend="fig-security-unix"/> the setup
-          allows for the definition of a service name and test via provided
-          button.
+          group. As visible in
+          <xref linkend="fig-security-unix"/>
+          the setup allows for the definition of a service name and test via
+          provided button.
         </para>
         <figure id="fig-security-unix">
           <title>Overview of the available security settings</title>
@@ -155,24 +156,45 @@
         </figure>
 
         <tip>
-          <para>If you get a stack trace about not being able to find the file
+          If you get a stack trace about not being able to find the file
           libpam.so it might work to create the correct symlink like this
           <screen>
             <command>
               sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </command>
           </screen>
-          </para>
         </tip>
 
-        <para>User and group administration is then administrati</para>
-        <!--This section needs to explore the details of relying on the Unix user/group database from the previous section.   Talk about the
-  limitations of this approach.   How does it work?   Are there any limitations?   what are the pros and cons?   Try to get specific
-  here by showing people what specific commands can be used to user new users and manage groups.    Feel free to choose a Linux flavor
+        <para>Commonly the users and groups are stored in
+          <code>/etc/passwd</code>
+          and<code>/etc/group</code>, but depending on the Unix/Linux version
+          and the security setup the setup might vary a lot. With this setup
+          user and group administration is entirely separate from your Hudson
+          install. Use the your preferred administration tool on the command
+          line or a graphical user interface.
+        </para>
+
+        <para>A consequence of using this security realm is that the Hudson
+          instance and access details are tied to the specific server Hudson
+          is running on. This means that the user and group setup as to be
+          backed up in addition to Hudson data itself and it can not be easily
+          migrated
+          unless some sort of single sign on is used across all servers.
+          However on the other hand if this sort of infrastructure already
+          exists users can just reuse their current login details and have
+          should have access to change password and other facilities.
+        </para>
+        <!--This section needs to explore the details of relying on the Unix
+        user/group database from the previous section.   Talk about the
+  limitations of this approach.   How does it work?   Are there any limitations?   what are the pros and cons?
+
+  Try to get specific here by showing people what specific commands can be
+  used to user new users and manage groups.    Feel free to choose a Linux flavor
   for this and provide some handwaving examples for other platforms.
 
-  one problem is that it relies on the machine setup and therefore can not be
-   easily backed up in one go or migrated
+  MM: sorry but I disagree. thats a waste of time. If you need to admin users
+  and groups on your linux install look at documentation for it and NOT the
+  Hudson book
 
   SEE HBOOK-46-->
         <para></para>
@@ -314,6 +336,11 @@
       <title>Authenticating in a script</title>
       <para>is currently documented on the wiki and should be expanded on here
         <ulink url="http://wiki.hudson-ci.org/display/HUDSON/Authenticating+scripted+clients"/></para>
+    </section>
+
+    <section>
+      <title>Disabling security when locked out</title>
+      <para>just disable security in the config.xml and restart server</para>
     </section>
   </section>
 </chapter>

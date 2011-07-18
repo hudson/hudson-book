@@ -1587,7 +1587,8 @@
           <listitem>
             <para>Here you can provide specific modules and specific branches to
               be checked out by Hudson. Multiple module can be specified
-              using a space separated list.
+              using a space separated list and with a parameterized build job
+              parameters can be used to specify branch or module.
             </para>
           </listitem>
         </varlistentry>

@@ -100,6 +100,8 @@
 
 
     <section>
+
+
       <title>Configuring Security Realms</title>
 
       <para></para>
@@ -122,8 +124,12 @@
           and groups, which Hudson can then use for authorization.
         </para>
         <para>This feature can be especially useful if other application are
-          already using the servlet container authorization.
+          already using the servlet container authorization and you want to
+          achieve a single-sign on for all applications running on this
+          server or cluster of servers.
         </para>
+        <!-- TODO add an example for using tomcat users defined in xml once
+        new version of tomcat works with hudson for me -->
       </section>
 
       <section>
@@ -191,8 +197,11 @@
         <title>Using the Hudson Internal User Database</title>
         <!--What does this mean to the user?
         SEE HBOOK-49-->
-        <para>Selecting Internal user database gives you the ability to
-        define users directly in the Hudson user interface.</para>
+        <para>A convenient method to control access to Hudson without
+          external dependencies is to use the internal user database of
+          Hudson itself. To activate this feature select
+          <option>Hudson's own user database</option> as displayed in
+          <xref linkend="fig-security-hudson-db"/></para>
         <figure id="fig-security-hudson-db">
           <title>Overview of the available security settings</title>
           <mediaobject>
@@ -206,6 +215,54 @@
             </imageobject>
           </mediaobject>
         </figure>
+        <para>The <option>Allow user to sign up</option> activates the screen
+          <option>Sign Up</option> screen as displayed in
+          <xref linkend="fig-security-signup"/>, which also displays a
+          captcha that is displayed when the option <option>Enable captcha on
+            sign up</option> is activated.
+        </para>
+
+        <figure id="fig-security-signup">
+          <title>Sign up screen for new users</title>
+          <mediaobject>
+            <imageobject role="web">
+              <imagedata contentdepth="100%"
+                         fileref="figs/web/security-signup.png" scalefit="1"/>
+            </imageobject>
+            <imageobject role="print">
+              <imagedata align="center" fileref="figs/print/security-signup.pdf"
+                         scalefit="0" width="100%"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+
+        <para>Once a user is signed up and logged in he can use the thclick on
+          his user name in the top left corner and then on the
+          <option>Configure</option> option in the left hand menu to access
+          the user configuration screen, which allows password resets among
+          other tasks.
+        </para>
+        <!-- TODO more about this config including MyViews and others-->
+        <figure id="fig-security-user-configure">
+          <title>User configuration</title>
+          <mediaobject>
+            <imageobject role="web">
+              <imagedata contentdepth="100%"
+                         fileref="figs/web/security-user-configure.png" scalefit="1"/>
+            </imageobject>
+            <imageobject role="print">
+              <imagedata align="center" fileref="figs/print/security-user-configure.pdf"
+                         scalefit="0" width="100%"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+        <!-- need to document how to make users admin users or something or
+        how to get them to set up a password... do a step by step for admin
+        user probablypp
+
+        also how use can edit their own account details including password
+        and so on
+        -->
       </section>
 
       <section>
@@ -225,7 +282,8 @@
             </imageobject>
           </mediaobject>
         </figure>
-        <!--We need a section to motiviate the LDAP realm, talk about when to use it.   This section also needs to talk about compatibility with
+        <!--We need a section to motivate the LDAP realm, talk about when to use it.
+        This section also needs to talk about compatibility with
   various LDAP implementations, and it needs to provide a step-by-step walkthrough.
   SEE HBOOK-48-->
         <para></para>

@@ -294,7 +294,7 @@
     <section>
 
       <title>Configuring an Authorization Strategy</title>
-      <para>Once you decided upon the secruity realm you basically know how
+      <para>Once you decided upon the security realm you basically know how
         users and groups will be created and what has to be done for a user
         to be able to log in to Hudson. As a next step you need to decide on
         the authorization strategy, which determines what user can do once
@@ -308,7 +308,7 @@
           the user is logged-in however they have full access rights to
           everything including project deletion and other critical
           functionality. You therefore should be certain to have a good backup
-          strategy in place for critical data and that ytiur users are capable
+          strategy in place for critical data and that your users are capable
           of using Hudson in an administrative function.
         </para>
       </section>
@@ -366,7 +366,15 @@
 
       <section>
         <title>Anyone can do anything</title>
-        <!--what are the consequences.. -->
+        <para>Setting your authorization strategy to the option
+          <option>Anyone can do anything</option> effectively turns off
+          security. In a scenario where everybody able to access Hudson e
+          .g. in a trusted intranet this setting is recommended as an
+          alternative to completely disabled security. The advantage for the
+          users is that while they do not need to login to use Hudson and
+          everyone has access it is possible to login and customize Hudson by
+          creating custom views and take advantage of other personalization.
+        </para>
       </section>
 
     </section>

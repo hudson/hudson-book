@@ -484,15 +484,15 @@ Complete!</command>
   <para>Looking at the list of files installed by the package</para>
   <screen>
     <command>
-      $ rpm -ql hudson
-      /etc/init.d/hudson
-      /etc/logrotate.d/hudson
-      /etc/sysconfig/hudson
-      /usr/lib/hudson
-      /usr/lib/hudson/hudson.war
-      /usr/sbin/hudson
-      /var/lib/hudson
-      /var/log/hudson
+$ rpm -ql hudson
+/etc/init.d/hudson
+/etc/logrotate.d/hudson
+/etc/sysconfig/hudson
+/usr/lib/hudson
+/usr/lib/hudson/hudson.war
+/usr/sbin/hudson
+/var/lib/hudson
+/var/log/hudson
     </command>
   </screen>
    <para>reveals that a configuration file
@@ -542,8 +542,7 @@ Complete!</command>
           your list of package sources with
         </para>
         <screen>
-          <command>sudo wget -O /etc/zypp/repos.d/hudson.repo
-            http://hudson-ci.org/opensuse/hudson.repo</command>
+<command>sudo wget -O /etc/zypp/repos.d/hudson.repo http://hudson-ci.org/opensuse/hudson.repo</command>
         </screen>
         <para>Future upgrades will not require this step to be repeated.</para>
       </step>
@@ -630,16 +629,16 @@ hudson                    0:off  1:off  2:off  3:on   4:off  5:on   6:off
   <para>Looking at the list of files installed by the package</para>
   <screen>
     <command>
-      $ rpm -ql hudson
-      /etc/init.d/hudson
-      /etc/logrotate.d/hudson
-      /etc/sysconfig/hudson
-      /etc/zypp/repos.d/hudson.repo
-      /usr/lib/hudson
-      /usr/lib/hudson/hudson.war
-      /usr/sbin/rchudson
-      /var/lib/hudson
-      /var/log/hudson
+$ rpm -ql hudson
+/etc/init.d/hudson
+/etc/logrotate.d/hudson
+/etc/sysconfig/hudson
+/etc/zypp/repos.d/hudson.repo
+/usr/lib/hudson
+/usr/lib/hudson/hudson.war
+/usr/sbin/rchudson
+/var/lib/hudson
+/var/log/hudson
     </command>
   </screen>
     <para>reveals that a configuration file

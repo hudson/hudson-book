@@ -512,13 +512,18 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
     <section>
       <title>Disabling security when locked out</title>
       <para>When configuring security or when relying on external
-        secruity realms, you can end up in situations where you do not have
-        any access to Hudson in the user interface anymore. To be able to fix
-        up your setup you can edit the file <filename>config.xml</filename>
-        in your <option>HUDSON_HOME</option> and set
-        <screen>
-          <code><useSecurity>false</useSecurity></code>
-        </screen>
+        security realms, you can end up in situations where you do not have
+        any access to Hudson in the user interface anymore. Reasons could be a
+        forgotten admin password, offline LDAP server, broken Unix authorization
+        after server upgrade and so on. To be able to fix up your setup you can
+        edit the file
+        <filename>config.xml</filename>
+        in your
+        <option>HUDSON_HOME</option>
+        and set
+          <command>
+            <useSecurity>false</useSecurity>
+          </command>.
         With this setting you will have full access to Hudson and be able to
         troubleshoot your configuration or change to a new security realm
         and/or authorization.

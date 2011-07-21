@@ -313,10 +313,15 @@
         </para>
       </section>
 
-      <section>
-        <title>Using a Global Authorization Strategy</title>
+      <section id="section-security-authorization-matrix">
+        <title>Matrix-based security</title>
+        <para>For more fine grained control over what specific users or
+          groups of users can do you can configure Hudson to use
+          <option>Matrix-based security</option> as visible in a minimal
+          configuration in <xref linkend="fig-security-authorization-matrix"/>.
+        </para>
         <figure id="fig-security-authorization-matrix">
-          <title>Matrix based</title>
+          <title>Matrix based security</title>
           <mediaobject>
             <imageobject role="web">
               <imagedata contentdepth="100%"
@@ -329,17 +334,56 @@
             </imageobject>
           </mediaobject>
         </figure>
-
-        <!--SEE HBOOK-53 - Explain this approach, called matrix based
-        security-->
-
-        <para></para>
+        <para>Using the input field for <option>User/group to add</option>
+          you can create new rows in the security matrix. The matrix provides
+          sections to configure access rights for
+        </para>
+        <itemizedlist>
+          <listitem>
+            <para>Overall</para>
+          </listitem>
+          <listitem>
+            <para>Slave</para>
+          </listitem>
+          <listitem>
+            <para>Job</para>
+          </listitem>
+          <listitem>
+            <para>Run</para>
+          </listitem>
+          <listitem>
+            <para>View</para>
+          </listitem>
+          <listitem>
+            <para>SCM</para>
+          </listitem>
+        </itemizedlist>
+        <para>A typical minimal configuration as shown would be to grant all
+          rights to an administrative user or group and only read access for
+          Overall and Jobs to anonymous users.
+        </para>
+        <para>By adding further groups or individual users you can e.g. grant
+          full administrative access rights to other trusted users without
+          sharing the main admin account.
+        </para>
+        <para>A safe administrative use would be to grant full rights to a
+          group of admin users without granting any <option>Delete</option>
+          rights.
+        </para>
       </section>
 
-      <section>
-        <title>Using a Project-based Authorization Strategy</title>
+      <section id="section-security-authorization-project">
+        <title>Project-based Matrix Authorization Strategy</title>
+        <para>Taking the concept of matrix based authorization as described
+          in <xref linkend="section-security-authorization-matrix"/> a
+          step further is <option>Project-based Matrix Authorization
+            Strategy</option>. The global configuration
+          possible as displayed in
+          <xref linkend="fig-security-authorization-project"/> works the same
+        as matrix-based security.
+        </para>
         <figure id="fig-security-authorization-project">
-          <title>Project-based Authorization Strategy</title>
+          <title>Project-based Matrix Authorization Strategy</title>
           <mediaobject>
             <imageobject role="web">
               <imagedata contentdepth="100%"
@@ -351,9 +395,33 @@
             </imageobject>
           </mediaobject>
         </figure>
-        <!--SEE HBOOK-51 - Write a section about Project-based Authorization Strategy-->
-
-        <para></para>
+        <para>In addition you can enable project-based security in each
+          project configuration individually for each project. Enabling the
+          option <option>Enable project-based security</option> will display
+          a matrix of access rights as visible in
+          <xref linkend="fig-security-authorization-project-specific"/>. It
+          will allow you to add users and groups just like for the global
+          configuration and assign rights as desired.
+        </para>
+        <figure id="fig-security-authorization-project-specific">
+          <title>Project specific authorization</title>
+          <mediaobject>
+            <imageobject role="web">
+              <imagedata contentdepth="100%"
+                         fileref="figs/web/security-authorization-project-specific.png"
+                         scalefit="1"/>
+            </imageobject>
+            <imageobject role="print">
+              <imagedata align="center"
+                         fileref="figs/print/security-authorization-project-specific.pdf"
+                         scalefit="0" width="100%"/>
+            </imageobject>
+          </mediaobject>
+        </figure>
+        <para>Using groups accessing a group of projects you could e.g.
+          enable administrative rights for a limited number of projects to a
+          specific user or user group.
+        </para>
       </section>
 
       <section>

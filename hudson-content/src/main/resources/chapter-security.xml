@@ -15,9 +15,9 @@
   <section>
     <title>Security Settings Overview</title>
     <para>Out of the box Hudson has no security enabled, but it can easily be
-      turned on checking
+      turned on by checking
       <option>Enable security</option>
-      in the global configuration of Hudson as displayed in<xref
+      in the global configuration of Hudson as displayed in <xref
         linkend="fig-global-hudson-configuration"/> and you will be able to
       set up your desired security settings with the options visible in
       <xref linkend="fig-security-overview"/> and documented in this chapter.
@@ -214,7 +214,7 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </imageobject>
           </mediaobject>
         </figure>
-        <para>The <option>Allow user to sign up</option> activates the screen
+        <para>The option <option>Allow user to sign up</option> activates the
           <option>Sign Up</option> screen as displayed in
           <xref linkend="fig-security-signup"/>, which also displays a
           captcha that is displayed when the option <option>Enable captcha on
@@ -234,14 +234,14 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </imageobject>
           </mediaobject>
         </figure>
-
-        <para>Once a user is signed up and logged in he can use the thclick on
-          his user name in the top left corner and then on the
-          <option>Configure</option> option in the left hand menu to access
-          the user configuration screen, which allows password resets among
-          other tasks.
+        <para>By providing all details in the sign up form a user can create an
+          account to access Hudson. Once a user is signed up and logged in he
+          can use then click on his user name in the top left corner and then on
+          the
+          <option>Configure</option>
+          option in the left hand menu to access the user configuration screen,
+          which allows password resets among other tasks.
         </para>
-        <!-- TODO more about this config including MyViews and others-->
         <figure id="fig-security-user-configure">
           <title>User configuration</title>
           <mediaobject>
@@ -255,13 +255,6 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </imageobject>
           </mediaobject>
         </figure>
-        <!-- need to document how to make users admin users or something or
-        how to get them to set up a password... do a step by step for admin
-        user probablypp
-
-        also how use can edit their own account details including password
-        and so on
-        -->
       </section>
 
       <section>
@@ -449,10 +442,58 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
 
   <section>
     <title>Hudson Security Best Practices, Tips and Tricks</title>
-    <!--SEE HBOOK-54 - Give the user some recommendations for configuring Hudson Security-->
 
-    <para></para>
+    <section>
+      <title>Common Setup - Internal user database with matrix-based
+        authorization</title>
+      <para>A common and useful setup is a combination of using Hudson's internal
+      user database with matrix-based authorization. It allows for a secure
+        setup of a publicly available Hudson instance without the need for
+        any further security components beyond Hudson itself and can
+        therefore be managed via the Hudson user interface without any
+        additional requirements beyond browser access.
+      </para>
+      <orderedlist>
+        <listitem>
+          <para>Enable security in the global Hudson configuration</para>
+        </listitem>
+        <listitem>
+          <para>Activate the security realm for Hudson's own user database
+            and allow users to sign up</para>
+        </listitem>
+        <listitem>
+          <para>Set the authorization to <option>Anyone can do
+            anything</option> and save the configuration</para>
+        </listitem>
+        <listitem>
+          <para>Sign up a new user e.g. with the name <code>admin</code></para>
+        </listitem>
+        <listitem>
+          <para>Login in as the new user</para>
+        </listitem>
+        <listitem>
+          <para>Change the authorization to matrix-based security</para>
+        </listitem>
+        <listitem>
+          <para>Add the new user to the matrix</para>
+        </listitem>
+        <listitem>
+          <para>Grant all right to the new user as he will the be the
+            adminstrator user</para>
+        </listitem>
+        <listitem>
+          <para>Save the configuration</para>
+        </listitem>
+      </orderedlist>
 
+      <para>Following these steps you will have secured Hudson and the new
+        user will be the only user with access to Hudson. If you want e.g.
+        anonumous users to have read access you could add these rights in the
+        matrix.
+      </para>
+      <para>For further users you can create additional matrix rows and
+        distribute rights as desired.</para>
+    </section>
 
     <section>
       <title>Allowing Developers to do Forced Builds with Security On</title>
@@ -470,7 +511,18 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
 
     <section>
       <title>Disabling security when locked out</title>
-      <para>just disable security in the config.xml and restart server</para>
+      <para>When configuring security or when relying on external
+        secruity realms, you can end up in situations where you do not have
+        any access to Hudson in the user interface anymore. To be able to fix
+        up your setup you can edit the file <filename>config.xml</filename>
+        in your <option>HUDSON_HOME</option> and set
+        <screen>
+          <code><useSecurity>false</useSecurity></code>
+        </screen>
+        With this setting you will have full access to Hudson and be able to
+        troubleshoot your configuration or change to a new security realm
+        and/or authorization.
+      </para>
     </section>
   </section>
 </chapter>

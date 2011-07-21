@@ -10,16 +10,18 @@
     distributed teams, cooperation between companies, 
     external contractors or just open source projects publicly available 
     there are plenty of use cases that require Hudson to be secured. </para>
-  <para>Out of the box Hudson has no security enabled, but it can easily be
-    turned on checking
-    <option>Enable security</option>
-    in the global configuration of Hudson as displayed in<xref
-      linkend="fig-global-hudson-configuration"/>.
-  </para>
+
 
   <section>
     <title>Security Settings Overview</title>
-
+    <para>Out of the box Hudson has no security enabled, but it can easily be
+      turned on checking
+      <option>Enable security</option>
+      in the global configuration of Hudson as displayed in<xref
+        linkend="fig-global-hudson-configuration"/> and you will be able to
+      set up your desired security settings with the options visible in
+      <xref linkend="fig-security-overview"/> and documented in this chapter.
+    </para>
     <figure id="fig-security-overview">
       <title>Overview of the available security settings</title>
       <mediaobject>
@@ -60,7 +62,7 @@
     <title>Access Control</title>
 
     <para>With security enabled, Hudson supports the following security
-      realms</para>
+      realms out of the box. Further options are available as plugins. </para>
 
     <itemizedlist>
       <listitem>
@@ -73,11 +75,11 @@
         <para>Hudson's own user database</para>
       </listitem>
       <listitem>
-        <para>LDAP</para>
+        <para>LDAP (Lightweight Directory Access Protocol</para>
       </listitem>
     </itemizedlist>
 
-    <para>and authorization schemes,</para>
+    <para>Authorization schemes available are</para>
     <itemizedlist>
       <listitem>
         <para>Logged-in users can do anything</para>
@@ -96,15 +98,15 @@
       </listitem>
     </itemizedlist>
     <para>which can be seen in <xref linkend="fig-security-overview"/> and
-      will be documented in detail below.</para>
-
+      are documented in detail below.</para>
 
     <section>
-
-
       <title>Configuring Security Realms</title>
-
-      <para></para>
+      <para>The configuration of the security realm allows you to define
+        where user names and passwords are stored and administrated.
+        Depending on your deployment it can be useful to tie into already
+        existing systems or run a separate realm for Hudson.
+      </para>
 
       <section>
         <title>Delegating to a Servlet Container</title>
@@ -126,7 +128,8 @@
         <para>This feature can be especially useful if other application are
           already using the servlet container authorization and you want to
           achieve a single-sign on for all applications running on this
-          server or cluster of servers.
+          server or cluster of servers or you simply prefer to manage your
+          users from the application server user interface.
         </para>
         <!-- TODO add an example for using tomcat users defined in xml once
         new version of tomcat works with hudson for me -->
@@ -166,7 +169,7 @@
           libpam.so it might work to create the correct symlink like this
           <screen>
             <command>
-              sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
+sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </command>
           </screen>
         </tip>
@@ -189,14 +192,10 @@
           can just reuse their current login details and have should have access
           to change password and other facilities.
         </para>
-        <!--  Are there any limitations?   what are the pros and cons?
-      SEE HBOOK-46-->
       </section>
 
       <section>
         <title>Using the Hudson Internal User Database</title>
-        <!--What does this mean to the user?
-        SEE HBOOK-49-->
         <para>A convenient method to control access to Hudson without
           external dependencies is to use the internal user database of
           Hudson itself. To activate this feature select

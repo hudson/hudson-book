@@ -521,9 +521,11 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
         in your
         <option>HUDSON_HOME</option>
         and set
+        <screen>
           <command>
             <useSecurity>false</useSecurity>
-          </command>.
+          </command>
+        </screen>
         With this setting you will have full access to Hudson and be able to
         troubleshoot your configuration or change to a new security realm
         and/or authorization.

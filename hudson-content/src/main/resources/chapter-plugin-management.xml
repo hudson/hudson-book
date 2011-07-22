@@ -166,11 +166,12 @@
       <para>Hudson retrieves a list of plugins and downloads plugins over the
         public internet. If your server is behind a proxy server, you will need
         to configure the proxy settings. Supply the necessary values to connect
-        to your internal proxy in the<option>Server</option>,
-        <option>Port</option>
-        and
+        to your internal proxy in the <option>Server</option> and
+        <option>Port</option> fields. The
         <option>No Proxy for</option>
-        fields. If you proxy requires authentication you will have to select the
+        field allows you to exclude host names from proxying by adding them in a
+        comma separated list.If your proxy server requires authentication you
+        will have to select the
         <option>Proxy Needs Authorization</option>
         check box and provide the
         <option>User name</option>

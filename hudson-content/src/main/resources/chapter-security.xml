@@ -46,13 +46,25 @@
       <varlistentry>
         <term>TCP port for JNLP slave agents</term>
         <listitem>
-          <para>fixed random and disable</para>
+          <para>The port configuration should be set to
+            <option>Disable</option> for Hudson deployments without any slave
+            nodes. With slave nodes you can set the port to the default
+            <option>Random</option> port. Hudson will randomly choose a port
+            avoid port collisions with other services. When running the
+            Hudson cluster within a firewall secured environment between the
+            nodes, you can choose a fixed port and then ensure that the port
+            is open on the respective servers.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Markup Formatter</term>
         <listitem>
-          <para>Raw HTML,  others?</para>
+          <para>Raw HTML</para> is the default setting that causes Hudson to
+          render any input data from text fields as HTML in the user
+          interface. This allows for added links and more,
+          but also has the potential for cross site scripting XSS attacks.
+          <!-- TODO there are not plugins or anything that add a different
+          formatter!?, asked on the mailing list -->
         </listitem>
       </varlistentry>
     </variablelist>

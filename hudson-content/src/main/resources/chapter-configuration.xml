@@ -14,10 +14,6 @@
 
   <figure id="fig-config-manage-hudson">
     <title>Managing Hudson</title>
-
-    <!-- TODO HBOOK-81  need new screenshot with Maven 3 configuration added if
-      that is how it will be or otherwise update related documentation
-    -->
     <mediaobject>
       <imageobject role="web">
         <imagedata contentdepth="100%"

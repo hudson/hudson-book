@@ -41,7 +41,6 @@
   <section>
     <title>Miscellaneous Security Related Settings</title>
 
-    <para></para>
     <variablelist>
       <varlistentry>
         <term>TCP port for JNLP slave agents</term>
@@ -143,8 +142,11 @@
           server or cluster of servers or you simply prefer to manage your
           users from the application server user interface.
         </para>
-        <!-- TODO add an example for using tomcat users defined in xml once
-        new version of tomcat works with hudson for me -->
+        <para>When using this security realm, you will need to use matrix based security
+          as documented in <xref linkend="section-security-authorization-matrix"/>
+          or  project-based matrix authorization strategy as documented in
+          <xref linkend="section-security-authorization-project"/> and set up the user/group
+          you want to allow in Hudson in the matrix with the desired access rights.</para>
       </section>
 
       <section>
@@ -272,7 +274,9 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
       <section>
         <title>Light-weight Directory Authentication Protocol (LDAP)</title>
         <para>If you have an LDAP server, Hudson can be configured to use
-        this server to authenticate users.</para>
+        this server to authenticate users. The administration interface in
+            <xref linkend="fig-security-ldap"/> allows you to provide all the necessary details
+        for Hudson to connect to your LDAP server.</para>
         <figure id="fig-security-ldap">
           <title>Overview of the available security settings</title>
           <mediaobject>
@@ -286,10 +290,68 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
             </imageobject>
           </mediaobject>
         </figure>
+        <variablelist>
+            <varlistentry>
+                <term>Server</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>root DN</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>User search base</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>User search filter</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Group search base</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Manager DN</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+            <varlistentry>
+                <term>Manager Password</term>
+                <listitem>
+                    <para></para>
+                </listitem>
+            </varlistentry>
+        </variablelist>
+
         <!--We need a section to motivate the LDAP realm, talk about when to use it.
         This section also needs to talk about compatibility with
   various LDAP implementations, and it needs to provide a step-by-step walkthrough.
   SEE HBOOK-48-->
+
+          <!-- LDAP
+Select LDAP for the Security Realm and click the help icon for each configuration option to see information about the settings.
+
+If login attempts result in "OperationNotSupportedException - Function Not Implemented", "Administrative Limit Exceeded" or similar error, the LDAP query to determine the group membership for the user may be triggering this. First try setting the "Group search base" setting as specific as possible for your LDAP structure, to reduce the scope of the query. If the error persists, you may need to edit the WEB-INF/security/LDAPBindSecurityRealm.groovy file that is included in hudson.war. Change the line with groupSearchFilter = "(| (member={0}) (uniqueMember={0}) (memberUid={1}))"; to query only of the field used in your LDAP for group membership, such as groupSearchFilter = "(member={0})"; (then restart Hudson).
+
+Groups
+Prefix LDAP groups with ROLE_ and convert them to uppercase when assigning privileges to LDAP groups. For example, the LDAP group Developers (cn=Developers) would be used as ROLE_DEVELOPERS in Hudson
+Group names with non-alpha characters such as hyphen (-), space and comma do not seem to work.
+Hudson does not support indirect group memberships, i.e. if a user is a member of a group A which is itself a member of group B, the user would not get the privileges (e.g. "Adminster Hudson") defined for B - only those defined for A.
+
+
+One has to add groups prefixing with "ROLE_" (without quotes). I'm using OpenLDAP as its backend.-->
         <para></para>
       </section>
 

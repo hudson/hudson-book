@@ -478,6 +478,11 @@
               when multiple projects with small polling frequencies all access
               the same SCM server.
             </para>
+              <para>This expression can also be useful to set up a schedule for
+                  a project that only polls the SCM for changes e.g. outside
+                  office hours and therefore only builds then. Similar setup ups
+                  can be used to do a nightly or a weekly build type setup.
+              </para>
           </listitem>
         </varlistentry>
 

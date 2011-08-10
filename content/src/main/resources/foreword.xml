@@ -4,10 +4,13 @@
 <preface id="foreword">
   <title>Foreword: ${project.version}</title>
 
-  <para>This book covers Hudson, the most widely used open source Continuous Integration Server.</para>
+  <para>This book covers Hudson, the most widely used open source Continuous
+  Integration Server. Oracle is excited to support the continued development
+  of Hudson as the Hudson community completes its transition to the Eclipse
+  Foundation.</para>
 
   <para>If you have any feedback or questions, you are encouraged to post on
-    the Hudson project mailing lists.</para>
+  the Hudson project mailing lists.</para>
 
   <para>The Hudson Book Authors</para>
 

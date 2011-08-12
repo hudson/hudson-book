@@ -1390,13 +1390,6 @@ single-sign on for all applications running on this server or cluster
 of servers or you simply prefer to manage your users from the
 application server user interface.
 
-When using this security realm, you will need to use matrix based
-security as documented in <<section-security-authorization-matrix>> or
-project-based matrix authorization strategy as documented in
-<<section-security-authorization-project>> and set up the user/group
-you want to allow in Hudson in the matrix with the desired access
-rights. 
-
 ==== Relying on Unix Users and Groups
 
 If you select this option, Hudson will consult the Unix user/group

@@ -2967,7 +2967,7 @@ Code Management section. In this section, you must then select one of
 the radio buttons for the source code management system you are using
 as visible in <<fig-scm-selection>>
 
-[fig-scm-selection]
+[[fig-scm-selection]]
 .Selecting an SCM in the project configuration
 image::figs/web/scm-selection.png[scale=75]
 
@@ -3288,7 +3288,7 @@ Once you have configured Git in the global Hudson configuration you
  display the configuration options shown in
  <<fig-scm-git-project-config>>.
 
- [[fig-scm-git-project-config]]
+[[fig-scm-git-project-config]]
 .Basic Git source control information
 image::figs/web/scm-git-project-config.png[scale=75]
 

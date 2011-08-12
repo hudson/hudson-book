@@ -1097,7 +1097,7 @@ part of your build.
 
 [[fig-using-shell-execute]]
 .Configuring Shell Executable
-image::figs/web/ci-using-shell-execute.png[scale=75]  </section>
+image:figs/web/ci-using-shell-execute.png[scale=75]  </section>
 
 [[section-configure-email-notification]]
 === Configuring E-mail Notification
@@ -1117,7 +1117,7 @@ any configuration changes on Hudson.
 
 [[fig-configure-email-notification]]
 .Configuring Email Notification
-image::figs/web/configure-email-notification.png[scale=75]
+image:figs/web/configure-email-notification.png[scale=75]
 
 The following options can be configured:
 
@@ -1586,7 +1586,7 @@ the main admin account.
 A safe administrative use would be to grant full rights to a group of
 admin users without granting any Delete rights.
 
-[section-security-authorization-project]
+[[section-security-authorization-project]]
 ==== Project-based Matrix Authorization Strategy
 
 Taking the concept of matrix based authorization as described in

@@ -1693,7 +1693,7 @@ troubleshoot your configuration or change to a new security realm
 and/or authorization.
 
 [[chapter-plugin-management]]
-== Managing Hudson Plugins</title>
+== Managing Hudson Plugins
 
 Hudson plugin management is available via Manage Hudson and selecting
 the Manage Plugins link shown in<<fig-config-manage-hudson>>. This
@@ -1804,7 +1804,7 @@ host your own plugin repository and you could then add the URL in the
 available input field.
 
 [[chapter-build-creation]]
-== Creating Hudson Projects</title>
+== Creating Hudson Projects
 
 [[section-creating-new-project]]
 === Creating New Hudson Projects
@@ -2841,7 +2841,7 @@ TBD
 TBD
 
 [[chapter-ant]]
-== Working with Apache Ant Builds</title>
+== Working with Apache Ant Builds
 
 [[section-installing-ant]]
 === Installing Apache Ant for Hudson
@@ -3913,12 +3913,13 @@ available on the PATH on the Hudson server or have the path configured
 in the global configuration. For the project specific settings
 configure the repository url and a module.
 
-//   <!--<section id="section-scm-cvs-advanced-config">-->
-//      <!--<title>Tips and Tricks for Advanced CVS Configurations</title>-->
-//    <!--</section>-->
+[[section-scm-cvs-advanced-config]]
+==== Tips and Tricks for Advanced CVS Configurations
+
+TBD
 
 [[chapter-grid]]
-== Running a Hudson grid</title>
+== Running a Hudson grid
 
 === Motivation
 
@@ -3938,7 +3939,7 @@ can be edited to modify various parameters like Java version used to
 run Hudson slave and others.
 
 [[chapter-plugins]]
-== Notable Hudson Plugins</title>
+== Notable Hudson Plugins
 
 === Hudson XYZ Plugin
 
@@ -3953,7 +3954,7 @@ TBD
 TBD
 
 [[chapter-ide-integration]]
-== IDE Integration</title>
+== IDE Integration
 
 The default way of interacting with Hudson is the web-based user
 interface. In addition Hudson ships with web service interfaces, that

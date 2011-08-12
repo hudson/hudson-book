@@ -2314,7 +2314,31 @@ In addition to the common project configurations we discussed prior, a
 free-style Hudson project has a section for the build definition that
 allows you to add individual build steps. Press the Add build step
 button in the Build configuration section to set up one or multiple
-steps that define your build.
+steps that define your build with the choices displayed in
+<<fig-freestye-add-build-step>> and documented below.
+
+[[fig-freestye-add-build-step]]
+.Adding a free-style project build step
+image::figs/web/freestyle-add-build-step.png[scale=75]
+
+Execute shell::
+
+  Executing a shell script as a build step is configured just like a
+  Windows batch command. The unix convention to use the first line
+  with a #! and the path to an executable allows you to write shell
+  scripts in many available shell and scripting languages.
+
+Invoke Maven 2 (Legacy)::
+
+  A Maven 2 based build step can be configured as documented in
+  <<section-maven-2-build-configuration>>. We recommend to use the
+  Maven 3 invocation where possible.
+
+Invoke Ant::
+
+  Invoking an Ant target can be added just like a shell script task,
+  but with more configuration options. Find out more on how to
+  configure Ant invocations in <<section-ant-build-configuration>>
 
 Execute Windows batch command::
 
@@ -2326,23 +2350,10 @@ Execute Windows batch command::
   current project are passed to the execution of the script and can be
   used from within the script.
 
-Execute shell::
+Invoke Maven 3::
 
-  Executing a shell script as a build step is configured just like a
-  Windows batch command. The unix convention to use the first line
-  with a #! and the path to an executable allows you to write shell
-  scripts in many available shell and scripting languages.
-
-Invoke Ant::
-
-  Invoking an Ant target can be added just like a shell script task,
-  but with more configuration options. Find out more on how to
-  configure Ant invocations in <<section-ant-build-configuration>>
-
-Invoke top-level Maven targets::
-
-  A Maven based build step can be configured as documented in
-  <<section-maven-build-configuration>>
+  A Maven 3 based build step can be configured as documented in
+  <<section-maven-3-build-configuration>>
 
 [[section-configuring-multi-config-project]]
 === Configuring Multi-Configuration Projects
@@ -2472,7 +2483,7 @@ TBD
 After configuring the general project options as documented in
 <<chapter-build-creation>>, you can configure one or more build
 steps. To add a build step, click on the Add build step button as
-shown in <<fig-using-new-build-config>>. To configure a Maven build,
+shown in <<fig-maven-3-build-step-default>>. To configure a Maven build,
 select Invoke Maven 3.
 
 The basic and advanced options for configuring a Maven 3 build steps
@@ -2710,7 +2721,7 @@ project build step. After configuring the general project options (see
 <<chapter-build-creation>>), you can configure one or more build
 steps. To add a build step, click on the Add build step button as
 shown in <<fig-build-step-maven-2-legacy-default>>. To configure a
-Maven build, selectInvoke Maven 2 (Legacy).
+Maven build, select Invoke Maven 2 (Legacy).
 
 [[fig-build-step-maven-2-legacy-default]]
 .Configuring Project Build Options

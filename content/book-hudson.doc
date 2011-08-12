@@ -2533,7 +2533,9 @@ POM File::
   you can specify that file name and path here. This setting is
   equivalent to the command-line option -f pomfilepath or--file
   pomfilepath. The path specified has to be relative to the project
-  root.
+  root. It is also necessary to specify the path to the POM file here
+  if you SCM setup causes the POM file to be located in a subfolder
+  and not in the top level workspace folder.
 
 Private repository::
 

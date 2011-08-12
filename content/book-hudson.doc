@@ -1097,7 +1097,7 @@ part of your build.
 
 [[fig-using-shell-execute]]
 .Configuring Shell Executable
-image:figs/web/ci-using-shell-execute.png[scale=75]  </section>
+image:figs/web/ci-using-shell-execute.png[scale=75]
 
 [[section-configure-email-notification]]
 === Configuring E-mail Notification
@@ -2939,9 +2939,8 @@ TBD
 One of the most important parts of the Hudson project configuration
 are the settings that connect your Hudson project to source
 control. Any software development project should be managed in a
-<ulink
-url="http://en.wikipedia.org/wiki/Source_code_management">source
-control management system</ulink>, many of which are open source
+http://en.wikipedia.org/wiki/Source_code_management[source control management system],
+many of which are open source
 software and have large user communities. Hudson has support for all
 common SCM systems as well as many of the less popular ones. Most
 likely you will find support for your SCM already installed or
@@ -3465,10 +3464,9 @@ Choosing strategy::
   repositories a more refined strategy is used selecting revisions
    that have notG yet been built and are on the specified branches.
   Other plugins can implement a different choosing strategy e.g. the
-  <ulink url="http://wiki.hudson-ci
-  .org/display/HUDSON/Gerrit+Plugin">Gerrit Plugin</ulink> enables a
-  Gerrit change set based strategy effectively allowing verified,
-  pre-tested commits.
+  http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Plugin[Gerrit Plugin]
+  enables a Gerrit change set based strategy effectively allowing
+  verified, pre-tested commits.
 
 Git executable::
 

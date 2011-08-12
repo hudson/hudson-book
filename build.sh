@@ -9,7 +9,7 @@ cd content/figs/
 cd ../..
 
 # Build the Single HTML Page Version
-asciidoc -o target/book-hudson.html content/book-hudson.doc 
+asciidoc -o target/book-hudson.html content/book-hudson.doc
 
 # Build the PDF
 #rm -rf target/images

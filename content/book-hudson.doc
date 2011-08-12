@@ -2496,7 +2496,7 @@ image::figs/web/build-step-maven-3-default.png[scale=75]
 
 [[fig-maven-3-build-step-advanced]]
 .Configuring a Maven 3 Build Step - Advanced Options
-image::figs/web/build-step-maven-3-advanced-.png[scale=75]
+image::figs/web/build-step-maven-3-advanced.png[scale=75]
 
 Maven Version::
 

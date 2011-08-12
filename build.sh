@@ -26,7 +26,7 @@ cp -r content/figs target
 cp -r content/images target
 
 echo "--- Building PDF version - Started ---"
-#a2x -v -k -fpdf -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
+a2x -v -k -fpdf -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
 echo "--- Building PDF version - Finished ---"
 
 # Build the Chunked HTML

@@ -1609,6 +1609,9 @@ user or user group.
 
 ==== Using the Legacy Authorization Strategy
 
+Hardcoded role of admin .. really can be replaced with matrix. There
+is a JIRA issue against Hudson to remove it.
+
 // <!--SEE HBOOK-52 - Legacy to what?   Explain what this mode means to the user.-->
 
 ==== Anyone can do anything
@@ -3202,6 +3205,8 @@ available for anonymous read access to the repository.
 [[section-scm-svn-advanced-config]]
 ==== Tips and Tricks for Advanced SVN Configurations
 
+Lets get fancy...
+
 ==== Subversion related environment variables
 
 The subversion plugin exports the following environment variables for
@@ -3813,8 +3818,10 @@ CVSROOT::
 
   This is the CVSROOT parameter for your source. You would enter in
   the same information here that you would use if you were checking
-  out source code use the CVS client.  The format for the URL is ----
-  +[[:protocol:][[user][:password]]][@servername][:serverpath]+ ----
+  out source code use the CVS client.  The format for the URL is
+----
+  +[[:protocol:][[user][:password]]][@servername][:serverpath]
+----
   with the parameters: <variablelist> 
 
 :protocol:::
@@ -4094,5 +4101,9 @@ TBD
 [[chapter-plugin-writing]]
 == Writing a Hudson Plugin
 
+TBD
+
 [[copyright-sect-creative-commons]]
 == Book License
+
+TBD

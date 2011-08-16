@@ -1450,7 +1450,10 @@ image::figs/web/security-user-configure.png[scale=75]
 If you have an LDAP server, Hudson can be configured to use this
 server to authenticate users. The administration interface in
 <<fig-security-ldap>> allows you to provide all the necessary details
-for Hudson to connect to your LDAP server.
+for Hudson to connect to your LDAP server. You will be able to connect
+to most common LDAP servers. If you want to configure security with
+Microsoft Active Directory you should also have a look at the specific
+plugin for Active Directory.
 
 [[fig-security-ldap]]
 .Overview of the available security settings
@@ -1458,62 +1461,74 @@ image::figs/web/security-ldap.png[scale=75]
 
 Server::
 
-  TBD
+  The server connection string is typically composed of a protocol of
+  ldap:// or ldaps://, a server name and for non-standard ports used
+  a colon followed by a port. The default ldap protocol and port 389
+  can be omitted, so the simplest server would be the server name or
+  IP number only. Further valid examples are e.g.
+  directory.example.com:1389 or ldaps://directory.somewhere.com:1636.
+   The default port for ldaps is 636.
 
 root DN::
 
-  TBD
+  Specify the root DN for you want to use for authentication. Typically
+  this would be a value like dc=simpligility,dc=com
 
-User search base::
+User search base and User search filter::
 
-  TBD
-
-User search filter::
-
-  TBD
+  The user search base  and use search filter fields allow you to
+  define a sub tree to look for user records within the root DN. E.g
+  the search base could be ou=people or ou=developers and the search
+  filter could be the default uid={0} or mail={0} for users logging in
+  with their email address. If you need to further define your search
+  filter you can use {0} as the pattern that will be replaced with the
+  username in the search.
 
 Group search base::
 
-  TBD
+  Define the query to locate the list of groups for a user in this
+  query that is typically just empty to search in the root DN or
+  ou=groups. More complicated queries are possible the {0} as pattern
+  for the user name replacement.
 
-Manager DN::
+Manager DN and Manager Password::
 
-  TBD
+  The Manager DN and password are required for Hudson itself to
+  connect to your LDAP server to query for the user details. The DN is
+  only necessary if you server does not support anonymous bind and
+  typically looks something like this
+  CN=MyUser,CN=Users,DC=mydomain,DC=com.
 
-Manager Password::
+Beyond the standard settings LDAP configuration can require further
+ tweaks like documented in the following.
 
-  TBD
+In general all the LDAP queries are space sensitive and their content
+is specific to your LDAP server configuration and can widely differ
+from other LDAP configurations.
 
-//        <!--We need a section to motivate the LDAP realm, talk about when to use it.
-//        This section also needs to talk about compatibility with
-//  various LDAP implementations, and it needs to provide a step-by-step walkthrough.
-//  SEE HBOOK-48-->
+If login attempts result in "Administrative Limit Exceeded" or similar
+error message, any LDAP query but often specifically the LDAP query to
+determine the group membership triggers it. A general tip in this
+situation is to try setting the "Group search base" and other settings
+ as specific as possible for your LDAP structure, to reduce the scope of
+the query.
 
-//          <!-- LDAP
-// Select LDAP for the Security Realm and click the help icon for each configuration option to see information about the settings.
-
-If login attempts result in "OperationNotSupportedException - Function
-Not Implemented", "Administrative Limit Exceeded" or similar error,
-the LDAP query to determine the group membership for the user may be
-triggering this. First try setting the "Group search base" setting as
-specific as possible for your LDAP structure, to reduce the scope of
-the query. If the error persists, you may need to edit the
+If the error persists, you may need to edit the
 WEB-INF/security/LDAPBindSecurityRealm.groovy file that is included in
 hudson.war. Change the line with groupSearchFilter = "(| (member={0})
 (uniqueMember={0}) (memberUid={1}))"; to query only of the field used
 in your LDAP for group membership, such as groupSearchFilter =
 "(member={0})"; (then restart Hudson).
 
-Groups Prefix LDAP groups with ROLE_ and convert them to uppercase
-when assigning privileges to LDAP groups. For example, the LDAP group
-Developers (cn=Developers) would be used as ROLE_DEVELOPERS in Hudson
-Group names with non-alpha characters such as hyphen (-), space and
-comma do not seem to work.  Hudson does not support indirect group
-memberships, i.e. if a user is a member of a group A which is itself a
-member of group B, the user would not get the privileges
-(e.g. "Adminster Hudson") defined for B - only those defined for A.
+In general Hudson will prefix any LDAP group with the ROLE_ prefix.
+ This has to be taken into account when configuring access rights in
+ a matrix based security realm. For example, the LDAP group
+developers (cn=developers) would be used as ROLE_DEVELOPERS in Hudson
+Group names are being changed to all uppercase and non-alpha
+characters such as hyphen, space and comma are not supported.
 
-One has to add groups prefixing with "ROLE_" (without quotes). I'm using OpenLDAP as its backend.-->
+Hudson's LDAP integration currently does not support indirect group
+memberships.
 
 ==== Configuring an Authorization Strategy
 

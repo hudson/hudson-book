@@ -274,15 +274,6 @@ Step 2: Add Hudson repository URL to package management::
   server. In order to use it you have to add its URL to your list of
   package sources with
 
-///
-TODO: this does not work since sources deb is missing on
-        the repo 
-        <!--<screen>-->
-         <!--sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"-->
-       <!--</screen>-->
-       <!--<para>or-->
-///
-
 ----
 sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ 
 > /etc/apt/sources.list.d/hudson.list"
@@ -1280,13 +1271,9 @@ http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html[
 Maven 3 Settings example] in the Sonatype Nexus book and customized to
 reference a hypothetical server running on +nexus.sonatype.org:8081+.
 
-Usage of the Maven 3 Settings configuration file in a Hudson job is
-documented in <<section-maven-3-build-configuration>>.
-
-///     <!-- TODO add more stuff about tool chains and link to
-///
-/// http://maven.apache.org/guides/mini/guide-using-toolchains.html
-///     potentially
+Usage of the Maven 3 Settings configuration file in a Hudson job as
+well as Maven toolchains is documented in
+<<section-maven-3-build-configuration>>.
 
 [[chapter-security]]
 == Securing Hudson
@@ -1327,10 +1314,8 @@ Markup Formatter::
   Raw HTML is the default setting that causes Hudson to render any
   input data from text fields as HTML in the user interface. This
   allows for added links and more, but also has the potential for
-  cross site scripting XSS attacks.  
-
-// <!-- TODO there are not plugins or anything that add a different
-// formatter!?, asked on the mailing list --> 
+  cross site scripting XSS attacks. Currently plugins that implement
+  other markup are planned, but not yet available for Hudson.
 
 === Access Control
 
@@ -2663,12 +2648,10 @@ Threading::
   enables the experimental support for parallel builds in Maven 3. A
   value of +4+ enables four threads for the build. A value of +2.5C+
   would enable 2.5 threads per CPU core. When activating this feature,
-  keep the experiemental nature of this feature as well as the not yet
-  wide spread support for this feature in the various plugins.
-
-//<!-- add link to external link like
-//  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html
-//  maybe-->
+  keep the experimental nature of this feature as well as the not yet
+  wide spread support for this feature in the various plugins in mind. Read
+  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html[on the Maven wiki]
+  to find out more about this feature and the current status.
 
 Settings::
 
@@ -2676,11 +2659,7 @@ Settings::
   and supplies a Maven 3 build step with a custom settings
   configuration file. The dropdown for this field is populated with
   the Maven 3 Settings files configured in the Hudson Maven 3
-  Configuration page as shown in <<fig-manage-mvn-3-settings>>.  
-
-//<!--
-//  TODO do we need to talk about security and injection of the settings
-//  like on the built in help or in more detail?  -->
+  Configuration page as shown in <<fig-manage-mvn-3-settings>>.
 
 Global Settings::
 
@@ -2689,10 +2668,6 @@ Global Settings::
   you to reference a custom global configuration file that is an
   alternative to the global settings file that ships with Apache
   Maven.
-
-//            <!-- TODO do we need to talk about security and injection of the
-//            settings like on the built in help or in more detail?
-//            -->
 
 Tool Chains::
 
@@ -3232,9 +3207,6 @@ version control system and has gained wide acceptance in the open
 source community and beyond. and repository hosting services available
 from multiple suppliers for commercial and open source usage.
 
-//    <!-- TODO add some links to external git related help and mention that
-//     we assume some git knowledge here-->
-
 The Hudson Git Plugin and therefore support for Git is available in
 default Hudson installs from version 2.1 onwards. If it is not
 installed in your Hudson instance, simply find the plugin in the
@@ -3753,9 +3725,9 @@ the global configuration.
 In terms of project specific configuration you only need to specify
 the public url of the repository.
 
-//     <!-- TODO this should be added in one way or another
+//      TODO this should be added in one way or another
 //      http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
-//      -->
+
 
 [[section-scm-cvs]]
 === Configuring CVS

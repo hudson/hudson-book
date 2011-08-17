@@ -1445,6 +1445,18 @@ configuration screen, which allows password resets among other tasks.
 .User configuration
 image::figs/web/security-user-configure.png[scale=75]
 
+In addition the global Manage Hudson screen displayed
+in <<fig-config-manage-hudson>> has the Manger Users option added.
+In this management section the administrator has the option to create
+and administrate users. The Create User link in the left hand
+navigation menu presents the Sign Up screen from
+<<fig-security-signup>> without the captcha test to the administrator
+allowing account creation to be controlled by an administrator rather
+than by self signup. In addition this screen shows a list of users
+already registered with Hudson and allows the administrator to delete
+users and edit them via the user configuration screen from
+<<fig-security-user-configure>>.
+
 ==== Light-weight Directory Authentication Protocol (LDAP)
 
 If you have an LDAP server, Hudson can be configured to use this

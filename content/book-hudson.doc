@@ -1900,8 +1900,7 @@ sections.
 ==== Configuring General Project Settings
 
 The first section on the Project Screen is the general project
-information, which is shown in <xref linkend="fig-using-project-info"
-xrefstyle="select:label" />.
+information, which is shown in <<fig-using-project-info>>.
 
 [[fig-using-project-info]]
 .Configuring Project Information
@@ -2045,26 +2044,26 @@ Use custom workspace::
 [[section-configuring-source-code-management]]
 ==== Configuring Source Code Management
 
-  Hudson is typically used in conjunction with the source of the
-  project available in a source code management system. Support for a
-  large variety of SCM's is one the strength's of Hudson. This section
-  allows for the configuration of the respective settings for your SCM
-  of choice. The available list of choices will contain all SCM
-  systems provided by Hudson and the installed plugins.
-  <<chapter-plugin-management>> explains how to get support for your
-  SCM installed, if it is not yet available. Once installed each SCM
-  configuration will have different parameters, which are documented
-  in <<chapter-source-control>>.
+Hudson is typically used in conjunction with the source of the
+project available in a source code management system. Support for a
+large variety of SCM's is one the strength's of Hudson. This section
+allows for the configuration of the respective settings for your SCM
+of choice. The available list of choices will contain all SCM
+systems provided by Hudson and the installed plugins.
+<<chapter-plugin-management>> explains how to get support for your
+SCM installed, if it is not yet available. Once installed each SCM
+configuration will have different parameters, which are documented
+in <<chapter-source-control>>.
 
 [[section-configuring-build-triggers]]
 ==== Configuring Build Triggers
 
-  The next section to configure is Build Triggers. A Hudson job can be
-  configured to build in response to build activity on a Hudson
-  instance, in accordance with a regular schedule, or as a reaction to
-  activity in an SCM system. Build triggers are configured on a
-  Project's Configuration screen and the section is shown in
-  <<fig-using-build-triggers" xrefstyle="select:label>>.
+The next section to configure is Build Triggers. A Hudson job can be
+configured to build in response to build activity on a Hudson
+instance, in accordance with a regular schedule, or as a reaction to
+activity in an SCM system. Build triggers are configured on a
+Project's Configuration screen and the section is shown in
+<<fig-using-build-triggers>>.
 
 [[fig-using-build-triggers]]
 .Configuring Build Triggers
@@ -3052,7 +3051,7 @@ Validate repository URLs up to the first variable name::
 
 Selecting Subversion under the Source Code Management section will
 display the configuration options shown
-in<<fig-scm-svn-project-config" xrefstyle="select:label>>.  Clicking
+in <<fig-scm-svn-project-config>>.  Clicking
 on the Advanced button will reveal the advanced configuration
 parameters shown in <<fig-scm-svn-project-config-advanced>>.
 
@@ -3694,8 +3693,8 @@ in<<fig-scm-hg-project-config>>.
 .Configuring Mercurial Source Control Information
 image::figs/web/scm-hg-project-config.png[scale=75]
 
-The section show in <<fig-scm-hg-project-config"
-xrefstyle="select:label>> contains the following options:
+The section show in <<fig-scm-hg-project-config>> contains the
+following options:
 
 Mercurial Version::
 
@@ -4054,11 +4053,9 @@ Viewing a specific build's console output is often the quickest way to
 get to the bottom of a build failure. To open a build's console
 output, select the project from the Hudson jobs view, select an
 individual project build, and then click on the "Console Output" link
-shown in<xref linkend="fig-eclipse-matrix-project"
-xrefstyle="select:label"/>. Clicking on this link will load the view
-shown in<xref linkend="fig-eclipse-console-output"
-xrefstyle="select:label"/>. This view gives you the raw console output
-from a Hudson build.
+shown in <<fig-eclipse-matrix-project>>. Clicking on this link will
+load the view shown in <<fig-eclipse-console-output>>.
+This view gives you the raw console output from a Hudson build.
 
 [[fig-eclipse-console-output]]
 .Viewing Hudson Console Output from Eclipse

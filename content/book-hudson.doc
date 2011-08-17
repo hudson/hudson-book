@@ -229,11 +229,11 @@ Deploy to the server::
   deploy the WAR file via a web-based administration console or by
   copying the WAR into a deployment folder.
 
-///
+////
 TODO add a specific hudson user maybe .. but not when other stuff
     runs on app server .. then the app server user needs access to
     HUDSON_HOME and whatever.. 
-///
+////
 
 When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
@@ -415,10 +415,10 @@ to suit your needs, you should add it to you backup strategy.
 [[section-install-rpm]]
 === Installing Hudson on Redhat, CentOS, and Fedora
 
-///
+////
     at a later stage we can split this up but not now while it is all
     the same package and infrastructure
-///
+////
 
 Oracle Linux, Redhat Enterprise Linux, CentOS and Fedora all use the
 same rpm package provided by the Hudson project. This package will
@@ -1196,7 +1196,7 @@ have a Gmail account and provide the GMail e-mail address, or any
 other email address configured to be accepted in your Gmail account,
 as the User Name and configure the Password.
 
-///  Does it support SSL? What port? See http://184.73.106.215:8080/
+////  Does it support SSL? What port? See http://184.73.106.215:8080/
 
 === Troubleshooting E-mail Notification
 
@@ -1356,10 +1356,6 @@ your deployment it can be useful to tie into already existing systems
 or run a separate realm for Hudson.
 
 ==== Delegating to a Servlet Container
-
-//        <!--We need a walk-through for how this works.  We also need to
-//        motivation and explanation.   What protocol is used?  How does this work?
-//        SEE HBOOK-47-->
 
 By default running from the war directly Hudson is running in the
 winstone servlet container and there will be no security provided by
@@ -1627,7 +1623,7 @@ user or user group.
 Hardcoded role of admin .. really can be replaced with matrix. There
 is a JIRA issue against Hudson to remove it.
 
-// <!--SEE HBOOK-52 - Legacy to what?   Explain what this mode means to the user.-->
+// HBOOK-52 - Legacy to what? Explain what this mode means to the user.
 
 ==== Anyone can do anything
 
@@ -2317,7 +2313,7 @@ Notify that Maven dependencies have been updated::
 
   When activating this option Hudson will notify all projects with a
   build trigger configured to watch for Maven dependencies that have
-  been updated (see<<section-configuring-build-triggers>>). When the
+  been updated (see <<section-configuring-build-triggers>>). When the
   additional option Notify even when build is unstable is selected
   this notification will occur even when an unstable build ran. A
   sideeffect of this could be that only some Maven dependencies have
@@ -2665,11 +2661,12 @@ Make Mode::
   and DEPENDENCIES, DEPENDENTS and BOTH respectively +-am+, +-amd+ and
   +-am -amd+.
 
-//            <!-- TODO add url to external resource explaining this more and
-//            explain how this can work with a project in relation to checked
-//            out workspace project and external dependencies,
-//            also how does this work with Hudson upstream,
-//            downstream dependencies and so on  -->
+////
+    TODO add url to external resource explaining this more and explain
+     how this can work with a project in relation to checked out
+     workspace project and external dependencies, also how does this
+     work with Hudson upstream, downstream dependencies and so on
+////
 
 Threading::
 
@@ -3754,8 +3751,10 @@ the global configuration.
 In terms of project specific configuration you only need to specify
 the public url of the repository.
 
-//      TODO this should be added in one way or another
-//      http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
+////
+    TODO this should be added in one way or another
+    http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
+////
 
 
 [[section-scm-cvs]]

@@ -2135,8 +2135,10 @@ Build when Maven SNAPSHOT dependencies have been updated externally::
 
   Activating this setting allows you to specify a schedule in cron
   syntax to use for polling the local Maven repository for updated
-  SNAPSHOT dependencies.
-
+  SNAPSHOT dependencies. When selecting the Exclude internally
+  produced dependencies option the regular check will only cause a
+  build trigger firing when artifacts not built in a local Hudson job
+  are updated.
 
 [[section-configuring-post-build-actions]]
 ==== Configuring Post-build Actions

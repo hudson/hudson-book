@@ -2077,13 +2077,29 @@ Build after other projects are built::
   on this project's build completing can be configured in the
   Post-build Actions.
 
-Build when Maven dependencies have been updated::
+Trigger builds remotely (e.g. from scripts)
 
-  Hudson projects can be configured to send out a notification to all
-  projects that Maven dependencies have been updated as post build
-  action (see <<section-configuring-post-build-actions>>). When you
-  activate this build trigger a build of the project will be started
-  once a such a notification is received.
+  Enabling this option will allow you to define a authentication token
+  for triggering a build by hitting a project specific url together
+  with the defined token. The url follows the patterns
+----
+    http://hudsonurl/jobs/project/build?token=mytoken&cause=mycause
+----
+  with hudsonurl replaced by the url of your hudson server including
+  port number and context (e.g. http://buildserver:8080/hudson).
+  mytoken will be the secret token you defined in the Authentication
+   Token field and mycause an optional text to submit as the cause. To
+   allow users to hit the url you can e.g. host the link on a
+   secured web page, send it via email or also use curl or wget from
+   a script.
+
+Build periodically::
+
+  The Build periodically setting will cause Hudson to start a build of
+  the project in regular intervals. Changes will be retrieved from the
+  configured SCM, but a build will be triggered even if no changes
+  were found.  The interval configuration in the exposed text field
+  accepts the same cron syntax as the Poll SCM configuration.
 
 Poll SCM::
 
@@ -2104,13 +2120,23 @@ Poll SCM::
   hours and therefore only builds then. Similar setup ups can be used
   to do a nightly or a weekly build type setup.
 
-Build periodically::
+Build when Maven dependencies have been updated by Maven 3 integration::
 
-  The Build periodically setting will cause Hudson to start a build of
-  the project in regular intervals. Changes will be retrieved from the
-  configured SCM, but a build will be triggered even if no changes
-  were found.  The interval configuration in the exposed text field
-  accepts the same cron syntax as the Poll SCM configuration.
+  Hudson projects using the Maven 3 integration can be configured to
+  send out a notification to all projects that Maven dependencies have
+  been updated as post build action (see
+  <<section-configuring-post-build-actions>>). When you
+  activate this build trigger a build of the project will be started
+  once a such a notification is received. The projects triggering each
+  other in this set up needs to be configured to access the same
+  Maven repository.
+
+Build when Maven SNAPSHOT dependencies have been updated externally::
+
+  Activating this setting allows you to specify a schedule in cron
+  syntax to use for polling the local Maven repository for updated
+  SNAPSHOT dependencies.
+
 
 [[section-configuring-post-build-actions]]
 ==== Configuring Post-build Actions

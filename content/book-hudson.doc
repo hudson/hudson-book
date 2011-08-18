@@ -1303,35 +1303,111 @@ personal view only visible to the current user when logged in.
 Each view can be given a description by clicking the edit
 description on the right side above the job list.
 
+When adding a new global view as displayed in
+<<fig-configure-new-global-view>> you have to provide a name and
+then select what type of view you want to add. You can either add a
+My View, which will display all jobs the current users has access
+to or you can add a List View, which is a highly configurable list
+of job types. The different configuration options are documented
+below.
+
 [[fig-configure-new-global-view]]
 .Adding a New Global View
 image::figs/web/configure-new-global-view.png[scale=75]
+
+After you have created the view you can configure the main filter
+properties displayed in <<fig-configure-view-main>>,
+configure, add and delete job filters as displayed in
+<<fig-configure-view-filters>> and add and delete columns for the list
+view as displayed in <<fig-configure-view-columns>>.
 
 [[fig-configure-view-main]]
 .Main Properties for Adding a New View
 image::figs/web/configure-view-main.png[scale=75]
 
+Besides the name provided at creation you can add a description
+that will be displayed above the list of jobs and below the title
+of the view. It can use HTML for e.g. hyperlinks to other related
+resources. The Filter build queue option causes Hudson to only
+show jobs from the view in the build queue. The Filter build
+executors option causes Hudson to only show build executors  that
+could execute shows from this view.
+
+The Job Filters configuration below as visible in
+<<fig-configure-view-filters>> shows the Status Filter,
+a list of all jobs and allows the configuration of a regular
+expression for inclusion of jobs on the list view. The regular
+expression is applied to the job name.
+
 [[fig-configure-view-filters]]
 .Configuring View Filters
 image::figs/web/configure-view-filters.png[scale=75]
+
+The Status Filter has the option to use all selected jobs or only
+enabled or disabled builds from the list below or the result of the
+ regular expression configured. The Jobs list itself
+is an alphabetically sorted list of all jobs configured with a
+checkbox for each job that you potentially want to include in the
+view. As an alternative to manually selecting jobs from the list
+you can configure a regular expression to match on the job names.
+With a good naming convention for the jobs this can be a good way
+to build the list. An example could be naming all release build
+jobs x-y-z-release or naming all plugin builds Plugin-x and then
+using a regular expression like .*-release or Plugin-.* to select
+them.
+
+In addition to the plain selection filters there are a number of
+specific filters available that can be added for further filtering.
+The filters will be applied in the order in the configuration screen.
+Each filter has a Match Type drop down selector that allows you to
+include matched or unmatched jobs as well as exclude matched and
+unmatched jobs from further filtering.
+
+A myriad of combinations is possible allowing you to implement easy
+access to all your builds for all your users catered to their
+varying needs
+
+With the Build Statuses filter displayed in
+<<fig-configure-view-filters-build-status>> you can include or
+exclude builds that are currently building, that have never been built
+or that are currently in the build queue.
 
 [[fig-configure-view-filters-build-status]]
 .Configuring the Build Status View Filter
 image::figs/web/configure-view-filters-build-status.png[scale=75]
 
+The Job Statuses filter in <<fig-configure-view-filters-job-status>>
+allows  you to combine Stable, Failed, Unstable, Aborted and Disabled
+statuses to create a filter for including or excluding jobs from
+your view.
 
 [[fig-configure-view-filters-job-status]]
 .Configuring the Job Status View Filter
 image::figs/web/configure-view-filters-job-status.png[scale=75]
 
+Similarly the Job Type filter in
+<<fig-configure-view-filters-job-type>> can be used to include or
+exclude based on the job being a free-style project, a Maven2/3
+project, a multi-configuration project or a monitor of an external
+job.
 
 [[fig-configure-view-filters-job-type]]
 .Configuring the Job Type View Filter
 image::figs/web/configure-view-filters-job-type.png[scale=75]
 
+The Other Views filter in <<fig-configure-view-filters-other>> has a
+selector for the other view which can be used for including or
+excluding jobs to the current view being configured. This allows
+you to easily create negations of other views e.g. all non release
+builds, or all non plugin builds or simply create a finer grained
+view of a different view. E.g. you could easily create a view of
+all plugin build that are currently with the job status Failed
+using a combination of the Other Views and the Job Statuses filter.
+Another good use case for this filter is to use multiple Other Views
+filters to aggregate the content of a number of other views.
 
 [[fig-configure-view-filters-other]]
-.Configuring the Other View Filter
+.Configuring the Other Views  Filter
 image::figs/web/configure-view-filters-other.png[scale=75]
 
 

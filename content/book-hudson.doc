@@ -1278,6 +1278,99 @@ Usage of the Maven 3 Settings configuration file in a Hudson job as
 well as Maven toolchains is documented in
 <<section-maven-3-build-configuration>>.
 
+[[section-view-configuration]]
+=== Configuring Global and Individual Project List Views
+
+Running a Hudson server or grid with many projects can make the list
+of configured jobs very long and therefore make it difficult for users
+and administrators to gather the information they need at a glance and
+find their way to the job they are intersted in. To provide this
+needed ease of access Hudson supports the addition of globally visible
+as well as user specific views to the main page displayed in
+<<fig-ci-quickstart-app-win>>.
+
+To add a new view simply click the + button beside the default list
+called All on top of the job list. If this button is not visible you
+do not have the access right to create views. Creating a view this way
+will make it globally visible to any user.
+
+Logging in as a specific user shows the My Views option in the left
+hand navigation menu. When you select this option the bread crumb
+navigation will contain your user name and the My Views option.
+Pressing the + button on the main job list now will create a
+personal view only visible to the current user when logged in.
+
+Each view can be given a description by clicking the edit
+description on the right side above the job list.
+
+[[fig-configure-new-global-view]]
+.Adding a New Global View
+image::figs/web/configure-new-global-view.png[scale=75]
+
+[[fig-configure-view-main]]
+.Main Properties for Adding a New View
+image::figs/web/configure-view-main.png[scale=75]
+
+[[fig-configure-view-filters]]
+.Configuring View Filters
+image::figs/web/configure-view-filters.png[scale=75]
+
+[[fig-configure-view-filters-build-status]]
+.Configuring the Build Status View Filter
+image::figs/web/configure-view-filters-build-status.png[scale=75]
+
+
+[[fig-configure-view-filters-job-status]]
+.Configuring the Job Status View Filter
+image::figs/web/configure-view-filters-job-status.png[scale=75]
+
+
+[[fig-configure-view-filters-job-type]]
+.Configuring the Job Type View Filter
+image::figs/web/configure-view-filters-job-type.png[scale=75]
+
+
+[[fig-configure-view-filters-other]]
+.Configuring the Other View Filter
+image::figs/web/configure-view-filters-other.png[scale=75]
+
+
+[[fig-configure-view-filters-parameterized-jobs]]
+.Configuring the Parameterized Jobs View Filter
+image::figs/web/configure-view-filters-parameterized-jobs.png[scale=75]
+
+
+[[fig-configure-view-filters-regex]]
+.Configuring the Regular Expression Job View Filter
+image::figs/web/configure-view-filters-regex.png[scale=75]
+
+
+[[fig-configure-view-filters-scm-type]]
+.Configuring the SCM Type View Filter
+image::figs/web/configure-view-filters-scm-type.png[scale=75]
+
+[[fig-configure-view-filters-unclassified]]
+.Configuring the Unclassified Jobs View Filter
+image::figs/web/configure-view-filters-unclassified.png[scale=75]
+
+[[fig-configure-view-filters-user-permissions]]
+.Configuring the User Permissions for Jobs View Filter
+image::figs/web/configure-view-filters-user-permissions.png[scale=75]
+
+Also All Jobs filter for simply adding all..
+
+
+[[fig-configure-view-columns]]
+.Configuring View Columns
+image::figs/web/configure-view-columns.png[scale=75]
+
+
+[[fig-configure-new-my-view]]
+.Adding a New Personal View (My View)
+image::figs/web/configure-new-my-view.png[scale=75]
+
+
+
 [[chapter-security]]
 == Securing Hudson
 

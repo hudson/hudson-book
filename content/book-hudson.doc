@@ -74,30 +74,219 @@ Edition: 1.0
 === What is Hudson?
 
 Hudson is a powerful and widely used open source continuous
-integration server.
+integration server providing development teams with a reliable way to
+monitor changes in source control and trigger a variety of builds.
+Hudson excels at integrating with almost every tool you can think of:
+from Maven, to Ant, to Gradle, to simple bash scripts for builds, to
+SMS, IRC, and Skype for notifications.
+
+In addition to providing a platform for continuous integration builds,
+Hudson can also be extended to support software releases,
+documentation, monitoring, and a number of use cases secondary to
+continuous integration.  In short, if you can think it, Hudson can do
+it.  From automating system administration tasks with Puppet and
+verifying infrastructure setup with Cucumber, to building and testing
+PHP code, to simply building Enterprise Java applications - Hudson
+stands ready to help.
 
 === Continuous Integration
 
 Martin Fowler and Kent Beck are largely credited with the first use of
-the term "Continuous Integration" as applied to the software
-development with Kent Beck's seminal 1999 book Extreme Programming
-Explained being the first published work touching upon the idea of
+the term "Continuous Integration" as applied to software
+development with Beck's seminal 1999 book _Extreme Programming
+Explained_ being the first published work touching upon the idea of
 creating systems to continuously build and test systems in response to
 changes in source control.
 
 NOTE: Beck, Kent (1999). Extreme Programming Explained. ISBN
 0-201-61641-6.
 
+The idea, put simply, is that software development efforts are much
+easier to manage when test failures and other bugs can be identified
+closer to the time they were introduced into a complex system.  Let's
+examine the differences between a development effort using a
+Continuous Integration server, and a development effort not using
+Continuous Integration.
+
+==== A Hypothetical Development Team
+
+Consider a hypothetical group of 20-30 developers working on a large
+enterprise application.
+
+This development team consists of 20-30 developers divided into groups
+of 5-12 working on focused features and components in a larger system.
+One group focuses on the database and a collection of APIs shared
+by all other groups, one group focuses on a complex front-end,
+customer-facing web application, and another group focuses on the backend,
+business-integration systems like billing and inventory which
+interface with a large Enterprise Service Bus (ESB).
+
+The business drives a number of development overlapping schedules.
+The web application team tends to work on two week development
+schedules, and the backend group performs releases in response to
+changes in the ESB.  Take a typical month in which the customer-facing
+web application adds a few targeted features and also experiences a
+dramatic redesign.  In this same month, the backend group may have to
+upgrade the systems that interface with an external payent processing
+system.
+
+In summary, these 20-30 developers are under constant pressure to
+deliver, and the technical managers are tasked with orchestrating the
+efforts of these various teams to deploy code to production on a
+regular schedule.  This is what the enterprise feels like in 2011:
+it's busy, and if you happen to find a bit of free time there is
+always someone in the business who can create a new requirement.
+
+==== Without Continuous Integration
+
+Without Continuous Integration the various teams have to factor in
+"integration time" into the schedule.  Unit tests might be run by
+individual developers, but integration tests are only executed when
+the system is ready to be deployed.  There's nothing automatic about
+the process, and, very oftenm only a handful of developers have the
+appropriate environment to build and deploy to production.
+
+Each team, each group is responsible for testing the larger system and
+making sure that their changes don't interfere with another group's
+changes.  One week before a release, everything stops so that a single
+"release manager" can build a canonical build on a single build
+machine and deploy this build to a testing environment.
+
+Each time one group needs to deploy a specific part of the system,
+every group needs to stop, synchronize, and test.  If the web
+application group needs to deploy to production, all of the other
+groups need to synchronize with that group and make sure that all of
+the tests pass during a build.
+
+This constant need to stop, integrate, and verify introduces a
+synthetic limit to the scale of development.  As development teams
+scale and grow larger, and as systems become increasingly complex and
+intertwined your team will be forced to spend more time on integration
+and testing.  Every time you need to perform a deployment, you have to
+pay a price - you have to run systems through a costly integrate,
+test, and verify procedure.
+
+In reality, developing modern applications without continuous
+integration is practically impossible.  There is too much unproductive
+downtime, and far too much waste.  The development group described
+above would be hard pressed to release anything more than a global
+update once a month.
+
+==== With Continuous Integration
+
+With Continuous Integration, the system completes a build, test,
+deploy, and integration test in response to every single commit.  If a
+developer in the web application group checks in code at 2 AM, Hudson
+kicks off a build, runs unit tests, deploys the code to a new server,
+and performs a set of integration tests.  If this build fails or the
+tests encounter an unexpected condition, everyone is notified of this
+failure.
+
+If the development extends the continuous integration build to update
+a testing environment in response to individual commits, the QA team
+can constantly test the system, identify bugs, and verify application
+behavior in parallel with active development.
+
+With continuous integration, no one needs to drop everything and run a
+release build, these builds are generated every single day, and in the
+most mature environments, a fully tested and verified system can be
+deployed to production at any time.  In other words, when you automate
+build, test, and verify and use a tool like Hudson you can continue
+developing your applications without having to wait (or synchronize)
+on some manual build, test, verify process.
+
+Making these processes automatic has another important side-effect, it
+makes the development process more scaleable.  When your teams don't
+have to stop to actively test and collaborate with one another, it is
+much easier to add additional developers to a project.  Without
+continuous integration you have to stop and synchronize release
+schedules.  With continuous integration you reduce the risk associated
+with a particular software development cycle.
+
+
+=== Minimizing Technical Debt
+
+Another way to think about Hudson is in terms of technical debt.  
+
+When you amass "technical debt" you are making a decision that yields
+a short-term benefit while creating a problem to be solved in the
+future.  If you've developed code under strict timelines, technical
+debt is nothing new to you.  Every system has some form of technical
+debt.  While a particular API could have had a more elegant interface,
+you just didn't have the time to think it through.  The code had to be
+deployed tomorrow and the deadline was fast approaching.
+
+Another way to think about technical debt is that you are sacrificing
+long-term sustainability for short-term benefit.  Ever solved a
+particularly tricky problem with a goto statement or a switch?  You've
+taken on technical debt.
+
+From the perspective of builds and tests, it is much easier to develop
+a system without having to worry about unit tests and integration
+tests.  You could speed up implementation time for a feature by just
+skipping the tests, but you'll eventually pay for this approach
+ten-fold in the form of bug fixes.
+
+When you develop without continuous integration, you are amassing the
+potential technical debt.  You can choose to fix bugs as they are
+introduced, minimizing both the scope and severity of defects by
+catching them early, or you can develop for weeks and run tests only
+at the end of the development cycle.
+
+When you wait weeks run integration tests, you amass a sort of
+"compounded" technical debt.  You not only have to fix bugs, you have
+to identify which changes introduced these bugs.  If you are really
+unlucky, you'll have cascading bugs during a development cycle: bugs
+that are related to other bugs.  When you develop with a continuous
+integration server, you minimize you risk by reducing the granularity
+of your development cycle.  While you might only deploy to production
+once a month, your Hudson installation deploys once a commit, and when
+you are dealing with increasingly complex systems this granular makes
+sure that any detours are confined to a single commit.
+
+=== Push it to Production with Huson
+
+The infrastructure that powers applications has grown more and more
+complex over time.  The web application that run on a production
+network of 10 hefty Unix machines in 1999 has evolved into an
+architecture that can potentially span hundreds (or thousands) of
+nodes.  Companies like Apple and Oracle and deploying infrastructure
+on a massive scale compared to where the industry was operating just a
+few years ago.  This movement toward Cloud-based deployments and
+Platform-as-a-Service (PaaS) has meant that infrastructure is now more
+likely to be compiled and deployed on an as-needed basis.
+
+Organizations are using tools like Hudson to setup production
+deployments and automate the management of cloud-based infrastructure.
+This carries the idea of Continuous Integration forward into the realm
+of Continuous Deployments.  While the idea may sound risky if you work
+in a relatively slow-moving industry, social networks like Facebook
+and social media services such as Flickr have been building complex
+developer/operations (devops) systems that allow them to deploy code
+to production multiple times a day.
+
+While this emerging trend is still confined to the largest
+deployments, the idea of connecting your Continuous Integration server
+directly to your production systems is gaining some support.  Hudson
+can be a critical part of automating these approached to continuous
+deployment.  Proven integration with tools like Puppet and Cucumber
+allow innovating devops staff to take continuous integration in some
+surprising directions.
+
 === General Purpose Scheduler
 
-TBD
+Hudson can also be viewed as a general purpose scheduler, a
+replacement for cron or Quartz in your production network.  While
+Hudson is generally viewed as development infrastructure, a class of
+infrastructure usually considered separate from the rarefied world of
+production, there's nothing stopping you from using Hudson as a
+general purpose scheduler or server running in a production network.
 
-=== Automation Platform
-
-Beyond the more traditional use cases of continuous integration and
-scheduled task execution, Hudson is a logic place to base automation
-efforts especially as they are related to the deployment of production
-code.
+If you have a requirement for scheduled services or if you need to
+perform a set of on-demand jobs in a production network, install
+Hudson and you've gained a friendly interface and a tool that can
+integrate with anything in the world.  There's nothing stopping you
+from using Hudson in production.
 
 [[intro-sect-community]]
 === The Hudson Community
@@ -229,11 +418,11 @@ Deploy to the server::
   deploy the WAR file via a web-based administration console or by
   copying the WAR into a deployment folder.
 
-///
-TODO add a specific hudson user maybe .. but not when other stuff
-    runs on app server .. then the app server user needs access to
-    HUDSON_HOME and whatever.. 
-///
+//
+// TODO add a specific hudson user maybe .. but not when other stuff
+//    runs on app server .. then the app server user needs access to
+//    HUDSON_HOME and whatever.. 
+//
 
 When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
@@ -274,14 +463,14 @@ Step 2: Add Hudson repository URL to package management::
   server. In order to use it you have to add its URL to your list of
   package sources with
 
-///
-TODO: this does not work since sources deb is missing on
-        the repo 
-        <!--<screen>-->
-         <!--sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"-->
-       <!--</screen>-->
-       <!--<para>or-->
-///
+//
+// TODO: this does not work since sources deb is missing on
+//        the repo 
+//        <!--<screen>-->
+//         <!--sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"-->
+//       <!--</screen>-->
+//       <!--<para>or-->
+//
 
 ----
 sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ 
@@ -1097,7 +1286,7 @@ part of your build.
 
 [[fig-using-shell-execute]]
 .Configuring Shell Executable
-image::figs/web/ci-using-shell-execute.png[scale=75]  </section>
+image::figs/web/ci-using-shell-execute.png[scale=75] 
 
 [[section-configure-email-notification]]
 === Configuring E-mail Notification
@@ -1202,7 +1391,7 @@ have a Gmail account and provide the GMail e-mail address, or any
 other email address configured to be accepted in your Gmail account,
 as the User Name and configure the Password.
 
-///  Does it support SSL? What port? See http://184.73.106.215:8080/
+//  Does it support SSL? What port? See http://184.73.106.215:8080/
 
 === Troubleshooting E-mail Notification
 
@@ -1283,10 +1472,10 @@ reference a hypothetical server running on +nexus.sonatype.org:8081+.
 Usage of the Maven 3 Settings configuration file in a Hudson job is
 documented in <<section-maven-3-build-configuration>>.
 
-///     <!-- TODO add more stuff about tool chains and link to
-///
-/// http://maven.apache.org/guides/mini/guide-using-toolchains.html
-///     potentially
+//     <!-- TODO add more stuff about tool chains and link to
+//
+// http://maven.apache.org/guides/mini/guide-using-toolchains.html
+//     potentially
 
 [[chapter-security]]
 == Securing Hudson
@@ -1586,7 +1775,7 @@ the main admin account.
 A safe administrative use would be to grant full rights to a group of
 admin users without granting any Delete rights.
 
-[section-security-authorization-project]
+[[section-security-authorization-project]]
 ==== Project-based Matrix Authorization Strategy
 
 Taking the concept of matrix based authorization as described in
@@ -1616,6 +1805,8 @@ user or user group.
 
 ==== Using the Legacy Authorization Strategy
 
+TBD
+
 // <!--SEE HBOOK-52 - Legacy to what?   Explain what this mode means to the user.-->
 
 ==== Anyone can do anything
@@ -1630,6 +1821,8 @@ Hudson by creating custom views and take advantage of other
 personalization.
 
 === Hudson Security Best Practices, Tips and Tricks
+
+TBD
 
 ==== Common Setup - Internal matrix-based authorization
 
@@ -1697,7 +1890,7 @@ troubleshoot your configuration or change to a new security realm
 and/or authorization.
 
 [[chapter-plugin-management]]
-== Managing Hudson Plugins</title>
+== Managing Hudson Plugins
 
 Hudson plugin management is available via Manage Hudson and selecting
 the Manage Plugins link shown in<<fig-config-manage-hudson>>. This
@@ -1808,7 +2001,9 @@ host your own plugin repository and you could then add the URL in the
 available input field.
 
 [[chapter-build-creation]]
-== Creating Hudson Projects</title>
+== Creating Hudson Projects
+
+TBD
 
 [[section-creating-new-project]]
 === Creating New Hudson Projects
@@ -1889,8 +2084,7 @@ sections.
 ==== Configuring General Project Settings
 
 The first section on the Project Screen is the general project
-information, which is shown in <xref linkend="fig-using-project-info"
-xrefstyle="select:label" />.
+information, which is shown in <<fig-using-project-info>>.
 
 [[fig-using-project-info]]
 .Configuring Project Information
@@ -2053,7 +2247,7 @@ Use custom workspace::
   instance, in accordance with a regular schedule, or as a reaction to
   activity in an SCM system. Build triggers are configured on a
   Project's Configuration screen and the section is shown in
-  <<fig-using-build-triggers" xrefstyle="select:label>>.
+  <<fig-using-build-triggers>>.
 
 [[fig-using-build-triggers]]
 .Configuring Build Triggers
@@ -2349,7 +2543,7 @@ Invoke Ant::
 Invoke top-level Maven targets::
 
   A Maven based build step can be configured as documented in
-  <<section-maven-build-configuration>>
+  <<section-maven-2-build-configuration>>
 
 [[section-configuring-multi-config-project]]
 === Configuring Multi-Configuration Projects
@@ -2479,7 +2673,7 @@ TBD
 After configuring the general project options as documented in
 <<chapter-build-creation>>, you can configure one or more build
 steps. To add a build step, click on the Add build step button as
-shown in <<fig-using-new-build-config>>. To configure a Maven build,
+shown in ???. To configure a Maven build,
 select Invoke Maven 3.
 
 The basic and advanced options for configuring a Maven 3 build steps
@@ -2832,7 +3026,7 @@ TBD
 TBD
 
 [[chapter-ant]]
-== Working with Apache Ant Builds</title>
+== Working with Apache Ant Builds
 
 [[section-installing-ant]]
 === Installing Apache Ant for Hudson
@@ -2930,9 +3124,8 @@ TBD
 One of the most important parts of the Hudson project configuration
 are the settings that connect your Hudson project to source
 control. Any software development project should be managed in a
-<ulink
-url="http://en.wikipedia.org/wiki/Source_code_management">source
-control management system</ulink>, many of which are open source
+http://en.wikipedia.org/wiki/Source_code_management[source
+control management system], many of which are open source
 software and have large user communities. Hudson has support for all
 common SCM systems as well as many of the less popular ones. Most
 likely you will find support for your SCM already installed or
@@ -2961,7 +3154,7 @@ Code Management section. In this section, you must then select one of
 the radio buttons for the source code management system you are using
 as visible in <<fig-scm-selection>>
 
-[fig-scm-selection]
+[[fig-scm-selection]]
 .Selecting an SCM in the project configuration
 image::figs/web/scm-selection.png[scale=75]
 
@@ -3039,7 +3232,7 @@ Validate repository URLs up to the first variable name::
 
 Selecting Subversion under the Source Code Management section will
 display the configuration options shown
-in<<fig-scm-svn-project-config" xrefstyle="select:label>>.  Clicking
+in<<fig-scm-svn-project-config>>.  Clicking
 on the Advanced button will reveal the advanced configuration
 parameters shown in <<fig-scm-svn-project-config-advanced>>.
 
@@ -3196,6 +3389,8 @@ available for anonymous read access to the repository.
 [[section-scm-svn-advanced-config]]
 ==== Tips and Tricks for Advanced SVN Configurations
 
+TBD
+
 ==== Subversion related environment variables
 
 The subversion plugin exports the following environment variables for
@@ -3282,7 +3477,7 @@ Once you have configured Git in the global Hudson configuration you
  display the configuration options shown in
  <<fig-scm-git-project-config>>.
 
- [[fig-scm-git-project-config]]
+[[fig-scm-git-project-config]]
 .Basic Git source control information
 image::figs/web/scm-git-project-config.png[scale=75]
 
@@ -3452,12 +3647,11 @@ Choosing strategy::
   specified repositories and branches to build. For one branch and one
   repository HEAD will be built.  For multiple branches and
   repositories a more refined strategy is used selecting revisions
-   that have notG yet been built and are on the specified branches.
+  that have notG yet been built and are on the specified branches.
   Other plugins can implement a different choosing strategy e.g. the
-  <ulink url="http://wiki.hudson-ci
-  .org/display/HUDSON/Gerrit+Plugin">Gerrit Plugin</ulink> enables a
-  Gerrit change set based strategy effectively allowing verified,
-  pre-tested commits.
+  http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Plugin[Gerrit
+  Plugin] enables a Gerrit change set based strategy effectively
+  allowing verified, pre-tested commits.
 
 Git executable::
 
@@ -3677,14 +3871,14 @@ there.
 
 Selecting Mercurial under the Source Code Management section will
 display the configuration options shown
-in<<fig-scm-hg-project-config>>.
+in <<fig-scm-hg-project-config>>.
 
 [[fig-scm-hg-project-config]]
 .Configuring Mercurial Source Control Information
 image::figs/web/scm-hg-project-config.png[scale=75]
 
-The section show in <<fig-scm-hg-project-config"
-xrefstyle="select:label>> contains the following options:
+The section show in <<fig-scm-hg-project-config>> contains the
+following options:
 
 Mercurial Version::
 
@@ -3807,8 +4001,11 @@ CVSROOT::
 
   This is the CVSROOT parameter for your source. You would enter in
   the same information here that you would use if you were checking
-  out source code use the CVS client.  The format for the URL is ----
-  +[[:protocol:][[user][:password]]][@servername][:serverpath]+ ----
+  out source code use the CVS client.  The format for the URL is 
+
+----
+[:protocol:][user][:password][@servername][:serverpath]+ 
+----
   with the parameters: <variablelist> 
 
 :protocol:::
@@ -3905,7 +4102,7 @@ configure the repository url and a module.
 //    <!--</section>-->
 
 [[chapter-grid]]
-== Running a Hudson grid</title>
+== Running a Hudson grid
 
 === Motivation
 
@@ -3925,7 +4122,7 @@ can be edited to modify various parameters like Java version used to
 run Hudson slave and others.
 
 [[chapter-plugins]]
-== Notable Hudson Plugins</title>
+== Notable Hudson Plugins
 
 === Hudson XYZ Plugin
 
@@ -3940,7 +4137,7 @@ TBD
 TBD
 
 [[chapter-ide-integration]]
-== IDE Integration</title>
+== IDE Integration
 
 The default way of interacting with Hudson is the web-based user
 interface. In addition Hudson ships with web service interfaces, that
@@ -4040,11 +4237,9 @@ Viewing a specific build's console output is often the quickest way to
 get to the bottom of a build failure. To open a build's console
 output, select the project from the Hudson jobs view, select an
 individual project build, and then click on the "Console Output" link
-shown in<xref linkend="fig-eclipse-matrix-project"
-xrefstyle="select:label"/>. Clicking on this link will load the view
-shown in<xref linkend="fig-eclipse-console-output"
-xrefstyle="select:label"/>. This view gives you the raw console output
-from a Hudson build.
+shown in <<fig-eclipse-matrix-project>>. Clicking on this link will
+load the view shown in <<fig-eclipse-console-output>>. This view gives
+you the raw console output from a Hudson build.
 
 [[fig-eclipse-console-output]]
 .Viewing Hudson Console Output from Eclipse
@@ -4088,5 +4283,9 @@ TBD
 [[chapter-plugin-writing]]
 == Writing a Hudson Plugin
 
+TBD
+
 [[copyright-sect-creative-commons]]
 == Book License
+
+TBD

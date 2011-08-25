@@ -289,18 +289,82 @@ integrate with anything in the world.  There's nothing stopping you
 from using Hudson in production.
 
 [[intro-sect-community]]
-=== The Hudson Community
+=== The Hudson Community at Eclipse
 
-Hudson has a large user and developer community on its own and it part
-of the large Eclipse Foundation and community.
+Hudson has an evolving community of developers and organizations
+interested in taking Hudson to the next level of stability and
+reliability.  Following the creation of the Jenkins fork in early
+2011, several members of the community decided to commit themselves to
+reconstituting the Hudson community and moving the project to the
+Eclipse Foundation.  This move promises to create a more stable
+approach to open source governance while creating a level playing
+field for interested individuals and organizations.
+
+Throughout its history the Hudson project lacked a formal structure
+and avoided process.  Grown from a pet project, the governance of
+Hudson as ad-hoc.  While this ad-hoc approach scaled for a few years,
+as more organizations decided to participate and contribute to the
+project the Hudson community identified a need for more formal
+procedures on issues such as release management, code provenance, and
+general technical direction.  It is now the desire of the Hudson
+project to move toward a more formal process and structure with the
+end-goal of creating a healthy, open environment with well-defined
+rules, development process and release processes for building a
+high-quality and reliable continuous integration server.
+
+Eclipse has a history of encouraging healthy environments for open
+source projects.  It is an organization supported and respected by
+millions of end-users, thousands of contributors, and hundreds of
+active companies. In addition to being a great home for the Hudson
+project, Eclipse is also an important user of the software.  Hudson
+has become an integral part of the development infrastructure at
+Eclipse, and the requirements the Eclipse Foundation mirror the
+requirements of some of the largest enterprises in the world.
 
 [[intro-sect-project]]
 === The Hudson Project
 
 The central access to the Hudson project is the web site hosted at
-http://hudson-ci.org[http://hudson-ci.org] and
-contains links to resources like wiki, issue tracker, mailing lists,
-source code and more. 
+http://hudson-ci.org[http://hudson-ci.org] and contains links to
+resources like wiki, issue tracker, mailing lists, source code and
+more.
+
+At the time this document was developer, the Hudson project at Eclipse
+was focused on the following tasks:
+
+* Improve the core of Hudson by bolstering the test harnesses,
+
+* Create a new performance harnesses allowing for more detailed
+  performance assessment and testing.
+
+* Develop a fully automated test and release infrastructure
+
+Some of the larger, medium-term goals of the Hudson project are:
+
+* *Improve stability* - The Eclipse project is investing QA efforts to
+   certify Eclipse to run on a set of standard platforms.  Improve the
+   reliability and stability of Hudson will enable more predictable
+   behavior for end-users and also enable an eco-system of interested
+   third-party providers of Hudson support services.
+
+* *Improve performance* - The project is focused on addressing
+   performance, especially for organizations using Hudson to support
+   large numbers of projects.
+
+* *Improve Maven 3.x integration* -
+
+* *Improve the UI* -
+
+, and better integration for the most
+commonly used plugins. There is also a desire for the use of standard
+technologies, where present, in the Hudson core. A standard OSGi
+runtime model based on Eclipse Equinox, a standard component model
+using JSR330, and standard web services using JAXRS are high on the
+priority list. Compatibility is also of utmost importance while all
+these improvements are being made. Even though there are plans to use
+JSR330 as part of a new plugin model for Hudson, until the community
+decides otherwise, the existing Huson plugins will be supported
+without requiring changes.
 
 [[intro-sect-license]]
 === Hudson's license

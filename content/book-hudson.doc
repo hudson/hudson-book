@@ -482,11 +482,11 @@ Deploy to the server::
   deploy the WAR file via a web-based administration console or by
   copying the WAR into a deployment folder.
 
-//
-// TODO add a specific hudson user maybe .. but not when other stuff
-//    runs on app server .. then the app server user needs access to
-//    HUDSON_HOME and whatever.. 
-//
+////
+TODO add a specific hudson user maybe .. but not when other stuff
+    runs on app server .. then the app server user needs access to
+    HUDSON_HOME and whatever.. 
+////
 
 When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
@@ -526,15 +526,6 @@ Step 2: Add Hudson repository URL to package management::
   The Hudson project hosts its packages in its own repository
   server. In order to use it you have to add its URL to your list of
   package sources with
-
-//
-// TODO: this does not work since sources deb is missing on
-//        the repo 
-//        <!--<screen>-->
-//         <!--sudo add-apt-repository "deb http://hudson-ci.org/debian binary/"-->
-//       <!--</screen>-->
-//       <!--<para>or-->
-//
 
 ----
 sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ 
@@ -677,10 +668,10 @@ to suit your needs, you should add it to you backup strategy.
 [[section-install-rpm]]
 === Installing Hudson on Redhat, CentOS, and Fedora
 
-///
+////
     at a later stage we can split this up but not now while it is all
     the same package and infrastructure
-///
+////
 
 Oracle Linux, Redhat Enterprise Linux, CentOS and Fedora all use the
 same rpm package provided by the Hudson project. This package will
@@ -1195,7 +1186,9 @@ Extract *.zip/*.tar.gz andRun Command as visible in <<fig-using-jdk-config>>.
 
 All the automatic install configurations cause Hudson to wait for the
 first build, which is configured to use a named instance of the JDK to
-initiate the JDK installation.
+initiate the JDK installation. The JDK will be installed into a folder
+in the tools directory in Hudson home using the tool name specified
+as the folder name.
 
 The option Install from Oracle brings up a drop-down to choose the
 version as well as a checkbox that needs to be clicked to the JavaSE
@@ -1218,8 +1211,8 @@ download url specifies the full url from which the JDK will be
 downloaded. The actual download is run off the Hudson master, so that
 any Hudson nodes that need the JDK installed do not need to have
 access to the url location. After successful download the JDK will be
-installed in the specified sub directory of the Hudson install
-directory.
+installed in the specified sub directory in the tools folder
+of the Hudson home directory.
 
 [[fig-run-command-installer]]
 .Run Command Installer Configuration
@@ -1259,7 +1252,8 @@ automatically checkbox and select Install from Apache and choose the
 desired version from the drop-down.
 
 Similar to the JDK installation from Oracle it is possible to use
-Install from Apache to get Ant installed. The options to install from
+Install from Apache to get Ant installed into a subdirectory of the
+tools folder in Hudson home. The options to install from
 an archive or by running a command are available as well and work in
 the same way as for JDK installs. A use case for an install from a
 file would be a custom Ant distribution with libraries for in-house
@@ -1282,7 +1276,7 @@ additional Maven 3 installs with the user interface displayed in
 image::figs/web/configure-maven-3.png[scale=75]
 
 The legacy Maven project type and Maven plugin use a separate
-installer as displayed in<<fig-configure-maven-installation>>. In
+installer as displayed in <<fig-configure-maven-installation>>. In
 addition to the same features as the Maven 3 installer it can be
 configured to download a Maven version from the Apache website when
 required.
@@ -1350,7 +1344,7 @@ part of your build.
 
 [[fig-using-shell-execute]]
 .Configuring Shell Executable
-image::figs/web/ci-using-shell-execute.png[scale=75] 
+image:figs/web/ci-using-shell-execute.png[scale=75]
 
 [[section-configure-email-notification]]
 === Configuring E-mail Notification
@@ -1370,7 +1364,7 @@ any configuration changes on Hudson.
 
 [[fig-configure-email-notification]]
 .Configuring Email Notification
-image::figs/web/configure-email-notification.png[scale=75]
+image:figs/web/configure-email-notification.png[scale=75]
 
 The following options can be configured:
 
@@ -1455,7 +1449,7 @@ have a Gmail account and provide the GMail e-mail address, or any
 other email address configured to be accepted in your Gmail account,
 as the User Name and configure the Password.
 
-//  Does it support SSL? What port? See http://184.73.106.215:8080/
+////  Does it support SSL? What port? See http://184.73.106.215:8080/
 
 === Troubleshooting E-mail Notification
 
@@ -1533,13 +1527,178 @@ http://www.sonatype.com/books/nexus-book/reference/maven-sect-single-group.html[
 Maven 3 Settings example] in the Sonatype Nexus book and customized to
 reference a hypothetical server running on +nexus.sonatype.org:8081+.
 
-Usage of the Maven 3 Settings configuration file in a Hudson job is
-documented in <<section-maven-3-build-configuration>>.
+Usage of the Maven 3 Settings configuration file in a Hudson job as
+well as Maven toolchains is documented in
+<<section-maven-3-build-configuration>>.
 
-//     <!-- TODO add more stuff about tool chains and link to
-//
-// http://maven.apache.org/guides/mini/guide-using-toolchains.html
-//     potentially
+[[section-view-configuration]]
+=== Configuring Global and Individual Project List Views
+
+Running a Hudson server or grid with many projects can make the list
+of configured jobs very long and therefore make it difficult for users
+and administrators to gather the information they need at a glance and
+find their way to the job they are intersted in. To provide this
+needed ease of access Hudson supports the addition of globally visible
+as well as user specific views to the main page displayed in
+<<fig-ci-quickstart-app-win>>.
+
+To add a new view simply click the + button beside the default list
+called All on top of the job list. If this button is not visible you
+do not have the access right to create views. Creating a view this way
+will make it globally visible to any user.
+
+Logging in as a specific user shows the My Views option in the left
+hand navigation menu. When you select this option the bread crumb
+navigation will contain your user name and the My Views option.
+Pressing the + button on the main job list now will create a
+personal view only visible to the current user when logged in.
+
+Each view can be given a description by clicking the edit
+description on the right side above the job list.
+
+When adding a new global view as displayed in
+<<fig-configure-new-global-view>> you have to provide a name and
+then select what type of view you want to add. You can either add a
+My View, which will display all jobs the current users has access
+to or you can add a List View, which is a highly configurable list
+of job types. The different configuration options are documented
+below.
+
+[[fig-configure-new-global-view]]
+.Adding a New Global View
+image::figs/web/configure-new-global-view.png[scale=75]
+
+After you have created the view you can configure the main filter
+properties displayed in <<fig-configure-view-main>>,
+configure, add and delete job filters as displayed in
+<<fig-configure-view-filters>> and add and delete columns for the list
+view as displayed in <<fig-configure-view-columns>>.
+
+[[fig-configure-view-main]]
+.Main Properties for Adding a New View
+image::figs/web/configure-view-main.png[scale=75]
+
+Besides the name provided at creation you can add a description
+that will be displayed above the list of jobs and below the title
+of the view. It can use HTML for e.g. hyperlinks to other related
+resources. The Filter build queue option causes Hudson to only
+show jobs from the view in the build queue. The Filter build
+executors option causes Hudson to only show build executors  that
+could execute shows from this view.
+
+The Job Filters configuration below as visible in
+<<fig-configure-view-filters>> shows the Status Filter,
+a list of all jobs and allows the configuration of a regular
+expression for inclusion of jobs on the list view. The regular
+expression is applied to the job name.
+
+[[fig-configure-view-filters]]
+.Configuring View Filters
+image::figs/web/configure-view-filters.png[scale=75]
+
+The Status Filter has the option to use all selected jobs or only
+enabled or disabled builds from the list below or the result of the
+ regular expression configured. The Jobs list itself
+is an alphabetically sorted list of all jobs configured with a
+checkbox for each job that you potentially want to include in the
+view. As an alternative to manually selecting jobs from the list
+you can configure a regular expression to match on the job names.
+With a good naming convention for the jobs this can be a good way
+to build the list. An example could be naming all release build
+jobs x-y-z-release or naming all plugin builds Plugin-x and then
+using a regular expression like .*-release or Plugin-.* to select
+them.
+
+In addition to the plain selection filters there are a number of
+specific filters available that can be added for further filtering.
+The filters will be applied in the order in the configuration screen.
+Each filter has a Match Type drop down selector that allows you to
+include matched or unmatched jobs as well as exclude matched and
+unmatched jobs from further filtering.
+
+A myriad of combinations is possible allowing you to implement easy
+access to all your builds for all your users catered to their
+varying needs
+
+With the Build Statuses filter displayed in
+<<fig-configure-view-filters-build-status>> you can include or
+exclude builds that are currently building, that have never been built
+or that are currently in the build queue.
+
+[[fig-configure-view-filters-build-status]]
+.Configuring the Build Status View Filter
+image::figs/web/configure-view-filters-build-status.png[scale=75]
+
+The Job Statuses filter in <<fig-configure-view-filters-job-status>>
+allows  you to combine Stable, Failed, Unstable, Aborted and Disabled
+statuses to create a filter for including or excluding jobs from
+your view.
+
+[[fig-configure-view-filters-job-status]]
+.Configuring the Job Status View Filter
+image::figs/web/configure-view-filters-job-status.png[scale=75]
+
+Similarly the Job Type filter in
+<<fig-configure-view-filters-job-type>> can be used to include or
+exclude based on the job being a free-style project, a Maven2/3
+project, a multi-configuration project or a monitor of an external
+job.
+
+[[fig-configure-view-filters-job-type]]
+.Configuring the Job Type View Filter
+image::figs/web/configure-view-filters-job-type.png[scale=75]
+
+The Other Views filter in <<fig-configure-view-filters-other>> has a
+selector for the other view which can be used for including or
+excluding jobs to the current view being configured. This allows
+you to easily create negations of other views e.g. all non release
+builds, or all non plugin builds or simply create a finer grained
+view of a different view. E.g. you could easily create a view of
+all plugin build that are currently with the job status Failed
+using a combination of the Other Views and the Job Statuses filter.
+Another good use case for this filter is to use multiple Other Views
+filters to aggregate the content of a number of other views.
+
+[[fig-configure-view-filters-other]]
+.Configuring the Other Views  Filter
+image::figs/web/configure-view-filters-other.png[scale=75]
+
+
+[[fig-configure-view-filters-parameterized-jobs]]
+.Configuring the Parameterized Jobs View Filter
+image::figs/web/configure-view-filters-parameterized-jobs.png[scale=75]
+
+
+[[fig-configure-view-filters-regex]]
+.Configuring the Regular Expression Job View Filter
+image::figs/web/configure-view-filters-regex.png[scale=75]
+
+
+[[fig-configure-view-filters-scm-type]]
+.Configuring the SCM Type View Filter
+image::figs/web/configure-view-filters-scm-type.png[scale=75]
+
+[[fig-configure-view-filters-unclassified]]
+.Configuring the Unclassified Jobs View Filter
+image::figs/web/configure-view-filters-unclassified.png[scale=75]
+
+[[fig-configure-view-filters-user-permissions]]
+.Configuring the User Permissions for Jobs View Filter
+image::figs/web/configure-view-filters-user-permissions.png[scale=75]
+
+Also All Jobs filter for simply adding all..
+
+
+[[fig-configure-view-columns]]
+.Configuring View Columns
+image::figs/web/configure-view-columns.png[scale=75]
+
+
+[[fig-configure-new-my-view]]
+.Adding a New Personal View (My View)
+image::figs/web/configure-new-my-view.png[scale=75]
+
+
 
 [[chapter-security]]
 == Securing Hudson
@@ -1580,10 +1739,8 @@ Markup Formatter::
   Raw HTML is the default setting that causes Hudson to render any
   input data from text fields as HTML in the user interface. This
   allows for added links and more, but also has the potential for
-  cross site scripting XSS attacks.  
-
-// <!-- TODO there are not plugins or anything that add a different
-// formatter!?, asked on the mailing list --> 
+  cross site scripting XSS attacks. Currently plugins that implement
+  other markup are planned, but not yet available for Hudson.
 
 === Access Control
 
@@ -1622,10 +1779,6 @@ or run a separate realm for Hudson.
 
 ==== Delegating to a Servlet Container
 
-//        <!--We need a walk-through for how this works.  We also need to
-//        motivation and explanation.   What protocol is used?  How does this work?
-//        SEE HBOOK-47-->
-
 By default running from the war directly Hudson is running in the
 winstone servlet container and there will be no security provided by
 it. However for production usage the preferred deployment method is to
@@ -1642,13 +1795,6 @@ using the servlet container authorization and you want to achieve a
 single-sign on for all applications running on this server or cluster
 of servers or you simply prefer to manage your users from the
 application server user interface.
-
-When using this security realm, you will need to use matrix based
-security as documented in <<section-security-authorization-matrix>> or
-project-based matrix authorization strategy as documented in
-<<section-security-authorization-project>> and set up the user/group
-you want to allow in Hudson in the matrix with the desired access
-rights. 
 
 ==== Relying on Unix Users and Groups
 
@@ -1717,12 +1863,27 @@ configuration screen, which allows password resets among other tasks.
 .User configuration
 image::figs/web/security-user-configure.png[scale=75]
 
+In addition the global Manage Hudson screen displayed
+in <<fig-config-manage-hudson>> has the Manger Users option added.
+In this management section the administrator has the option to create
+and administrate users. The Create User link in the left hand
+navigation menu presents the Sign Up screen from
+<<fig-security-signup>> without the captcha test to the administrator
+allowing account creation to be controlled by an administrator rather
+than by self signup. In addition this screen shows a list of users
+already registered with Hudson and allows the administrator to delete
+users and edit them via the user configuration screen from
+<<fig-security-user-configure>>.
+
 ==== Light-weight Directory Authentication Protocol (LDAP)
 
 If you have an LDAP server, Hudson can be configured to use this
 server to authenticate users. The administration interface in
 <<fig-security-ldap>> allows you to provide all the necessary details
-for Hudson to connect to your LDAP server.
+for Hudson to connect to your LDAP server. You will be able to connect
+to most common LDAP servers. If you want to configure security with
+Microsoft Active Directory you should also have a look at the specific
+plugin for Active Directory.
 
 [[fig-security-ldap]]
 .Overview of the available security settings
@@ -1730,62 +1891,74 @@ image::figs/web/security-ldap.png[scale=75]
 
 Server::
 
-  TBD
+  The server connection string is typically composed of a protocol of
+  ldap:// or ldaps://, a server name and for non-standard ports used
+  a colon followed by a port. The default ldap protocol and port 389
+  can be omitted, so the simplest server would be the server name or
+  IP number only. Further valid examples are e.g.
+  directory.example.com:1389 or ldaps://directory.somewhere.com:1636.
+   The default port for ldaps is 636.
 
 root DN::
 
-  TBD
+  Specify the root DN for you want to use for authentication. Typically
+  this would be a value like dc=simpligility,dc=com
 
-User search base::
+User search base and User search filter::
 
-  TBD
-
-User search filter::
-
-  TBD
+  The user search base  and use search filter fields allow you to
+  define a sub tree to look for user records within the root DN. E.g
+  the search base could be ou=people or ou=developers and the search
+  filter could be the default uid={0} or mail={0} for users logging in
+  with their email address. If you need to further define your search
+  filter you can use {0} as the pattern that will be replaced with the
+  username in the search.
 
 Group search base::
 
-  TBD
+  Define the query to locate the list of groups for a user in this
+  query that is typically just empty to search in the root DN or
+  ou=groups. More complicated queries are possible the {0} as pattern
+  for the user name replacement.
 
-Manager DN::
+Manager DN and Manager Password::
 
-  TBD
+  The Manager DN and password are required for Hudson itself to
+  connect to your LDAP server to query for the user details. The DN is
+  only necessary if you server does not support anonymous bind and
+  typically looks something like this
+  CN=MyUser,CN=Users,DC=mydomain,DC=com.
 
-Manager Password::
+Beyond the standard settings LDAP configuration can require further
+ tweaks like documented in the following.
 
-  TBD
+In general all the LDAP queries are space sensitive and their content
+is specific to your LDAP server configuration and can widely differ
+from other LDAP configurations.
 
-//        <!--We need a section to motivate the LDAP realm, talk about when to use it.
-//        This section also needs to talk about compatibility with
-//  various LDAP implementations, and it needs to provide a step-by-step walkthrough.
-//  SEE HBOOK-48-->
+If login attempts result in "Administrative Limit Exceeded" or similar
+error message, any LDAP query but often specifically the LDAP query to
+determine the group membership triggers it. A general tip in this
+situation is to try setting the "Group search base" and other settings
+ as specific as possible for your LDAP structure, to reduce the scope of
+the query.
 
-//          <!-- LDAP
-// Select LDAP for the Security Realm and click the help icon for each configuration option to see information about the settings.
-
-If login attempts result in "OperationNotSupportedException - Function
-Not Implemented", "Administrative Limit Exceeded" or similar error,
-the LDAP query to determine the group membership for the user may be
-triggering this. First try setting the "Group search base" setting as
-specific as possible for your LDAP structure, to reduce the scope of
-the query. If the error persists, you may need to edit the
+If the error persists, you may need to edit the
 WEB-INF/security/LDAPBindSecurityRealm.groovy file that is included in
 hudson.war. Change the line with groupSearchFilter = "(| (member={0})
 (uniqueMember={0}) (memberUid={1}))"; to query only of the field used
 in your LDAP for group membership, such as groupSearchFilter =
 "(member={0})"; (then restart Hudson).
 
-Groups Prefix LDAP groups with ROLE_ and convert them to uppercase
-when assigning privileges to LDAP groups. For example, the LDAP group
-Developers (cn=Developers) would be used as ROLE_DEVELOPERS in Hudson
-Group names with non-alpha characters such as hyphen (-), space and
-comma do not seem to work.  Hudson does not support indirect group
-memberships, i.e. if a user is a member of a group A which is itself a
-member of group B, the user would not get the privileges
-(e.g. "Adminster Hudson") defined for B - only those defined for A.
+In general Hudson will prefix any LDAP group with the ROLE_ prefix.
+ This has to be taken into account when configuring access rights in
+ a matrix based security realm. For example, the LDAP group
+developers (cn=developers) would be used as ROLE_DEVELOPERS in Hudson
+Group names are being changed to all uppercase and non-alpha
+characters such as hyphen, space and comma are not supported.
 
-One has to add groups prefixing with "ROLE_" (without quotes). I'm using OpenLDAP as its backend.-->
+Hudson's LDAP integration currently does not support indirect group
+memberships.
 
 ==== Configuring an Authorization Strategy
 
@@ -1869,9 +2042,10 @@ user or user group.
 
 ==== Using the Legacy Authorization Strategy
 
-TBD
+Hardcoded role of admin .. really can be replaced with matrix. There
+is a JIRA issue against Hudson to remove it.
 
-// <!--SEE HBOOK-52 - Legacy to what?   Explain what this mode means to the user.-->
+// HBOOK-52 - Legacy to what? Explain what this mode means to the user.
 
 ==== Anyone can do anything
 
@@ -2292,26 +2466,26 @@ Use custom workspace::
 [[section-configuring-source-code-management]]
 ==== Configuring Source Code Management
 
-  Hudson is typically used in conjunction with the source of the
-  project available in a source code management system. Support for a
-  large variety of SCM's is one the strength's of Hudson. This section
-  allows for the configuration of the respective settings for your SCM
-  of choice. The available list of choices will contain all SCM
-  systems provided by Hudson and the installed plugins.
-  <<chapter-plugin-management>> explains how to get support for your
-  SCM installed, if it is not yet available. Once installed each SCM
-  configuration will have different parameters, which are documented
-  in <<chapter-source-control>>.
+Hudson is typically used in conjunction with the source of the
+project available in a source code management system. Support for a
+large variety of SCM's is one the strength's of Hudson. This section
+allows for the configuration of the respective settings for your SCM
+of choice. The available list of choices will contain all SCM
+systems provided by Hudson and the installed plugins.
+<<chapter-plugin-management>> explains how to get support for your
+SCM installed, if it is not yet available. Once installed each SCM
+configuration will have different parameters, which are documented
+in <<chapter-source-control>>.
 
 [[section-configuring-build-triggers]]
 ==== Configuring Build Triggers
 
-  The next section to configure is Build Triggers. A Hudson job can be
-  configured to build in response to build activity on a Hudson
-  instance, in accordance with a regular schedule, or as a reaction to
-  activity in an SCM system. Build triggers are configured on a
-  Project's Configuration screen and the section is shown in
-  <<fig-using-build-triggers>>.
+The next section to configure is Build Triggers. A Hudson job can be
+configured to build in response to build activity on a Hudson
+instance, in accordance with a regular schedule, or as a reaction to
+activity in an SCM system. Build triggers are configured on a
+Project's Configuration screen and the section is shown in
+<<fig-using-build-triggers>>.
 
 [[fig-using-build-triggers]]
 .Configuring Build Triggers
@@ -2329,13 +2503,29 @@ Build after other projects are built::
   on this project's build completing can be configured in the
   Post-build Actions.
 
-Build when Maven dependencies have been updated::
+Trigger builds remotely (e.g. from scripts)
 
-  Hudson projects can be configured to send out a notification to all
-  projects that Maven dependencies have been updated as post build
-  action (see <<section-configuring-post-build-actions>>). When you
-  activate this build trigger a build of the project will be started
-  once a such a notification is received.
+  Enabling this option will allow you to define a authentication token
+  for triggering a build by hitting a project specific url together
+  with the defined token. The url follows the patterns
+----
+    http://hudsonurl/jobs/project/build?token=mytoken&cause=mycause
+----
+  with hudsonurl replaced by the url of your hudson server including
+  port number and context (e.g. http://buildserver:8080/hudson).
+  mytoken will be the secret token you defined in the Authentication
+   Token field and mycause an optional text to submit as the cause. To
+   allow users to hit the url you can e.g. host the link on a
+   secured web page, send it via email or also use curl or wget from
+   a script.
+
+Build periodically::
+
+  The Build periodically setting will cause Hudson to start a build of
+  the project in regular intervals. Changes will be retrieved from the
+  configured SCM, but a build will be triggered even if no changes
+  were found.  The interval configuration in the exposed text field
+  accepts the same cron syntax as the Poll SCM configuration.
 
 Poll SCM::
 
@@ -2356,13 +2546,25 @@ Poll SCM::
   hours and therefore only builds then. Similar setup ups can be used
   to do a nightly or a weekly build type setup.
 
-Build periodically::
+Build when Maven dependencies have been updated by Maven 3 integration::
 
-  The Build periodically setting will cause Hudson to start a build of
-  the project in regular intervals. Changes will be retrieved from the
-  configured SCM, but a build will be triggered even if no changes
-  were found.  The interval configuration in the exposed text field
-  accepts the same cron syntax as the Poll SCM configuration.
+  Hudson projects using the Maven 3 integration can be configured to
+  send out a notification to all projects that Maven dependencies have
+  been updated as post build action (see
+  <<section-configuring-post-build-actions>>). When you
+  activate this build trigger a build of the project will be started
+  once a such a notification is received. The projects triggering each
+  other in this set up needs to be configured to access the same
+  Maven repository.
+
+Build when Maven SNAPSHOT dependencies have been updated externally::
+
+  Activating this setting allows you to specify a schedule in cron
+  syntax to use for polling the local Maven repository for updated
+  SNAPSHOT dependencies. When selecting the Exclude internally
+  produced dependencies option the regular check will only cause a
+  build trigger firing when artifacts not built in a local Hudson job
+  are updated.
 
 [[section-configuring-post-build-actions]]
 ==== Configuring Post-build Actions
@@ -2565,7 +2767,7 @@ Notify that Maven dependencies have been updated::
 
   When activating this option Hudson will notify all projects with a
   build trigger configured to watch for Maven dependencies that have
-  been updated (see<<section-configuring-build-triggers>>). When the
+  been updated (see <<section-configuring-build-triggers>>). When the
   additional option Notify even when build is unstable is selected
   this notification will occur even when an unstable build ran. A
   sideeffect of this could be that only some Maven dependencies have
@@ -2579,7 +2781,31 @@ In addition to the common project configurations we discussed prior, a
 free-style Hudson project has a section for the build definition that
 allows you to add individual build steps. Press the Add build step
 button in the Build configuration section to set up one or multiple
-steps that define your build.
+steps that define your build with the choices displayed in
+<<fig-freestye-add-build-step>> and documented below.
+
+[[fig-freestye-add-build-step]]
+.Adding a free-style project build step
+image::figs/web/freestyle-add-build-step.png[scale=75]
+
+Execute shell::
+
+  Executing a shell script as a build step is configured just like a
+  Windows batch command. The unix convention to use the first line
+  with a #! and the path to an executable allows you to write shell
+  scripts in many available shell and scripting languages.
+
+Invoke Maven 2 (Legacy)::
+
+  A Maven 2 based build step can be configured as documented in
+  <<section-maven-2-build-configuration>>. We recommend to use the
+  Maven 3 invocation where possible.
+
+Invoke Ant::
+
+  Invoking an Ant target can be added just like a shell script task,
+  but with more configuration options. Find out more on how to
+  configure Ant invocations in <<section-ant-build-configuration>>
 
 Execute Windows batch command::
 
@@ -2591,23 +2817,10 @@ Execute Windows batch command::
   current project are passed to the execution of the script and can be
   used from within the script.
 
-Execute shell::
+Invoke Maven 3::
 
-  Executing a shell script as a build step is configured just like a
-  Windows batch command. The unix convention to use the first line
-  with a #! and the path to an executable allows you to write shell
-  scripts in many available shell and scripting languages.
-
-Invoke Ant::
-
-  Invoking an Ant target can be added just like a shell script task,
-  but with more configuration options. Find out more on how to
-  configure Ant invocations in <<section-ant-build-configuration>>
-
-Invoke top-level Maven targets::
-
-  A Maven based build step can be configured as documented in
-  <<section-maven-2-build-configuration>>
+  A Maven 3 based build step can be configured as documented in
+  <<section-maven-3-build-configuration>>
 
 [[section-configuring-multi-config-project]]
 === Configuring Multi-Configuration Projects
@@ -2737,7 +2950,7 @@ TBD
 After configuring the general project options as documented in
 <<chapter-build-creation>>, you can configure one or more build
 steps. To add a build step, click on the Add build step button as
-shown in ???. To configure a Maven build,
+shown in <<fig-maven-3-build-step-default>>. To configure a Maven build,
 select Invoke Maven 3.
 
 The basic and advanced options for configuring a Maven 3 build steps
@@ -2754,7 +2967,7 @@ image::figs/web/build-step-maven-3-default.png[scale=75]
 
 [[fig-maven-3-build-step-advanced]]
 .Configuring a Maven 3 Build Step - Advanced Options
-image::figs/web/build-step-maven-3-advanced-.png[scale=75]
+image::figs/web/build-step-maven-3-advanced.png[scale=75]
 
 Maven Version::
 
@@ -2798,7 +3011,9 @@ POM File::
   you can specify that file name and path here. This setting is
   equivalent to the command-line option -f pomfilepath or--file
   pomfilepath. The path specified has to be relative to the project
-  root.
+  root. It is also necessary to specify the path to the POM file here
+  if you SCM setup causes the POM file to be located in a subfolder
+  and not in the top level workspace folder.
 
 Private repository::
 
@@ -2900,11 +3115,12 @@ Make Mode::
   and DEPENDENCIES, DEPENDENTS and BOTH respectively +-am+, +-amd+ and
   +-am -amd+.
 
-//            <!-- TODO add url to external resource explaining this more and
-//            explain how this can work with a project in relation to checked
-//            out workspace project and external dependencies,
-//            also how does this work with Hudson upstream,
-//            downstream dependencies and so on  -->
+////
+    TODO add url to external resource explaining this more and explain
+     how this can work with a project in relation to checked out
+     workspace project and external dependencies, also how does this
+     work with Hudson upstream, downstream dependencies and so on
+////
 
 Threading::
 
@@ -2912,12 +3128,10 @@ Threading::
   enables the experimental support for parallel builds in Maven 3. A
   value of +4+ enables four threads for the build. A value of +2.5C+
   would enable 2.5 threads per CPU core. When activating this feature,
-  keep the experiemental nature of this feature as well as the not yet
-  wide spread support for this feature in the various plugins.
-
-//<!-- add link to external link like
-//  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html
-//  maybe-->
+  keep the experimental nature of this feature as well as the not yet
+  wide spread support for this feature in the various plugins in mind. Read
+  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html[on the Maven wiki]
+  to find out more about this feature and the current status.
 
 Settings::
 
@@ -2925,11 +3139,7 @@ Settings::
   and supplies a Maven 3 build step with a custom settings
   configuration file. The dropdown for this field is populated with
   the Maven 3 Settings files configured in the Hudson Maven 3
-  Configuration page as shown in <<fig-manage-mvn-3-settings>>.  
-
-//<!--
-//  TODO do we need to talk about security and injection of the settings
-//  like on the built in help or in more detail?  -->
+  Configuration page as shown in <<fig-manage-mvn-3-settings>>.
 
 Global Settings::
 
@@ -2938,10 +3148,6 @@ Global Settings::
   you to reference a custom global configuration file that is an
   alternative to the global settings file that ships with Apache
   Maven.
-
-//            <!-- TODO do we need to talk about security and injection of the
-//            settings like on the built in help or in more detail?
-//            -->
 
 Tool Chains::
 
@@ -2973,7 +3179,7 @@ project build step. After configuring the general project options (see
 <<chapter-build-creation>>), you can configure one or more build
 steps. To add a build step, click on the Add build step button as
 shown in <<fig-build-step-maven-2-legacy-default>>. To configure a
-Maven build, selectInvoke Maven 2 (Legacy).
+Maven build, select Invoke Maven 2 (Legacy).
 
 [[fig-build-step-maven-2-legacy-default]]
 .Configuring Project Build Options
@@ -3188,8 +3394,8 @@ TBD
 One of the most important parts of the Hudson project configuration
 are the settings that connect your Hudson project to source
 control. Any software development project should be managed in a
-http://en.wikipedia.org/wiki/Source_code_management[source
-control management system], many of which are open source
+http://en.wikipedia.org/wiki/Source_code_management[source control management system],
+many of which are open source
 software and have large user communities. Hudson has support for all
 common SCM systems as well as many of the less popular ones. Most
 likely you will find support for your SCM already installed or
@@ -3296,7 +3502,7 @@ Validate repository URLs up to the first variable name::
 
 Selecting Subversion under the Source Code Management section will
 display the configuration options shown
-in<<fig-scm-svn-project-config>>.  Clicking
+in <<fig-scm-svn-project-config>>.  Clicking
 on the Advanced button will reveal the advanced configuration
 parameters shown in <<fig-scm-svn-project-config-advanced>>.
 
@@ -3453,7 +3659,7 @@ available for anonymous read access to the repository.
 [[section-scm-svn-advanced-config]]
 ==== Tips and Tricks for Advanced SVN Configurations
 
-TBD
+Lets get fancy...
 
 ==== Subversion related environment variables
 
@@ -3480,9 +3686,6 @@ http://git-scm.com/[Git] is the most successful, modern distributed
 version control system and has gained wide acceptance in the open
 source community and beyond. and repository hosting services available
 from multiple suppliers for commercial and open source usage.
-
-//    <!-- TODO add some links to external git related help and mention that
-//     we assume some git knowledge here-->
 
 The Hudson Git Plugin and therefore support for Git is available in
 default Hudson installs from version 2.1 onwards. If it is not
@@ -3713,9 +3916,9 @@ Choosing strategy::
   repositories a more refined strategy is used selecting revisions
   that have notG yet been built and are on the specified branches.
   Other plugins can implement a different choosing strategy e.g. the
-  http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Plugin[Gerrit
-  Plugin] enables a Gerrit change set based strategy effectively
-  allowing verified, pre-tested commits.
+  http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Plugin[Gerrit Plugin]
+  enables a Gerrit change set based strategy effectively allowing
+  verified, pre-tested commits.
 
 Git executable::
 
@@ -4002,9 +4205,11 @@ the global configuration.
 In terms of project specific configuration you only need to specify
 the public url of the repository.
 
-//     <!-- TODO this should be added in one way or another
-//      http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
-//      -->
+////
+    TODO this should be added in one way or another
+    http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
+////
+
 
 [[section-scm-cvs]]
 === Configuring CVS
@@ -4065,10 +4270,9 @@ CVSROOT::
 
   This is the CVSROOT parameter for your source. You would enter in
   the same information here that you would use if you were checking
-  out source code use the CVS client.  The format for the URL is 
-
+  out source code use the CVS client.  The format for the URL is
 ----
-[:protocol:][user][:password][@servername][:serverpath]+ 
+  +[[:protocol:][[user][:password]]][@servername][:serverpath]
 ----
   with the parameters: <variablelist> 
 
@@ -4161,9 +4365,10 @@ available on the PATH on the Hudson server or have the path configured
 in the global configuration. For the project specific settings
 configure the repository url and a module.
 
-//   <!--<section id="section-scm-cvs-advanced-config">-->
-//      <!--<title>Tips and Tricks for Advanced CVS Configurations</title>-->
-//    <!--</section>-->
+[[section-scm-cvs-advanced-config]]
+==== Tips and Tricks for Advanced CVS Configurations
+
+TBD
 
 [[chapter-grid]]
 == Running a Hudson grid
@@ -4302,8 +4507,8 @@ get to the bottom of a build failure. To open a build's console
 output, select the project from the Hudson jobs view, select an
 individual project build, and then click on the "Console Output" link
 shown in <<fig-eclipse-matrix-project>>. Clicking on this link will
-load the view shown in <<fig-eclipse-console-output>>. This view gives
-you the raw console output from a Hudson build.
+load the view shown in <<fig-eclipse-console-output>>.
+This view gives you the raw console output from a Hudson build.
 
 [[fig-eclipse-console-output]]
 .Viewing Hudson Console Output from Eclipse

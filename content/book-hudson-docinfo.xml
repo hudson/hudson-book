@@ -1,0 +1,29 @@
+    <isbn>123</isbn>
+    <edition>1.0</edition>
+    <author>
+      <surname>O'Brien</surname>
+      <firstname>Tim</firstname>
+    </author>
+    <author>
+      <surname>Moser</surname>
+      <firstname>Manfred</firstname>
+    </author>
+   <editor>
+      <othername>Tim O'Brien</othername>
+      <affiliation>
+        <orgname>Sonatype, Inc.</orgname>
+      </affiliation>
+    </editor>
+
+    <copyright>
+      <year>2011</year>
+      <holder>Oracle, Inc.</holder>
+    </copyright>
+
+    <publisher>
+      <publishername>Oracle, Inc.</publishername>
+    </publisher>
+
+    <abstract>
+      <para>Hudson is THE ci server.</para>
+    </abstract>

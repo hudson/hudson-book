@@ -367,120 +367,226 @@ decides otherwise, the existing Huson plugins will be supported
 without requiring changes.
 
 [[intro-sect-license]]
-=== Hudson's license
+=== Hudson's License
 
-Hudson and its components are licensed under various open source
-licenses.
+As Hudson has completed the transition to the Eclipse Foundation, the
+core of Hudson is covered by the
+http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License
+version 1.0].  The Open Source Initiative categories the Eclipse
+Public License as a "popular and widely used license with a strong
+community".  The EPL is a limited copyleft license designed to be a
+"business-friendly" alternative to the GPL.  For more information
+about the Eclipse Public License, see
+http://en.wikipedia.org/wiki/Eclipse_Public_License
 
-The migration of Hudson under the governance of the Eclipse Foundation
-will change the license to of all components to the Eclipse Public
-License.
+If you have any questions about the Eclipse Public License, the
+Eclipse Foundation also maintains a
+http://www.eclipse.org/legal/eplfaq.php[helpful FAQ] about the
+license.  A big reason for the move to the Eclipse Foundation was to
+make sure that the project was on solid ground for licensing issues.
+Eclipse takes Intellectual Property and Provenance very seriously and
+maintains a strict contribution review process to make sure that every
+project release complies with a set of strict licensing standards.  If
+you download it from Eclipse, if it is stored in Eclipse's source
+control systems, it is released under the EPL.
 
-[[chapter-ci]]
-== Understanding Continuous Integration
-
-[[section-ci-what]]
-=== What is Continuous Integration
-
-Continuous integration is a software development practice invented by
-Martin Fowler and Kent Beck during the emergence of the Extreme
-Programming software development methodology.
-
-Read more about it all on
-http://martinfowler.com/articles/continuousIntegration.html[Martin
-Fowler's web site] and
-http://en.wikipedia.org/wiki/Continuous_integration[wikipedia] 
-
-While continuous integration is slowly becoming a mainstream best
-practice the more advanced usage of Hudson for continuous delivery or
-continuous deployment is not yet widespread. 
+NOTE: While the core of Hudson is licensed under the EPL, Hudson is a
+container for running various Hudson Plugins.  These plugins may be
+covered by a variety of licenses, and if you are redistributing Hudson
+along with a set of 3rd party plugins, you should consult each
+individual plugin project to find a specific license.
 
 [[chapter-install]]
 == Installing and Running Hudson
 
-The following sections detail the installation process for Hudson. In
-general there are two different approaches available.
+Hudson has a reputation for being both easy to install and very
+adaptable to running in a variety of environemnts.  You can run Hudson
+as a stand-alone web application, or you can run Hudson within an
+existing servlet container.  The Hudson project also maintains
+OS-specific packages for Redhat, Debian, Ubuntu, and other Linux
+distributions which make installing Hudson on these platforms almost
+effortless.
+
+The following sections detail the installation process for Hudson. The
+are two different approaches to installing Hudson:
 
 WAR File::
 
-  section-maven-3-build-configuration <para>The Hudson website
-  provides a Java web archive file (WAR) for download. This file can
-  either be started directly or used in an existing Java servlet
-  container or application server.
+  The Hudson website provides a Java web archive file (WAR) for
+  download. This file can either be started directly or used in an
+  existing Java servlet container or application server.
 
 Native Package::
 
   Besides the web archive you can download packages for Hudson
-  suitable for the use with the native package management of
+  suitable for the use with the native package management systems on
   Ubuntu/Debian, Oracle Linux, Redhat/Fedora/CentOS and openSUSE.
 
-As a server-based application running 24x7 Hudson intrinsically should
-be installed as an operating system service, so that any system
-reboots necessary for maintenance or other reasons will automatically
-restart Hudson. The documentation for the Hudson install therefore
-includes documentation for setting up these services.
+It is a best practice to install Hudson as a service that is
+automatically started when an operation system starts.  On a Windows
+machines this can be as straightfoward as setting a new Windows
+server, and on a Linux machine this is as easy as dropping the
+appropriate script in /etc/init.d.  The following sections will
+outline the process for configuring Hudson as a service on various
+operating systems.
 
 [[section-install-preprequisites]]
 === Prerequisites
 
+While Hudson can run on a variety of machines under an almost infinite combinations of JVMs, Operating System, and infrastructure.  The Hudson project is targeting a set of standard operating systems and Java versions.  This section outlines some of the expectations, the preconditions that are necessary to install and run a Hudson server.
+
+==== Software Prerequisites
+
 Hudson only has one prerequisite, a Java Runtime Environment (JRE)
 compatible with Java 6 or higher.  Hudson is most often run with the
 JRE that is bundled with a Java Development Kit (JDK) installation. We
-recommend using the latest version of the JDK/JRE that comes as part
-of your operating system.
+recommend using the latest version of the JDK/JRE Java 6.  If you are
+running on a modern Linux distribution such as Ubuntu, it is often
+possible to install the OpenJDK 6 project using a tool like apt-get
+(or yum on a Redhat distribution).
 
-The latest version of Oracle's JDK 6 is the officially supported
-runtime. To download the latest release of the Oracle JDK, go to
-http://www.oracle.com/technetwork/java/javase/downloads/index.html[http://www.oracle.com/technetwork/java/javase/downloads/index.html]
-, and download the latest Java 6 JDK.
+Download Oracle Java 6 JDK::
 
-OpenJDK as available with many Linux distributions as part of their
-package system is known to work as a runtime for Hudson as are other
-JVM implementations such Oracle JRockit, HP-UX JDK and IBM JDK.
+  The latest version of Oracle's JDK 6 is the officially supported
+  runtime. To download the latest release of the Oracle JDK, go to
+  http://www.oracle.com/technetwork/java/javase/downloads/index.html[http://www.oracle.com/technetwork/java/javase/downloads/index.html]
+  , and download the latest Java 6 JDK.
+
+Installing OpenJDK 6 on Linux::
+  
+  OpenJDK packages are available in both RPM and DEB format which should cover most Linux distributions.  To install the OpenJDK 6 on your Linux machine, following the instruction on http://openjdk.java.net/install/index.html[this page].
 
 [[section-install-war]]
+
+==== Hardware Prerequisites
+
+As there is such a wide variety of Hudson deployments, from the Hudson server that runs a single project only trigger once every few days, to the Hudson server which servers as a master orchestrator of a hundred of more nodes in a massively distributed build grid, it is impossible to predict and recommend the necessary CPU power and disk space your particular installation will demand.
+
+What this section can do is provide a few recommendations that will help size and configure your infrastructure:
+
+Network::
+
+  If your Hudson server is very active you should make sure that there
+  is sufficient bandwidth and low latency between your Hudson server
+  and your source control system.  Hudson is configured to
+  periodically test the source control system and look for changes.
+  In general, the critical components of your development
+  infrastructure should be co-located with one another.  Your CI
+  server should be next to your SCM server.  If your Hudson server is
+  configured to automatically publish build artifacts to a repository
+  manager, you should also make sure that the network connect between
+  these two machines can support the expect level of activity.
+
+CPU:: 
+
+  In the absence of build activity, Hudson doesn't consume very much
+  in the way of CPU power.  You can let Hudson run in the background,
+  waiting for a build to trigger without having to worry about consume
+  more than a few processor cycles.  With build activity, you should
+  take the CPU requirements of your own development workstation and
+  use that as a baseline for your Hudson server.
+
+Memory::
+
+  Compilers can often eat massive amounts of RAM.  As with CPU
+  configuration, take your own development workstation as a baseline
+  and try to multiple that requirement by the number of expect
+  concurrent builds.  If your local build can easily run with 2 GB of
+  RAM and you expect three concurrent build threads at any given time,
+  then make sure that your Hudson instance can consume 6 GB of RAM on
+  a server.
+
+I/O::
+
+  As with Memory requirements, builds tends to make disk drive go
+  beserk with activity.  If your builds are particularly I/O
+  intensive, you are going to want to make sure that your Hudson has
+  sufficient local storage (or high-speed SAN storage).  If you try to
+  run a massive build job using an NFS mount to store output you are
+  likely to see unacceptable build performance.
+
+Storage::
+
+  You should be able to get off the group with 5-10 GB, but once you
+  start building your projects, you are going to want to keep a little
+  of history around.  This build history can provide invaluable
+  insight into the trends surround a particular build.  If you were
+  able to look at your project's build history over a few weeks, you
+  might notice that one developer in particular continues to break the
+  build for your team.  Alternatively, you migth have configure Hudson
+  to keep track of important metrics like test failures over time.
+
+  If you think that keeping build history around is import, you should
+  Hudson an appropriate amount of disk space.  What this number is is
+  heavily dependent on the size of your projects and the size of the
+  generate binary artifacts.  Larger projects with tens of thousands
+  of lines of code can often get by with 60-100 GB, but the largest
+  Hudson installations can easily reach a TB or more dependending on
+  the activity in a given development group.
+
+Again, these recommendations come with a caveat: the authors of this
+document are not familiar with your application's build.  If your
+tests generate a huge amount of I/O activity or if your builds are
+particularly difficult to compile, you should use your best judgement.
+A good rule of thumb with Hudson deployments is to make sure that your
+Hudson server can satisfy a reasonable number of concurrent builds.
+Should it be able to run two builds in parallel?  How about ten?  This
+all depends on the size of your development and the frequency with
+which code changes are committed to source control.
+
 === Installing Hudson with the WAR File Distribution
 
 The WAR file available for download on the Hudson web site is an
-executable WAR that has a servlet container embedded. Once downloaded
+executable WAR that has a servlet container embedded.  Once downloaded
 and copied to the desired directory, it is therefore possible to start
-Hudson with the command
+Hudson with the simple command:
 
 ----
  java -jar hudson.war
 ----
 
+TIP: That's it.  The Hudson WAR ships with everything it needs to
+start itself.
+
 This will start the servlet container as the current operating system
-user inheriting access rights to the file system and so on. The Hudson
-home directory will be set to the +.hudson+ folder in
-the users home directory. Once started the web-based Hudson user
-interface will be available at
+user, inheriting access rights to the file system and so on. The
+Hudson home directory will be set to the +.hudson+ folder in the user's
+home directory. Once started the web-based Hudson user interface will
+be available at
 http://localhost:8080/hudson[http://localhost:8080/hudson]
 
 [[fig-ci-quickstart-app-win]]
 .Hudson Application Window
 image::figs/web/home-job-list.png[scale=75]
 
-This approach is suitable for testing and exploring Hudson, but it is
-not recommended to run Hudson like that in a production usage.
-Conveniently the WAR file is suitable to be deployed in most of the
-commonly used Java servlet containers and application server. The
-detailed process differs for these containers but in general the
-required steps are:
+NOTE: This approach is suitable for testing and exploring Hudson, but
+it is not recommended to run Hudson as an exectuable WAR in
+production.  Sure, it only took you a few seconds to download and
+start Hudson, but running dependable development infrastruction
+usually requires more than just a developer running "java -jar" from
+the command-line.  If you really want to get serious about running
+Hudson, configure Hudson as a service on Windows or Linux.
+
+=== Deploy Hudson to a Servlet Container
+
+Conveniently the WAR file is suitable to be deployed in most commonly
+used Java servlet containers and application server. The detailed
+process differs for these containers but in general the required steps
+are as follows:
 
 Set up HUDSON_HOME::
 
   Hudson locates its configuration files and all other data in one
-  folder and a multitude of sub folders. This folder should be
-  configured by setting up an environment variable of
-  +HUDSON_HOME+. The application will pick up this setting and use the
-  specified folder.
+  folder and a collection of sub-folders to hold Job and build
+  data. This folder should be configured by setting up an environment
+  variable of +HUDSON_HOME+. The application will pick up this setting
+  and use the specified folder.
 
 Deploy to the server::
 
   Depending on the application server and your access rights you can
   deploy the WAR file via a web-based administration console or by
-  copying the WAR into a deployment folder.
+  copying the WAR into a deployment folder.  
 
 ////
 TODO add a specific hudson user maybe .. but not when other stuff
@@ -491,10 +597,18 @@ TODO add a specific hudson user maybe .. but not when other stuff
 When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
 this setup widely vary between the various operating systems as well
-as the different application servers. The preferred and simpler method
-to install Hudson and run it as a service is a dedicated host and the
-operating system-specific package as supplied by the Hudson website
-and documented in the following sections.
+as the different application servers. The Hudson project provides
+helpful instructions for installing Hudson on Glassfish, Webshpere,
+JBoss, Jetty, Tomcat, Jonas, Weblogic and Winstone.  For more
+information, see http://wiki.hudson-ci.org/display/HUDSON/Containers
+
+NOTE: The recommended installation process is to install Hudson as a
+stand-alone service on a dedicated host using the operating
+system-specific package as supplied by the Hudson website and
+documented in the following sections.  If you choose to run Hudson in
+an applcation server or a servlet container, you may need to perform
+complicate configuration changes to ensure that Hudson adheres to a
+particular servers expectations. 
 
 [[section-install-deb]]
 === Installing Hudson on Ubuntu/Debian
@@ -507,9 +621,9 @@ Step 1: Install Java runtime::
 
   In order to fulfill the prerequisite of an installed Java runtime on
   a Debian based distribution it is best to install the meta package
-  +default-jdk+, which will install OpenJDK, with your preferred
-  package manager user interface. Either use a graphical user
-  interface like +synaptic+ or install from on the command-line with
+  +default-jdk+, which will install OpenJDK.  Either use a graphical
+  user interface like +synaptic+ or install from on the command-line
+  with
 
 ----
 sudo apt-get install default-jdk
@@ -532,33 +646,38 @@ sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \
 > /etc/apt/sources.list.d/hudson.list"
 ----
 
-or by adding the APT line +deb http://hudson-ci.org/debian binary/+
-in your graphical package manager as a repository URL.  Future upgrades will not require this step to be repeated.
+You can also add the APT line +deb http://hudson-ci.org/debian
+binary/+ in your graphical package manager as a repository URL.
+Future upgrades will not require this step to be repeated.
 
 Step 3: Update the list of available packages::
 
-  Once the prior steps are completed you can update the list of
-  available packages in your graphical package manager or with
+  Once you've install Java and added the Hudson repository URL you can
+  update the list of available packages with the following command.
 
 ----
 sudo apt-get update
 ----
 
 This step has to be repeated whenever you want to check for the
-availability of upgrades. Common practice is for the update of the
-list to run automatically on a regular basis.
+availability of upgrades.  A common, best practice is to run +yum
+update+ on a regular basis using cron.
 
 Step 4: Install Hudson::
 
 Once your list of available packages is updated, you can install
-Hudson with
+Hudson with the following commnand:
 
 ----
 sudo apt-get install hudson
 ----
 
-which will require you to confirm and will then proceed to install and
-start Hudson. Your console output will look similar to this
+As the hudson pacakages are signed with a key that isn't trusted by
+default, the installation process requires your confirmation.  Once
+you have verified that you would like to install Hudson without
+verification, the installation process will then proceed to install
+and start Hudson. Your console output will look similar to the
+following output.
 
 ----
 $ sudo apt-get install hudson
@@ -587,10 +706,15 @@ Not creating home directory `/var/lib/hudson'.
  * Starting Hudson Continuous Integration Server hudson  [ OK ]
 ----
 
-As you can see from the output above a hudson user was created . This
+As you can see from the output above, a hudson user was created . This
 user will run the Hudson server. The Hudson home folder is configured
-to be located in +/var/lib/hudson+, which will contain configuration,
-workspaces and so on and should be added to your backup strategy.
+to be located in +/var/lib/hudson+.  This is an important directory to
+remember, as it contains configuration, workspaces, and other files
+related to your project's builds.
+
+NOTE: Take note, if you are backing up Hudson, you will want to
+configure your backup systems to archive the contents of
++/var/lib/hudson+.
 
 Step 5: Upgrade Hudson::
 
@@ -600,31 +724,17 @@ Step 5: Upgrade Hudson::
 sudo apt-get upgrade
 ----
 
-which will stop the running Hudson server, upgrade Hudson and restart
-the server. Prior to upgrading you might want to backup your Hudson
-data configuration located in +/var/lib/hudson+ and owned by the
-hudson user.  created.
+This will stop the running Hudson server, upgrade Hudson and restart
+the server. Prior to upgrading you should always backup your Hudson
+configuration located in +/var/lib/hudson+.
 
-The install configured Hudson as a service so that you can stop and
-start the service with
+==== Hudson Filesystem on Ubuntu
 
-----
-sudo service hudson stop
-sudo service hudson start
-----
-
-or with the equivalent direct call
-
-----
-sudo /etc/init.d/hudson stop
-sudo /etc/init.d/hudson start
-----
-
-Following the Linux standard base convention Hudson will create its
-log files into +/var/log/hudson/hudson.log+ and the log files will be
-rotated so you will no accumulate large log files using up disk space.
-
-Looking at the list of files installed by the package
+Running +dpkg+ provides a list of the files installed by the Hudson
+DEB package.  This list is a helpful guide for Hudson administrators
+as it helps locate interesting configuration files and directories you
+will need to know about when configuring and troubleshooting a Hudson
+installation.
 
 ----
 $ dpkg -L hudson
@@ -658,12 +768,83 @@ $ dpkg -L hudson
 /etc/logrotate.d/hudson
 ----
 
-reveals that a configuration file +/etc/default/hudson+ was
-created. It contains a number of configuration parameters that you
-might want to adapt to your needs. These include e.g. the +JAVA_ARGS+
-that can be used to increase the memory allocation for Hudson or the
-+HTTP-PORT+ parameter set to the common 8080. If you modify this file
-to suit your needs, you should add it to you backup strategy.
+==== Starting and Stopping Hudson on Ubuntu
+
+When you installed the Hudson DEB package on Ubutnu the installation
+process configured Hudson as a service.  You can stop and start
+the service with the following commands:
+
+----
+sudo service hudson stop
+sudo service hudson start
+----
+
+Alternativel, you can use the following commands:
+
+----
+sudo /etc/init.d/hudson stop
+sudo /etc/init.d/hudson start
+----
+
+==== Hudson Log Files on Ubuntu
+
+Following the Linux Standard Base conventions Hudson creates its log
+files into +/var/log/hudson/hudson.log+ and the log files will be
+rotated automatically in the same way your system's syslogs are
+rotated on a nightly schedule.
+
+This log rotation schedule can be configured by altering the
+configuration in +/etc/logrotate.d/hudson+.
+
+==== Hudson Configuration on Ubuntu
+
+The list of files installed by the Hudson DEB reveals that a
+configuration file +/etc/default/hudson+ was created. It contains a
+number of configuration parameters that you might want to adapt to
+your needs. These include:
+
+JAVA_ARGS:: 
+
+  Used to increase the memory allocation for Hudson
+
+HTTP-PORT::
+
+  Set to the Hudson port to 8080. 
+
+HUDSON_HOME::
+
+  Defines the default location of Hudson's working directory.
+
+HUDSON_LOG::
+
+  Defines the locaton of Hudson's log file.
+
+MAXOPENFILES::
+
+  Defaults to 8192.  This is an important configuration value for
+  larger Hudson installations.  If you are running out of file handles
+  you can increase this limit here.
+
+AJP_PORT::
+
+  This configuration parameters is disable by default, but if you are
+  planning on exposing your Hudson service via a web server using
+  mo_jk or mod_proxy_ajp, you can configure the AJP port in this
+  configuration file.
+
+JAVA::
+
+  Defualts to /usr/bin/java.  If you have a custom installation of
+  Java, you can point your Hudson instance at a specific executable
+  here.
+
+HUDSON_USER:: 
+
+  The DEB installer creates "hudson" user.  This value is configurable
+  in case you need to run Hudson under a different user.
+
+If you modify this file to suit your needs, you should add it to you
+backup strategy.
 
 [[section-install-rpm]]
 === Installing Hudson on Redhat, CentOS, and Fedora

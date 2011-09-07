@@ -55,10 +55,14 @@ contained herein.
 This book covers Hudson, the most widely used open source Continuous
 Integration Server. Oracle is excited to support the continued
 development of Hudson as the Hudson community completes its transition
-to the Eclipse Foundation.
+to the Eclipse Foundation.  An important part of making sure that
+Hudson offers a supportable, world-class experience to end users is
+quality documentation.
 
 If you have any feedback or questions, you are encouraged to post on
-the Hudson project mailing lists.
+the Hudson project mailing lists, or to contact the author directly
+via the Hudson project.  We're here to help, and we look forward to
+your feedback.
 
 The Hudson Book Authors
 
@@ -76,7 +80,7 @@ Hudson is a powerful and widely used open source continuous
 integration server providing development teams with a reliable way to
 monitor changes in source control and trigger a variety of builds.
 Hudson excels at integrating with almost every tool you can think of:
-from Maven, to Ant, to Gradle, to simple bash scripts for builds, to
+from Maven, to Ant, to Gradle, to simple bash scripts for builds and
 SMS, IRC, and Skype for notifications.
 
 In addition to providing a platform for continuous integration builds,
@@ -91,11 +95,13 @@ stands ready to help.
 === Continuous Integration
 
 Martin Fowler and Kent Beck are largely credited with the first use of
-the term "Continuous Integration" as applied to software
-development with Beck's seminal 1999 book _Extreme Programming
-Explained_ being the first published work touching upon the idea of
-creating systems to continuously build and test systems in response to
-changes in source control.
+the term "Continuous Integration" as applied to software development
+with Beck's seminal 1999 book _Extreme Programming Explained_ being
+the first published work touching upon the idea of creating systems to
+continuously build and test systems in response to changes in source
+control.  In the decade since this concept was introduced, continuous
+integration is now an established, standard practice used across an
+entire industry.
 
 NOTE: Beck, Kent (1999). Extreme Programming Explained. ISBN
 0-201-61641-6.
@@ -113,28 +119,26 @@ Consider a hypothetical group of 20-30 developers working on a large
 enterprise application.
 
 This development team consists of 20-30 developers divided into groups
-of 5-12 working on focused features and components in a larger system.
-One group focuses on the database and a collection of APIs shared
-by all other groups, one group focuses on a complex front-end,
-customer-facing web application, and another group focuses on the back-end,
-business-integration systems like billing and inventory which
-interface with a large Enterprise Service Bus (ESB).
+of 5-12 developers working on focused features and components in a
+larger system.  One group focuses on the database and a collection of
+APIs shared by all other groups, one group focuses on a complex
+front-end web application, and another group focuses on back-end
+systems such as billing and inventory which interface with a large
+Enterprise Service Bus (ESB).
 
-The business drives a number of development overlapping schedules.
-The web application team tends to work on two week development
-schedules, and the back-end group performs releases in response to
-changes in the ESB.  Take a typical month in which the customer-facing
-web application adds a few targeted features and also experiences a
-dramatic redesign.  In this same month, the back-end group may have to
-upgrade the systems that interface with an external payment processing
-system.
+In this environment the business drives a number of overlapping
+development schedules.  The web application team tends to work on two
+week development schedules, and the back-end group performs releases
+in response to changes in the ESB.  Any given month resemble a highly
+coreographed sequence of code freezes, development sprints, and
+products releases with little room for error and inefficiency.
 
 In summary, these 20-30 developers are under constant pressure to
 deliver, and the technical managers are tasked with orchestrating the
 efforts of these various teams to deploy code to production on a
 regular schedule.  This is what the enterprise feels like in 2011:
-it's busy, and if you happen to find a bit of free time there is
-always someone in the business who can create a new requirement.
+it's very busy, and if you happen to find a bit of free time there is
+always someone who can create a new requirement.
 
 ==== Without Continuous Integration
 
@@ -160,37 +164,30 @@ the tests pass during a build.
 This constant need to stop, integrate, and verify introduces a
 synthetic limit to the scale of development.  As development teams
 scale and grow larger, and as systems become increasingly complex and
-intertwined your team will be forced to spend more time on integration
-and testing.  Every time you need to perform a deployment, you have to
-pay a price - you have to run systems through a costly integrate,
-test, and verify procedure.
+intertwined your team spends more time on integration
+and testing.
 
-In reality, developing modern applications without continuous
-integration is practically impossible.  There is too much unproductive
-down-time, and far too much waste.  The development group described
-above would be hard pressed to release anything more than a global
-update once a month.
+Without continuous integration, developing modern applications is
+practically impossible without dramatic inefficiency.  There is too
+much unproductive down-time, and far too much waste.  The development
+group described above would be hard pressed to release anything more
+than a global update once a month.
 
 ==== With Continuous Integration
 
 With Continuous Integration, the system completes a build, test,
-deploy, and integration test in response to every single commit.  If a
+deploy, and integration in response to every single commit.  If a
 developer in the web application group checks in code at 2 AM, Hudson
 kicks off a build, runs unit tests, deploys the code to a new server,
 and performs a set of integration tests.  If this build fails or the
 tests encounter an unexpected condition, everyone is notified of this
 failure.
 
-If the development extends the continuous integration build to update
-a testing environment in response to individual commits, the QA team
-can constantly test the system, identify bugs, and verify application
-behavior in parallel with active development.
-
 With continuous integration, no one needs to drop everything and run a
 release build, these builds are generated every single day, and in the
 most mature environments, a fully tested and verified system can be
 deployed to production at any time.  In other words, when you automate
-build, test, and verify and use a tool like Hudson you can continue
+build, test, and verify using a tool like Hudson you can continue
 developing your applications without having to wait (or synchronize)
 on some manual build, test, verify process.
 
@@ -202,7 +199,6 @@ continuous integration you have to stop and synchronize release
 schedules.  With continuous integration you reduce the risk associated
 with a particular software development cycle.
 
-
 === Minimizing Technical Debt
 
 Another way to think about Hudson is in terms of technical debt.  
@@ -211,14 +207,9 @@ When you amass "technical debt" you are making a decision that yields
 a short-term benefit while creating a problem to be solved in the
 future.  If you've developed code under strict time lines, technical
 debt is nothing new to you.  Every system has some form of technical
-debt.  While a particular API could have had a more elegant interface,
-you just didn't have the time to think it through.  The code had to be
-deployed tomorrow and the deadline was fast approaching.
-
-Another way to think about technical debt is that you are sacrificing
-long-term sustain-ability for short-term benefit.  Ever solved a
-particularly tricky problem with a goto statement or a switch?  You've
-taken on technical debt.
+debt.  If you've ever sacrificied quality for the expedient solution,
+you've experienced technical debt: "the code had to be deployed
+tomorrow and the deadline was fast approaching".
 
 From the perspective of builds and tests, it is much easier to develop
 a system without having to worry about unit tests and integration
@@ -226,39 +217,38 @@ tests.  You could speed up implementation time for a feature by just
 skipping the tests, but you'll eventually pay for this approach
 ten-fold in the form of bug fixes.
 
-When you develop without continuous integration, you are amassing the
-potential technical debt.  You can choose to fix bugs as they are
-introduced, minimizing both the scope and severity of defects by
-catching them early, or you can develop for weeks and run tests only
-at the end of the development cycle.
+Continuous integration along with a commitment to test-driven
+development helps minimize your exposure to risky technical debt.
+Because you are running the unit and integration tests every few
+minutes, you don't have the opportunity to let problems sit and fester
+unaddressed.  When you develop without continuous integration, you are
+amassing the potential for technical debt.  You can choose to fix bugs
+as they are introduced, minimizing both the scope and severity of
+defects by catching them early, or you can develop for weeks and run
+tests only at the end of the development cycle.
 
-When you wait weeks run integration tests, you amass a sort of
-"compounded" technical debt.  You not only have to fix bugs, you have
-to identify which changes introduced these bugs.  If you are really
-unlucky, you'll have cascading bugs during a development cycle: bugs
-that are related to other bugs.  When you develop with a continuous
-integration server, you minimize you risk by reducing the granularity
-of your development cycle.  While you might only deploy to production
-once a month, your Hudson installation deploys once a commit, and when
-you are dealing with increasingly complex systems this granular makes
-sure that any detours are confined to a single commit.
+While you might only deploy to production once a month, your Hudson
+installation deploys once a commit, and when you are dealing with
+increasingly complex systems this granularity makes sure that any
+glaring quality detours are confined to a single commit.
 
 === Push it to Production with Hudson
 
 The infrastructure that powers applications has grown more and more
-complex over time.  The web application that run on a production
+complex over time.  The web application that ran on a production
 network of 10 hefty Unix machines in 1999 has evolved into an
 architecture that can potentially span hundreds (or thousands) of
-nodes.  Companies like Apple and Oracle and deploying infrastructure
-on a massive scale compared to where the industry was operating just a
-few years ago.  This movement toward Cloud-based deployments and
-Platform-as-a-Service (PaaS) has meant that infrastructure is now more
-likely to be compiled and deployed on an as-needed basis.
+nodes on a computing grid.  Companies like Apple and Oracle are
+deploying infrastructure on a massive scale compared to where the
+industry was operating just a few years ago.  This movement toward
+Cloud-based deployments and Platform-as-a-Service (PaaS) has meant
+that infrastructure is now more likely to be compiled and deployed on
+an as-needed basis.
 
 Organizations are using tools like Hudson to setup production
 deployments and automate the management of cloud-based infrastructure.
 This carries the idea of Continuous Integration forward into the realm
-of Continuous Deployments.  While the idea may sound risky if you work
+of Continuous Deployment.  While the idea may sound risky if you work
 in a relatively slow-moving industry, social networks like Facebook
 and social media services such as Flickr have been building complex
 developer/operations (devops) systems that allow them to deploy code
@@ -266,10 +256,10 @@ to production multiple times a day.
 
 While this emerging trend is still confined to the largest
 deployments, the idea of connecting your Continuous Integration server
-directly to your production systems is gaining some support.  Hudson
-can be a critical part of automating these approached to continuous
+directly to your production systems is gaining support.  Hudson can be
+a critical part of automating these approaches to continuous
 deployment.  Proven integration with tools like Puppet and Cucumber
-allow innovating devops staff to take continuous integration in some
+allow innovative devops staff to take continuous integration in some
 surprising directions.
 
 === General Purpose Scheduler
@@ -279,7 +269,7 @@ replacement for cron or Quartz in your production network.  While
 Hudson is generally viewed as development infrastructure, a class of
 infrastructure usually considered separate from the rarefied world of
 production, there's nothing stopping you from using Hudson as a
-general purpose scheduler or server running in a production network.
+general purpose scheduler or server running within a production network.
 
 If you have a requirement for scheduled services or if you need to
 perform a set of on-demand jobs in a production network, install
@@ -301,15 +291,15 @@ field for interested individuals and organizations.
 
 Throughout its history the Hudson project lacked a formal structure
 and avoided process.  Grown from a pet project, the governance of
-Hudson as ad-hoc.  While this ad-hoc approach scaled for a few years,
+Hudson was ad-hoc.  While this ad-hoc approach scaled for a few years,
 as more organizations decided to participate and contribute to the
 project the Hudson community identified a need for more formal
 procedures on issues such as release management, code provenance, and
 general technical direction.  It is now the desire of the Hudson
 project to move toward a more formal process and structure with the
 end-goal of creating a healthy, open environment with well-defined
-rules, development process and release processes for building a
-high-quality and reliable continuous integration server.
+rules, as well as a development process and release processes for
+building a high-quality and reliable continuous integration server.
 
 Eclipse has a history of encouraging healthy environments for open
 source projects.  It is an organization supported and respected by
@@ -317,53 +307,85 @@ millions of end-users, thousands of contributors, and hundreds of
 active companies. In addition to being a great home for the Hudson
 project, Eclipse is also an important user of the software.  Hudson
 has become an integral part of the development infrastructure at
-Eclipse, and the requirements the Eclipse Foundation mirror the
+Eclipse, and the requirements of the Eclipse Foundation mirror the
 requirements of some of the largest enterprises in the world.
 
 [[intro-sect-project]]
 === The Hudson Project
 
-The central access to the Hudson project is the web site hosted at
-http://hudson-ci.org[http://hudson-ci.org] and contains links to
-resources like Wiki, issue tracker, mailing lists, source code and
-more.
+The main source of information about Hudson is the web site hosted at
+http://hudson-ci.org[http://hudson-ci.org].  This site contains links
+to resources like a Wiki, an issue tracker, a few mailing lists, the
+source code and more.  If you are looking for download Hudson or learn
+about participating in the, you can start with the Hudson project's
+web site.
 
-At the time this document was developer, the Hudson project at Eclipse
+At the time this document was developed, the Hudson project at Eclipse
 was focused on the following tasks:
 
-* Improve the core of Hudson by bolstering the test harnesses,
+* Improving the core of Hudson by bolstering the test harnesses,
 
-* Create a new performance harnesses allowing for more detailed
+* Creating a new performance harnesses allowing for more detailed
   performance assessment and testing.
 
-* Develop a fully automated test and release infrastructure
+* Developing a fully automated test and release infrastructure
 
 Some of the larger, medium-term goals of the Hudson project are:
 
-* *Improve stability* - The Eclipse project is investing QA efforts to
-   certify Eclipse to run on a set of standard platforms.  Improve the
-   reliability and stability of Hudson will enable more predictable
-   behavior for end-users and also enable an ecosystem of interested
-   third-party providers of Hudson support services.
+* *Improving stability* - The Eclipse project is investing in QA
+   efforts to certify Eclipse to run on a set of standard platforms.
+   Improving the reliability and stability of Hudson will enable more
+   predictable behavior for end-users and also enable an ecosystem of
+   interested third-party providers of Hudson support services.
 
-* *Improve performance* - The project is focused on addressing
+* *Improving performance* - The project is focused on addressing
    performance, especially for organizations using Hudson to support
    large numbers of projects.
 
-* *Improve Maven 3.x integration* -
+* *Improving Maven 3.x integration* - Sonatype has contributed a
+   completely reworked Maven 3 plugin which takes advantage of changes
+   to Maven 3 which were made to increase the ease with which Maven
+   could be integrate in IDEs such as Eclipse and CI servers such as
+   Hudson.
 
-* *Improve the UI* -
+* *Improve the UI* - Prior to the migration to the Eclipse Foundation,
+   the Hudson project had standardized on Jelly as a UI technology.
+   The Hudson is currently focused on moving the UI system way from
+   Jelly and toward a more modern approach to creating a solid,
+   reactive user interface for Hudson.
 
-, and better integration for the most
-commonly used plugins. There is also a desire for the use of standard
-technologies, where present, in the Hudson core. A standard OSGi
-runtime model based on Eclipse Equinox, a standard component model
-using JSR330, and standard web services using JAXRS are high on the
-priority list. Compatibility is also of utmost importance while all
-these improvements are being made. Even though there are plans to use
-JSR330 as part of a new plugin model for Hudson, until the community
-decides otherwise, the existing Hudson plugins will be supported
-without requiring changes.
+* *Closer Integration for Core Plugins* - One of the first steps of
+   the Hudson project during the transition to Eclipse was to define a
+   tiered set of Hudson plugins and establish a level of commitment
+   and support to the most widely used plugins.  It is the intention
+   of the Eclipse project to increase the level of support and
+   integration for these core plugins.
+
+* *A standard OSGi Runtime Model based on Eclipse Equinox* - Hudson's
+   legacy architecture was full of issues arising from the lack of a
+   unified architecture.  The Hudson project is work to move Hudson
+   toward an OSGi model based on Eclipse Equinox.  This will not only
+   lead to a more stable CI server, it will make it easier to
+   integrate and embed Hudson in systems like the Eclipse IDE and
+   other, widely-used OSGi containers.
+
+* *Support the a standard component model using JSR 330* - Early
+   efforts were made to move the plugin API toward an approach
+   compatible with JSR 330.  This effort not only makes it easier to
+   write and test Hudson plugins, it also aligns Hudson will the way
+   that Java is developed in 2011 using frameworks and libraries such
+   as Google Guice and VMWare's Spring Framework.
+
+* *Standard web services using JAXRS* - Many of the plugins and core
+   systems in Hudson are being migrated to a system that presents UI
+   services as a collection of REST services.  This foundational
+   effort will set the stage for Hudson to move toward a richer, more
+   reactive UI architecture possibly involving a migration to a SOFEA
+   approach to user interface.
+
+* *Backwards Compatibilty* - Despite this list of ideas and plans, the
+   Hudson community is also focused on supporting existing plugins and
+   Hudson APIs.
 
 [[intro-sect-license]]
 === Hudson's License
@@ -371,7 +393,7 @@ without requiring changes.
 As Hudson has completed the transition to the Eclipse Foundation, the
 core of Hudson is covered by the
 http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License
-version 1.0].  The Open Source Initiative categories the Eclipse
+version 1.0].  The Open Source Initiative categorizes the Eclipse
 Public License as a "popular and widely used license with a strong
 community".  The EPL is a limited copy-left license designed to be a
 "business-friendly" alternative to the GPL.  For more information
@@ -383,9 +405,9 @@ Eclipse Foundation also maintains a
 http://www.eclipse.org/legal/eplfaq.php[helpful FAQ] about the
 license.  A big reason for the move to the Eclipse Foundation was to
 make sure that the project was on solid ground for licensing issues.
-Eclipse takes Intellectual Property and Provenance very seriously and
-maintains a strict contribution review process to make sure that every
-project release complies with a set of strict licensing standards.  If
+Eclipse takes intellectual property and code provenance very seriously
+and maintains a strict contribution review process to make sure that
+every project release complies with a set of licensing standards.  If
 you download it from Eclipse, if it is stored in Eclipse's source
 control systems, it is released under the EPL.
 
@@ -406,8 +428,8 @@ OS-specific packages for Redhat, Debian, Ubuntu, and other Linux
 distributions which make installing Hudson on these platforms almost
 effortless.
 
-The following sections detail the installation process for Hudson. The
-are two different approaches to installing Hudson:
+The following sections detail the installation process for
+Hudson. There are two different approaches to installing Hudson:
 
 WAR File::
 
@@ -421,21 +443,20 @@ Native Package::
   suitable for the use with the native package management systems on
   Ubuntu/Debian, Oracle Linux, Redhat/Fedora/CentOS and openSUSE.
 
-It is a best practice to install Hudson as a service that is
-automatically started when an operation system starts.  On a Windows
-machines this can be as straightforward as setting a new Windows
-server, and on a Linux machine this is as easy as dropping the
-appropriate script in /etc/init.d.  The following sections will
-outline the process for configuring Hudson as a service on various
-operating systems.
+It is a best practice to install Hudson as a service automatically
+started when an operating system boots.  On a Windows machine this can
+be as straightforward as configuring a new Windows Service, and on a
+Linux machine this is as easy as dropping the appropriate script in
+'/etc/init.d'.  The following sections outline the process for
+configuring Hudson as a service on various operating systems.
 
 [[section-install-prerequisites]]
 === Prerequisites
 
 While Hudson can run on a variety of machines under an almost infinite
-combinations of JVMs, Operating System, and infrastructure.  The
-Hudson project is targeting a set of standard operating systems and
-Java versions.  This section outlines some of the expectations, the
+combination of JVMs, Operating System, and infrastructure.  The Hudson
+project is targeting a set of standard operating systems and Java
+versions.  This section outlines some of the expectations - the
 preconditions that are necessary to install and run a Hudson server.
 
 ==== Software Prerequisites
@@ -451,28 +472,28 @@ possible to install the OpenJDK 6 project using a tool like apt-get
 Download Oracle Java 6 JDK::
 
   The latest version of Oracle's JDK 6 is the officially supported
-  runtime. To download the latest release of the Oracle JDK, go to
-  http://www.oracle.com/technetwork/java/javase/downloads/index.html[http://www.oracle.com/technetwork/java/javase/downloads/index.html]
-  , and download the latest Java 6 JDK.
+  runtime. To download the latest release of the Oracle JDK, go to the
+  http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java
+  JDK 6 Download Page], and download the latest Java 6 JDK.
 
 Installing OpenJDK 6 on Linux::
 
-  
   OpenJDK packages are available in both RPM and DEB format which
   should cover most Linux distributions.  To install the OpenJDK 6 on
   your Linux machine, following the instruction on
   http://openjdk.java.net/install/index.html[this page].
 
 [[section-install-war]]
-
 ==== Hardware Prerequisites
 
 As there is such a wide variety of Hudson deployments, from the Hudson
-server that runs a single project only trigger once every few days, to
-the Hudson server which servers as a master orchestrator of a hundred
-of more nodes in a massively distributed build grid, it is impossible
-to predict and recommend the necessary CPU power and disk space your
-particular installation will demand.
+server that runs a single project once every few days, to the Hudson
+server which serves as a master orchestrator of a hundred or more
+nodes in a massively distributed build grid, it is impossible to
+predict and recommend the necessary CPU power and disk space your
+particular installation will demand.  Your own builds and your own
+systems will often dictate the specific hardware and network
+requirements for your Hudson instance.
 
 What this section can do is provide a few recommendations that will
 help size and configure your infrastructure:
@@ -484,58 +505,68 @@ Network::
   and your source control system.  Hudson is configured to
   periodically test the source control system and look for changes.
   In general, the critical components of your development
-  infrastructure should be colocated with one another.  Your CI
-  server should be next to your SCM server.  If your Hudson server is
+  infrastructure should be colocated with one another.  Your CI server
+  should be next to your SCM server.  If your Hudson server is
   configured to automatically publish build artifacts to a repository
-  manager, you should also make sure that the network connect between
-  these two machines can support the expect level of activity.
+  manager, you should also make sure that the network connection
+  between these two machines can support the expected level of
+  activity.
 
 CPU:: 
 
   In the absence of build activity, Hudson doesn't consume very much
   in the way of CPU power.  You can let Hudson run in the background,
-  waiting for a build to trigger without having to worry about consume
-  more than a few processor cycles.  With build activity, you should
-  take the CPU requirements of your own development workstation and
-  use that as a baseline for your Hudson server.
+  waiting for a build to trigger without having to worry about
+  consuming more than a few processor cycles.  With build activity,
+  you should take the CPU requirements of your own development
+  workstation and use that as a baseline for your Hudson server.
+  Multiply the power you use as a single developer by the number of
+  concurrent builds your Hudson server needs to handle.  In general a
+  two or four processor build machine with a powerful processors is a
+  good starting point for a medium-sized workgroup of 5-10 developers.
 
 Memory::
 
   Compilers can often eat massive amounts of RAM.  As with CPU
   configuration, take your own development workstation as a baseline
-  and try to multiple that requirement by the number of expect
+  and try to multiple that requirement by the number of expected
   concurrent builds.  If your local build can easily run with 2 GB of
   RAM and you expect three concurrent build threads at any given time,
   then make sure that your Hudson instance can consume 6 GB of RAM on
-  a server.
+  a server.  You'll have to use your own builds as a guide, but 4-8 GB
+  of RAM should be adequate for a medium-sized workgroup.
 
 I/O::
 
-  As with Memory requirements, builds tends to make disk drive go
-  berserk with activity.  If your builds are particularly I/O
-  intensive, you are going to want to make sure that your Hudson has
-  sufficient local storage (or high-speed SAN storage).  If you try to
-  run a massive build job using an NFS mount to store output you are
-  likely to see unacceptable build performance.
+  As with Memory requirements, builds, compilers, and tools like Maven
+  and Ant tend to make disk drives go berserk with activity.  If your
+  builds are particularly I/O intensive, you are going to want to make
+  sure that Hudson has sufficient local storage (or high-speed SAN
+  storage).  If you try to run a massive build job using an NFS mount
+  to store output you are likely to see unacceptable build
+  performance.  Don't "skimp" on hard drive quality or available
+  storage space.  I/O is often the primary gating factor in a large
+  enterprise-class builds.  Builds eat I/O.
 
 Storage::
 
-  You should be able to get off the group with 5-10 GB, but once you
-  start building your projects, you are going to want to keep a little
-  of history around.  This build history can provide invaluable
-  insight into the trends surround a particular build.  If you were
-  able to look at your project's build history over a few weeks, you
-  might notice that one developer in particular continues to break the
-  build for your team.  Alternatively, you might have configure Hudson
-  to keep track of important metrics like test failures over time.
+  You should be able to get off the ground with 5-10 GB, but once you
+  start building your projects, you are going to want to preserve some
+  build history.  This build history can provide invaluable insight
+  into the trends surrounding a particular build.  If you were able to
+  look at your project's build history over a few weeks, you might
+  notice that one developer in particular continues to break the build
+  for your team.  Alternatively, you can also configure Hudson to keep
+  track of important metrics and trends such as test failures over
+  time.
 
-  If you think that keeping build history around is import, you should
-  Hudson an appropriate amount of disk space.  What this number is is
-  heavily dependent on the size of your projects and the size of the
-  generate binary artifacts.  Larger projects with tens of thousands
-  of lines of code can often get by with 60-100 GB, but the largest
-  Hudson installations can easily reach a TB or more depending on
-  the activity in a given development group.
+If you think that keeping build history around is important, you
+should configure Hudson with an appropriate amount of disk space.  What
+this number is is heavily dependent on the size of your projects and
+the size of the generated binary artifacts.  Larger projects with tens
+of thousands of lines of code can often get by with 60-100 GB, but the
+largest Hudson installations can easily reach a TB or more depending
+on the activity in a given development group.
 
 Again, these recommendations come with a caveat: the authors of this
 document are not familiar with your application's build.  If your
@@ -547,12 +578,23 @@ Should it be able to run two builds in parallel?  How about ten?  This
 all depends on the size of your development and the frequency with
 which code changes are committed to source control.
 
+WARNING: Continuous Integration servers drive quality, and if they are
+seriously underpowered they tend not to work.  That tiny afterthought
+of a machine that management could spare for Hudson may end up taking
+several hours to run a build that takes minutes on your workstation.
+If software is something you produce, and if you value quality, you
+need to run a machine that will be able to keep up with your
+developers.  If you treat the hardware running your CI system as an
+afterthought, it you can't afford to invest in the necessary hardware,
+don't be surprised if your quality, morale, and productivity take a
+nose dive.
+
 === Installing Hudson with the WAR File Distribution
 
 The WAR file available for download on the Hudson web site is an
-executable WAR that has a servlet container embedded.  Once downloaded
-and copied to the desired directory, it is therefore possible to start
-Hudson with the simple command:
+executable WAR that has a servlet container embedded within it.  Once
+downloaded and copied to the desired directory, you can start Hudson
+with the following command:
 
 ----
  java -jar hudson.war
@@ -583,7 +625,7 @@ Hudson, configure Hudson as a service on Windows or Linux.
 === Deploy Hudson to a Servlet Container
 
 Conveniently the WAR file is suitable to be deployed in most commonly
-used Java servlet containers and application server. The detailed
+used Java servlet containers and application servers. The detailed
 process differs for these containers but in general the required steps
 are as follows:
 
@@ -592,14 +634,16 @@ Set up HUDSON_HOME::
   Hudson locates its configuration files and all other data in one
   folder and a collection of sub-folders to hold Job and build
   data. This folder should be configured by setting up an environment
-  variable of +HUDSON_HOME+. The application will pick up this setting
-  and use the specified folder.
+  variable: +HUDSON_HOME+. The application will pick up this setting
+  and use the specified folder to store job and configuration data.
 
 Deploy to the server::
 
   Depending on the application server and your access rights you can
   deploy the WAR file via a web-based administration console or by
-  copying the WAR into a deployment folder.  
+  copying the WAR into a deployment folder.  The details of each
+  servlet container and application server are beyond the scope of
+  this book.
 
 ////
 TODO add a specific hudson user maybe .. but not when other stuff
@@ -609,19 +653,19 @@ TODO add a specific hudson user maybe .. but not when other stuff
 
 When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
-this setup widely vary between the various operating systems as well
-as the different application servers. The Hudson project provides
-helpful instructions for installing Hudson on Glassfish, WebSphere,
-JBoss, Jetty, Tomcat, Jonas, Weblogic and Winstone.  For more
-information, see http://wiki.hudson-ci.org/display/HUDSON/Containers
+this setup widely vary between operating systems and application
+servers. The Hudson project provides helpful instructions for
+installing Hudson on Glassfish, WebSphere, JBoss, Jetty, Tomcat,
+Jonas, Weblogic and Winstone.  For more information, see
+http://wiki.hudson-ci.org/display/HUDSON/Containers
 
 NOTE: The recommended installation process is to install Hudson as a
 stand-alone service on a dedicated host using the operating
-system-specific package as supplied by the Hudson web site and
+system-specific packages supplied by the Hudson web site and
 documented in the following sections.  If you choose to run Hudson in
 an application server or a servlet container, you may need to perform
-complicate configuration changes to ensure that Hudson adheres to a
-particular servers expectations. 
+complicated configuration changes to ensure that Hudson adheres to a
+particular servers expectations.
 
 [[section-install-deb]]
 === Installing Hudson on Ubuntu/Debian

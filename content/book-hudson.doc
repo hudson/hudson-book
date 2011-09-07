@@ -8,11 +8,10 @@
 [preface]
 == Copyright
 
-Copyright © 2011 Oracle, Inc.. All rights
-reserved.
+Copyright © 2011 Oracle, Inc.. All rights reserved.
 
-Online version published by Oracle, Inc.,
-500 Oracle Parkway, Redwood Shores, CA 94065.
+Online version published by Oracle, Inc., 500 Oracle Parkway, Redwood
+Shores, CA 94065.
 
 Hudson is a registered trademark of Oracle, Inc., in the United States
 and other countries.
@@ -117,17 +116,17 @@ This development team consists of 20-30 developers divided into groups
 of 5-12 working on focused features and components in a larger system.
 One group focuses on the database and a collection of APIs shared
 by all other groups, one group focuses on a complex front-end,
-customer-facing web application, and another group focuses on the backend,
+customer-facing web application, and another group focuses on the back-end,
 business-integration systems like billing and inventory which
 interface with a large Enterprise Service Bus (ESB).
 
 The business drives a number of development overlapping schedules.
 The web application team tends to work on two week development
-schedules, and the backend group performs releases in response to
+schedules, and the back-end group performs releases in response to
 changes in the ESB.  Take a typical month in which the customer-facing
 web application adds a few targeted features and also experiences a
-dramatic redesign.  In this same month, the backend group may have to
-upgrade the systems that interface with an external payent processing
+dramatic redesign.  In this same month, the back-end group may have to
+upgrade the systems that interface with an external payment processing
 system.
 
 In summary, these 20-30 developers are under constant pressure to
@@ -143,7 +142,7 @@ Without Continuous Integration the various teams have to factor in
 "integration time" into the schedule.  Unit tests might be run by
 individual developers, but integration tests are only executed when
 the system is ready to be deployed.  There's nothing automatic about
-the process, and, very oftenm only a handful of developers have the
+the process, and, very often only a handful of developers have the
 appropriate environment to build and deploy to production.
 
 Each team, each group is responsible for testing the larger system and
@@ -168,7 +167,7 @@ test, and verify procedure.
 
 In reality, developing modern applications without continuous
 integration is practically impossible.  There is too much unproductive
-downtime, and far too much waste.  The development group described
+down-time, and far too much waste.  The development group described
 above would be hard pressed to release anything more than a global
 update once a month.
 
@@ -196,7 +195,7 @@ developing your applications without having to wait (or synchronize)
 on some manual build, test, verify process.
 
 Making these processes automatic has another important side-effect, it
-makes the development process more scaleable.  When your teams don't
+makes the development process more scale-able.  When your teams don't
 have to stop to actively test and collaborate with one another, it is
 much easier to add additional developers to a project.  Without
 continuous integration you have to stop and synchronize release
@@ -210,14 +209,14 @@ Another way to think about Hudson is in terms of technical debt.
 
 When you amass "technical debt" you are making a decision that yields
 a short-term benefit while creating a problem to be solved in the
-future.  If you've developed code under strict timelines, technical
+future.  If you've developed code under strict time lines, technical
 debt is nothing new to you.  Every system has some form of technical
 debt.  While a particular API could have had a more elegant interface,
 you just didn't have the time to think it through.  The code had to be
 deployed tomorrow and the deadline was fast approaching.
 
 Another way to think about technical debt is that you are sacrificing
-long-term sustainability for short-term benefit.  Ever solved a
+long-term sustain-ability for short-term benefit.  Ever solved a
 particularly tricky problem with a goto statement or a switch?  You've
 taken on technical debt.
 
@@ -244,7 +243,7 @@ once a month, your Hudson installation deploys once a commit, and when
 you are dealing with increasingly complex systems this granular makes
 sure that any detours are confined to a single commit.
 
-=== Push it to Production with Huson
+=== Push it to Production with Hudson
 
 The infrastructure that powers applications has grown more and more
 complex over time.  The web application that run on a production
@@ -326,7 +325,7 @@ requirements of some of the largest enterprises in the world.
 
 The central access to the Hudson project is the web site hosted at
 http://hudson-ci.org[http://hudson-ci.org] and contains links to
-resources like wiki, issue tracker, mailing lists, source code and
+resources like Wiki, issue tracker, mailing lists, source code and
 more.
 
 At the time this document was developer, the Hudson project at Eclipse
@@ -344,7 +343,7 @@ Some of the larger, medium-term goals of the Hudson project are:
 * *Improve stability* - The Eclipse project is investing QA efforts to
    certify Eclipse to run on a set of standard platforms.  Improve the
    reliability and stability of Hudson will enable more predictable
-   behavior for end-users and also enable an eco-system of interested
+   behavior for end-users and also enable an ecosystem of interested
    third-party providers of Hudson support services.
 
 * *Improve performance* - The project is focused on addressing
@@ -363,7 +362,7 @@ using JSR330, and standard web services using JAXRS are high on the
 priority list. Compatibility is also of utmost importance while all
 these improvements are being made. Even though there are plans to use
 JSR330 as part of a new plugin model for Hudson, until the community
-decides otherwise, the existing Huson plugins will be supported
+decides otherwise, the existing Hudson plugins will be supported
 without requiring changes.
 
 [[intro-sect-license]]
@@ -374,7 +373,7 @@ core of Hudson is covered by the
 http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License
 version 1.0].  The Open Source Initiative categories the Eclipse
 Public License as a "popular and widely used license with a strong
-community".  The EPL is a limited copyleft license designed to be a
+community".  The EPL is a limited copy-left license designed to be a
 "business-friendly" alternative to the GPL.  For more information
 about the Eclipse Public License, see
 http://en.wikipedia.org/wiki/Eclipse_Public_License
@@ -400,7 +399,7 @@ individual plugin project to find a specific license.
 == Installing and Running Hudson
 
 Hudson has a reputation for being both easy to install and very
-adaptable to running in a variety of environemnts.  You can run Hudson
+adaptable to running in a variety of environments.  You can run Hudson
 as a stand-alone web application, or you can run Hudson within an
 existing servlet container.  The Hudson project also maintains
 OS-specific packages for Redhat, Debian, Ubuntu, and other Linux
@@ -412,7 +411,7 @@ are two different approaches to installing Hudson:
 
 WAR File::
 
-  The Hudson website provides a Java web archive file (WAR) for
+  The Hudson web site provides a Java web archive file (WAR) for
   download. This file can either be started directly or used in an
   existing Java servlet container or application server.
 
@@ -424,13 +423,13 @@ Native Package::
 
 It is a best practice to install Hudson as a service that is
 automatically started when an operation system starts.  On a Windows
-machines this can be as straightfoward as setting a new Windows
+machines this can be as straightforward as setting a new Windows
 server, and on a Linux machine this is as easy as dropping the
 appropriate script in /etc/init.d.  The following sections will
 outline the process for configuring Hudson as a service on various
 operating systems.
 
-[[section-install-preprequisites]]
+[[section-install-prerequisites]]
 === Prerequisites
 
 While Hudson can run on a variety of machines under an almost infinite
@@ -485,7 +484,7 @@ Network::
   and your source control system.  Hudson is configured to
   periodically test the source control system and look for changes.
   In general, the critical components of your development
-  infrastructure should be co-located with one another.  Your CI
+  infrastructure should be colocated with one another.  Your CI
   server should be next to your SCM server.  If your Hudson server is
   configured to automatically publish build artifacts to a repository
   manager, you should also make sure that the network connect between
@@ -513,7 +512,7 @@ Memory::
 I/O::
 
   As with Memory requirements, builds tends to make disk drive go
-  beserk with activity.  If your builds are particularly I/O
+  berserk with activity.  If your builds are particularly I/O
   intensive, you are going to want to make sure that your Hudson has
   sufficient local storage (or high-speed SAN storage).  If you try to
   run a massive build job using an NFS mount to store output you are
@@ -527,7 +526,7 @@ Storage::
   insight into the trends surround a particular build.  If you were
   able to look at your project's build history over a few weeks, you
   might notice that one developer in particular continues to break the
-  build for your team.  Alternatively, you migth have configure Hudson
+  build for your team.  Alternatively, you might have configure Hudson
   to keep track of important metrics like test failures over time.
 
   If you think that keeping build history around is import, you should
@@ -535,13 +534,13 @@ Storage::
   heavily dependent on the size of your projects and the size of the
   generate binary artifacts.  Larger projects with tens of thousands
   of lines of code can often get by with 60-100 GB, but the largest
-  Hudson installations can easily reach a TB or more dependending on
+  Hudson installations can easily reach a TB or more depending on
   the activity in a given development group.
 
 Again, these recommendations come with a caveat: the authors of this
 document are not familiar with your application's build.  If your
 tests generate a huge amount of I/O activity or if your builds are
-particularly difficult to compile, you should use your best judgement.
+particularly difficult to compile, you should use your best judgment.
 A good rule of thumb with Hudson deployments is to make sure that your
 Hudson server can satisfy a reasonable number of concurrent builds.
 Should it be able to run two builds in parallel?  How about ten?  This
@@ -574,9 +573,9 @@ http://localhost:8080/hudson[http://localhost:8080/hudson]
 image::figs/web/home-job-list.png[scale=75]
 
 NOTE: This approach is suitable for testing and exploring Hudson, but
-it is not recommended to run Hudson as an exectuable WAR in
+it is not recommended to run Hudson as an executable WAR in
 production.  Sure, it only took you a few seconds to download and
-start Hudson, but running dependable development infrastruction
+start Hudson, but running dependable development infrastructure
 usually requires more than just a developer running "java -jar" from
 the command-line.  If you really want to get serious about running
 Hudson, configure Hudson as a service on Windows or Linux.
@@ -612,15 +611,15 @@ When using Hudson on your application server, you should ensure that
 the server is set up as an operating system service. The details of
 this setup widely vary between the various operating systems as well
 as the different application servers. The Hudson project provides
-helpful instructions for installing Hudson on Glassfish, Webshpere,
+helpful instructions for installing Hudson on Glassfish, WebSphere,
 JBoss, Jetty, Tomcat, Jonas, Weblogic and Winstone.  For more
 information, see http://wiki.hudson-ci.org/display/HUDSON/Containers
 
 NOTE: The recommended installation process is to install Hudson as a
 stand-alone service on a dedicated host using the operating
-system-specific package as supplied by the Hudson website and
+system-specific package as supplied by the Hudson web site and
 documented in the following sections.  If you choose to run Hudson in
-an applcation server or a servlet container, you may need to perform
+an application server or a servlet container, you may need to perform
 complicate configuration changes to ensure that Hudson adheres to a
 particular servers expectations. 
 
@@ -680,13 +679,13 @@ update+ on a regular basis using cron.
 Step 4: Install Hudson::
 
 Once your list of available packages is updated, you can install
-Hudson with the following commnand:
+Hudson with the following command:
 
 ----
 sudo apt-get install hudson
 ----
 
-As the hudson pacakages are signed with a key that isn't trusted by
+As the hudson packages are signed with a key that isn't trusted by
 default, the installation process requires your confirmation.  Once
 you have verified that you would like to install Hudson without
 verification, the installation process will then proceed to install
@@ -784,7 +783,7 @@ $ dpkg -L hudson
 
 ==== Starting and Stopping Hudson on Ubuntu
 
-When you installed the Hudson DEB package on Ubutnu the installation
+When you installed the Hudson DEB package on Ubuntu the installation
 process configured Hudson as a service.  You can stop and start
 the service with the following commands:
 
@@ -793,7 +792,7 @@ sudo service hudson stop
 sudo service hudson start
 ----
 
-Alternativel, you can use the following commands:
+Alternatively, you can use the following commands:
 
 ----
 sudo /etc/init.d/hudson stop
@@ -831,7 +830,7 @@ HUDSON_HOME::
 
 HUDSON_LOG::
 
-  Defines the locaton of Hudson's log file.
+  Defines the location of Hudson's log file.
 
 MAXOPENFILES::
 
@@ -843,12 +842,12 @@ AJP_PORT::
 
   This configuration parameters is disable by default, but if you are
   planning on exposing your Hudson service via a web server using
-  mo_jk or mod_proxy_ajp, you can configure the AJP port in this
+  mod_jk or mod_proxy_ajp, you can configure the AJP port in this
   configuration file.
 
 JAVA::
 
-  Defualts to /usr/bin/java.  If you have a custom installation of
+  Defaults to /usr/bin/java.  If you have a custom installation of
   Java, you can point your Hudson instance at a specific executable
   here.
 
@@ -1145,7 +1144,7 @@ Since Hudson separates it's configuration and data storage from the
 application, it is easy to upgrade an existing Hudson
 installation. After a full backup of all configuration and data, you
 should be ready to proceed after notifying your users about potential
-downtime. You might also want to disable all jobs before proceeding.
+down-time. You might also want to disable all jobs before proceeding.
 
 . For native package users this will be handled transparently with
 their package management system. For WAR file based installs, you only
@@ -1161,11 +1160,11 @@ there is no reason for you not to run Hudson by itself without a
 proxy. Yet, more often than not, organizations run applications behind
 a proxy for security concerns and to consolidate applications using
 tools like +mod_rewrite+ and +mod_proxy+. For this reason, we've
-included some brief instructions for configuring Apache httpd. We
+included some brief instructions for configuring Apache HTTP. We
 assume that you've already installed Apache 2, and that you are using
 a Virtual Host for www.somecompany.com.
 
-Let's assume that you wanted to host Hudson behind Apache HTTPd at the
+Let's assume that you wanted to host Hudson behind Apache HTTP at the
 URL http://www.somecompany.com[http://www.somecompany.com]. To do
 this, you'll need to change the context path that Hudson is served
 from.
@@ -1177,7 +1176,7 @@ from.
 
 . Clear the Base URL in Hudson Application Server Settings in the administration interface.
 
-At this point, edit the HTTPd configuration file for the
+At this point, edit the HTTP configuration file for the
 www.somecompany.com virtual host. Include the following to expose
 Hudson via +mod_proxy+ at
 http://www.somecompany.com/[http://www.somecompany.com/].
@@ -1290,8 +1289,8 @@ SCM checkout retry count::
 
 Enable Security::
 
-  The Enable Security checkbox switches on the security system that
-  will require username and password for any access to run builds or
+  The Enable Security check box switches on the security system that
+  will require user-name and password for any access to run builds or
   change configurations of Hudson and build projects. A large number
   of configuration options and security providers can be used and more
   information can be found in <<chapter-security>>
@@ -1300,7 +1299,7 @@ Prevent Cross Site Request Forgery exploits::
 
   This feature will enable improved security against Cross Site
   Request Forgery exploits and is recommended to be turned on when
-  your Hudson instance is available to the public internet. On the
+  your Hudson instance is available to the public Internet. On the
   other hand it can be necessary to have this feature disabled, when
   your Hudson web interface is embedded in a dashboard type interface
   that also contains web content from other domains or even only
@@ -1372,9 +1371,9 @@ image::figs/web/configure-jdk.png[scale=75]
 
 Furthermore it is possible to configure a JDK to be installed
 automatically by specifying a name as before and then selecting the
-Install Automatically check box. This exposes a drop-down labelled Add
+Install Automatically check box. This exposes a drop-down labeled Add
 installer which lets you choose from the options Install from Oracle,
-Extract *.zip/*.tar.gz andRun Command as visible in <<fig-using-jdk-config>>.
+Extract *.zip/*.tar.gz and Run Command as visible in <<fig-using-jdk-config>>.
 
 All the automatic install configurations cause Hudson to wait for the
 first build, which is configured to use a named instance of the JDK to
@@ -1383,7 +1382,7 @@ in the tools directory in Hudson home using the tool name specified
 as the folder name.
 
 The option Install from Oracle brings up a drop-down to choose the
-version as well as a checkbox that needs to be clicked to the JavaSE
+version as well as a check box that needs to be clicked to the JavaSE
 license agreement.
 
 If you select to use Extract *.zip/*.tar.gz as shown in
@@ -1399,10 +1398,10 @@ If you specify a label, only Hudson nodes with the same label will use
 this installer. By using different labels it is possible for example
 to get the same tool installed on different nodes with different
 operating systems from different automatic install setups. The
-download url specifies the full url from which the JDK will be
+download URL specifies the full URL from which the JDK will be
 downloaded. The actual download is run off the Hudson master, so that
 any Hudson nodes that need the JDK installed do not need to have
-access to the url location. After successful download the JDK will be
+access to the URL location. After successful download the JDK will be
 installed in the specified sub directory in the tools folder
 of the Hudson home directory.
 
@@ -1420,7 +1419,7 @@ box.
 
 Once more than one JDK is configured in the global settings, each
 project configuration has an additional drop-down, which allows the
-selection of the JDK to be usd to build the project and is visible in
+selection of the JDK to be used to build the project and is visible in
 <<fig-extract-archive-installer>>
 
 [[section-configure-ant]]
@@ -1440,7 +1439,7 @@ Hudson can install a required Apache Ant version automatically when
 needed.
 
 The simplest way to achieve this is to select the Install
-automatically checkbox and select Install from Apache and choose the
+automatically check box and select Install from Apache and choose the
 desired version from the drop-down.
 
 Similar to the JDK installation from Oracle it is possible to use
@@ -1470,7 +1469,7 @@ image::figs/web/configure-maven-3.png[scale=75]
 The legacy Maven project type and Maven plugin use a separate
 installer as displayed in <<fig-configure-maven-installation>>. In
 addition to the same features as the Maven 3 installer it can be
-configured to download a Maven version from the Apache website when
+configured to download a Maven version from the Apache web site when
 required.
 
 [[fig-configure-maven-installation]]
@@ -1487,24 +1486,24 @@ Use an existing installation::
 
 Automatically install from Apache::
 
-  Select the Install automatically checkbox and Install from Apache in
+  Select the Install automatically check box and Install from Apache in
   the drop-down and choose the Maven version, you wish to install.
   This option is only available for the Maven installation.
 
 Automatically install from an archive file::
 
-  Select the Install automatically checkbox and Extract *zip/*.tar.gz
+  Select the Install automatically check box and Extract *zip/*.tar.gz
   and configure the installation as documented in
   <<section-configure-jdk>>
 
 Automatically install via a command::
 
-  Select the Install automatically checkbox and Run Command and
+  Select the Install automatically check box and Run Command and
   configure the installation as documented
   in<<section-configure-jdk>>.
 
 In general we recommend that you run your build using the latest Maven
-3.0 release. With multiple Maven installations configured a dropdown
+3.0 release. With multiple Maven installations configured a drop down
 in the project build step configuration will allow you to choose the
 desired Maven version.  <<chapter-maven>> provides an in-depth
 documentation for using Maven with Hudson.
@@ -1573,7 +1572,7 @@ Default user e-mail suffix::
   This suffix is appended to the Hudson user names used to log in to
   Hudson and the result can be used for e-mail notification. E.g.  if
   the Hudson instance runs for +example.com+ you could supply the
-  suffix of +@example.com+. A Hudson user with username +jane.doe+
+  suffix of +@example.com+. A Hudson user with user name +jane.doe+
   would then receive email notifications at the
   email+jane.doe@example.com+.  This can be especially useful with
   security setups using an identity management system like LDAP for
@@ -1603,13 +1602,13 @@ Hudson URL::
 
 Use SMTP Authentication::
 
-  Clicking on the checkbox will reveal User Name and Password input
+  Clicking on the check box will reveal User Name and Password input
   fields. Depending on the server configuration your user name will be
   just the login name or the full email address or either.
 
 Use SSL::
 
-  Select this checkbox if your SMTP server supports connecting with
+  Select this check box if your SMTP server supports connecting with
   SSL activated.
 
 SMTP Port::
@@ -1729,7 +1728,7 @@ well as Maven toolchains is documented in
 Running a Hudson server or grid with many projects can make the list
 of configured jobs very long and therefore make it difficult for users
 and administrators to gather the information they need at a glance and
-find their way to the job they are intersted in. To provide this
+find their way to the job they are interested in. To provide this
 needed ease of access Hudson supports the addition of globally visible
 as well as user specific views to the main page displayed in
 <<fig-ci-quickstart-app-win>>.
@@ -1792,7 +1791,7 @@ The Status Filter has the option to use all selected jobs or only
 enabled or disabled builds from the list below or the result of the
  regular expression configured. The Jobs list itself
 is an alphabetically sorted list of all jobs configured with a
-checkbox for each job that you potentially want to include in the
+check box for each job that you potentially want to include in the
 view. As an alternative to manually selecting jobs from the list
 you can configure a regular expression to match on the job names.
 With a good naming convention for the jobs this can be a good way
@@ -1972,7 +1971,7 @@ or run a separate realm for Hudson.
 ==== Delegating to a Servlet Container
 
 By default running from the war directly Hudson is running in the
-winstone servlet container and there will be no security provided by
+Winstone servlet container and there will be no security provided by
 it. However for production usage the preferred deployment method is to
 have Hudson running within a servlet container like Tomcat or Jetty or
 an application server like Glassfish or JBoss AS as documented in
@@ -2104,7 +2103,7 @@ User search base and User search filter::
   filter could be the default uid={0} or mail={0} for users logging in
   with their email address. If you need to further define your search
   filter you can use {0} as the pattern that will be replaced with the
-  username in the search.
+  user name in the search.
 
 Group search base::
 
@@ -2234,7 +2233,7 @@ user or user group.
 
 ==== Using the Legacy Authorization Strategy
 
-Hardcoded role of admin .. really can be replaced with matrix. There
+Hard coded role of admin .. really can be replaced with matrix. There
 is a JIRA issue against Hudson to remove it.
 
 // HBOOK-52 - Legacy to what? Explain what this mode means to the user.
@@ -2277,14 +2276,14 @@ requirements beyond browser access.
 
 . Add the new user to the matrix
 
-. Grant all right to the new user as he will the be the adminstrator
+. Grant all right to the new user as he will the be the administrator
   user
 
 . Save the configuration
 
 Following these steps you will have secured Hudson and the new user
 will be the only user with access to Hudson. If you want e.g.
-anonumous users to have read access you could add these rights in the
+anonymous users to have read access you could add these rights in the
 matrix.
 
 For further users you can create additional matrix rows and distribute
@@ -2292,12 +2291,12 @@ rights as desired.
 
 === Allowing Developers to do Forced Builds with Security On
 
-is currently documented on the wiki nicely
+is currently documented on the Wiki nicely
 http://wiki.hudson-ci.org/display/HUDSON/Quick+and+Simple+Security
 
 === Authenticating in a script
 
-is currently documented on the wiki and should be expanded on here
+is currently documented on the Wiki and should be expanded on here
 http://wiki.hudson-ci.org/display/HUDSON/Authenticating+scripted+clients
 
 === Disabling security when locked out
@@ -2395,7 +2394,7 @@ The Advanced tab as displayed in <<fig-plugin-mgt-advanced>> allows
 you to configure the proxy settings for Hudson to be able to connect
 to the plugin repository on the Hudson web site, upload Hudson plugin
 files (+*.hpi+) manually to install e.g. custom plugins and specify
-the url for a custom update site.
+the URL for a custom update site.
 
 [[fig-plugin-mgt-advanced]]
 .The Advanced tab for miscellaneous plugin management tasks
@@ -2404,13 +2403,13 @@ image::figs/web/plugin-mgt-advanced.png[scale=75]
 === HTTP Proxy Configuration
 
 Hudson retrieves a list of plugins and downloads plugins over the
-public internet. If your server is behind a proxy server, you will
+public Internet. If your server is behind a proxy server, you will
 need to configure the proxy settings. Supply the necessary values to
 connect to your internal proxy in the Server and Port fields. The No
 Proxy for field allows you to exclude host names from proxying by
 adding them in a comma separated list.If your proxy server requires
 authentication you will have to select the Proxy Needs Authorization
-check box and provide the User name andPassword.
+check box and provide the User name and Password.
 
 === Upload Plugin
 
@@ -2583,7 +2582,7 @@ Disable Build::
 
 Execute concurrent builds if necessary (beta)::
 
-  If this checkbox is selected, Hudson will be able to execute more
+  If this check box is selected, Hudson will be able to execute more
   than one build for this project at the same time. This can be useful
   if your project is parameterized, or if you have a longer build,
   which may need to run multiple concurrent builds in response to
@@ -2592,7 +2591,7 @@ Execute concurrent builds if necessary (beta)::
 
  JDK::
 
-  This dropdown allows the selection of a specific Java Development
+  This drop down allows the selection of a specific Java Development
   Kit (JDK) for the project. It will only be available if multiple
   JDKs are configured in the global Hudson configuration as documented
   in <<section-configure-jdk>>.
@@ -2660,7 +2659,7 @@ Use custom workspace::
 
 Hudson is typically used in conjunction with the source of the
 project available in a source code management system. Support for a
-large variety of SCM's is one the strength's of Hudson. This section
+large variety of SCM's is one the strengths of Hudson. This section
 allows for the configuration of the respective settings for your SCM
 of choice. The available list of choices will contain all SCM
 systems provided by Hudson and the installed plugins.
@@ -2691,23 +2690,23 @@ Build after other projects are built::
   field that accepts the names of one or more projects. If this field
   is populated, Hudson will trigger this project's build after a
   successful completion of one of the projects listed in this text
-  field. The reverse behaviour of triggering a different project based
+  field. The reverse behavior of triggering a different project based
   on this project's build completing can be configured in the
   Post-build Actions.
 
 Trigger builds remotely (e.g. from scripts)
 
   Enabling this option will allow you to define a authentication token
-  for triggering a build by hitting a project specific url together
-  with the defined token. The url follows the patterns
+  for triggering a build by hitting a project specific URL together
+  with the defined token. The URL follows the patterns
 ----
     http://hudsonurl/jobs/project/build?token=mytoken&cause=mycause
 ----
-  with hudsonurl replaced by the url of your hudson server including
+  with hudsonurl replaced by the URL of your hudson server including
   port number and context (e.g. http://buildserver:8080/hudson).
   mytoken will be the secret token you defined in the Authentication
    Token field and mycause an optional text to submit as the cause. To
-   allow users to hit the url you can e.g. host the link on a
+   allow users to hit the URL you can e.g. host the link on a
    secured web page, send it via email or also use curl or wget from
    a script.
 
@@ -2817,7 +2816,7 @@ image::figs/web/post-build-actions-javadoc.png[scale=75]
 .Project page providing access to Javadoc and latest test results
 image::figs/web/post-build-actions-javadoc-junit-project.png[scale=75]
 
-To configure this you have to select the checkbox and provide the
+To configure this you have to select the check box and provide the
 relative path to the Javadoc in the Javadoc directory input
 field. Checking the Retain Javadoc for each successful build will keep
 the generated Javadoc for all successful builds in the specified
@@ -2916,7 +2915,7 @@ Build other projects::
   time. However in the bigger picture you are able to to run a build
   for very large and complex systems. The input box Projects to build
   accepts a comma-separated list of projects to build together with a
-  checkbox that allows you to trigger the dependent builds even if the
+  check box that allows you to trigger the dependent builds even if the
   current project build failed.
 
 [[fig-post-build-actions-build-other]]
@@ -2940,7 +2939,7 @@ E-mail Notification::
   well as access archives. This email is one of the primary ways in
   which developers are notified of build failures.
 
-  To configure this feature, check the checkbox next to E-mail
+  To configure this feature, check the check box next to E-mail
   Notification and then specify the recipients email addresses in
   Recipients separated by whitespace. Selecting Send e-mail for every
   unstable build will instruct Hudson to send an email for each build
@@ -2961,7 +2960,7 @@ Notify that Maven dependencies have been updated::
   been updated (see <<section-configuring-build-triggers>>). When the
   additional option Notify even when build is unstable is selected
   this notification will occur even when an unstable build ran. A
-  sideeffect of this could be that only some Maven dependencies have
+  side-effect of this could be that only some Maven dependencies have
   been updated, which could lead to further failures of the dependent
   projects.
 
@@ -3132,7 +3131,7 @@ select Invoke Maven 3.
 The basic and advanced options for configuring a Maven 3 build steps
 are shown in <<fig-maven-3-build-step-default>> and
 <<fig-maven-3-build-step-advanced>> . When adding a new Maven 3 build
-step all parameters are prepopulated with the default parameters
+step all parameters are pre-populated with the default parameters
 defined for Maven 3 build steps. These are configured in the global
 Hudson configuration documented in <<chapter-configuration>> in
 <<section-configure-maven-3-builder-defaults>>.
@@ -3165,11 +3164,11 @@ Goals::
   equivalent to the +-V+ and +-B+ options. It is also to specify other
   specific Maven to command-line options like +-P+ for profile
   selection, selection of a specific +settings.xml+ file, +-X+ for
-  debuggin logging and so on. However this is not recommended since
+  debugging logging and so on. However this is not recommended since
   there are specific configuration settings for most parameters in the
   Advanced section. Specifying them in their separate option allows
   for programmatic changes across project defined in your Hudson
-  instance and is easier scriptable in the Hudson console.
+  instance and is easier script-able in the Hudson console.
 
 Properties::
 
@@ -3188,7 +3187,7 @@ POM File::
   equivalent to the command-line option -f pomfilepath or--file
   pomfilepath. The path specified has to be relative to the project
   root. It is also necessary to specify the path to the POM file here
-  if you SCM setup causes the POM file to be located in a subfolder
+  if you SCM setup causes the POM file to be located in a sub-folder
   and not in the top level workspace folder.
 
 Private repository::
@@ -3250,7 +3249,7 @@ Snapshot Updates::
 
   The Snapshot Updates option provides control over the way Maven
   treats +SNAPSHOT+ artifacts. The NORMAL activates the standard Maven
-  behaviour, where as FORCE and SUPPRESS will activate the +-U+ and
+  behavior, where as FORCE and SUPPRESS will activate the +-U+ and
   +-nsu+ options.
 
 Recursive::
@@ -3286,13 +3285,13 @@ Fail Mode::
 
 Make Mode::
 
-  The Make Mode option can be used to enable Make-like build behaviour
-  of Maven. The options are the default behaviour equivalent to NONE
+  The Make Mode option can be used to enable Make-like build behavior
+  of Maven. The options are the default behavior equivalent to NONE
   and DEPENDENCIES, DEPENDENTS and BOTH respectively +-am+, +-amd+ and
   +-am -amd+.
 
 ////
-    TODO add url to external resource explaining this more and explain
+    TODO add URL to external resource explaining this more and explain
      how this can work with a project in relation to checked out
      workspace project and external dependencies, also how does this
      work with Hudson upstream, downstream dependencies and so on
@@ -3306,14 +3305,14 @@ Threading::
   would enable 2.5 threads per CPU core. When activating this feature,
   keep the experimental nature of this feature as well as the not yet
   wide spread support for this feature in the various plugins in mind. Read
-  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html[on the Maven wiki]
+  https://cwiki.apache.org/MAVEN/parallel-builds-in-maven-3.html[on the Maven Wiki]
   to find out more about this feature and the current status.
 
 Settings::
 
   This option corresponds to the +-s+ command-line option for Maven 3
   and supplies a Maven 3 build step with a custom settings
-  configuration file. The dropdown for this field is populated with
+  configuration file. The drop down for this field is populated with
   the Maven 3 Settings files configured in the Hudson Maven 3
   Configuration page as shown in <<fig-manage-mvn-3-settings>>.
 
@@ -3334,7 +3333,7 @@ Tool Chains::
   build step. Tool chains are a very useful, but lesser known feature
   of Maven and more documentation can be found in the
   http://maven.apache.org/guides/mini/guide-using-toolchains.html[mini
-  guide on the Apache website].
+  guide on the Apache web site].
 
 JVM Options::
 
@@ -3421,10 +3420,10 @@ Use private Maven repository::
   consequently should be monitored carefully.
 
   The standard way of invoking a Maven build is to run the clean and
-  install lifecycle phases in a command-line call like mvn clean
+  install life cycle phases in a command-line call like mvn clean
   install. This can be easily achieved by adding a Maven build step
   and adding clean install as a Goals parameter. If so desired these
-  two lifecycle phases can also be invoked separately by creating two
+  two life cycle phases can also be invoked separately by creating two
   Maven build steps with separate clean and install parameters. This
   would cause two separate invocations of Maven in sequence equivalent
   to mvn clean; mvn install Breaking up the invocations allows you to
@@ -3449,7 +3448,7 @@ image::figs/web/build-steps-maven-twice.png[scale=75]
 
 Describe how the blacklist plugin can be used to have the legacy Maven
 integrations installed without them appearing as choices in the
-configurttion so that new builds do not accidently use it.
+configuration so that new builds do not accidently use it.
 
 [[section-maven-artifacts]]
 === Managing the Build Artifacts of a Maven Build
@@ -3611,7 +3610,7 @@ Subversion Workspace Version::
   editing files and checking them in, you should make sure to use the
   same format on the Hudson server as on the Subversion server since
   mismatches can produce problems in the Subversion repository and
-  potentially break expected behaviour. An important issue related to
+  potentially break expected behavior. An important issue related to
   this setup is that you can not support different Subversion servers
   with different versions accessed from one Hudson instance. It is
   advisable to update the Subversion servers and Hudson installed
@@ -3750,7 +3749,7 @@ HTTPS client certificate::
   controls.
 
 By default the above configuration will override any global
-configuration. This behaviour can be deactivated by selecting no in
+configuration. This behavior can be deactivated by selecting no in
 the Override global credentials option.
 
 Beyond these basic configuration options the Subversion plugin
@@ -3792,7 +3791,7 @@ Exclusion revprop name::
 
   A Subversion revision can be associated with a property. If Hudson
   encounters a revision with the specified property, it will not
-  trigger a build from an SCM commit, similar to the behaviour for the
+  trigger a build from an SCM commit, similar to the behavior for the
   options Excluded Users or Excluded Commit Messages
 
 [[section-scm-svn-basic-config]]
@@ -4021,7 +4020,7 @@ Prune remote branches before build::
   remote prune before each build . This is especially useful if remote
   branches are created and removed regularly allowing the local
   checkout in Hudson to stay in sync and only build the branches that
-  alos exist remotely.
+  also exist remotely.
 
 Skip internal tag::
 
@@ -4060,7 +4059,7 @@ Choosing strategy::
   specified repositories and branches to build. For one branch and one
   repository HEAD will be built.  For multiple branches and
   repositories a more refined strategy is used selecting revisions
-  that have notG yet been built and are on the specified branches.
+  that have not yet been built and are on the specified branches.
   Other plugins can implement a different choosing strategy e.g. the
   http://wiki.hudson-ci.org/display/HUDSON/Gerrit+Plugin[Gerrit Plugin]
   enables a Gerrit change set based strategy effectively allowing
@@ -4123,13 +4122,13 @@ Tag to push::
 
 Create new tag::
 
-  This checkbox determines if the tag to push to as provided above
+  This check box determines if the tag to push to as provided above
   should be created as a new tag or be used as an existing tag.
 
 Target remote name::
 
   The name of the remote to push the tag to. The name needs to be
-  configured as a repository in the SCM setion for this project.
+  configured as a repository in the SCM section for this project.
 
   Configuring branches to push to is done in the user interface
   displayed in <<fig-scm-git-project-pub-branches>>.
@@ -4236,7 +4235,7 @@ Installation directory::
 Executable::
 
   This is the path to the actual +hg+ executable. The field is
-  prefilled with +INSTALLATION/bin/hg+, which is the correct value if
+  pre-filled with +INSTALLATION/bin/hg+, which is the correct value if
   you use a manual install of hg.  If you are using binary package as
   provided by your operating system package management system the
   correct value is likely just +hg+, since the command would be on the
@@ -4387,7 +4386,7 @@ cvs executable::
 Disable CVS compression::
   Activate this option to disable CVS compression.
 
-[[section-scm-cvs-projectf]]
+[[section-scm-cvs-project]]
 ==== Project-specific CVS Configuration
 
 Selecting CVS under the Source Code Management section will display
@@ -4534,7 +4533,7 @@ If your Eclipse instance is not yet connected to a Hudson server,
 click on the blue sphere icon to the left of the refresh icon in the
 previous figure. This icon will load the Subscribe to Build Job
 Notifications dialog. To connect Eclipse to a new Hudson instance,
-enter the URL of the Hudson server along with your username and
+enter the URL of the Hudson server along with your user name and
 password credentials.
 
 === View Hudson Projects from Eclipse
@@ -4543,12 +4542,12 @@ Once you've loaded a list of Hudson jobs in Eclipse, you can click on
 one of these Build Jobs to view a detailed snapshot of the project
 status and any associated builds.  <<fig-eclipse-matrix-project>>
 shows the status of a build job from Sonatype's own Hudson
-instance. In tis dialog you can see that the job detail window
+instance. In this dialog you can see that the job detail window
 contains general information about the Job in Job Properties,
 information about specific Job Builds in Build Properties and also
 links to alternative configuration for Build Jobs. If you need to get
 more information about the Job's workspace in order to trouble shoot a
-build, you can also click onView job workspace. Clicking on this link
+build, you can also click on View job workspace. Clicking on this link
 will load the project's workspace in a browser window as another
 Eclipse tab.
 
@@ -4622,6 +4621,9 @@ poll Hudson to check for build failures.
 .Hudson Notifications in Eclipse
 image::figs/web/ide-eclipse-notify.png[scale=75]
 
+/* Local Variables: */
+/* ispell-personal-dictionary: "ispell.dict" */
+/* End:             */
 
 
 

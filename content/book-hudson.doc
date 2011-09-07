@@ -672,21 +672,22 @@ particular servers expectations.
 
 Hudson provides a package repository of deb files for users of Debian
 based distributions such as Debian, Ubuntu and others. This package
-will install Hudson and set it up as a service.
+will install Hudson and set up the CI server as a service.
 
 Step 1: Install Java runtime::
 
   In order to fulfill the prerequisite of an installed Java runtime on
   a Debian based distribution it is best to install the meta package
   +default-jdk+, which will install OpenJDK.  Either use a graphical
-  user interface like +synaptic+ or install from on the command-line
-  with
+  user interface like +synaptic+ or install from the command-line
+  with apt-get using the following command.
 
 ----
 sudo apt-get install default-jdk
 ----
 
-If you prefer to use the Oracle Java runtime install it with
+If you prefer to use the Oracle Java runtime install it with the
+following apt-get command.
 
 ----
 sudo apt-get install sun-java6-jdk
@@ -696,7 +697,7 @@ Step 2: Add Hudson repository URL to package management::
 
   The Hudson project hosts its packages in its own repository
   server. In order to use it you have to add its URL to your list of
-  package sources with
+  package sources with the following command.
 
 ----
 sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \ 
@@ -704,13 +705,14 @@ sudo sh -c "echo 'deb http://hudson-ci.org/debian binary/' \
 ----
 
 You can also add the APT line +deb http://hudson-ci.org/debian
-binary/+ in your graphical package manager as a repository URL.
-Future upgrades will not require this step to be repeated.
+binary/+ in your GUI package manager as a repository URL.  Future
+upgrades will not require this step to be repeated.
 
 Step 3: Update the list of available packages::
 
-  Once you've install Java and added the Hudson repository URL you can
-  update the list of available packages with the following command.
+  Once you've installed Java and added the Hudson repository URL you
+  can update the list of available packages with the following
+  command.
 
 ----
 sudo apt-get update
@@ -718,7 +720,8 @@ sudo apt-get update
 
 This step has to be repeated whenever you want to check for the
 availability of upgrades.  A common, best practice is to run +yum
-update+ on a regular basis using cron.
+update+ on a regular basis using cron this will alert you to updates
+as they become available.
 
 Step 4: Install Hudson::
 
@@ -763,19 +766,21 @@ Not creating home directory `/var/lib/hudson'.
  * Starting Hudson Continuous Integration Server hudson  [ OK ]
 ----
 
-As you can see from the output above, a hudson user was created . This
+As you can see from the output above, a hudson user was created. This
 user will run the Hudson server. The Hudson home folder is configured
-to be located in +/var/lib/hudson+.  This is an important directory to
-remember, as it contains configuration, workspaces, and other files
-related to your project's builds.
+to point to the +/var/lib/hudson+ directory.  This is an important
+directory to remember, as it contains configuration, workspaces, and
+other files related to your project's builds.
 
 NOTE: Take note, if you are backing up Hudson, you will want to
 configure your backup systems to archive the contents of
-+/var/lib/hudson+.
++/var/lib/hudson+.  Everything interesting that relates to your
+projects is contained in this directory.
 
 Step 5: Upgrade Hudson::
 
-  To upgrade Hudson when a new release is available you would run
+  To upgrade Hudson when a new release is available you would run the
+  following apt-get command.
 
 ----
 sudo apt-get upgrade
@@ -783,7 +788,7 @@ sudo apt-get upgrade
 
 This will stop the running Hudson server, upgrade Hudson and restart
 the server. Prior to upgrading you should always backup your Hudson
-configuration located in +/var/lib/hudson+.
+configuration and workspace data located in +/var/lib/hudson+.
 
 ==== Hudson Filesystem on Ubuntu
 
@@ -846,19 +851,19 @@ sudo /etc/init.d/hudson start
 ==== Hudson Log Files on Ubuntu
 
 Following the Linux Standard Base conventions Hudson creates its log
-files into +/var/log/hudson/hudson.log+ and the log files will be
-rotated automatically in the same way your system's syslogs are
-rotated on a nightly schedule.
+file in +/var/log/hudson/hudson.log+.  This log file will be rotated
+automatically in the same way your syslog files are rotated on a
+nightly schedule.
 
 This log rotation schedule can be configured by altering the
 configuration in +/etc/logrotate.d/hudson+.
 
 ==== Hudson Configuration on Ubuntu
 
-The list of files installed by the Hudson DEB reveals that a
-configuration file +/etc/default/hudson+ was created. It contains a
-number of configuration parameters that you might want to adapt to
-your needs. These include:
+The list of files installed by the Hudson DEB package reveal that a
+configuration file +/etc/default/hudson+ was created.  This file
+contains a number of configuration parameters that you might want to
+adapt to your needs. These include:
 
 JAVA_ARGS:: 
 
@@ -866,7 +871,7 @@ JAVA_ARGS::
 
 HTTP-PORT::
 
-  Set to the Hudson port to 8080. 
+  Sets the Hudson port to a default of 8080.
 
 HUDSON_HOME::
 
@@ -884,7 +889,7 @@ MAXOPENFILES::
 
 AJP_PORT::
 
-  This configuration parameters is disable by default, but if you are
+  This configuration parameter is disabled by default, but if you are
   planning on exposing your Hudson service via a web server using
   mod_jk or mod_proxy_ajp, you can configure the AJP port in this
   configuration file.
@@ -900,7 +905,7 @@ HUDSON_USER::
   The DEB installer creates "hudson" user.  This value is configurable
   in case you need to run Hudson under a different user.
 
-If you modify this file to suit your needs, you should add it to you
+TIP: If you modify this file to suit your needs, you should add it to your
 backup strategy.
 
 [[section-install-rpm]]

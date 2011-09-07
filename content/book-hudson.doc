@@ -918,10 +918,11 @@ install Hudson and set it up as a service.
 STEP 1: Install Java runtime::
 
   In order to fulfill the prerequisite of an installed Java runtime on
-  a RedHat based distribution it is best to install the meta package
+  a RedHat-based distribution it is best to install the meta package
   +java+, which will install OpenJDK, with your preferred package
   manager user interface. Either use a graphical user interface like
-  +Add/Remove Software+ or install from on the command-line with
+  +Add/Remove Software+ or install from the command-line with the
+  following command.
 
 ----
 sudo yum install java
@@ -930,8 +931,9 @@ sudo yum install java
 STEP 2: Add Hudson repository URL to package management::
 
   The Hudson project hosts its packages in its own repository
-  server. In order to use it you have to add the repository meta data
-  to your list of package sources with
+  server. In order to reference these packages you have to add the
+  repository metadata to your list of package sources with the
+  following command.
 
 ----
 sudo wget -O /etc/yum.repos.d/hudson.repo http://hudson-ci.org/redhat/hudson.repo
@@ -942,15 +944,17 @@ Future upgrades will not require this step to be repeated.
 STEP 3: Update the list of available packages::
 
   Once the prior steps are completed you can update the list of
-  available packages in your graphical package manager or with
+  available packages in your graphical package manager or using the
+  following yum command.
 
 ----
 sudo yum check-update
 ----
 
 This step has to be repeated whenever you want to check for the
-availability of upgrades. Common practice is for the update of the
-list to run automatically on a regular basis.
+availability of upgrades. A suggested best practice is to run "yum
+check-update" on a regular basis and configure a system to notify you
+when your system is eligible for updates.
 
 STEP 4: Install Hudson::
 
@@ -961,9 +965,10 @@ STEP 4: Install Hudson::
 sudo yum install hudson
 ----
 
-This command will require you to confirm and will then proceed to
-install and start Hudson. Your console output will look similar to
-this
+This command will require your confirmation.  Once you've confirmed
+that you want to install Hudson, yum will then proceed to install and
+start Hudson. Your console output will look similar to the following
+output.
 
 ----
 $ sudo yum install hudson
@@ -1020,19 +1025,10 @@ restart the server. Prior to upgrading you might want to backup your
 Hudson data configuration located in +/var/lib/hudson+ and owned by
 the hudson user.
 
-The install configured Hudson as a service so that you can stop and
-start the service with the following commands:
+==== Hudson Filesystem on Redhat
 
-----
-sudo service hudson stop
-sudo service hudson start
-----
-
-Following the Linux standard base convention Hudson will create its
-log files into +/var/log/hudson/hudson.log+ and the log files will be
-rotated so you will no accumulate large log files using up disk space.
-
-Looking at the list of files installed by the package
+Looking at the list of files installed by the package we see that this
+RPM created the following files.
 
 ----
 $ rpm -ql hudson
@@ -1046,18 +1042,40 @@ $ rpm -ql hudson
 /var/log/hudson
 ----
 
-reveals that a configuration file +/etc/sysconfig/hudson+ was
-created. It contains a number of configuration parameters that you
-might want to adapt to your needs. These include e.g. the
-+HUDSON_JAVA_OPTIONS+ that can be used to increase the memory
-allocation for Hudson or the +HUDSON_PORT+ parameter set to the common
-8080. If you modify this file to suit your needs, you should add it to
-you backup strategy.
-
 As part of the install a hudson user was created . This user will run
 the Hudson server. The Hudson home folder is configured to be located
 in +/var/lib/hudson+, which will contain configuration, workspaces and
 so on and should be added to your backup strategy.
+
+==== Starting and Stopping Hudson on Redhat
+
+The install configured Hudson as a service so that you can stop and
+start the service with the following commands:
+
+----
+sudo service hudson stop
+sudo service hudson start
+----
+
+==== Hudson Log Files on Redhat
+
+Following the Linux standard base convention Hudson will create its
+log files into +/var/log/hudson/hudson.log+ and the log files will be
+rotated on a nightly basis to preserve disk space.
+
+==== Hudson Configuration on Redhat
+
+This rpm command reveals that a configuration file
++/etc/sysconfig/hudson+ was created. It contains a number of
+configuration parameters that you might want to adapt to your
+needs. These include e.g. the +HUDSON_JAVA_OPTIONS+ that can be used
+to increase the memory allocation for Hudson or the +HUDSON_PORT+
+parameter set to the common 8080. If you modify this file to suit your
+needs, you should add it to you backup strategy.
+
+////
+TODO I think we need some details here
+////
 
 [[section-install-opensuse]]
 === Installing Hudson on OpenSUSE

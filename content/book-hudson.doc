@@ -4179,7 +4179,7 @@ branches between builds.
 
 However together with configuring Merge Options it allows for a
 automated merge from whichever branch to have the latest changes to
-the target branch e .g. +master+ and proceed with the build after the
+the target branch e.g. +master+ and proceed with the build after the
 merge.
 
 Now you can activate the Git Publisher post-build action Push Only If
@@ -4350,43 +4350,41 @@ the public url of the repository.
     http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
 ////
 
-
 [[section-scm-cvs]]
 === Configuring CVS
 
-The Hudson CVS Plugin and support for the http://cvs.nongnu.org/[CVS
-system] is part of the default install of Hudson. It is therefore not
-necessary to perform any further plugin installation to use CVS for
-your project.
+If your Hudson Jobs rely on CVS there is no plugin configuration
+necessary, as the Hudson CVS Plugin and support for the
+http://cvs.nongnu.org/[CVS system] is included as a part of the
+default Hudson distribution.
 
 [[section-scm-cvs-global]]
 ==== Global CVS Configuration
 
 To configure CVS, find the CVS section in the Hudson Server
-configuration screen as displayed in <<fig-scm-cvs-global-config>>,
-press the Add and configure the parameters for your CVS install. If
-CVS is already installed on your Hudson server and the cvs is
-available on the path, you do not need to configure a CVS
-installation. The plugin will pick up the installed version.
+configuration screen as displayed in <<fig-scm-cvs-global-config>>.
+From the Hudson start page, click on Manage Hudson, then click on
+Configure System, and scroll down to the CVS section of this
+configuration form.  If CVS is already installed on your Hudson server
+and the cvs is available on the path, you do not need to configure a
+CVS installation. The plugin will pick up the installed version.
 
 [[fig-scm-cvs-global-config]]
 .Global CVS Configuration
 image::figs/web/scm-cvs-global-config.png[scale=75]
 
-The following parameters need to be configured as desired:
+The CVS configuration section allows you to configure the following
+properties:
 
 cvs executable::
-
-  If the cvs executable can not be found on the PATH, you can
+  If the cvs executable is not available on the PATH, you can
   configure an absolute path to it in this input field.
 
 .cvspass file::
-
   Specify the path to the .cvspass file that contains the user
   credentials.
 
 Disable CVS compression::
-
   Activate this option to disable CVS compression.
 
 [[section-scm-cvs-projectf]]
@@ -4411,59 +4409,57 @@ CVSROOT::
   This is the CVSROOT parameter for your source. You would enter in
   the same information here that you would use if you were checking
   out source code use the CVS client.  The format for the URL is
-----
-  +[[:protocol:][[user][:password]]][@servername][:serverpath]
-----
-  with the parameters: <variablelist> 
 
-:protocol:::
+----
+<protocol>:<user>:<password>@<servername>:<serverpath>
+----
+
+Each component in the CVSROOT parameter 
+
+protocol::
 
   The protocol defines the way the CVS client communicates to the
-  repository and the protocol name has to be enclosed in+:+. Supported
-  protocols are +:local:+ for local or net file system level
-  connection, +:pserver:+ as the standard unsecured protocol, +:ext:+,
-  +:ssh:+ and +:extssh:+ for secure shell based connections and
-  +:sspi:+ for Windows based access. Depending on your CVS client and
-  server installs other protocols are supported as well.
+  repository. Supported protocols are +:local:+ for local or net file
+  system level connection, +:pserver:+ as the standard unsecured
+  protocol, +:ext:+, +:ssh:+ and +:extssh:+ for secure shell based
+  connections and +:sspi:+ for Windows based access.
 
-  In general and specifically with Hudson due to its nature as an
-  additional user for CVS we recommend not to use the local protocol,
-  since it can cause problems if too many users will try to access it.
+NOTE: Due to concurrency and additional load on the repository, we
+recommend avoiding the local protocol for CI builds.  Using the local
+protocol in Hudson often results in problems if too many clients are
+trying to access a CVS repository at the same time.
 
-  When using the pserver protocol on the public internet you have to
-  keep in mind that it is an insecure protocol and passwords and data
-  can be sniffed theoretically.  Replace it with using the ssh based
-  protocols, when security is required.
+WARNING: Please also keep in mind that the pserver protocol is
+insecure.  If you storing sensitive data or code in a CVS repository,
+avoid the pserver protocol and use ssh as an alternative.
 
 user::
 
   Supply the user name for the client-server protocol used.
 
-:password::
+password::
 
   Specify the password when using the +:pserver:+ or +:sspi:+
   protocol.
 
-@servername::
+servername::
 
   The server name of the repository server as reachable via the
   network. It can be a fully qualified server and domain name, a
   server name only or an IP number. The character +@+ is required at
   the beginning of the server name. 
 
-:serverpath::
+serverpath::
 
   The path to the repository on the server prepended by +:+. The path
   itself can be either unix style like +/opt/data/cvsrepo+ or Windows
   style like +C:\cvs\repository+.
 
-  An example for a valid url is
+An example for a valid url with a module is shown below.
 
 ----
 :pserver:anonymous@tortoisecvs.cvs.sourceforge.net:/cvsroot/tortoisecvs
 ----
-
-  with a module defined.
 
 Module(s) and Branch::
 
@@ -4496,14 +4492,6 @@ Excluded Regions::
   If the module you are checking out contains some files that you need
   to exclude from triggering a build when changed, you can exclude
   regions by populating this field with the respective patterns.
-
-[[section-scm-cvs-basic-config]]
-==== Minimal Basic CVS Configuration
-
-In order to build a project controlled in CVS you need to have CVS
-available on the PATH on the Hudson server or have the path configured
-in the global configuration. For the project specific settings
-configure the repository url and a module.
 
 [[chapter-ide-integration]]
 == IDE Integration
@@ -4628,7 +4616,7 @@ Once you've connected Eclipse to Hudson, you can also configure the
 tool to notify you of build failure events. <<fig-eclipse-notify>>
 shows an Eclipse installation which has been configured to receive
 notifications of specific build failures.  Eclipse will periodically
-poll Hudson to check for build failures in specific projects.
+poll Hudson to check for build failures.
 
 [[fig-eclipse-notify]]
 .Hudson Notifications in Eclipse

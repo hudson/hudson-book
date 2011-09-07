@@ -433,7 +433,11 @@ operating systems.
 [[section-install-preprequisites]]
 === Prerequisites
 
-While Hudson can run on a variety of machines under an almost infinite combinations of JVMs, Operating System, and infrastructure.  The Hudson project is targeting a set of standard operating systems and Java versions.  This section outlines some of the expectations, the preconditions that are necessary to install and run a Hudson server.
+While Hudson can run on a variety of machines under an almost infinite
+combinations of JVMs, Operating System, and infrastructure.  The
+Hudson project is targeting a set of standard operating systems and
+Java versions.  This section outlines some of the expectations, the
+preconditions that are necessary to install and run a Hudson server.
 
 ==== Software Prerequisites
 
@@ -453,16 +457,26 @@ Download Oracle Java 6 JDK::
   , and download the latest Java 6 JDK.
 
 Installing OpenJDK 6 on Linux::
+
   
-  OpenJDK packages are available in both RPM and DEB format which should cover most Linux distributions.  To install the OpenJDK 6 on your Linux machine, following the instruction on http://openjdk.java.net/install/index.html[this page].
+  OpenJDK packages are available in both RPM and DEB format which
+  should cover most Linux distributions.  To install the OpenJDK 6 on
+  your Linux machine, following the instruction on
+  http://openjdk.java.net/install/index.html[this page].
 
 [[section-install-war]]
 
 ==== Hardware Prerequisites
 
-As there is such a wide variety of Hudson deployments, from the Hudson server that runs a single project only trigger once every few days, to the Hudson server which servers as a master orchestrator of a hundred of more nodes in a massively distributed build grid, it is impossible to predict and recommend the necessary CPU power and disk space your particular installation will demand.
+As there is such a wide variety of Hudson deployments, from the Hudson
+server that runs a single project only trigger once every few days, to
+the Hudson server which servers as a master orchestrator of a hundred
+of more nodes in a massively distributed build grid, it is impossible
+to predict and recommend the necessary CPU power and disk space your
+particular installation will demand.
 
-What this section can do is provide a few recommendations that will help size and configure your infrastructure:
+What this section can do is provide a few recommendations that will
+help size and configure your infrastructure:
 
 Network::
 
@@ -849,13 +863,8 @@ backup strategy.
 [[section-install-rpm]]
 === Installing Hudson on Redhat, CentOS, and Fedora
 
-////
-    at a later stage we can split this up but not now while it is all
-    the same package and infrastructure
-////
-
 Oracle Linux, Redhat Enterprise Linux, CentOS and Fedora all use the
-same rpm package provided by the Hudson project. This package will
+same RPM package provided by the Hudson project. This package will
 install Hudson and set it up as a service.
 
 STEP 1: Install Java runtime::
@@ -904,8 +913,9 @@ STEP 4: Install Hudson::
 sudo yum install hudson
 ----
 
-which will require you to confirm and will then proceed to install and
-start Hudson. Your console output will look similar to this
+This command will require you to confirm and will then proceed to
+install and start Hudson. Your console output will look similar to
+this
 
 ----
 $ sudo yum install hudson
@@ -950,23 +960,24 @@ Complete!
 
 STEP 5: Upgrade Hudson::
 
-  To upgrade Hudson when a new release is available you would run
+  To upgrade Hudson when a new release is available run the following
+  command:
 
 ----
 sudo yum update
 ----
 
-which will stop the running Hudson server, upgrade Hudson and restart
-the server. Prior to upgrading you might want to backup your Hudson
-data configuration located in +/var/lib/hudson+ and owned by the
-hudson user.  created.
+This command stops the running Hudson server, upgrade Hudson and
+restart the server. Prior to upgrading you might want to backup your
+Hudson data configuration located in +/var/lib/hudson+ and owned by
+the hudson user.
 
 The install configured Hudson as a service so that you can stop and
-start the service with
+start the service with the following commands:
 
 ----
-    sudo service hudson stop
-    sudo service hudson start
+sudo service hudson stop
+sudo service hudson start
 ----
 
 Following the Linux standard base convention Hudson will create its
@@ -1052,8 +1063,8 @@ STEP 4: Install Hudson::
 sudo zypper install hudson
 ----
 
-which will require you to confirm and will then proceed to install and
-start Hudson. Your console output will look similar to this
+This command requires you to confirm and will then proceed to install
+and start Hudson. Your console output will look similar to this
 
 ----
 $ sudo zypper install hudson
@@ -1075,19 +1086,20 @@ hudson                    0:off  1:off  2:off  3:on   4:off  5:on   6:off
 
 STEP 5: Upgrade Hudson::
 
-  To upgrade Hudson when a new release is available you would run
+  To upgrade Hudson when a new release is available you would run the
+  following command:
 
 ----
 sudo zypper update
 ----
 
-which will stop the running Hudson server, upgrade Hudson and restart
-the server. Prior to upgrading you might want to backup your Hudson
-data configuration located in +/var/lib/hudson+ and owned by the
-hudson user.  created.
+This command stops the running Hudson server, upgrade Hudson and
+restart the server. Prior to upgrading you might want to backup your
+Hudson data configuration located in +/var/lib/hudson+ and owned by
+the hudson user.
 
 The install configured Hudson as a service so that you can stop and
-start the service with
+start the service with the following commands:
 
 ----
 sudo /etc/init.d/hudson stop
@@ -1113,8 +1125,8 @@ $ rpm -ql hudson
 /var/log/hudson
 ----
 
-reveals that a configuration file +/etc/sysconfig/hudson+ was
-created. It contains a number of configuration parameters that you
+This command reveals that a configuration file +/etc/sysconfig/hudson+
+was created. It contains a number of configuration parameters that you
 might want to adapt to your needs. These include e.g. the
 +HUDSON_JAVA_OPTIONS+ that can be used to increase the memory
 allocation for Hudson or the +HUDSON_PORT+ parameter set to the common
@@ -1184,10 +1196,9 @@ ProxyPreserveHost On
 </VirtualHost>
 ----
 
-If you just wanted to continue to serve Hudson at the
-'/hudson' context path, you would include the
-context path in your +ProxyPass+ and +ProxyPassReverse+ directives as
-follows:
+If you just wanted to continue to serve Hudson at the '/hudson'
+context path, you would include the context path in your +ProxyPass+
+and +ProxyPassReverse+ directives as follows:
 
 ----
 ProxyPass /matrix/ http://localhost:8082/matrix/
@@ -2241,8 +2252,6 @@ personalization.
 
 === Hudson Security Best Practices, Tips and Tricks
 
-TBD
-
 ==== Common Setup - Internal matrix-based authorization
 
 A common and useful setup is a combination of using Hudson's internal
@@ -2329,7 +2338,7 @@ your instance of Hudson system.
 
 [[fig-using-installed-plugin]]
 .The Installed tab for managing the installed plugins
-image::figs/web/plugin-mgt-installed.png" scalefit="1[scale=75]
+image::figs/web/plugin-mgt-installed.png[scale=75]
 
 The Enabled check box allows you to activate and deactivate specific
 plugins. After plugin updates your old plugin version will remain to
@@ -2359,7 +2368,7 @@ are running button for the new plugin to be available.
 
 [[fig-using-avail-plugin]]
 .The Available tab for installing new plugins
-image::figs/web/plugin-mgt-available.png" scalefit="1[scale=75]
+image::figs/web/plugin-mgt-available.png[scale=75]
 
 [[section-plugin-management-updates]]
 === Updates
@@ -2421,8 +2430,6 @@ available input field.
 
 [[chapter-build-creation]]
 == Creating Hudson Projects
-
-TBD
 
 [[section-creating-new-project]]
 === Creating New Hudson Projects
@@ -2557,7 +2564,11 @@ Discard Old Builds::
 
 This Build is Parameterized::
 
-  TBD
+  Parameterized builds allow you to pass configuration to specific
+  builds.  For example, you can parameterize a build to accept a
+  free-form variable that selects a specific branch in SCM.  This way,
+  a Hudson user can trigger a build and supply the name of this branch
+  to the Hudson build.
 
 Disable Build::
 
@@ -2762,8 +2773,7 @@ well as actual executables or archives produced.
 Beyond the core post-build actions documented in the following,
 various plugins will make additional actions available. Source code
 management-related plugin documentation can be found in
-<<chapter-source-control>>. Other plugins are documented in
-<<chapter-plugins>>. The minimum list of build actions available is
+<<chapter-source-control>>. The minimum list of build actions available is
 visible in <<fig-post-build-actions>> and documented in more detail
 below.
 
@@ -3003,16 +3013,6 @@ Invoke Maven 3::
   A Maven 3 based build step can be configured as documented in
   <<section-maven-3-build-configuration>>
 
-[[section-configuring-multi-config-project]]
-=== Configuring Multi-Configuration Projects
-
-TBD
-
-[[section-configuring-external-monitoring-project]]
-=== Configuring External Monitoring Projects
-
-TBD
-
 [[chapter-maven]]
 == Working with Apache Maven Builds
 
@@ -3119,11 +3119,6 @@ cluttering to user interface or have inexperienced users create builds
 with the legacy systems, you can enable the blacklist plugin to
 disable certain views within Hudson without completely disabling the
 still required plugins.
-
-[[section-maven-example]]
-=== A Simple Example for an Apache Maven built project
-
-TBD
 
 [[section-maven-3-build-configuration]]
 === Details of Configuring Maven 3 Build Options
@@ -3461,21 +3456,6 @@ configurttion so that new builds do not accidently use it.
 
 in hudson artifact, Nexus, Sonar, in hudson maven repo plugin.
 
-[[section-maven-multi-module]]
-=== Complex Builds with Maven Multi-module Setup
-
-TBD
-
-[[section-maven-hudson-dependencies]]
-=== Complex Builds with Hudson Job Dependencies
-
-TBD
-
-[[section-maven-release-build]]
-=== Automating Release Builds
-
-TBD
-
 [[chapter-ant]]
 == Working with Apache Ant Builds
 
@@ -3553,21 +3533,6 @@ Java Options::
   use the normal java command-line options syntax. A common
   configuration for complex builds is to specify a larger memory for
   the JVM running Ant via -Xmx1024m.
-
-[[section-ant-example]]
-=== Hudson Apache Ant Example
-
-TBD
-
-[[section-ant-best-pratices]]
-=== Apache Ant Build Best Practices
-
-TBD
-
-[[section-ant-troubleshooting]]
-=== Apache Ant Build Troubleshooting
-
-TBD
 
 [[chapter-source-control]]
 == Working with Source Control
@@ -3912,7 +3877,7 @@ Path to git executable::
   specific project configuration allows you to override these setting
   for each project individually.
 
- [[fig-scm-git-global-user-config]]
+[[fig-scm-git-global-user-config]]
 .Configuring Git user name and email values
 image::figs/web/scm-git-global-user-config.png[scale=75]
 
@@ -3920,10 +3885,10 @@ image::figs/web/scm-git-global-user-config.png[scale=75]
 ==== Project-specific Git Configuration
 
 Once you have configured Git in the global Hudson configuration you
- can configure project-specific Git settings. Selecting Git under the
- Source Code Management section of your project configuration will
- display the configuration options shown in
- <<fig-scm-git-project-config>>.
+can configure project-specific Git settings. Selecting Git under the
+Source Code Management section of your project configuration will
+display the configuration options shown in
+<<fig-scm-git-project-config>>.
 
 [[fig-scm-git-project-config]]
 .Basic Git source control information
@@ -4159,7 +4124,7 @@ Tag to push::
 Create new tag::
 
   This checkbox determines if the tag to push to as provided above
- should be created as a new tag or be used as an existing tag.
+  should be created as a new tag or be used as an existing tag.
 
 Target remote name::
 
@@ -4198,11 +4163,6 @@ changed branch. In a normal project this might adversely affect the
 stability of the build and potentially cause a confusing history for
 the project. We suggest to set up separate projects for each branch
 you want to track and build on Hudson.
-
-[[section-scm-git-advanced-config]]
-==== Tips and Tricks for Advanced Git Configurations
-
-TBD
 
 ==== Multiple branches and automated merging
 
@@ -4273,7 +4233,6 @@ Installation directory::
 
   Specify the absolute path to the Mercurial installation .
 
-
 Executable::
 
   This is the path to the actual +hg+ executable. The field is
@@ -4306,7 +4265,7 @@ Download Forest extension::
   Mercurial itself e.g. if no native package for the extension is
   available.
 
-In addition the Mercurial plugin facilitates the tool installer from
+In addition, the Mercurial plugin facilitates the tool installer from
 Hudson that allows Run Command and Extract from *.zip/*.tar.gz based
 installs similar to the JDK installs documented in details in
 <<section-configure-jdk>>. The Ant and the Maven plugins installers
@@ -4318,8 +4277,8 @@ there.
 ==== Project-specific Mercurial Configuration
 
 Selecting Mercurial under the Source Code Management section will
-display the configuration options shown
-in <<fig-scm-hg-project-config>>.
+display the configuration options shown in
+<<fig-scm-hg-project-config>>.
 
 [[fig-scm-hg-project-config]]
 .Configuring Mercurial Source Control Information
@@ -4433,8 +4392,8 @@ Disable CVS compression::
 [[section-scm-cvs-projectf]]
 ==== Project-specific CVS Configuration
 
-  Selecting CVS under the Source Code Management section will display
-  the configuration options shown in <<fig-scm-cvs-project-config>>.
+Selecting CVS under the Source Code Management section will display
+the configuration options shown in <<fig-scm-cvs-project-config>>.
 
 [[fig-scm-cvs-project-config]]
 .Configuring CVS Source Control Information
@@ -4546,46 +4505,6 @@ available on the PATH on the Hudson server or have the path configured
 in the global configuration. For the project specific settings
 configure the repository url and a module.
 
-[[section-scm-cvs-advanced-config]]
-==== Tips and Tricks for Advanced CVS Configurations
-
-TBD
-
-[[chapter-grid]]
-== Running a Hudson grid
-
-=== Motivation
-
-TBD
-
-=== Installing a Hudson Slave
-
-TBD
-
-=== Advanced Tips and Tricks
-
-TBD
-
-=== hudson-slave.xml
-
-can be edited to modify various parameters like Java version used to
-run Hudson slave and others.
-
-[[chapter-plugins]]
-== Notable Hudson Plugins
-
-=== Hudson XYZ Plugin
-
-TBD
-
-=== Overview and Purpose
-
-TBD
-
-=== Features
-
-TBD
-
 [[chapter-ide-integration]]
 == IDE Integration
 
@@ -4688,8 +4607,8 @@ get to the bottom of a build failure. To open a build's console
 output, select the project from the Hudson jobs view, select an
 individual project build, and then click on the "Console Output" link
 shown in <<fig-eclipse-matrix-project>>. Clicking on this link will
-load the view shown in <<fig-eclipse-console-output>>.
-This view gives you the raw console output from a Hudson build.
+load the view shown in <<fig-eclipse-console-output>>.  This view
+gives you the raw console output from a Hudson build.
 
 [[fig-eclipse-console-output]]
 .Viewing Hudson Console Output from Eclipse
@@ -4715,27 +4634,6 @@ poll Hudson to check for build failures in specific projects.
 .Hudson Notifications in Eclipse
 image::figs/web/ide-eclipse-notify.png[scale=75]
 
-[[chapter-nexus]]
-== Hudson and Nexus
 
-TBD
 
-[[chapter-sonar]]
-== Hudson and Sonar
 
-TBD
-
-[[chapter-polyglot]]
-== Polyglot Hudson
-
-TBD
-
-[[chapter-plugin-writing]]
-== Writing a Hudson Plugin
-
-TBD
-
-[[copyright-sect-creative-commons]]
-== Book License
-
-TBD

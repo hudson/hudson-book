@@ -332,59 +332,59 @@ was focused on the following tasks:
 Some of the larger, medium-term goals of the Hudson project are:
 
 * *Improving stability* - The Eclipse project is investing in QA
-   efforts to certify Eclipse to run on a set of standard platforms.
-   Improving the reliability and stability of Hudson will enable more
-   predictable behavior for end-users and also enable an ecosystem of
-   interested third-party providers of Hudson support services.
+  efforts to certify Eclipse to run on a set of standard platforms.
+  Improving the reliability and stability of Hudson will enable more
+  predictable behavior for end-users and also enable an ecosystem of
+  interested third-party providers of Hudson support services.
 
 * *Improving performance* - The project is focused on addressing
-   performance, especially for organizations using Hudson to support
-   large numbers of projects.
+  performance, especially for organizations using Hudson to support
+  large numbers of projects.
 
 * *Improving Maven 3.x integration* - Sonatype has contributed a
-   completely reworked Maven 3 plugin which takes advantage of changes
-   to Maven 3 which were made to increase the ease with which Maven
-   could be integrate in IDEs such as Eclipse and CI servers such as
-   Hudson.
+  completely reworked Maven 3 plugin which takes advantage of changes
+  to Maven 3 which were made to increase the ease with which Maven
+  could be integrate in IDEs such as Eclipse and CI servers such as
+  Hudson.
 
 * *Improve the UI* - Prior to the migration to the Eclipse Foundation,
-   the Hudson project had standardized on Jelly as a UI technology.
-   The Hudson is currently focused on moving the UI system way from
-   Jelly and toward a more modern approach to creating a solid,
-   reactive user interface for Hudson.
+  the Hudson project had standardized on Jelly as a UI technology.
+  The Hudson is currently focused on moving the UI system way from
+  Jelly and toward a more modern approach to creating a solid,
+  reactive user interface for Hudson.
 
 * *Closer Integration for Core Plugins* - One of the first steps of
-   the Hudson project during the transition to Eclipse was to define a
-   tiered set of Hudson plugins and establish a level of commitment
-   and support to the most widely used plugins.  It is the intention
-   of the Eclipse project to increase the level of support and
-   integration for these core plugins.
+  the Hudson project during the transition to Eclipse was to define a
+  tiered set of Hudson plugins and establish a level of commitment and
+  support to the most widely used plugins.  It is the intention of the
+  Eclipse project to increase the level of support and integration for
+  these core plugins.
 
 * *A standard OSGi Runtime Model based on Eclipse Equinox* - Hudson's
-   legacy architecture was full of issues arising from the lack of a
-   unified architecture.  The Hudson project is work to move Hudson
-   toward an OSGi model based on Eclipse Equinox.  This will not only
-   lead to a more stable CI server, it will make it easier to
-   integrate and embed Hudson in systems like the Eclipse IDE and
-   other, widely-used OSGi containers.
+  legacy architecture was full of issues arising from the lack of a
+  unified architecture.  The Hudson project is work to move Hudson
+  toward an OSGi model based on Eclipse Equinox.  This will not only
+  lead to a more stable CI server, it will make it easier to integrate
+  and embed Hudson in systems like the Eclipse IDE and other,
+  widely-used OSGi containers.
 
 * *Support the a standard component model using JSR 330* - Early
-   efforts were made to move the plugin API toward an approach
-   compatible with JSR 330.  This effort not only makes it easier to
-   write and test Hudson plugins, it also aligns Hudson will the way
-   that Java is developed in 2011 using frameworks and libraries such
-   as Google Guice and VMWare's Spring Framework.
+  efforts were made to move the plugin API toward an approach
+  compatible with JSR 330.  This effort not only makes it easier to
+  write and test Hudson plugins, it also aligns Hudson will the way
+  that Java is developed in 2011 using frameworks and libraries such
+  as Google Guice and VMWare's Spring Framework.
 
 * *Standard web services using JAXRS* - Many of the plugins and core
-   systems in Hudson are being migrated to a system that presents UI
-   services as a collection of REST services.  This foundational
-   effort will set the stage for Hudson to move toward a richer, more
-   reactive UI architecture possibly involving a migration to a SOFEA
-   approach to user interface.
+  systems in Hudson are being migrated to a system that presents UI
+  services as a collection of REST services.  This foundational effort
+  will set the stage for Hudson to move toward a richer, more reactive
+  UI architecture possibly involving a migration to a SOFEA approach
+  to user interface.
 
-* *Backwards Compatibility* - Despite this list of ideas and plans, the
-   Hudson community is also focused on supporting existing plugins and
-   Hudson APIs.
+* *Backwards Compatibility* - Despite this list of ideas and plans,
+  the Hudson community is also focused on supporting existing plugins
+  and Hudson APIs.
 
 [[intro-sect-license]]
 === Hudson's License
@@ -2533,6 +2533,10 @@ an existing job" and then type in the name of the Hudson job in the
 Copy from text field. Once you have made your selection and provided a
 name for the new job, click on OK to continue.
 
+////
+TODO: The following paragraph could use some attention.
+////
+
 You can also configure Hudson to Monitor an external job which can
 then trigger and affect other jobs. The last job type supported by
 Hudson is to Build a multi-configuration project, which can act like a
@@ -2542,7 +2546,7 @@ WARNING: Your Hudson installation may provide an option to Build a
 Maven 2/3 project (Legacy). This feature has numerous issues with the
 use of different Maven versions, and it is especially problematic when
 building a project with Maven 3.  The authors of this book recommend
-not to using the legacy Maven proejct type.  Instead, we encourage you
+not to using the legacy Maven project type.  Instead, we encourage you
 to use the native Maven support which is available in a free-style
 software project.
 
@@ -4696,9 +4700,10 @@ poll Hudson to check for build failures.
 .Hudson Notifications in Eclipse
 image::figs/web/ide-eclipse-notify.png[scale=75]
 
+////
 /* Local Variables: */
 /* ispell-personal-dictionary: "ispell.dict" */
 /* End:             */
-
+////
 
 

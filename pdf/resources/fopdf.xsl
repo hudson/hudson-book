@@ -41,8 +41,8 @@
    ################################################### -->
 
     <!-- Paper type, no headers on blank pages, no double sided printing -->
-    <xsl:param name="page.height" select="'9.681in'"/>
-    <xsl:param name="page.width" select="'7.444in'"/>
+    <xsl:param name="page.height" select="'9.000in'"/>
+    <xsl:param name="page.width" select="'6.000in'"/>
     <xsl:param name="headers.on.blank.pages">0</xsl:param>
     <xsl:param name="footers.on.blank.pages">0</xsl:param>
 
@@ -203,7 +203,7 @@
         <xsl:attribute name="font-family">
             <xsl:value-of select="$monospace.font.family"/>
         </xsl:attribute>
-        <xsl:attribute name="font-size">9pt</xsl:attribute>
+        <xsl:attribute name="font-size">10pt</xsl:attribute>
     </xsl:attribute-set>
 
     <!--###################################################
@@ -211,7 +211,7 @@
    ################################################### -->
 
     <!-- The table width should be adapted to the paper size -->
-    <xsl:param name="default.table.width">6.80in</xsl:param>
+    <xsl:param name="default.table.width">5.50in</xsl:param>
 
     <!-- Some padding inside tables -->
     <xsl:attribute-set name="table.cell.padding">
@@ -342,7 +342,7 @@
     <!-- Verbatim text formatting (programlistings) -->
     <xsl:attribute-set name="monospace.verbatim.properties">
         <xsl:attribute name="font-size">
-            <xsl:text>7.8pt</xsl:text>
+            <xsl:text>8.5pt</xsl:text>
         </xsl:attribute>
     </xsl:attribute-set>
 

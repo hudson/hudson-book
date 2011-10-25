@@ -656,7 +656,7 @@ this setup widely vary between operating systems and application
 servers. The Hudson project provides helpful instructions for
 installing Hudson on Glassfish, WebSphere, JBoss, Jetty, Tomcat,
 Jonas, Weblogic and Winstone.  For more information, see
-http://wiki.hudson-ci.org/display/HUDSON/Containers
+http://wiki.eclipse.org/hudson-ci/Containers
 
 NOTE: The recommended installation process is to install Hudson as a
 stand-alone service on a dedicated host using the operating
@@ -1409,11 +1409,12 @@ image::figs/web/configure-global-properties.png[scale=75]
 Depending on the build system used they can be picked up with
 different syntax e.g. $key or ${key}. By default a number of default
 variables are populated by Hudson automatically. These include
-job-related ones like +JOB_NAME+, +BUILD_TAG+ or+BUILD_NUMBER+, Hudson
-node-related ones like +NODE_NAME+ or more global ones like
-+JAVA_HOME+. A comprehensive list is available at
-env-vars.html[env-vars.html] on your Hudson server as linked from the
-inline help for the properties configuration.
+job-related ones like +JOB_NAME+, +BUILD_TAG+ or +BUILD_NUMBER+,
+Hudson node-related ones like +NODE_NAME+ or more global ones like
++JAVA_HOME+. A comprehensive list is available at env-vars.html on
+your Hudson server
+e.g. http://localhost:8080/env-vars.html[http://localhost:8080/env-vars.html]
+as linked from the inline help for the properties configuration.
 
 [[section-configure-jdk]]
 === Configuring JDK Installations
@@ -1702,12 +1703,10 @@ Test configuration::
 ==== E-mail Notification Via Gmail
 
 In order to use GMail to send your emails you will need to configure
-the SMTP server to +smtp.gmail .com+. In addition you will have to
+the SMTP server to +smtp.gmail.com+. In addition you will have to
 have a Gmail account and provide the GMail e-mail address, or any
 other email address configured to be accepted in your Gmail account,
 as the User Name and configure the Password.
-
-////  Does it support SSL? What port? See http://184.73.106.215:8080/
 
 === Troubleshooting E-mail Notification
 
@@ -1738,12 +1737,12 @@ left-hand Hudson menu, and then select the Maven 3 Configuration item
 shown in<<fig-config-manage-hudson>>.
 
 Once you select the Maven 3 Configuration option, you will see the
-page shown in<<fig-manage-mvn-3-configurations>>. If you have already
+page shown in <<fig-manage-mvn-3-configurations>>. If you have already
 configured Maven Settings or Maven Toolchains configuration documents
 they will appear in the list of documents shown on this page.  If you
 have not configured any Maven configuration documents, you will see
 the empty configuration screen shown
-in<<fig-manage-mvn-3-configurations>>.
+in <<fig-manage-mvn-3-configurations>>.
 
 [[fig-manage-mvn-3-configurations]]
 .The Maven 3 Configuration Page

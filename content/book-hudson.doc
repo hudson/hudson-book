@@ -2070,7 +2070,7 @@ to access PAM and be a member of the +shadow+ group.  As visible in
 name and test via provided button.
 
 [[fig-security-unix]]
-.Overview of the available security settings
+.Unix security configuration
 image::figs/web/security-unix.png[scale=75]
 
 TIP: If you get a stack trace about not being able to find the file
@@ -2107,7 +2107,7 @@ activate this feature select Hudson's own user database as displayed
 in <<fig-security-hudson-db>>
 
 [[fig-security-hudson-db]]
-.Overview of the available security settings
+.Security settings for using the Hudson internal database
 image::figs/web/security-hudson-db.png[scale=75]
 
 The option "Allow user to sign up" activates the Sign Up screen as
@@ -2153,7 +2153,7 @@ Microsoft Active Directory you should also have a look at the specific
 plugin for Active Directory.
 
 [[fig-security-ldap]]
-.Overview of the available security settings
+.Security settings for LDAP
 image::figs/web/security-ldap.png[scale=75]
 
 Server::
@@ -4626,8 +4626,8 @@ ways in which you can understand and diagnose issues with continuous
 integration builds.
 
 To view a build job's JUnit test results, load the job detail page and
-click on the Test Results link shown
-in <<fig-eclipse-matrix-project>>. Clicking on this link will load the
+click on the Test Results link shown in <<fig-eclipse-matrix-project>>.  
+Clicking on this link will load the
 view shown in <<fig-eclipse-junit-tests>>. From this view you can
 navigate through the JUnit test results for a specific build job. This
 level of visibility into the continuous integration machine gives you

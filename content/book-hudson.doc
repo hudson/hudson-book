@@ -1,4 +1,4 @@
-e= The Hudson Book
+= The Hudson Book
 :author: Oracle, Inc.
 :data-uri:
 :icons:
@@ -2860,19 +2860,19 @@ image::figs/web/post-build-actions.png[scale=75]
 
 Archive Maven 3 artifacts::
 
-  Activating this option and potentially the detail option Include
-  generate POMs will trigger Hudson to archive the artifacts built by
-  Maven 3 build steps during the project build and potentially the
-  associated POM files. With the option Discard old artifacts set, old
-  artifacts will be removed after each successful build. It is a Maven
-  3 build step specific automation of the option to Archive artifacts
-  without the need to specify the artifacts. The artifacts will be
-  made available on the web interface like other archived
-  artifacts. This option is especially useful in refactorings of the
-  project and the resulting artifacts, since all artifacts are always
-  archived and name or folder changes do not affect the
-  archiving. Since there is no necessity to configure matching
-  patterns, this option is more robust.
+  If you activating this option Hudson will archive the artifacts
+  built by the Maven 3 build steps during the build. Selecting the
+  Include generated POMs additional cause the pom.xml files to be
+  archived. With the option Discard old artifacts set, old artifacts
+  will be removed after each successful build. This is a Maven 3 build
+  step specific automation of the option to Archive artifacts without
+  the need to specify the artifacts. The artifacts will be made
+  available on the web interface like other archived artifacts. This
+  option is especially useful in refactorings of the project and the
+  resulting artifacts, since all artifacts are always archived and
+  name or folder changes do not affect the archiving. Since there is
+  no necessity to configure matching patterns, this option is more
+  robust.
 
 Record fingerprints of Maven artifacts::
 
@@ -3015,17 +3015,15 @@ E-mail Notification::
   address. In most instances it will be best to send the notices to an
   email list allowing the potential recipients to opt-in and out as
   well as access archives. This email is one of the primary ways in
-  which developers are notified of build failures.
-
-  To configure this feature, check the check box next to E-mail
-  Notification and then specify the recipients email addresses in
-  Recipients separated by whitespace. Selecting Send e-mail for every
-  unstable build will instruct Hudson to send an email for each build
-  even if a build experience consecutive failures. Selecting Send
-  separate e-mails to individuals who broke the build will send email
-  to all SCM committers that affected a build that broke. The email
-  will be sent with the configuration specified in
-  <<section-configure-email-notification>>.
+  which developers are notified of build failures. To configure this
+  feature, check the check box next to E-mail Notification and then
+  specify the recipients email addresses in Recipients separated by
+  whitespace. Selecting Send e-mail for every unstable build will
+  instruct Hudson to send an email for each build even if a build
+  experience consecutive failures. Selecting Send separate e-mails to
+  individuals who broke the build will send email to all SCM
+  committers that affected a build that broke. The email will be sent
+  with the configuration specified in <<section-configure-email-notification>>.
 
 [[fig-post-build-actions-email]]
 .Configuring the email notification post build action
@@ -3128,12 +3126,14 @@ Control software via Hudson or something else?::
 
   While Hudson has built in support to manage the JDK install as well
   as Apache Ant and Maven, your builds can require any number of
-  further software to work. A high number of these additional software
-  requirements can make it increasingly difficult to keep your build
-  cluster setup working. Your company might already be using a
-  provisioning software or virtual machine or operating system
-  snapshots for similar purposes and it would then make sense to reuse
-  the existing facilities and setup.
+  further software to work. If your build requires a high number of
+  these additional software packages installed, it will be
+  increasingly difficult to keep your build cluster setup configured
+  with all required components. If you or someone else in your company
+  already uses a provisioning software or virtual machine or operating
+  system snapshots for similar purposes and it would make sense to
+  reuse the existing facilities and setup. Otherwise it might be worth
+  getting a provision system suitable to your needs set up.
 
 Available expertise::
 
@@ -3165,8 +3165,7 @@ The recommended way to configure a Maven build on Hudson is to create
 a free-style software project as documented in
 <<chapter-build-creation>> and then creating one or more build steps
 that Invoke Maven 3. More details on the specific configuration
-options and more can be found in
-<<section-maven-3-build-configuration>>.
+options and more can be found in <<section-maven-3-build-configuration>>.
 
 If you require Maven 2 for your build for some legacy reason, even
 though Maven 3 is a higher performing, drop-in replacement you can
@@ -3182,7 +3181,7 @@ different Maven versions and use cases, especially Maven 3, and is not
 supported in Hudson. We recommend not to use this job type.  If you do
 not need this job type anymore after migrating to the Maven 3 build
 step and want to avoid the accidental creation of projects with this
-type, you should disable the +Hudson Maven :: Plugin+.  Read more
+type, you should disable the +Hudson:: Maven(legacy) :: Plugin+.  Read more
 about managing your plugins in <<chapter-plugin-management>>.
 
 Both the Maven 2/3 project type as well as the Maven 2 build step are
@@ -3236,17 +3235,18 @@ Goals::
   This field allows you to specify the goals and phases you would like
   to use for the Maven 3 invocation, separate by spaces and in order
   of desired invocation just like you would use Maven 3 on the
-  command-line. Typically these would be+clean install+, but depending
-  on your project and build step others may apply. The plugin with
-  automatically show the Maven version and operate in batch mode
-  equivalent to the +-V+ and +-B+ options. It is also to specify other
-  specific Maven to command-line options like +-P+ for profile
-  selection, selection of a specific +settings.xml+ file, +-X+ for
-  debugging logging and so on. However this is not recommended since
-  there are specific configuration settings for most parameters in the
-  Advanced section. Specifying them in their separate option allows
-  for programmatic changes across project defined in your Hudson
-  instance and is easier script-able in the Hudson console.
+  command-line. Typically these would be +clean install+, but
+  depending on your project and build step others may apply. The
+  plugin with automatically show the Maven version and operate in
+  batch mode equivalent to the +-V+ and +-B+ options. It is also to
+  specify other specific Maven to command-line options like +-P+ for
+  profile selection, selection of a specific +settings.xml+ file, +-X+
+  for debugging logging and so on. However this is not recommended
+  since there are specific configuration settings for most parameters
+  in the Advanced section. If you specify them in their dedicated
+  option it will be easier to carry out programmatic changes e.g. via
+  scripts in the Hudson console across all projects defined in your
+  Hudson instance.
 
 Properties::
 
@@ -3281,8 +3281,8 @@ Private repository::
 
 Private temporary directory::
 
-  When this option is activated the java environment variable +java.io
-  .tmpdir+ will be set to a folder +.maven/tmp+ in the
+  When this option is activated the java environment variable 
+  +java.io.tmpdir+ will be set to a folder +.maven/tmp+ in the
   project-specific workspace. This is useful when your build accesses
   the temporary directory for storage of artifacts or any temporary
   files e.g. used while running tests. When using the option with
@@ -3497,41 +3497,29 @@ Use private Maven repository::
   workspace. This can cause considerable usage of storage space, which
   consequently should be monitored carefully.
 
-  The standard way of invoking a Maven build is to run the clean and
-  install life cycle phases in a command-line call like mvn clean
-  install. This can be easily achieved by adding a Maven build step
-  and adding clean install as a Goals parameter. If so desired these
-  two life cycle phases can also be invoked separately by creating two
-  Maven build steps with separate clean and install parameters. This
-  would cause two separate invocations of Maven in sequence equivalent
-  to mvn clean; mvn install Breaking up the invocations allows you to
-  add further build steps in between and build an arbitrarily complex
-  sequence of Maven and other invocations with completely separate
-  parameters and so on. 
+The standard way of invoking a Maven build is to run the clean and
+install life cycle phases in a command-line call like mvn clean
+install. This can be easily achieved by adding a Maven build step and
+adding clean install as a Goals parameter. If so desired these two
+life cycle phases can also be invoked separately by creating two Maven
+build steps with separate clean and install parameters. This would
+cause two separate invocations of Maven in sequence equivalent to mvn
+clean; mvn install Breaking up the invocations allows you to add
+further build steps in between and build an arbitrarily complex
+sequence of Maven and other invocations with completely separate
+parameters and so on.
 
-  You could for example slip a plugin goal
-  invocation in between the clean and install invocations, that
-  prepares the execution environment for your build for example by
-  setting up a test environment like an emulator or a specific
-  database and content. Since you can do this in a separate build step
-  you can invoke a shell script or an Ant target for such tasks, in
-  case it is not automated via a Maven plugin or configuration.
+You could for example slip a plugin goal invocation in between the
+clean and install invocations, that prepares the execution environment
+for your build for example by setting up a test environment like an
+emulator or a specific database and content. Since you can do this in
+a separate build step you can invoke a shell script or an Ant target
+for such tasks, in case it is not automated via a Maven plugin or
+configuration.
 
 [[fig-using-top-level-maven-two-times]]
 .Configuring two build steps as top-level Maven invocations
 image::figs/web/build-steps-maven-twice.png[scale=75]
-
-[[section-blacklist-maven-legacy]]
-=== Using the blacklist plugin to improve Maven usage
-
-Describe how the blacklist plugin can be used to have the legacy Maven
-integrations installed without them appearing as choices in the
-configuration so that new builds do not accidently use it.
-
-[[section-maven-artifacts]]
-=== Managing the Build Artifacts of a Maven Build
-
-in hudson artifact, Nexus, Sonar, in hudson maven repo plugin.
 
 [[chapter-ant]]
 == Working with Apache Ant Builds
@@ -3545,14 +3533,15 @@ factors for your Apache Maven install, that apply to your strategy for
 installing Ant as well in <<section-installing-maven>>.
 
 A common scenario for Apache Ant installs is the requirement of a
-build to have access to Ant tasks as provided in Ant-Contrib (add URL
-here?) like For or If or to have some required libraries like jsch
-(add url?) for the scp available on the Ant classpath. Custom
+build to have access to Ant tasks as provided in
+http://ant-contrib.sourceforge.net[Ant-Contrib] like For or If or to
+have some required libraries like http://www.jcraft.com/jsch/[JSch]
+for secure copying with scp available on the Ant classpath. Custom
 developed Ant tasks can be needed in a similar fashion. A convenient
 way to achieve this, is the creation of a custom archive containing
 the Ant install as well as additional libraries necessary. This
-archive can then be used with the Extract from*.zip/*.tar.gz option to
-get a fully working Ant and dependencies installed on all build
+archive can then be used with the Extract from *.zip/*.tar.gz option
+to get a fully working Ant and dependencies installed on all build
 cluster nodes.
 
 [[section-ant-build-configuration]]
@@ -3625,8 +3614,8 @@ likely you will find support for your SCM already installed or
 available as a plugin for installation in the Source Code Management
 section of available plugins in the plugin management as displayed
 in<<fig-scm-plugins>>. Read more about available plugins and their
-management in <<section-plugin-management-available>> in
-<<chapter-plugin-management>>.
+management in <<section-plugin-management-available>> 
+in <<chapter-plugin-management>>.
 
 [[fig-scm-plugins]]
 .The beginning of the list of Source Code Management plugins
@@ -3696,9 +3685,9 @@ Subversion Workspace Version::
 
 Subversion Revision Policy::
 
-  The default revision policy is +Queue Time+, which will cause a
+  The default revision policy is +Queue time+, which will cause a
   build to be run off the revision present in the repository when the
-  job is added to the Hudson build queue. The +Build Time+ policy one
+  job is added to the Hudson build queue. The +Build time+ policy one
   the other hand will use the revision in the repository found when
   the build actually starts . The +Head revision+ policy will use the
   HEAD revision in the repository. Finally these settings are
@@ -3748,18 +3737,18 @@ Modules::
   +@number+ as well as subversion keywords for revisions and
   dates. The link Update credentials navigates you to the SVN
   authentication screen documented below.
-
++
   If you are checking out more than one Subversion module, you can
   also supply a Local module directory that Hudson will check out the
   specified module to. If you leave the Local module directory blank,
   Hudson will check out the specific module to the root of the
   project's workspace.
-
++
   The Repository depth option allows you to specify the depth for the
   checkout of this module, with the default being+infinity+, which
   means that all nested directories of the repository will be checked
   out.  This is useful to limit the size and scope of your checkout.
-
++
   You can add a new module with the Add more locations button and
   remove it with the Delete button.
 
@@ -3767,21 +3756,21 @@ Check-out Strategy::
 
   The Check-out Strategy option determines the subversion commands
   issues prior to starting a build.
-
++
   The default value of Use 'svn update' as much as possible will cause
   the least load on the Subversion server by only issuing an update
   command on top of the existing checkout in the project workspace.
-
++
   The option Use 'svn update' as much as possible, with 'svn revert'
   before update will do minor cleanup of the workspace by reverting
   any local modifications.
-
++
   The option Emulate clean checkout by first deleting
   unversioned/ignored files, then 'svn update' provides a good
   compromise between performance and thoroughness, since it closely
   resembles a clean checkout without the performance and load
   implications for the Subversion server as well as Hudson.
-
++
   Finally the option Always check out a fresh copy will delete the
   workspace content and perform a fresh checkout for each
   build. Choosing this option should be considered carefully since it
@@ -3879,11 +3868,6 @@ In order to build a project controlled in subversion you only need to
 configure the repository url in the project configuration using an url
 available for anonymous read access to the repository.
 
-[[section-scm-svn-advanced-config]]
-==== Tips and Tricks for Advanced SVN Configurations
-
-Lets get fancy...
-
 ==== Subversion related environment variables
 
 The subversion plugin exports the following environment variables for
@@ -3937,7 +3921,7 @@ Path to git executable::
   If the git command is available on the operating system PATH or the
   PATH for the user running Hudson, you can simply specify
   +git+. Otherwise an absolute path can be used as well.
-
++
   In addition to using an already installed git, the Git plugin
   facilitates the tool installer from Hudson that allows Run Command
   and Extract from *.zip/*.tar.gz based installs similar to the JDK
@@ -3945,7 +3929,7 @@ Path to git executable::
   and the Maven plugins installers described in
   <<section-configure-ant>> and <<section-configure-maven>> use the
   same installers and you can find more hints of its usage there.
-
++
   A further global configuration for git can be done in the Git plugin
   section displayed in<<fig-scm-git-global-user-config>>.  Specifying
   Global Config user.name Value and Global Config user.email Value
@@ -3993,13 +3977,13 @@ Branches to build::
   In this section you can specify one or more branches that should be
   built. The default of an empty branch specifier causes the git
   plugin to track all branches and build the latest changed branch.
-
++
   A common configuration would be to specify the main branch in the
   repository e.g. +master+.  This would ensure that the build is only
   triggered for changes committed to master. If you want to have other
   branches built as well it is advisable to create separate Hudson
   projects for the different branches.
-
++
   The advanced usage of this feature would be to specify multiple
   branches. These branches would be used for a merge prior to a build
   and could be configured to push the merge result back to the remote
@@ -4039,7 +4023,7 @@ Excluded Regions::
   contained in a Git repository to trigger a build on Hudson. An
   example would be if documentation files contained in the repository
   should not trigger a new build.
-
++
   The configuration supports usage of regular expression patterns to
   specify the desired files as well as multiple lines to configure
   larger sets of files and directories to match.
@@ -4207,7 +4191,7 @@ Target remote name::
 
   The name of the remote to push the tag to. The name needs to be
   configured as a repository in the SCM section for this project.
-
++
   Configuring branches to push to is done in the user interface
   displayed in <<fig-scm-git-project-pub-branches>>.
 
@@ -4244,13 +4228,14 @@ you want to track and build on Hudson.
 ==== Multiple branches and automated merging
 
 The recommended basic usage with the git plugin is to configure the
-project branch for the build e.g. +master+. However per default no
-branch is configured. This causes all branches to be monitored for
-changes and the branch with the last branch to be built.
+project branch for the build e.g. +master+, which will be
+automatically configured if the field is left blank.  Alternative you
+can specifiy a different branch name or use +**+. This option causes
+all branches to be monitored for changes and the branch with the last
+changes will be built.
 
-Without further configuration this is not really that useful since it
-will cause your project build history to be comprised of builds from
-all the different branches individually in the order of changes
+This will cause your project build history to be comprised of builds
+from all the different branches individually in the order of changes
 received and potentially even omit builds if changes hit multiple
 branches between builds.
 
@@ -4457,7 +4442,7 @@ cvs executable::
   If the cvs executable is not available on the PATH, you can
   configure an absolute path to it in this input field.
 
-.cvspass file::
+cvspass file::
   Specify the path to the .cvspass file that contains the user
   credentials.
 
@@ -4642,8 +4627,8 @@ integration builds.
 
 To view a build job's JUnit test results, load the job detail page and
 click on the Test Results link shown
-in<<fig-eclipse-matrix-project>>. Clicking on this link will load the
-view shown in<<fig-eclipse-junit-tests>>. From this view you can
+in <<fig-eclipse-matrix-project>>. Clicking on this link will load the
+view shown in <<fig-eclipse-junit-tests>>. From this view you can
 navigate through the JUnit test results for a specific build job. This
 level of visibility into the continuous integration machine gives you
 insight into code-level issues happening on a remote build machine

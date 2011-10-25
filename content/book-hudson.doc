@@ -2082,7 +2082,7 @@ sudo ln -s /lib/x86_64-linux-gnu/libpam.so.0 /lib/x86_64-linux-gnu/libpam.so
 ----
 
 On most Unix systems, the users and groups are stored in +/etc/passwd+
-and+/etc/group+, but your results may vary depending on the Unix/Linux
+and +/etc/group+, but your results may vary depending on the Unix/Linux
 version and the security setup of your specific machine.  With this
 setup user and group administration is entirely separate from your
 Hudson install. Use the your preferred administration tool on the
@@ -2163,14 +2163,14 @@ Server::
   port. The default ldap protocol and port 389 can be omitted, so the
   simplest server would be the server name or IP number only. Further
   valid examples are e.g.  directory.example.com:1389 or
-  ldaps://directory.somewhere.com:1636.  The default port for ldaps is
+  ldaps://directory.example.com:1636.  The default port for ldaps is
   636.
 
 root DN::
 
   Specify the root DN for you want to use for
   authentication. Typically this would be a value like
-  dc=simpligility,dc=com
+  dc=example,dc=com
 
 User search base and User search filter::
 

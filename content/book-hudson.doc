@@ -1,4 +1,4 @@
-= The Hudson Book
+e= The Hudson Book
 :author: Oracle, Inc.
 :data-uri:
 :icons:
@@ -1228,10 +1228,10 @@ a proxy for security concerns and to consolidate applications using
 tools like +mod_rewrite+ and +mod_proxy+. For this reason, we've
 included some brief instructions for configuring Apache HTTP. We
 assume that you've already installed Apache 2, and that you are using
-a Virtual Host for www.somecompany.com.
+a Virtual Host for www.example.com.
 
 Let's assume that you wanted to host Hudson behind Apache HTTP at the
-URL http://www.somecompany.com[http://www.somecompany.com]. To do
+URL http://www.example.com[http://www.example.com]. To do
 this, you'll need to change the context path that Hudson is served
 from.
 
@@ -1243,21 +1243,21 @@ from.
 . Clear the Base URL in Hudson Application Server Settings in the administration interface.
 
 At this point, edit the HTTP configuration file for the
-www.somecompany.com virtual host. Include the following to expose
+www.example.com virtual host. Include the following to expose
 Hudson via +mod_proxy+ at
-http://www.somecompany.com/[http://www.somecompany.com/].
+http://www.example.com/[http://www.example.com/].
 
 ----
 ProxyRequests Off 
 ProxyPreserveHost On 
 
 <VirtualHost *:80> 
-  ServerName www.somecompany.com 
-  ServerAdmin admin@somecompany.com 
+  ServerName www.example.com 
+  ServerAdmin admin@example.com 
   ProxyPass / http://localhost:8080/
   ProxyPassReverse / http://localhost:8080/
-  ErrorLog logs/somecompany/hudson/error.log
-  CustomLog logs/somecompany/hudson/access.log common
+  ErrorLog logs/example/hudson/error.log
+  CustomLog logs/example/hudson/access.log common
 </VirtualHost>
 ----
 

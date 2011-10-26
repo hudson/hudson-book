@@ -1935,26 +1935,43 @@ can be used to run a pattern matching against Hudson job
 .Configuring the Regular Expression Job View Filter
 image::figs/web/configure-view-filters-regex.png[scale=75]
 
+The SCM Type filter allows you too filter based on the SCM used for your builds. 
 
 [[fig-configure-view-filters-scm-type]]
 .Configuring the SCM Type View Filter
 image::figs/web/configure-view-filters-scm-type.png[scale=75]
 
+The Unclassified Jobs view filter can be used to ..
+
 [[fig-configure-view-filters-unclassified]]
 .Configuring the Unclassified Jobs View Filter
 image::figs/web/configure-view-filters-unclassified.png[scale=75]
+
+The User Permissions view filter can be used to only show jobs with a
+specific permission for the currently logged in user. A drop down
+allows yoo to define the matching used and the permissions are
+displayed below as checkboxes.
 
 [[fig-configure-view-filters-user-permissions]]
 .Configuring the User Permissions for Jobs View Filter
 image::figs/web/configure-view-filters-user-permissions.png[scale=75]
 
-Also All Jobs filter for simply adding all..
+The All Jobs filter for simply adding all jobs and then using further
+filters to reduce the matches ending up in the view list.
 
-
+The section below the Job Filters allows you to configure the columns
+used in the list view. Add and delete columns with the provided
+buttons as displayed in <<fig-configure-view-columsn>>. To change the
+order of columns you can drag the title and drop them in the desired
+position.
+ 
 [[fig-configure-view-columns]]
 .Configuring View Columns
 image::figs/web/configure-view-columns.png[scale=75]
 
+When you are logged into Hudson as a user you can also create a
+different view type called My View. It automatically contains all
+projects you currently have access to.
 
 [[fig-configure-new-my-view]]
 .Adding a New Personal View (My View)

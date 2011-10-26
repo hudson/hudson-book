@@ -1911,7 +1911,7 @@ excluding jobs to the current view being configured. This allows
 you to easily create negations of other views e.g. all non release
 builds, or all non plugin builds or simply create a finer grained
 view of a different view. E.g. you could easily create a view of
-all plugin build that are currently with the job status Failed
+all plugin builds that are currently with the job status Failed
 using a combination of the Other Views and the Job Statuses filter.
 Another good use case for this filter is to use multiple Other Views
 filters to aggregate the content of a number of other views.
@@ -1920,11 +1920,16 @@ filters to aggregate the content of a number of other views.
 .Configuring the Other Views  Filter
 image::figs/web/configure-view-filters-other.png[scale=75]
 
+The Parameterized Jobs Filter in <<fig-configure-view-filters-parameterized-jobs>>
+can be used to define a Name and Value that will match agains parameters from a ...
+TBD
 
 [[fig-configure-view-filters-parameterized-jobs]]
 .Configuring the Parameterized Jobs View Filter
 image::figs/web/configure-view-filters-parameterized-jobs.png[scale=75]
 
+The Regular Expression Job Filter displayed in <<fig-configure-view-filters-regex>> 
+can be used to run a pattern matching against Hudson job 
 
 [[fig-configure-view-filters-regex]]
 .Configuring the Regular Expression Job View Filter
@@ -4561,51 +4566,63 @@ Excluded Regions::
 The default way of interacting with Hudson is the web-based user
 interface. In addition Hudson ships with web service interfaces, that
 enable integration with others tools such as integrated development
-environments.
+environments. 
 
 === Eclipse Integration
 
-Hudson offers an intuitive set of Eclipse plugins which allow for
-greater control and interaction with your Hudson instance. This
-section covers some of these plugins and gives you an overview of how
-to access some of the features that allow you to have immediate
-insight into continuous builds.
+As a top level Eclipse project it is only fitting that Hudson has
+great integration with the Eclipse development
+environment. Historically there are various independently developed
+integrations that are currently available. Most notably
+http://tasktop.com/[Tasktop]'s http://www.eclipse.org/mylyn/[Eclipse
+Mylyn] includes Hudson integration as of release 3.6 and
+http://www.sonatype.com/[Sonatype] provides a Hudson integration as
+well. Other integrations have mostly stalled and we recommend to use
+either of these two. Both Sonatype and Tasktop are project members of
+the Eclipse Hudson project and going forward a merge of the two
+integrations is planned.
 
-=== The Hudson Jobs Eclipse View
+==== Sonatype Hudson Integration
+
+Installation of the Hudson integration is done with the update site
+URL https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-hudson/0.13.0/S/0.13.0.20111015-0033/ following the usual install process. Source code for the integration
+can be found on https://github.com/sonatype/m2eclipse-hudson[github].
 
 To open up the Hudson Jobs view in Eclipse, go to Window -> Show View
 -> Other... . Selecting this menu item will display the dialog shown
-in <<fig-eclipse-open-hudson-jobs>>.
+in <<fig-eclipse-sonatype-hudson-jobs>>.
 
-
-[[fig-eclipse-open-hudson-jobs]]
+[[fig-eclipse-sonatype-hudson-jobs]]
 .Opening the Hudson Jobs View in Eclipse
-image::figs/web/ide-eclipse-open-hudson-jobs.png[scale=75]
+image::figs/web/ide-eclipse-sonatype-hudson-jobs.png[scale=75]
 
-Once you've select this Hudson Jobs view, you should see a list of
-jobs as shown in<<fig-eclipse-hudson-jobs>>. This is a list which is
-retrieved directly from Hudson using Hudson REST services.  To refresh
-the list of jobs, click on the refresh icon shown in the following
-figure.
+Once you have selected this Hudson Jobs view, you have to configure the
+Build Server URL in the Subscribe to Build Notifications dialog
+displayed in <<fig-eclipse-sonatype-subscribe>> that can be reached
+via the blue sphere icon on the top left of the Hudson Jobs view in
+<<fig-eclipse-sonatype-hudson-jobs-list>>.
 
-[[fig-eclipse-hudson-jobs]]
+[[fig-eclipse-sonatype-subscribe]]
+.Subscribe to Build Notifications Dialog
+image::figs/web/ide-eclipse-sonatype-subscribe.png[scale=75]
+
+Optionally provide username and password and then press Load Jobs to
+have the list of jobs on the bottom of the dialog populated.
+
+After you select the desired jobs and exit the dialog with OK, you
+will see the list of jobs in the Hudson Jobs view 
+in <<fig-eclipse-sonatype-hudson-jobs-list>>. This list is retrieved
+directly from Hudson using Hudson REST services. To refresh the list
+of jobs, click on the refresh icon.
+
+[[fig-eclipse-sonatype-hudson-jobs-list]]
 .Hudson Jobs View in Eclipse
-image::figs/web/ide-eclipse-hudson-jobs.png[scale=75]
-
-If your Eclipse instance is not yet connected to a Hudson server,
-click on the blue sphere icon to the left of the refresh icon in the
-previous figure. This icon will load the Subscribe to Build Job
-Notifications dialog. To connect Eclipse to a new Hudson instance,
-enter the URL of the Hudson server along with your user name and
-password credentials.
-
-=== View Hudson Projects from Eclipse
+image::figs/web/ide-eclipse-sonatype-jobs-list.png[scale=75]
 
 Once you've loaded a list of Hudson jobs in Eclipse, you can click on
 one of these Build Jobs to view a detailed snapshot of the project
-status and any associated builds.  <<fig-eclipse-matrix-project>>
-shows the status of a build job from Sonatype's own Hudson
-instance. In this dialog you can see that the job detail window
+status and any associated builds like in <<fig-eclipse-sonatype-job-summary>>. 
+In this dialog you can see that the job detail window
 contains general information about the Job in Job Properties,
 information about specific Job Builds in Build Properties and also
 links to alternative configuration for Build Jobs. If you need to get
@@ -4614,65 +4631,54 @@ build, you can also click on View job workspace. Clicking on this link
 will load the project's workspace in a browser window as another
 Eclipse tab.
 
-[[fig-eclipse-matrix-project]]
-.Viewing a Matrix Project from Eclipse
-image::figs/web/ide-eclipse-matrix-project.png[scale=75]
+[[fig-eclipse-sonatype-job-summary]]
+.Hudson Jobs Summary
+image::figs/web/ide-eclipse-sonatype-job-summary.png[scale=75]
 
-There are two very useful ways in which you can view the results of a
+There are some very useful ways in which you can view the results of a
 build. They are viewing a build's JUnit test results, viewing the SCM
 changes associated with a specific build, and viewing a build's
-console output. Both of these views of a particular job are the main
+console output. These views of a particular job are the main
 ways in which you can understand and diagnose issues with continuous
 integration builds.
 
-To view a build job's JUnit test results, load the job detail page and
-click on the Test Results link shown in <<fig-eclipse-matrix-project>>.  
+To view a build job's unit test results, load the job detail page and
+click on the Test Results link shown in <<fig-eclipse-sonatype-job-summary>>.  
 Clicking on this link will load the
-view shown in <<fig-eclipse-junit-tests>>. From this view you can
-navigate through the JUnit test results for a specific build job. This
+view shown in <<fig-eclipse-sonatype-testresults>>. This
 level of visibility into the continuous integration machine gives you
 insight into code-level issues happening on a remote build machine
 without requiring you to exit out of Eclipse and fire up a web
 browser.
 
-[[fig-eclipse-junit-tests]]
+[[fig-eclipse-sonatype-testresults]]
 .Viewing JUnit Test Reports from Eclipse
-image::figs/web/ide-eclipse-junit-tests.png[scale=75]
+image::figs/web/ide-eclipse-sonatype-testresults.png[scale=75]
 
 To view a specific build's SCM changes. Load the project detail view
 and click on the SCM Changes tab shown in
-<<fig-eclipse-matrix-project>>. This particular view of a project
+<<fig-eclipse-sonatype-job-summary>>. This particular view of a project
 combines the changelog of every single build into an easily navigable
-interface. From the view shown in <<fig-eclipse-scm-changes>> you can
+interface. From that view you can
 see what code changes trigger individual builds and you can get a
 sense for what activity and which committer are responsible for build
 successes and failures.
 
-[[fig-eclipse-scm-changes]]
-.Viewing SCM Changes from Eclipse
-image::figs/web/ide-eclipse-scm-changes.png[scale=75]
-
 Viewing a specific build's console output is often the quickest way to
 get to the bottom of a build failure. To open a build's console
 output, select the project from the Hudson jobs view, select an
-individual project build, and then click on the "Console Output" link
-shown in <<fig-eclipse-matrix-project>>. Clicking on this link will
-load the view shown in <<fig-eclipse-console-output>>.  This view
-gives you the raw console output from a Hudson build.
+individual project build, and then click on the Console Output link
+shown in <<fig-eclipse-sonatype-job-summary>> and you will see the
+the raw console output from the Hudson build.
 
-[[fig-eclipse-console-output]]
-.Viewing Hudson Console Output from Eclipse
-image::figs/web/ide-eclipse-console-output.png[scale=75]
+The test results, console output and other features can also be
+accessed by right clicking on a job in the jobs list view and
+selecting from the context menu as visible in
+<<fig-eclipse-sonatype-contextmenu>>.
 
-[[fig-eclipse-job-parent]]
-.Hudson Jobs View in Eclipse
-image::figs/web/ide-eclipse-job-parent.png[scale=75]
-
-[[fig-eclipse-project-link]]
-.Viewing a Hudson Project from Eclipse
-image::figs/web/ide-eclipse-project-link.png[scale=75]
-
-=== Configuring Eclipse Hudson Notifications
+[[fig-eclipse-sonatype-contextmenu]]
+.Contex Menu for a Specific Hudson Job
+image::figs/web/ide-eclipse-sonatype-contextmenu.png[scale=75]
 
 Once you've connected Eclipse to Hudson, you can also configure the
 tool to notify you of build failure events. <<fig-eclipse-notify>>
@@ -4682,12 +4688,14 @@ poll Hudson to check for build failures.
 
 [[fig-eclipse-notify]]
 .Hudson Notifications in Eclipse
-image::figs/web/ide-eclipse-notify.png[scale=75]
+image::figs/web/ide-eclipse-sonatype-notify.png[scale=75]
+
+==== Tasktop Mylyn Hudson Integration
+
+TBD
 
 ////
 /* Local Variables: */
 /* ispell-personal-dictionary: "ispell.dict" */
 /* End:             */
 ////
-
-

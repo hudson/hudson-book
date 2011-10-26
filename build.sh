@@ -16,7 +16,7 @@ echo "--- Converting images - Finished ---"
 
 # Build the Single HTML Page Version
 echo "--- Building single HTML page version - Started ---"
-#asciidoc -o target/book-hudson.html content/book-hudson.doc
+asciidoc -o target/book-hudson.html content/book-hudson.doc
 echo "--- Building single HTML page version - Finished ---"
 
 # Build the PDF
@@ -31,7 +31,7 @@ echo "--- Building PDF version - Finished ---"
 
 # Build the Chunked HTML
 echo "--- Building chunked HTML version - Started ---"
-#a2x -v -k -fchunked -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
+a2x -v -k -fchunked -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
 echo "--- Building chunked HTML page version - Finished ---"
 
 echo "--- Build successful --"

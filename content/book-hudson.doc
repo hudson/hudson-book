@@ -4690,9 +4690,54 @@ poll Hudson to check for build failures.
 .Hudson Notifications in Eclipse
 image::figs/web/ide-eclipse-sonatype-notify.png[scale=75]
 
-==== Tasktop Mylyn Hudson Integration
+==== Tasktop Mylyn Builds Connector for Hudson
 
-TBD
+The Mylyn Builds Connector can be found in the standard update sites
+that are preconfigured with any Eclipse install.
+
+To open up and configure the Builds view in Eclipse, go to Window ->
+Show View -> Other..., find the Builds view in the Mylyn section
+visible in <<fig-eclipse-mylyn-show-view>> and click the Create a
+build server link or the blue New Build Server Location icon.
+
+[[fig-eclipse-mylyn-show-view]]
+.Selecting the Builds View in the Show View Dialog
+image::figs/web/ide-eclipse-mylyn-show-view.png[scale=75]
+
+After selecting Hudson in the wizard you will be able to configure the
+server in the Hudson Server Properties dialog 
+in <<fig-eclipse-mylyn-server-properties>>.
+
+[[fig-eclipse-mylyn-server-properties]]
+.Hudson Server Properties Configuration
+image::figs/web/ide-eclipse-mylyn-server-properties.png[scale=75]
+
+Provide the Server URL, a label and optionally user and password and
+press Refresh to see a list of available Build Plans. Selecting plans
+and pressing Finish will close the dialog and show the build plans in
+the Builds view as visible in <<fig-eclipse-mylyn-builds-list>>.
+
+[[fig-eclipse-mylyn-builds-list]]
+.Builds List View
+image::figs/web/ide-eclipse-mylyn-builds-list.png[scale=75]
+
+With the same process you can add further Hudson servers to monitor by
+pressing on the New Build Server Location button.
+
+If you select a specific plan the icons in the top left corner of the
+builds view give you access to the job page directly on Hudson in a
+browser window in Eclipse and the console output and the test results of
+the last build in an Eclipse windows. You can start another build with
+the Run Build button.
+
+A context menu for each build plan like displayed in
+<<fig-eclipse-mylyn-contextmenu>> provides access to the build history
+and integration into the Mylyn task management.
+
+[[fig-eclipse-mylyn-contextmenu]]
+.Context Menu for an Individual Build Plan
+image::figs/web/ide-eclipse-mylyn-contextmenu.png[scale=75]
+
 
 ////
 /* Local Variables: */

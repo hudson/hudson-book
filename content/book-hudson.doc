@@ -1212,10 +1212,13 @@ installation. After a full backup of all configuration and data, you
 should be ready to proceed after notifying your users about potential
 down-time. You might also want to disable all jobs before proceeding.
 
-. For native package users this will be handled transparently with
+For native package users this will be handled transparently with
 their package management system. For WAR file based installs, you only
 have to remove the old version WAR and replace it with the new version
 in your application server.
+
+Typically upgrading Hudson should include upgrading any used plugins
+as well to avoid incompatibilities.
 
 [[ci-quickstart-sect-behind-proxy]]
 === Running Hudson Behind a Proxy

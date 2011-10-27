@@ -1443,6 +1443,9 @@ Install Automatically check box. This exposes a drop-down labeled Add
 installer which lets you choose from the options Install from Oracle,
 Extract *.zip/*.tar.gz and Run Command as visible in <<fig-using-jdk-config>>.
 
+WARNING: The automatic installation from Oracle is currently disabled,
+while Oracle implements a web service for JDK installation.
+ 
 All the automatic install configurations cause Hudson to wait for the
 first build, which is configured to use a named instance of the JDK to
 initiate the JDK installation. The JDK will be installed into a folder

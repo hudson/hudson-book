@@ -1642,7 +1642,7 @@ Default user e-mail suffix::
   the Hudson instance runs for +example.com+ you could supply the
   suffix of +@example.com+. A Hudson user with user name +jane.doe+
   would then receive email notifications at the
-  email+jane.doe@example.com+.  This can be especially useful with
+  email +jane.doe@example.com+.  This can be especially useful with
   security setups using an identity management system like LDAP for
   Hudson access as well as email address setup as documented in
   <<chapter-security>>.
@@ -1662,7 +1662,7 @@ Hudson URL::
   will be valid for the audience of your notifications. If all
   recipients will be on an intranet or VPN you can use a non-public
   URL or IP number.
-
++
   In addition to basic SMTP configuration parameters, you can click
   the Advanced Options button for further configuration that allows
   you to send email via servers that require authentication. Most SMTP
@@ -2335,6 +2335,13 @@ image::figs/web/security-authorization-project-specific.png[scale=75]
 Using groups accessing a group of projects you could e.g.  enable
 administrative rights for a limited number of projects to a specific
 user or user group.
+
+==== Legacy Mode
+
+The legacy mode provides backwards compatibilty for users of early
+Hudson version that have not migrated to the replacement of matrix
+authorization. It relied on hard coded values and should not be used
+anymore. Future versions of Hudson might remove this mode.
 
 ==== Anyone can do anything
 

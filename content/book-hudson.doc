@@ -4577,13 +4577,15 @@ Excluded Regions::
   to exclude from triggering a build when changed, you can exclude
   regions by populating this field with the respective patterns.
 
-[[chapter-ide-integration]]
-== IDE Integration
+[[chapter-tools-integration]]
+== Tools Integration
 
 The default way of interacting with Hudson is the web-based user
 interface. In addition Hudson ships with web service interfaces, that
 enable integration with others tools such as integrated development
-environments. 
+environments. The following section will details some of these
+integrations, with links to further tools available on the
+http://wiki.hudson-ci.org/display/HUDSON/Use+Hudson[Hudson wiki].
 
 === Eclipse Integration
 
@@ -4755,11 +4757,47 @@ and integration into the Mylyn task management.
 .Context Menu for an Individual Build Plan
 image::figs/web/ide-eclipse-mylyn-contextmenu.png[scale=75]
 
-The individual builds overview page visible in <<fig-eclipse-mylyn-build-overview>> displays various details about the build and provides access to test results, artifacts, changes and console output with further integration to the task management.
+The individual builds overview page visible 
+in <<fig-eclipse-mylyn-build-overview>> displays various details about
+the build and provides access to test results, artifacts, changes and
+console output with further integration to the task management.
 
 [[fig-eclipse-mylyn-build-overview]]
 .Individual Build Overview Display
 image::figs/web/ide-eclipse-mylyn-build-overview.png[scale=75]
+
+=== Oracle JDeveloper Team Productivity Center
+
+The
+http://www.oracle.com/technetwork/developer-tools/jdev/overview/index.html[Oracle
+JDeveloper Team Productivity Center] optionally includes the Hudson
+Plugin for integration with Hudson in the IDE.
+
+=== Netbeans
+
+The http://www.netbeans.org/[Netbeans IDE] can use the
+http://plugins.netbeans.org/plugin/2178/hudson-support[Hudson support
+plugin] to provide integration of Hudson in the IDE.
+
+=== Jetbrains IntelliJ IDEA
+
+http://www.jetbrains.com/idea/[IntelliJ IDEA] users can install the
+http://code.google.com/p/hudsonbuildmonitor/[Hudson Build Monitor]
+plugin for integration with Hudson in the IDE.
+
+=== Hudson Integration for Android
+
+The
+http://wiki.hudson-ci.org/display/HUDSON/Hudson+Monitor+for+Android[Hudson
+Monitor for Android] application or
+https://sites.google.com/site/hudson2go/[Hudson2Go] can be used to
+access build details on your Android based mobile phone or tablet.
+
+=== Firefox Add-on Build Monitor
+
+The Firefox Add-on
+http://wiki.hudson-ci.org/display/HUDSON/Firefox+Add-on+Build+Monitor[Build
+Monitor] provides access to Hudson as a browser plugin.
 
 ////
 /* Local Variables: */

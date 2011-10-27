@@ -312,12 +312,13 @@ requirements of some of the largest enterprises in the world.
 [[intro-sect-project]]
 === The Hudson Project
 
-The main source of information about Hudson is the web site hosted at
-http://hudson-ci.org[http://hudson-ci.org].  This site contains links
-to resources like a Wiki, an issue tracker, a few mailing lists, the
-source code and more.  If you are looking for download Hudson or learn
-about participating in the, you can start with the Hudson project's
-web site.
+The main source of information about Hudson are the web sites
+http://www.eclipse.org/hudson[http://www.eclipse.org/hudson] and
+http://www.hudson-ci.org[http://www.hudson-ci.org].  This site
+contains links to resources like a Wiki, an issue tracker, a few
+mailing lists, the source code and more.  If you are looking for
+download Hudson or learn about participating in the, you can start
+with the Hudson project's web site.
 
 At the time this document was developed, the Hudson project at Eclipse
 was focused on the following tasks:

@@ -1863,11 +1863,16 @@ you can configure a regular expression to match on the job names.
 With a good naming convention for the jobs this can be a good way
 to build the list. An example could be naming all release build
 jobs x-y-z-release or naming all plugin builds Plugin-x and then
-using a regular expression like .*-release or Plugin-.* to select
+using a regular expression like `.*-release` or `Plugin-.*`  to select
 them.
 
-In addition to the plain selection filters there are a number of
-specific filters available that can be added for further filtering.
+In order to have access to more powerful configuration options for
+your list views you have to install the
+http://wiki.hudson-ci.org//display/HUDSON/View+Job+Filters[View Job
+Filters] plugin. It will hook into the Job Filters section creating
+the Add Job Filter button and providing the filters documented in the
+following.
+
 The filters will be applied in the order in the configuration screen.
 Each filter has a Match Type drop down selector that allows you to
 include matched or unmatched jobs as well as exclude matched and

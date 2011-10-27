@@ -1961,7 +1961,7 @@ filters to reduce the matches ending up in the view list.
 
 The section below the Job Filters allows you to configure the columns
 used in the list view. Add and delete columns with the provided
-buttons as displayed in <<fig-configure-view-columsn>>. To change the
+buttons as displayed in <<fig-configure-view-columns>>. To change the
 order of columns you can drag the title and drop them in the desired
 position.
  
@@ -4755,6 +4755,11 @@ and integration into the Mylyn task management.
 .Context Menu for an Individual Build Plan
 image::figs/web/ide-eclipse-mylyn-contextmenu.png[scale=75]
 
+The individual builds overview page visible in <<fig-eclipse-mylyn-build-overview>> displays various details about the build and provides access to test results, artifacts, changes and console output with further integration to the task management.
+
+[[fig-eclipse-mylyn-build-overview]]
+.Individual Build Overview Display
+image::figs/web/ide-eclipse-mylyn-build-overview.png[scale=75]
 
 ////
 /* Local Variables: */

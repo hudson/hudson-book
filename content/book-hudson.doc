@@ -1466,7 +1466,7 @@ Label, the Download URL for binary archive and the Subdirectory of
 extracted archive.
 
 [[fig-extract-archive-installer]]
-.Extract *zip/*.tar.gz archive Installer Configuration
+.`Extract *zip/*.tar.gz` archive Installer Configuration
 image::figs/web/extract-archive-installer.png[scale=75]
 
 If you specify a label, only Hudson nodes with the same label will use
@@ -1502,8 +1502,8 @@ selection of the JDK to be used to build the project and is visible in
 
 In a similar fashion to the JDK install Apache Ant can be installed in
 multiple versions to be available for your Hudson configured
-builds. The default configuration is to supply a name like +Apache Ant
-1 .8.2+ for the Ant installation and a value in the ANT_HOME input
+builds. The default configuration is to supply a name like 
+`Apache Ant 1.8.2` for the Ant installation and a value in the ANT_HOME input
 that is defined by the absolute path to the folder containing your
 pre-existing local Apache Ant install e.g.  +/opt/apache-ant-1.8.2+
 
@@ -1567,9 +1567,9 @@ Automatically install from Apache::
 
 Automatically install from an archive file::
 
-  Select the Install automatically check box and Extract *zip/*.tar.gz
-  and configure the installation as documented in
-  <<section-configure-jdk>>
+  Select the Install automatically check box and `Extract *zip/*.tar.gz`
+  and configure the installation as documented 
+  in <<section-configure-jdk>>
 
 Automatically install via a command::
 
@@ -1668,12 +1668,12 @@ Hudson URL::
   out to provide links to build results and so on. Provide a URL that
   will be valid for the audience of your notifications. If all
   recipients will be on an intranet or VPN you can use a non-public
-  URL or IP number.
-+
-  In addition to basic SMTP configuration parameters, you can click
-  the Advanced Options button for further configuration that allows
-  you to send email via servers that require authentication. Most SMTP
-  servers will require at least user name and password to be accessed.
+  URL or IP number. 
+
+In addition to basic SMTP configuration parameters, you can click the
+Advanced Options button for further configuration that allows you to
+send email via servers that require authentication. Most SMTP servers
+will require at least user name and password to be accessed.
 
 Use SMTP Authentication::
 
@@ -1717,14 +1717,14 @@ as the User Name and configure the Password.
 
 === Troubleshooting E-mail Notification
 
-Spam filter related problems::
+==== Spam filter related problems
 
-  One of the common problems for build server notification emails not
-  being received are spam filter setting on the server and/or client
-  side of the recipient. Most spam filter systems will allow you to
-  access a list of filtered message and configure a white list of
-  senders. Adding the System Admin E-mail Address to the white list
-  will ensure that your build notifications reach you.
+One of the common problems for build server notification emails not
+being received are spam filter setting on the server and/or client
+side of the recipient. Most spam filter systems will allow you to
+access a list of filtered message and configure a white list of
+senders. Adding the System Admin E-mail Address to the white list will
+ensure that your build notifications reach you.
 
 [[section-configure-maven-3-configuration]]
 === Managing Maven 3 Configuration
@@ -1933,15 +1933,16 @@ filters to aggregate the content of a number of other views.
 image::figs/web/configure-view-filters-other.png[scale=75]
 
 The Parameterized Jobs Filter in <<fig-configure-view-filters-parameterized-jobs>>
-can be used to define a Name and Value that will match agains parameters from a ...
-TBD
+can be used to define a Name and Value that will match against the build parameters.
 
 [[fig-configure-view-filters-parameterized-jobs]]
 .Configuring the Parameterized Jobs View Filter
 image::figs/web/configure-view-filters-parameterized-jobs.png[scale=75]
 
-The Regular Expression Job Filter displayed in <<fig-configure-view-filters-regex>> 
-can be used to run a pattern matching against Hudson job 
+The Regular Expression Job Filter displayed 
+in <<fig-configure-view-filters-regex>> can be used to run a pattern
+matching against Hudson job name, job description, job SCM
+configuration, email recipients or Maven configuration.
 
 [[fig-configure-view-filters-regex]]
 .Configuring the Regular Expression Job View Filter
@@ -1953,7 +1954,8 @@ The SCM Type filter allows you too filter based on the SCM used for your builds.
 .Configuring the SCM Type View Filter
 image::figs/web/configure-view-filters-scm-type.png[scale=75]
 
-The Unclassified Jobs view filter can be used to ..
+The Unclassified Jobs view filter can be used to show all jobs that do
+not show up in any other view.
 
 [[fig-configure-view-filters-unclassified]]
 .Configuring the Unclassified Jobs View Filter
@@ -2025,23 +2027,22 @@ image::figs/web/security-overview.png[scale=75]
 
 === Miscellaneous Security Related Settings
 
-TCP port for JNLP slave agents::
+==== TCP port for JNLP slave agents
 
-  The port configuration should be set to Disable for Hudson
-  deployments without any slave nodes. With slave nodes you can set
-  the port to the default Random port. Hudson will randomly choose a
-  port avoid port collisions with other services. When running Hudson
-  cluster within a firewall-secured environment, you can choose a
-  fixed port and then ensure that the port is open on the respective
-  servers.
+The port configuration should be set to Disable for Hudson deployments
+without any slave nodes. With slave nodes you can set the port to the
+default Random port. Hudson will randomly choose a port avoid port
+collisions with other services. When running Hudson cluster within a
+firewall-secured environment, you can choose a fixed port and then
+ensure that the port is open on the respective servers.
 
-Markup Formatter::
+==== Markup Formatter
 
-  Raw HTML is the default setting that causes Hudson to render any
-  input data from text fields as HTML in the user interface. This
-  allows for added links and more, but also has the potential for
-  cross site scripting XSS attacks. Currently plugins that implement
-  other markup are planned, but not yet available for Hudson.
+Raw HTML is the default setting that causes Hudson to render any input
+data from text fields as HTML in the user interface. This allows for
+added links and more, but also has the potential for cross site
+scripting XSS attacks. Currently plugins that implement other markup
+are planned, but not yet available for Hudson.
 
 === Authentication and Authorization
 
@@ -2403,7 +2404,7 @@ users to have read access you could add these rights in the matrix.
 For further users you can create additional matrix rows and distribute
 rights as desired.
 
-=== Disabling security when locked out
+==== Disabling security when locked out
 
 When configuring security or when relying on external security realms,
 you can end up in situations where you do not have any access to
@@ -3581,7 +3582,7 @@ for secure copying with scp available on the Ant classpath. Custom
 developed Ant tasks can be needed in a similar fashion. A convenient
 way to achieve this, is the creation of a custom archive containing
 the Ant install as well as additional libraries necessary. This
-archive can then be used with the Extract from *.zip/*.tar.gz option
+archive can then be used with the `Extract from *.zip/*.tar.gz` option
 to get a fully working Ant and dependencies installed on all build
 cluster nodes.
 
@@ -3771,63 +3772,62 @@ The following parameters can be configured:
 
 Modules::
 
-  Hudson can check out one or more Subversion modules from a
-  Subversion repository. To configure a repository location, supply a
-  Subversion URL in the Repository URL text field. This field supports
-  Subversion repository URLs including revisions specified with
-  +@number+ as well as subversion keywords for revisions and
-  dates. The link Update credentials navigates you to the SVN
-  authentication screen documented below.
-+
-  If you are checking out more than one Subversion module, you can
-  also supply a Local module directory that Hudson will check out the
-  specified module to. If you leave the Local module directory blank,
-  Hudson will check out the specific module to the root of the
-  project's workspace.
-+
-  The Repository depth option allows you to specify the depth for the
-  checkout of this module, with the default being+infinity+, which
-  means that all nested directories of the repository will be checked
-  out.  This is useful to limit the size and scope of your checkout.
-+
-  You can add a new module with the Add more locations button and
-  remove it with the Delete button.
+Hudson can check out one or more Subversion modules from a Subversion
+repository. To configure a repository location, supply a Subversion
+URL in the Repository URL text field. This field supports Subversion
+repository URLs including revisions specified with +@number+ as well
+as subversion keywords for revisions and dates. The link Update
+credentials navigates you to the SVN authentication screen documented
+below.
+
+If you are checking out more than one Subversion module, you can also
+supply a Local module directory that Hudson will check out the
+specified module to. If you leave the Local module directory blank,
+Hudson will check out the specific module to the root of the project's
+workspace.
+
+The Repository depth option allows you to specify the depth for the
+checkout of this module, with the default being+infinity+, which means
+that all nested directories of the repository will be checked out.
+This is useful to limit the size and scope of your checkout.
+
+You can add a new module with the Add more locations button and remove
+it with the Delete button.
 
 Check-out Strategy::
 
-  The Check-out Strategy option determines the subversion commands
-  issues prior to starting a build.
-+
-  The default value of Use 'svn update' as much as possible will cause
-  the least load on the Subversion server by only issuing an update
-  command on top of the existing checkout in the project workspace.
-+
-  The option Use 'svn update' as much as possible, with 'svn revert'
-  before update will do minor cleanup of the workspace by reverting
-  any local modifications.
-+
-  The option Emulate clean checkout by first deleting
-  unversioned/ignored files, then 'svn update' provides a good
-  compromise between performance and thoroughness, since it closely
-  resembles a clean checkout without the performance and load
-  implications for the Subversion server as well as Hudson.
-+
-  Finally the option Always check out a fresh copy will delete the
-  workspace content and perform a fresh checkout for each
-  build. Choosing this option should be considered carefully since it
-  can put a significant load on the Subversion and Hudson servers.
+The Check-out Strategy option determines the subversion commands
+issues prior to starting a build.
+
+The default value of Use 'svn update' as much as possible will cause
+the least load on the Subversion server by only issuing an update
+command on top of the existing checkout in the project workspace.
+
+The option Use 'svn update' as much as possible, with 'svn revert'
+before update will do minor cleanup of the workspace by reverting any
+local modifications.
+
+The option Emulate clean checkout by first deleting
+unversioned/ignored files, then 'svn update' provides a good
+compromise between performance and thoroughness, since it closely
+resembles a clean checkout without the performance and load
+implications for the Subversion server as well as Hudson.
+
+Finally the option Always check out a fresh copy will delete the
+workspace content and perform a fresh checkout for each
+build. Choosing this option should be considered carefully since it
+can put a significant load on the Subversion and Hudson servers.
 
 Repository Browser::
 
-  Hudson supplies valuable information about a build and about the SCM
-  activity and changes that contribute to a specific build.  When
-  Hudson displays information about a Subversion commit or a file that
-  has been modified, it can be configured to link to a Repository
-  browser, which provides a rich web view of the source code
-  repository. Hudson supports the repository browsers CollabNet,
-  Sventon 2.x, ViewSVN, FishEye, WebSVN and Sventon 1.x as options in
-  the the drop-down.  The (Auto) option will attempt to automatically
-  detect the used browser.
+Hudson supplies valuable information about a build and about the SCM
+activity and changes that contribute to a specific build.  When Hudson
+displays information about a Subversion commit or a file that has been
+modified, it can be configured to link to a Repository browser, which
+provides a rich web view of the source code repository. Hudson
+supports the repository browsers CollabNet, Sventon 2.x, ViewSVN,
+FishEye, WebSVN and Sventon 1.x as options in the the drop-down.  The
+(Auto) option will attempt to automatically detect the used browser.
 
 You can navigate to the Subversion Authentication screen by clicking
 the Update credentials link, which will display as visible in
@@ -3962,22 +3962,22 @@ Path to git executable::
   If the git command is available on the operating system PATH or the
   PATH for the user running Hudson, you can simply specify
   +git+. Otherwise an absolute path can be used as well.
-+
-  In addition to using an already installed git, the Git plugin
-  facilitates the tool installer from Hudson that allows Run Command
-  and Extract from *.zip/*.tar.gz based installs similar to the JDK
-  installs documented in details in <<section-configure-jdk>>. The Ant
-  and the Maven plugins installers described in
-  <<section-configure-ant>> and <<section-configure-maven>> use the
-  same installers and you can find more hints of its usage there.
-+
-  A further global configuration for git can be done in the Git plugin
-  section displayed in <<fig-scm-git-global-user-config>>.  Specifying
-  Global Config user.name Value and Global Config user.email Value
-  values will cause the plugin to issue git config commands setting
-  these options for each project that is configured to use git. The
-  specific project configuration allows you to override these setting
-  for each project individually.
+
+In addition to using an already installed git, the Git plugin
+facilitates the tool installer from Hudson that allows Run Command and
+`Extract from *.zip/*.tar.gz` based installs similar to the JDK
+installs documented in details in <<section-configure-jdk>>. The Ant
+and the Maven plugins installers described in
+<<section-configure-ant>> and <<section-configure-maven>> use the same
+installers and you can find more hints of its usage there.
+
+A further global configuration for git can be done in the Git plugin
+section displayed in <<fig-scm-git-global-user-config>>.  Specifying
+Global Config user.name Value and Global Config user.email Value
+values will cause the plugin to issue git config commands setting
+these options for each project that is configured to use git. The
+specific project configuration allows you to override these setting
+for each project individually.
 
 [[fig-scm-git-global-user-config]]
 .Configuring Git user name and email values
@@ -4018,17 +4018,17 @@ Branches to build::
   In this section you can specify one or more branches that should be
   built. The default of an empty branch specifier causes the git
   plugin to track all branches and build the latest changed branch.
-+
-  A common configuration would be to specify the main branch in the
-  repository e.g. +master+.  This would ensure that the build is only
-  triggered for changes committed to master. If you want to have other
-  branches built as well it is advisable to create separate Hudson
-  projects for the different branches.
-+
-  The advanced usage of this feature would be to specify multiple
-  branches. These branches would be used for a merge prior to a build
-  and could be configured to push the merge result back to the remote
-  repository after a successful build.
+
+A common configuration would be to specify the main branch in the
+repository e.g. +master+.  This would ensure that the build is only
+triggered for changes committed to master. If you want to have other
+branches built as well it is advisable to create separate Hudson
+projects for the different branches.
+ 
+The advanced usage of this feature would be to specify multiple
+branches. These branches would be used for a merge prior to a build
+and could be configured to push the merge result back to the remote
+repository after a successful build.
 
 Repository browser::
 
@@ -4063,11 +4063,10 @@ Excluded Regions::
   you are only interested in a subset of files and directories
   contained in a Git repository to trigger a build on Hudson. An
   example would be if documentation files contained in the repository
-  should not trigger a new build.
-+
-  The configuration supports usage of regular expression patterns to
-  specify the desired files as well as multiple lines to configure
-  larger sets of files and directories to match.
+  should not trigger a new build. The configuration supports usage of
+  regular expression patterns to specify the desired files as well as
+  multiple lines to configure larger sets of files and directories to
+  match.
 
 Excluded Users::
 
@@ -4231,10 +4230,9 @@ Create new tag::
 Target remote name::
 
   The name of the remote to push the tag to. The name needs to be
-  configured as a repository in the SCM section for this project.
-+
-  Configuring branches to push to is done in the user interface
-  displayed in <<fig-scm-git-project-pub-branches>>.
+  configured as a repository in the SCM section for this
+  project. Configuring branches to push to is done in the user
+  interface displayed in <<fig-scm-git-project-pub-branches>>.
 
 [[fig-scm-git-project-pub-branches]]
 .Configuring Git merge options
@@ -4369,7 +4367,7 @@ Download Forest extension::
   available.
 
 In addition, the Mercurial plugin facilitates the tool installer from
-Hudson that allows Run Command and Extract from *.zip/*.tar.gz based
+Hudson that allows `Run Command` and `Extract from *.zip/*.tar.gz` based
 installs similar to the JDK installs documented in details in
 <<section-configure-jdk>>. The Ant and the Maven plugins installers
 described in <<section-configure-ant>> and <<section-configure-maven>>
@@ -4602,7 +4600,7 @@ Excluded Regions::
 The default way of interacting with Hudson is the web-based user
 interface. In addition Hudson ships with web service interfaces, that
 enable integration with others tools such as integrated development
-environments. The following section will details some of these
+environments. The following section will detail some of these
 integrations, with links to further tools available on the
 http://wiki.hudson-ci.org/display/HUDSON/Use+Hudson[Hudson wiki].
 
@@ -4622,7 +4620,7 @@ integrations is planned.
 
 ==== Sonatype Hudson Integration
 
-Installation of the Hudson integration is done with the update site
+Installation of the Hudson integration is currently with the update site
 URL https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-hudson/0.13.0/S/0.13.0.20111015-0033/ following the usual install process. Source code for the integration
 can be found on https://github.com/sonatype/m2eclipse-hudson[github].
 

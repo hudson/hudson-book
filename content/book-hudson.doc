@@ -1404,7 +1404,7 @@ The global properties configuration allows the definition of key-value
 pairs that are exposed to all running builds as environment variables.
 Simply select the check box Environment Variables and add the desired
 name and value for the property in the interface displayed
-in<<fig-configure-global-properties>>.
+in <<fig-configure-global-properties>>.
 
 [[fig-configure-global-properties]]
 .Configuring global properties
@@ -1444,8 +1444,8 @@ image::figs/web/configure-jdk.png[scale=75]
 Furthermore it is possible to configure a JDK to be installed
 automatically by specifying a name as before and then selecting the
 Install Automatically check box. This exposes a drop-down labeled Add
-installer which lets you choose from the options Install from Oracle,
-Extract *.zip/*.tar.gz and Run Command as visible in <<fig-using-jdk-config>>.
+installer which lets you choose from the options `Install from Oracle`,
+`Extract *.zip/*.tar.gz` and `Run Command` as visible in <<fig-using-jdk-config>>.
 
 WARNING: The automatic installation from Oracle is currently disabled,
 while Oracle implements a web service for JDK installation.
@@ -1460,7 +1460,7 @@ The option Install from Oracle brings up a drop-down to choose the
 version as well as a check box that needs to be clicked to the JavaSE
 license agreement.
 
-If you select to use Extract *.zip/*.tar.gz as shown in
+If you select to use `Extract *.zip/*.tar.gz` as shown in
 <<fig-extract-archive-installer>> you will be able to configure a
 Label, the Download URL for binary archive and the Subdirectory of
 extracted archive.
@@ -1485,7 +1485,7 @@ of the Hudson home directory.
 image::figs/web/run-command-installer.png[scale=75]
 
 The last automatic installation option is the Run a command option
-displayed in<<fig-run-command-installer>>. The Label options works the
+displayed in <<fig-run-command-installer>>. The Label options works the
 same as for the archive extraction based install. The Command input
 allows you to specify the shell command to execute on the node for the
 install. Typically this is some package management invocation. The
@@ -1575,7 +1575,7 @@ Automatically install via a command::
 
   Select the Install automatically check box and Run Command and
   configure the installation as documented
-  in<<section-configure-jdk>>.
+  in <<section-configure-jdk>>.
 
 In general we recommend that you run your build using the latest Maven
 3.0 release. With multiple Maven installations configured a drop down
@@ -1741,7 +1741,7 @@ user interface. You can manage:
 
 To open the Maven 3 Configuration page, click on Manage Server in the
 left-hand Hudson menu, and then select the Maven 3 Configuration item
-shown in<<fig-config-manage-hudson>>.
+shown in <<fig-config-manage-hudson>>.
 
 Once you select the Maven 3 Configuration option, you will see the
 page shown in <<fig-manage-mvn-3-configurations>>. If you have already
@@ -3654,7 +3654,7 @@ common SCM systems as well as many of the less popular ones. Most
 likely you will find support for your SCM already installed or
 available as a plugin for installation in the Source Code Management
 section of available plugins in the plugin management as displayed
-in<<fig-scm-plugins>>. Read more about available plugins and their
+in <<fig-scm-plugins>>. Read more about available plugins and their
 management in <<section-plugin-management-available>> 
 in <<chapter-plugin-management>>.
 
@@ -3972,7 +3972,7 @@ Path to git executable::
   same installers and you can find more hints of its usage there.
 +
   A further global configuration for git can be done in the Git plugin
-  section displayed in<<fig-scm-git-global-user-config>>.  Specifying
+  section displayed in <<fig-scm-git-global-user-config>>.  Specifying
   Global Config user.name Value and Global Config user.email Value
   values will cause the plugin to issue git config commands setting
   these options for each project that is configured to use git. The

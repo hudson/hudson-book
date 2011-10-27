@@ -1991,6 +1991,16 @@ projects you currently have access to.
 .Adding a New Personal View (My View)
 image::figs/web/configure-new-my-view.png[scale=75]
 
+[[section-configure-rss]]
+=== Receiving Build Notifiations via RSS
+
+Hudson exposed three RSS feeds that you can subscribe to in your
+favourite RSS feed reader. The server needs to be reachable via http
+by your RSS reader for this feature to be usable. If that is the case
+you can received a feed of all builds at /rssAll, a feed of failed
+builds at /rssFailed and a feed for latest builds at /rssLatest. For
+the full URL you can use the RSS icons for the feeds on the bottom of
+the main page.
 
 
 [[chapter-security]]

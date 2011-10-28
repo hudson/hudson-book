@@ -1991,7 +1991,28 @@ projects you currently have access to.
 .Adding a New Personal View (My View)
 image::figs/web/configure-new-my-view.png[scale=75]
 
+[[section-configure-rss]]
+=== Hudson Monitoring with RSS
 
+Hudson exposes various RSS feeds that you can subscribe to in your
+favourite RSS feed reader. The server needs to be reachable via http
+by your RSS reader for this feature to be usable. 
+
+Various pages in the web interface feature RSS buttons in the bottom
+left corner.
+
+==== Receiving Build Notifiations via RSS
+
+Build notifications are available on the default Hudson page. You can 
+receive a feed of all builds at /rssAll, a feed of failed
+builds at /rssFailed and a feed for latest builds at /rssLatest.
+
+==== System Logs via RSS
+
+If you access the Hudson logs exposed in the web interface at /log/all
+you will notice that you can subscribe to All log messages or Severe
+and Warning level warnings with the urls /log/rss,
+/log/rss?level=SEVERE and /log/rss?level=WARNING.
 
 [[chapter-security]]
 == Securing Hudson
@@ -4788,7 +4809,9 @@ image::figs/web/ide-eclipse-mylyn-build-overview.png[scale=75]
 The
 http://www.oracle.com/technetwork/developer-tools/jdev/overview/index.html[Oracle
 JDeveloper Team Productivity Center] optionally includes the Hudson
-Plugin for integration with Hudson in the IDE.
+Plugin for integration with Hudson in the IDE. The plugin pushed build
+and test results from Hudson via the Team Productivity Center server
+to the JDeveloper IDE.
 
 === Netbeans
 

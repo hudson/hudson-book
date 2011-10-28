@@ -4809,7 +4809,9 @@ image::figs/web/ide-eclipse-mylyn-build-overview.png[scale=75]
 The
 http://www.oracle.com/technetwork/developer-tools/jdev/overview/index.html[Oracle
 JDeveloper Team Productivity Center] optionally includes the Hudson
-Plugin for integration with Hudson in the IDE.
+Plugin for integration with Hudson in the IDE. The plugin pushed build
+and test results from Hudson via the Team Productivity Center server
+to the JDeveloper IDE.
 
 === Netbeans
 

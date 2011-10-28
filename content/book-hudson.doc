@@ -2723,7 +2723,16 @@ This Build is Parameterized::
   builds.  For example, you can parameterize a build to accept a
   free-form variable that selects a specific branch in SCM.  This way,
   a Hudson user can trigger a build and supply the name of this branch
-  to the Hudson build.
+  to the Hudson build. Hudson supports different data types adapting
+  its user interface to it. The basic string parameter provides a
+  simple input box. The password parameter will provide an input field
+  with hidden characters. Boolean values are reprensted as checkbox,
+  while a choice parameter is rendered as a drop down box. File
+  paramters, run parameter and subversion tags are other supported
+  parameters. All these parameters need to be supplied when a project
+  is build. Typically this is done via the user interface provided by
+  the parameters when a build is kicked off manually in the user
+  interface.
 
 Disable Build::
 

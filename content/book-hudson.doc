@@ -1999,7 +1999,7 @@ favourite RSS feed reader. The server needs to be reachable via http
 by your RSS reader for this feature to be usable. 
 
 Various pages in the web interface feature RSS buttons in the bottom
-left corner.
+left corner as visibile in <<fig-ci-quickstart-app-win>>.
 
 ==== Receiving Build Notifiations via RSS
 
@@ -2660,11 +2660,11 @@ provide an overview of some common project configuration options.
 ==== Configuring General Project Settings
 
 The first section on the Project Screen is the general project
-information, which is shown in <<fig-using-project-info>>.
+information, which is shown in <<fig-configure-project-general>>.
 
-[[fig-using-project-info]]
+[[fig-configure-project-general]]
 .Configuring Project Information
-image::figs/web/ci-using-proj-info.png[scale=75]
+image::figs/web/configure-project-general.png[scale=75]
 
 The section shown in the previous figure contains the following
 fields:
@@ -2682,6 +2682,14 @@ Project Name::
   in build failure. We suggest using e.g. underscores instead. The
   project name will be visible in the main Hudson page on the list of
   jobs.
+
+Cascading Project:: 
+
+  The Cascading Project drop down allows you to select another Hudson
+  project as a templated to inherit settings from. This feature is
+  supported for free-style software as well as multi-configuration
+  projects and is documented in more details 
+  in <<section-cascading-project>>.
 
 Description::
 
@@ -3102,6 +3110,52 @@ Notify that Maven dependencies have been updated::
   side-effect of this could be that only some Maven dependencies have
   been updated, which could lead to further failures of the dependent
   projects.
+
+[[section-cascading-project]]
+==== Working with Cascading Projects
+
+Support for cascading projects is an addition to Hudson that makes
+managing a large number of projects easier by implementing single
+inheritance of project setting from one project to one or many others.
+
+WARNING: This feature has been introduced with Hudson 2.2.0, so you
+will have to update to it or a newer version to take advantage of it.
+
+The Cascading Project drop down in <<fig-configure-project-general>>
+is populated with all projects the current project can inherit
+settings from. These have to be of the same type - free-style or
+multi-configuration and you will be prevented from introducing cyclic inheritance.
+
+Select a project you would like to inherit settings from in the drop
+down and the complete project configuration will be populated with the
+configuration values of the parent project.
+
+If you change a configuration for the child project and save the
+configuration any setting that differs from the parent project setting
+will be highlighted on the configuration screen and augmented with
+green arrow on the left side of the input as visibile 
+in <<fig-configure-cascading-project-example>>. This arrow will revert
+any changes and reapply the configuration settings of the parent
+project.
+
+[[fig-configure-cascading-project-example]]
+.A Discard Old Builds configuration in a child project overriding the parent project configuraiton.
+image::figs/web/configure-cascading-project-example.png[scale=75]
+
+The parent and child projects are linked internal and an user will not
+be able to delete a parent project as long child projects exist.
+
+The inheritance works for general project parameters as well as
+builders, publishers, triggers and SCM related settings.
+
+Examples for useful applications of this feature among others are:
+
+- a parent project for a main branch of a project and children for all
+  other branches in the SCM system
+
+- combination of different scheduling and build parameters e.g. for
+  build with unit tests only vs with full integrations tests vs a
+  nightly regression build
 
 [[section-configuring-free-style-project]]
 === Configuring Free-style Projects

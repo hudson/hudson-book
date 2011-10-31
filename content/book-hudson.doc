@@ -312,13 +312,13 @@ requirements of some of the largest enterprises in the world.
 [[intro-sect-project]]
 === The Hudson Project
 
-The main source of information about Hudson are the web sites
-http://www.eclipse.org/hudson[http://www.eclipse.org/hudson] and
-http://www.hudson-ci.org[http://www.hudson-ci.org].  This site
-contains links to resources like a Wiki, an issue tracker, a few
-mailing lists, the source code and more.  If you are looking for
-download Hudson or learn about participating in the, you can start
-with the Hudson project's web site.
+The main source of information about Hudson are the
+http://www.eclipse.org/hudson[Eclipse Hudson website] and
+http://www.hudson-ci.org[the legacy standalone website].  The sites
+contain links to resources like the wiki, an issue tracker, the user
+forum, a few mailing lists, the source code and more.  If you are
+looking for download Hudson or learn about participating in the, you
+can start with the Eclispe Hudson project's web site.
 
 At the time this document was developed, the Hudson project at Eclipse
 was focused on the following tasks:
@@ -396,9 +396,9 @@ http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License
 version 1.0].  The Open Source Initiative categorizes the Eclipse
 Public License as a "popular and widely used license with a strong
 community".  The EPL is a limited copy-left license designed to be a
-"business-friendly" alternative to the GPL.  For more information
-about the Eclipse Public License, see
-http://en.wikipedia.org/wiki/Eclipse_Public_License
+"business-friendly" alternative to the GPL.  More information
+about the Eclipse Public License can also be found on
+http://en.wikipedia.org/wiki/Eclipse_Public_License[Wikipedia].
 
 If you have any questions about the Eclipse Public License, the
 Eclipse Foundation also maintains a
@@ -479,9 +479,9 @@ Download Oracle Java 6 JDK::
 Installing OpenJDK 6 on Linux::
 
   OpenJDK packages are available in both RPM and DEB format which
-  should cover most Linux distributions.  To install the OpenJDK 6 on
-  your Linux machine, following the instruction on
-  http://openjdk.java.net/install/index.html[this page].
+  should cover most Linux distributions.  Installing OpenJDK 6 on
+  your Linux machine can be done by following the instructions
+  http://openjdk.java.net/install/index.html[OpenJDK project site].
 
 [[section-install-war]]
 ==== Hardware Prerequisites
@@ -656,8 +656,9 @@ the server is set up as an operating system service. The details of
 this setup widely vary between operating systems and application
 servers. The Hudson project provides helpful instructions for
 installing Hudson on Glassfish, WebSphere, JBoss, Jetty, Tomcat,
-Jonas, Weblogic and Winstone.  For more information, see
-http://wiki.eclipse.org/hudson-ci/Containers
+Jonas, Weblogic and Winstone.  More information about different containers 
+and their specific needs in terms of installing and running Hudson is maintained
+http://wiki.eclipse.org/hudson-ci/Containers[on the Hudson wiki].
 
 NOTE: The recommended installation process is to install Hudson as a
 stand-alone service on a dedicated host using the operating
@@ -1277,7 +1278,7 @@ ProxyPassReverse /matrix/ http://localhost:8082/matrix/
 Apache configuration is going to vary based on your own application's
 requirements and the way you intend to expose Hudson to the outside
 world. If you need more details about Apache httpd and +mod_proxy+,
-please see http://httpd.apache.org[http://httpd.apache.org].
+please read the documentation http://httpd.apache.org[on the project website].
 
 [[chapter-configuration]]
 == Hudson Configuration
@@ -4531,11 +4532,6 @@ the global configuration.
 
 In terms of project specific configuration you only need to specify
 the public url of the repository.
-
-////
-    TODO this should be added in one way or another
-    http://stackoverflow.com/questions/6558542/how-to-clone-a-googlecode-mercurial-repository-in-jenkins
-////
 
 [[section-scm-cvs]]
 === Configuring CVS

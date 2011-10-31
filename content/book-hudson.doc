@@ -3155,7 +3155,9 @@ The parent and child projects are linked internal and an user will not
 be able to delete a parent project as long child projects exist.
 
 The inheritance works for general project parameters as well as
-builders, publishers, triggers and SCM related settings.
+builders, publishers, triggers and SCM related settings. When updating
+a parent project parameters these changed values are propagated to all
+child projects that do not have the values overridden.
 
 Examples for useful applications of this feature among others are:
 

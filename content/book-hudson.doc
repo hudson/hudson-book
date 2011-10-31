@@ -60,7 +60,7 @@ Hudson offers a supportable, world-class experience to end users is
 quality documentation.
 
 If you have any feedback or questions, you are encouraged to post on
-the Hudson project mailing lists, or to contact the author directly
+the Hudson project mailing lists, or to contact the authors directly
 via the Hudson project.  We're here to help, and we look forward to
 your feedback.
 
@@ -314,7 +314,7 @@ requirements of some of the largest enterprises in the world.
 
 The main source of information about Hudson are the
 http://www.eclipse.org/hudson[Eclipse Hudson website] and
-http://www.hudson-ci.org[the legacy standalone website].  The sites
+http://www.hudson-ci.org[the legacy website].  The sites
 contain links to resources like the wiki, an issue tracker, the user
 forum, a few mailing lists, the source code and more.  If you are
 looking for download Hudson or learn about participating in the, you

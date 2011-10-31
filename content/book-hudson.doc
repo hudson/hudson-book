@@ -3217,6 +3217,72 @@ Invoke Maven 3::
   A Maven 3 based build step can be configured as documented in
   <<section-maven-3-build-configuration>>
 
+
+[[section-configuring-multi-configuration-project]]
+=== Configuring Multi-Configuration Projects
+
+Multi-configuration projects have to be configured as such when
+initially creating the project as visible 
+in <<fig-using-new-project>>. A multi-configuration project is a
+free-style project with additional parameters called axis defined. These axis
+values create a matrix of possible
+combinations. Each of these combinations is a possible build execution
+with the specific combination of parameters passed to the build.
+
+<<fig-configure-matrix>> and <<fig-configure-matrix-axis-config>> show
+the general Configuration Matrix section as well as an example of some
+axes defined. A preconfigured axis available offers the choice of JDK
+used for the project build. In the example two further axes are
+defined. For for a database backend used for the build and another for
+the type of build to execute. Axis can be added by creating the Add
+axis button and removed with the Delete button.
+
+[[fig-configure-matrix]]
+.Configuration matrix parameters for multi-configuration project
+image::figs/web/configure-matrix.png[scale=75]
+
+[[fig-configure-matrix-axis-config]]
+.Axis definition for multi-configuration project
+image::figs/web/configure-matrix-axis-config.png[scale=75]
+
+All these axis values create a configuration matrix on the project
+overview page as visibile in <<fig-configure-matrix-axis-display>>.
+
+[[fig-configure-matrix-axis-display]]
+.Configuration matrix display for multi-configuration project
+image::figs/web/configure-matrix-axis-display.png[scale=75]
+
+The most important configuration steps is to define the axes that you
+will use for your project. The user-defined axis defintion allows you
+to define a name and multiple values. These values will be passed to
+your build execution as variables and you have to ensure in your build
+configruation that they are e.g. used as Maven profile names in the
+a build step or passed in as properties and picked up to select the
+correct database connection. The values have to be separated by
+whitespace in the values input field.
+
+In addition you can configure the following settings.
+
+Run each configuration sequentially::
+
+  Selecting this option will cause Hudson to build each combination of
+  axis values as sequential build invocations rather than executing
+  them concurrently. This is especially useful if concurrent execution
+  could cause conflicts when accessing resources needed by the build
+  like a central database server.
+
+Combination Filter::
+  
+  The combination filter input field allows you to define valid axis
+  value combinations with a Groovy expression. Only expressions
+  returning true will be executed.
+
+Execute touchstone builds first:: 
+  
+  By defining a filter you can set up a touchstone build. It will be
+  executed first and the required result will have to be met before
+  any furhter combinations of the matrix configuration are executed.
+
 [[chapter-maven]]
 == Working with Apache Maven Builds
 

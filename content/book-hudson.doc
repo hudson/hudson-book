@@ -4268,7 +4268,7 @@ configuration. It can be used to push merges done prior to the build
 back out to a remote repository after a build.
 
 [[fig-scm-git-project-pub]]
-.Configuring Git merge options
+.Configuring Git Publisher options
 image::figs/web/scm-git-project-pub.png[scale=75]
 
 Push Only If Build Succeeds::
@@ -4295,7 +4295,7 @@ When configuring the Git Publisher you can specify Tags in fields
 displayed in <<fig-scm-git-project-pub-tags>>.
 
 [[fig-scm-git-project-pub-tags]]
-.Configuring Git merge options
+.Configuring Tags for Git Publisher
 image::figs/web/scm-git-project-pub-tags.png[scale=75]
 
 Tag to push::
@@ -4321,7 +4321,7 @@ Target remote name::
   interface displayed in <<fig-scm-git-project-pub-branches>>.
 
 [[fig-scm-git-project-pub-branches]]
-.Configuring Git merge options
+.Configuring Branches for Git Publisher
 image::figs/web/scm-git-project-pub-branches.png[scale=75]
 
 Branch to push::
@@ -4335,7 +4335,7 @@ Target remote name::
   push will be done and needs to be one of the names configured as a
   repository in the SCM section
 
-[[section-scm-git-basic-config]]
+[[section-scm-git-basic-config]] merge options
 ==== Minimal Basic Git Configuration
 
 In order to build a project controlled in git you need to have a git

@@ -2733,7 +2733,9 @@ This Build is Parameterized::
   parameters. All these parameters need to be supplied when a project
   is build. Typically this is done via the user interface provided by
   the parameters when a build is kicked off manually in the user
-  interface.
+  interface. Parameters can also be passed to Hudson via remote
+  invocation with a url like
+  http://server/job/myjob/buildWithParameters?PARAMETER=Value 
 
 Disable Build::
 

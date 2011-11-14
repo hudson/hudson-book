@@ -34,4 +34,13 @@ echo "--- Building chunked HTML version - Started ---"
 a2x --no-xmllint -v -k -fchunked -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
 echo "--- Building chunked HTML page version - Finished ---"
 
+echo "--- Putting site together - Started ---"
+cp -rv site/ target
+echo "--- Putting site together - Finished ---"
+
+echo "--- Building download archive - Started ---"
+cd target 
+tar -cvzf the-hudson-book.tar.gz .
+echo "--- Building download archive - Finished ---"
+
 echo "--- Build successful --"

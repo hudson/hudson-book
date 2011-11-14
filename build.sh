@@ -35,12 +35,12 @@ a2x --no-xmllint -v -k -fchunked -dbook --dblatex-opts=" -P latex.output.revhist
 echo "--- Building chunked HTML page version - Finished ---"
 
 echo "--- Putting site together - Started ---"
-cp -rv site/ target
+cp -rv site/* target
 echo "--- Putting site together - Finished ---"
 
 echo "--- Building download archive - Started ---"
 cd target 
-tar -cvzf the-hudson-book.tar.gz .
+tar -czf the-hudson-book.tar.gz .
 echo "--- Building download archive - Finished ---"
 
 echo "--- Build successful. --"

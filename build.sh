@@ -43,4 +43,4 @@ cd target
 tar -cvzf the-hudson-book.tar.gz .
 echo "--- Building download archive - Finished ---"
 
-echo "--- Build successful --"
+echo "--- Build successful. --"

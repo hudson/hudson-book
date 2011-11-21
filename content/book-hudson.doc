@@ -2168,7 +2168,9 @@ image::figs/web/security-hudson-db.png[scale=75]
 The option "Allow user to sign up" activates the Sign Up screen as
 displayed in <<fig-security-signup>>, which also displays a captcha
 that is displayed when the option "Enable captcha on sign up" is
-activated.
+activated. The option "Notify user of Hudson account creation" will
+trigger an email to be sent to the new user, when a new account is
+created either by signup by the user or an administrator.
 
 [[fig-security-signup]]
 .Sign up screen for new users

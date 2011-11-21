@@ -2380,10 +2380,9 @@ to login to use Hudson and everyone has access it is possible to login
 and customize Hudson by creating custom views and take advantage of
 other personalization options.
 
-WARNING: Legacy Mode
-
-The legacy mode provides backwards compatibilty for users of early
-Hudson version that have not migrated to the replacement of matrix
+WARNING: Older versions of Hudson have a legacy mode authorisation
+that provides backwards compatibilty for users of early Hudson
+version, that have not migrated to the replacement of matrix
 authorization. It relied on hard coded values and should not be used
 anymore. With the 2.2.0 release of Hudson this mode is removed.
 

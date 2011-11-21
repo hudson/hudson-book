@@ -24,6 +24,6 @@
       <publishername>Oracle, Inc.</publishername>
     </publisher>
 
-    <abstract>
-      <para>Hudson is THE ci server.</para>
-    </abstract>
+<!--    <abstract>
+      <para>Eclipse Hudson is a very popular THE ci server.</para>
+    </abstract>-->

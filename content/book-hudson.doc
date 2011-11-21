@@ -2364,13 +2364,6 @@ Using groups accessing a group of projects you could e.g.  enable
 administrative rights for a limited number of projects to a specific
 user or user group.
 
-==== Legacy Mode
-
-The legacy mode provides backwards compatibilty for users of early
-Hudson version that have not migrated to the replacement of matrix
-authorization. It relied on hard coded values and should not be used
-anymore. With the 2.2.0 release of Hudson this mode is removed.
-
 ==== Anyone can do anything
 
 This option is something of a free for all - an uncontrolled Hudson
@@ -2384,6 +2377,14 @@ security. The advantage for the users is that while they do not need
 to login to use Hudson and everyone has access it is possible to login
 and customize Hudson by creating custom views and take advantage of
 other personalization options.
+
+ATTENTION:: Legacy Mode
+
+The legacy mode provides backwards compatibilty for users of early
+Hudson version that have not migrated to the replacement of matrix
+authorization. It relied on hard coded values and should not be used
+anymore. With the 2.2.0 release of Hudson this mode is removed.
+
 
 === Hudson Security Best Practices, Tips and Tricks
 

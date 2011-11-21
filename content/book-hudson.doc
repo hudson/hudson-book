@@ -2088,8 +2088,6 @@ Access-control schemes available are:
 
 * Project-based Matrix Authorizations Strategy
 
-* Legacy mode
-
 * Anyone can do anything
 
 These security options can be seen in <<fig-security-overview>> and
@@ -2371,7 +2369,7 @@ user or user group.
 The legacy mode provides backwards compatibilty for users of early
 Hudson version that have not migrated to the replacement of matrix
 authorization. It relied on hard coded values and should not be used
-anymore. Future versions of Hudson might remove this mode.
+anymore. With the 2.2.0 release of Hudson this mode is removed.
 
 ==== Anyone can do anything
 

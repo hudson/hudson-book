@@ -28,8 +28,8 @@ cp -r content/images target
 echo "--- Building PDF version - Started ---"
 a2x --no-xmllint -v -k -fpdf -dbook --xsl-file=docbook-xsl/fo.xsl --dblatex-opts=" -P latex.output.revhistory=0 -s ./latex/custom-docbook.sty" -D target content/book-hudson.doc
 # this is a hack until Tim tells me how it is supposed to work.. 
-pdftk pdf/resources/hudson-book-cover.pdf pdf/resources/title-page.pdf pdf/resources/blank-page.pdf pdf/resources/copyright-page.pdf target/book-hudson.pdf cat output target/tmp.pdf
-mv target/tmp.pdf target/book-hudson.pdf
+#pdftk pdf/resources/hudson-book-cover.pdf pdf/resources/title-page.pdf pdf/resources/blank-page.pdf pdf/resources/copyright-page.pdf target/book-hudson.pdf cat output target/tmp.pdf
+#mv target/tmp.pdf target/book-hudson.pdf
 
 echo "--- Building PDF version - Finished ---"
 

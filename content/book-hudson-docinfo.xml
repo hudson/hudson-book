@@ -23,7 +23,9 @@
     <publisher>
       <publishername>Oracle, Inc.</publishername>
     </publisher>
-
-<!--    <abstract>
-      <para>Eclipse Hudson is a very popular THE ci server.</para>
-    </abstract>-->
+    <abstract>
+      <para>Eclipse Hudson is a widely used, open source continuous
+      integration server. The Hudson Book aims to be the authoritative
+      and up to date resource about Hudson written by the community
+      for the community.</para>
+    </abstract>

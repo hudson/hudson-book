@@ -1214,6 +1214,14 @@ installation. After a full backup of all configuration and data, you
 should be ready to proceed after notifying your users about potential
 down-time. You might also want to disable all jobs before proceeding.
 
+A full backup would be the complete content of your HUDSON_HOME
+directory as visible in the administration interface as Home directory
+in <<fig-global-hudson-configuration>>. With a native package install
+this would typically be +/var/lib/hudson+. When running Hudson in an
+application server or from the standalone war it typically is
+the .hudson folder in the home folder of the user running the
+application server or war file.
+
 For native package users this will be handled transparently with
 their package management system. For WAR file based installs, you only
 have to remove the old version WAR and replace it with the new version

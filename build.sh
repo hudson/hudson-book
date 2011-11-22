@@ -4,6 +4,7 @@
 set -e
 
 rm -rf target
+rm -rf the-hudson-book # in case it stuck around from a build failure
 mkdir -p target/images
 mkdir -p target/figs
 
@@ -45,8 +46,10 @@ cp -rv site/* target
 echo "--- Putting site together - Finished ---"
 
 echo "--- Building download archive - Started ---"
-cd target 
-tar -czf the-hudson-book.tar.gz .
+mv target the-hudson-book
+tar -czf the-hudson-book.tar.gz the-hudson-book
+mv the-hudson-book target
+mv the-hudson-book.tar.gz target/
 echo "--- Building download archive - Finished ---"
 
 echo "--- Build successful. --"

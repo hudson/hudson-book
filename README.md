@@ -15,14 +15,24 @@ Run:
 
 Outputs:
 
-Single HTML File
-target/book-hudson.html
+The build will create a website that can be copied to any deployment
+in the target folder.
+
+It contains an index.html file that links to a single HTML file, 
+a multi page HTML version, a pdf file and a tar.gz archive of it all.
+
+Specifally the files are: 
+
+Single HTML File target/book-hudson.html
 
 PDF File
 target/book-hudson.pdf
 
 A bunch of HTML Files
 target/book-hudson.chunked/index.html
+
+Archive 
+target/the-hudson-book.tar.gz
 
 # Installing Asciidoc and Prerequisites
 

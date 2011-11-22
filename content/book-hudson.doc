@@ -78,9 +78,10 @@ What is Hudson?
 Hudson is a powerful and widely used open source continuous
 integration server providing development teams with a reliable way to
 monitor changes in source control and trigger a variety of builds.
-Hudson excels at integrating with almost every tool you can think of:
-from Maven, to Ant, to Gradle, to simple bash scripts for builds and
-SMS, IRC, and Skype for notifications.
+Hudson excels at integrating with almost every tool you can think of.
+Use Apache Maven, Apache Ant or Gradle or anything you can start with
+a command line script for builds and send messages via email, SMS, IRC
+and Skype for notifications.
 
 In addition to providing a platform for continuous integration builds,
 Hudson can also be extended to support software releases,
@@ -1205,6 +1206,105 @@ the Hudson server. The Hudson home folder is configured to be located
 in +/var/lib/hudson+, which will contain configuration, workspaces and
 so on and should be added to your backup strategy.
 
+[[ci-sect-directories]]
+=== Hudson Related Files and Directories
+
+Depending on your installation method for Hudson using the standalone
+war, running it with an application server or using one of the native
+packages, all files required by Hudson will be located in different
+locations on the file system. In all cases however the main location
+for configuration of Hudson, plugins, builds and so on will be in your
+Hudson home directory.
+
+It is defined as +HUDSON_HOME+ and visible in the administration
+interface as Home directory in <<fig-global-hudson-configuration>>.
+With a native package install this would typically be
++/var/lib/hudson+. When running Hudson in an application server or
+from the standalone war it typically is the .hudson folder in the home
+folder of the user running the application server or war file.
+
+In addition you installation will include the Hudson war file itself
+as well as scripts for service startup and log rotation. These vary
+depending on your install method in location as well as content. The
+sections for the native installer include details for these files. For
+application server based install or running from the standalone war
+file you will have set up these indiviually files yourself and
+therefore know about their location.
+
+The Hudson home directory itself contains a number of files and
+directories that we will examine now.
+
+The main Hudson configuration is contained in +config.xml+. It
+contains large number of configuration settings for Hudson itself
+including security and authorization details, views, nodes, JDK's and
+other global parameters.
+
+Futher system-wide configuration specific to installed plugins are
+contained in numerous xml files, which represent a serialized form of
+the various plugin configuration settings. File names used vary
+widely, but include +hudon.tasks.\*.xml+, +hudson.plugins.\*.xml+,
++hudson.scm.\*.xml+ and others like +maven-installation-descriptor.xml+
+or +rest-plugin.xml+.
+
+Plugins themselves are installed subfolder of the +plugins+ folder. It
+typically contains the plugins as +.hpi+ archives as well as extracted
+in a folders using the plugin name.
+
+Any build tools like Apache Ant, Apache Maven or a JDK installed by
+one of the Hudson installers will be installed their own directories
+in the +tools+ folder.
+
+The +fingerprints+ folder contains the fingerprint records created by
+build artifacts created and tracked by Hudson.
+
+The +users+ folder contains subfolders for each user of Hudson or
+committer on the projects built in a +config.xml+ file, that contains
+email configuration as well as configured views and other user
+specific data.
+
+The +userContent+ folder can contain static content that Hudson will
+serve in the +userContent+ context. It can be used to make
+e.g. software installation packages or web site content available to
+Hudson users without requiring a separate web server.
+
+Beyond all the global configuration described so far all the job
+related configuration and data is stored in individual subfolder of
+the +jobs+ folder.  Each project has a folder using the project name
+as configured in <<section-configuring-general-project-settings>>. The
++config.xml+ file within this folder contains all project specific
+configuration parameters. The +workspace+ contains the project as
+currently checked out from the used SCM. If the Maven 3 integration is
+set to use a private repository, it will be located in the
++.maven/repo+ folder in the workspace. The individual build results,
+logs and artifacts are stored in directories with date and time stamps
+as folder names within the +builds+ folder. In addition symlinks with
+build numbers are created to point to the time stamped folders. 
+
+[[ci-quickstart-sect-backup]]
+=== Backing up Hudson Data
+
+A full backup would be the complete content of your Hudson home
+directory as explained in <<ci-sect-directories>> and any customized
+files for service startup and log rotation. 
+
+This folder can also be used to migrated your Hudson instance to a
+different server by simply copying it over after installing Hudson on
+the new machine.
+
+For a limited backup you could e.g. omit some of the build history of
+various jobs or potentially large Maven repositories for the various
+builds.
+
+TIP: The
+http://wiki.hudson-ci.org/display/HUDSON/JobConfigHistory+Plugin[JobConfigHistory
+Plugin], the http://wiki.hudson-ci.org/display/HUDSON/thinBackup[thinBAckup Plugin] as well as the
+http://wiki.hudson-ci.org/display/HUDSON/Backup+Plugin[Backup Plugin]
+can be used to simplify your backup strategy, if you want to reduce
+the need for external tools. Some users are using a version control
+system like Git or Subversion to track changes of the Hudson home
+directory. You could even use a Hudson job to e.g. do regularly
+scheduled commits of config changes.
+
 [[ci-quickstart-sect-upgrading]]
 === Upgrading Hudson
 
@@ -1213,14 +1313,6 @@ application, it is easy to upgrade an existing Hudson
 installation. After a full backup of all configuration and data, you
 should be ready to proceed after notifying your users about potential
 down-time. You might also want to disable all jobs before proceeding.
-
-A full backup would be the complete content of your HUDSON_HOME
-directory as visible in the administration interface as Home directory
-in <<fig-global-hudson-configuration>>. With a native package install
-this would typically be +/var/lib/hudson+. When running Hudson in an
-application server or from the standalone war it typically is
-the .hudson folder in the home folder of the user running the
-application server or war file.
 
 For native package users this will be handled transparently with
 their package management system. For WAR file based installs, you only

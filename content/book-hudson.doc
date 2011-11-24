@@ -2773,13 +2773,13 @@ fields:
 Project Name::
 
   The Project Name should be a short descriptive name that easily
-  allows your Hudson users to see what this project is. Consider this
+  allows your Hudson users to understand what this project is about. Consider this
   to be the identifier that Hudson uses to keep track of everything
   associated to this project. We recommend that your project names
   consist of simple alphanumeric characters and dashes. While Hudson
   will save a Project name containing spaces, the file path of the
   workspace will also contain spaces. The presence of spaces in a
-  project name can cause unforeseen issues with builds and may results
+  project name can cause unforeseen issues with builds and may result
   in build failure. We suggest using e.g. underscores instead. The
   project name will be visible in the main Hudson page on the list of
   jobs.
@@ -2787,8 +2787,8 @@ Project Name::
 Cascading Project:: 
 
   The Cascading Project drop down allows you to select another Hudson
-  project as a templated to inherit settings from. This feature is
-  supported for free-style software as well as multi-configuration
+  project as a template to inherit settings from. This feature is
+  supported for free-style projects as well as multi-configuration
   projects and is documented in more details 
   in <<section-cascading-project>>.
 
@@ -2806,12 +2806,12 @@ Discard Old Builds::
 
   If Discard Old Builds is not checked, Hudson will archive the
   results of all the builds it performs. Depending on build log and
-  artifact size this can produce considerable amounts of storage space
+  artifact size this can produce considerable amount of storage space
   being used, which should in turn be monitored carefully.  If Discard
   Old Builds is checked, the project configuration screen will display
   additional input fields that allow you to specify the number of
   builds and the number of days to retain builds. After pressing the
-  Advanced button you can provide for separate configuration for the
+  Advanced button you can provide separate configuration for the
   number of days the build artifacts are kept. Setting this value will
   cause older build artifacts to get deleted, without the logs,
   reports etc. getting deleted. An additional advanced configuration
@@ -2823,15 +2823,15 @@ This Build is Parameterized::
   Parameterized builds allow you to pass configuration to specific
   builds.  For example, you can parameterize a build to accept a
   free-form variable that selects a specific branch in SCM.  This way,
-  a Hudson user can trigger a build and supply the name of this branch
+  a Hudson user can trigger a build and supply the name of the branch
   to the Hudson build. Hudson supports different data types adapting
   its user interface to it. The basic string parameter provides a
   simple input box. The password parameter will provide an input field
-  with hidden characters. Boolean values are reprensted as checkbox,
+  with hidden characters. Boolean values are represented as a checkbox,
   while a choice parameter is rendered as a drop down box. File
-  paramters, run parameter and subversion tags are other supported
+  parameter, run parameter and subversion tags are other supported
   parameters. All these parameters need to be supplied when a project
-  is build. Typically this is done via the user interface provided by
+  is built. Typically, this is done via the user interface provided by
   the parameters when a build is kicked off manually in the user
   interface. Parameters can also be passed to Hudson via remote
   invocation with a url like
@@ -2843,9 +2843,9 @@ Disable Build::
   the project is re-enabled. This means that any builds that might
   have been triggered by SCM activity or by a periodic schedule will
   not be executed. This feature is very useful if you need to fix an
-  issue with a build or build specific related infrastructure like
+  issue with a build or build-related infrastructure like
   source code management system and you want to temporarily take a
-  particular Hudson job offline without affecting the rest of your
+  particular Hudson job off-line without affecting the rest of your
   Hudson setup and jobs.
 
 Execute concurrent builds if necessary (beta)::
@@ -2907,7 +2907,7 @@ Block build when upstream/downstream project is building::
   Hudson builds can be configured to have upstream as well downstream
   dependencies. Upstream dependencies are projects upon which this
   particular project's build depends. Downstream dependencies are
-  projects that depend on the current builds results. If Block build
+  projects that depend on the current build's results. If Block build
   when upstream/downstream project is building is selected this
   project will not start a build, if an upstream/downstream project is
   in the middle of a build or in the build queue.
@@ -2917,9 +2917,9 @@ Use custom workspace::
   If this selection is checked, you can instruct Hudson to use a
   custom directory for this project's workspace. If this option is not
   checked, Hudson will automatically assign a workspace location that
-  is based on the project's name. As such it can be used to have
-  projects names with spaces or other characters potentially causing
-  file system level issues while using a save name for the workspace
+  is based on the project's name. As such it can be used to allow a
+  project name with spaces, or other characters potentially causing
+  file system level issues, while using a different (safe) name for the workspace
   folder name.
 
 [[section-configuring-source-code-management]]

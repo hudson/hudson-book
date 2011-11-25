@@ -41,6 +41,12 @@ echo "--- Building chunked HTML version - Started ---"
 a2x --no-xmllint -v -k -fchunked -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
 echo "--- Building chunked HTML page version - Finished ---"
 
+
+echo "--- Building epub version - Started ---"
+a2x --no-xmllint -v -k -fepub -dbook --dblatex-opts=" -P latex.output.revhistory=0" -D target content/book-hudson.doc
+
+echo "--- Building PDF version - Finished ---"
+
 echo "--- Putting site together - Started ---"
 cp -rv site/* target
 echo "--- Putting site together - Finished ---"

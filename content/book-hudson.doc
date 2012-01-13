@@ -3005,9 +3005,13 @@ Build when Maven dependencies have been updated by Maven 3 integration::
   send out a notification to all projects that Maven dependencies have
   been updated as post build action (see
   <<section-configuring-post-build-actions>>). When you activate this
-  build trigger a build of the project will be started once a such a
-  notification is received. The projects triggering each other in this
-  set up needs to be configured to access the same Maven repository.
+  build trigger, a build of the project will be started once such a
+  notification is received for a Maven dependency. This will create a
+  Upstream/Downstream Project coupling between the project producing
+  the Maven artifact and your project. In practice, this trigger
+  will only affect SNAPSHOT dependencies as releases should never change.
+  The projects triggering each other in this set up needs to be
+  configured to access the same (local or remote) Maven repository.
 
 Build when Maven SNAPSHOT dependencies have been updated externally::
 

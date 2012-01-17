@@ -3005,18 +3005,26 @@ Build when Maven dependencies have been updated by Maven 3 integration::
   send out a notification to all projects that Maven dependencies have
   been updated as post build action (see
   <<section-configuring-post-build-actions>>). When you activate this
-  build trigger a build of the project will be started once a such a
-  notification is received. The projects triggering each other in this
-  set up needs to be configured to access the same Maven repository.
+  build trigger, a build of the project will be started once such a
+  notification is received for a Maven dependency. This will create a
+  Upstream/Downstream Project coupling between the project producing
+  the Maven artifact and your project. In practice, this trigger
+  will only affect SNAPSHOT dependencies as releases should never change.
+  The projects triggering each other in this set up needs to be
+  configured to access the same (local or remote) Maven repository.
 
 Build when Maven SNAPSHOT dependencies have been updated externally::
 
   Activating this setting allows you to specify a schedule in cron
-  syntax to use for polling the local Maven repository for updated
-  SNAPSHOT dependencies. When selecting the Exclude internally
-  produced dependencies option the regular check will only cause a
-  build trigger firing when artifacts not built in a local Hudson job
-  are updated.
+  syntax to use for polling the Maven repository for updated
+  SNAPSHOT dependencies. The use case for this is to trigger a build
+  when an updated SNAPSHOT version of one of the project's Maven
+  dependencies has been deployed to the repository by a build outside
+  of the Hudson instance. The repository's URL is specified in the
+  global Hudson configuration. When selecting the Exclude internally
+  produced dependencies option, the check will only cause a build
+  trigger firing when artifacts not built by a project on the Hudson
+  instance are updated.
 
 [[section-configuring-post-build-actions]]
 ==== Configuring Post-build Actions
